@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Restock Reminders - SmartRetailX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .restock-container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem;
+        }
+
+        .restock-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .restock-header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .restock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .restock-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 10px);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: box-shadow 0.15s;
+        }
+
+        .restock-card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .restock-card.overdue {
+            border-left: 3px solid var(--color-error);
+        }
+
+        .restock-card.frequent {
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .rc-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .rc-meta {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        .rc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.25rem;
+        }
+
+        .rc-price {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+
+        .badge-overdue {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-error);
+        }
+
+        .badge-frequent {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--color-primary);
+        }
+
+        .empty-section {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            color: var(--color-primary);
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--color-text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="brand-logo">
+            <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius: 4px;">
+            SmartRetailX
+        </div>
+        <div class="header-actions">
+            <a href="index.html" class="btn-ghost">← Back to Shop</a>
+            <a href="billing.html" class="btn-primary"
+                style="padding:0.5rem 1.25rem;border-radius:8px;font-size:0.9rem;width:auto;text-decoration:none;">
+                🛒 Checkout
+            </a>
+        </div>
+    </header>
+
+    <div class="restock-container">
+        <a href="index.html" class="back-link">← Back to Shopping</a>
+
+        <div class="restock-header">
+            <span style="font-size:1.75rem;">🛒</span>
+            <div>
+                <h1>My Restock Reminders</h1>
+                <p style="margin:0;font-size:0.85rem;color:var(--color-text-secondary);">
+                    Items you usually buy — time to restock?
+                </p>
+            </div>
+        </div>
+
+        <!-- Overdue Section -->
+        <div id="overdueSection">
+            <div class="section-title">🚨 Overdue — Buy Again</div>
+            <div id="overdueGrid" class="restock-grid">
+                <div class="loading-state">⏳ Loading…</div>
+            </div>
+        </div>
+
+        <!-- Frequent Buys Section -->
+        <div id="frequentSection">
+            <div class="section-title">❤️ Frequently Bought</div>
+            <div id="frequentGrid" class="restock-grid">
+                <div class="loading-state">⏳ Loading…</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/api';
+
+        const user = JSON.parse(localStorage.getItem('customer') || '{}');
+        if (!user.customer_id) {
+            alert('Please login first.');
+            window.location.href = 'login.html';
+        }
+
+        function cardHTML(item, type) {
+            const badge = type === 'overdue'
+                ? `<span class="badge-overdue">Overdue</span>`
+                : `<span class="badge-frequent">Frequent</span>`;
+            const meta = type === 'overdue'
+                ? `Last bought ${item.days_since || '?'}d ago · avg every ${Math.round(item.avg_interval || 0)}d`
+                : `Bought ${item.qty || 0} unit${(item.qty || 0) === 1 ? '' : 's'} total`;
+            const safePrice = parseFloat(item.price || 0).toFixed(2);
+            const safeName = (item.name || '').replace(/'/g, "\\'");
+
+            return `
+                <div class="restock-card ${type}">
+                    <div>${badge}</div>
+                    <div class="rc-name">${item.name || 'Unknown'}</div>
+                    <div class="rc-meta">${meta}</div>
+                    <div class="rc-footer">
+                        <span class="rc-price">₹${safePrice}</span>
+                        <button class="btn-small" onclick="addItem('${item.barcode}','${safeName}',${safePrice})">
+                            + Add
+                        </button>
+                    </div>
+                </div>`;
+        }
+
+        async function load() {
+            try {
+                const res = await fetch(`${API_URL}/recommendations/restock/${user.customer_id}`);
+                const data = await res.json();
+
+                const overdue = data.restock || [];
+                const frequent = (data.frequent || []).filter(
+                    f => !(data.restock || []).some(r => r.barcode === f.barcode));
+
+                // Render Overdue
+                const og = document.getElementById('overdueGrid');
+                if (overdue.length) {
+                    og.innerHTML = overdue.map(i => cardHTML(i, 'overdue')).join('');
+                } else {
+                    og.innerHTML = '<div class="empty-section">✅ No overdue items — you\'re all caught up!</div>';
+                }
+
+                // Render Frequent
+                const fg = document.getElementById('frequentGrid');
+                if (frequent.length) {
+                    fg.innerHTML = frequent.map(i => cardHTML(i, 'frequent')).join('');
+                } else {
+                    fg.innerHTML = '<div class="empty-section">Scan more items to build your purchase history.</div>';
+                }
+
+            } catch (e) {
+                console.error(e);
+                document.getElementById('overdueGrid').innerHTML =
+                    '<div class="empty-section">⚠️ Could not load — make sure the server is running.</div>';
+                document.getElementById('frequentGrid').innerHTML = '';
+            }
+        }
+
+        function addItem(barcode, name, price) {
+            // Save to localStorage cart so billing page picks it up
+            let cart = JSON.parse(localStorage.getItem('srx_cart') || '[]');
+            const existing = cart.find(c => c.barcode === barcode);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ barcode, name, price: parseFloat(price), quantity: 1 });
+            }
+            localStorage.setItem('srx_cart', JSON.stringify(cart));
+
+            // Visual feedback
+            event.target.textContent = '✓ Added';
+            event.target.style.background = '#16a34a';
+            setTimeout(() => {
+                event.target.textContent = '+ Add';
+                event.target.style.background = '';
+            }, 1200);
+        }
+
+        load();
+    </script>
+</body>
+
+</html>

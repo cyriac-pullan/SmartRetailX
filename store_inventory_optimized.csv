@@ -1,0 +1,1001 @@
+Product_ID,Barcode,Product_Name,Price,Weight_kg,Category,Sub_Category,Aisle_No,Partition_No,Shelf_No,Position_Tag,Side,Stock_Quantity,Reorder_Level
+PROD00365,8901000365,Huggies Wonder Pants M 30 Pcs,699,0.82,Baby Care,Diapers,1,101,101.1,P101,Left,50,5
+PROD00366,8901000366,Pampers Active Baby Dry L 32 Pcs,749,0.9,Baby Care,Diapers,1,101,101.1,P101,Left,50,5
+PROD00364,8901000364,Pampers Active Baby Dry M 34 Pcs,699,0.85,Baby Care,Diapers,1,101,101.1,P101,Left,50,5
+PROD00370,8901000370,Cerelac Stage 1 Wheat 300g,250,0.3,Baby Care,Food,1,101,101.1,P101,Left,50,5
+PROD00371,8901000371,Nestle NanPro 1 Infant Formula 400g,575,0.4,Baby Care,Food,1,101,101.2,P101,Left,50,5
+PROD00369,8901000369,Himalaya Baby Cream 200g,210,0.2,Baby Care,Skin,1,101,101.2,P101,Left,50,5
+PROD00367,8901000367,Johnson's Baby Lotion 200ml,185,0.2,Baby Care,Skin,1,101,101.2,P101,Left,50,5
+PROD00368,8901000368,Johnson's Baby Shampoo 200ml,165,0.2,Baby Care,Skin,1,101,101.2,P101,Left,50,5
+PROD00372,8901000372,Johnson's Baby Wipes 80pcs,230,0.24,Baby Care,Wipes,1,101,101.3,P101,Left,50,5
+PROD00260,8901000260,Bonn Multigrain Bread 400g,50,0.4,Bakery,Bread,1,101,101.3,P101,Left,50,5
+PROD00255,8901000255,Britannia 100% Whole Wheat Bread 400g,45,0.4,Bakery,Bread,1,101,101.3,P101,Left,50,5
+PROD00259,8901000259,Britannia Multigrain Bread 400g,52,0.4,Bakery,Bread,1,101,101.3,P101,Left,50,5
+PROD00257,8901000257,English Oven White Sandwich Bread 400g,40,0.4,Bakery,Bread,1,101,101.4,P101,Left,50,5
+PROD00258,8901000258,Harvest Gold White Bread 400g,38,0.4,Bakery,Bread,1,101,101.4,P101,Left,50,5
+PROD00256,8901000256,Modern Brown Bread 400g,42,0.4,Bakery,Bread,1,101,101.4,P101,Left,50,5
+PROD00263,8901000263,Britannia Maska Bun 55g,15,0.055,Bakery,Buns,1,101,101.4,P101,Left,50,5
+PROD00261,8901000261,English Oven Burger Buns 6pcs,55,0.24,Bakery,Buns,1,101,101.5,P101,Left,50,5
+PROD00262,8901000262,Harvest Gold Pavbhaji Pav 200g,35,0.2,Bakery,Buns,1,101,101.5,P101,Left,50,5
+PROD00264,8901000264,Britannia Chocolate Cake 60g,25,0.06,Bakery,Cakes,1,101,101.5,P101,Left,50,5
+PROD00265,8901000265,Britannia Fruit Cake 400g,130,0.4,Bakery,Cakes,1,101,101.5,P101,Left,50,5
+PROD00266,8901000266,Elite Swiss Roll Cocoa 30g,10,0.03,Bakery,Cakes,1,101,101.6,P101,Left,50,5
+PROD00267,8901000267,Monginis Dark Truffle Cake 500g,350,0.5,Bakery,Cakes,1,101,101.6,P101,Left,50,5
+PROD00268,8901000268,Theobroma Brownies 145g,210,0.145,Bakery,Cakes,1,101,101.6,P101,Left,50,5
+PROD00269,8901000269,Britannia Toast 200g,50,0.2,Bakery,Rusk,1,101,101.6,P101,Left,50,5
+PROD00270,8901000270,Modern Rusk 180g,45,0.18,Bakery,Rusk,1,101,101.7,P101,Left,50,5
+PROD00104,8901000104,Bru Gold Instant Coffee 100g,330,0.1,Beverages,Coffee,1,101,101.7,P101,Left,50,5
+PROD00768,8901000768,Bru Gold Instant Coffee 1L,561,1.0,Beverages,Coffee,1,101,101.7,P101,Left,50,5
+PROD00766,8901000766,Bru Gold Instant Coffee 250ml,182,0.25,Beverages,Coffee,1,101,101.7,P101,Left,50,5
+PROD00769,8901000769,Bru Gold Instant Coffee 2L,594,2.0,Beverages,Coffee,1,102,102.1,P102,Left,50,5
+PROD00767,8901000767,Bru Gold Instant Coffee 500ml,297,0.5,Beverages,Coffee,1,102,102.1,P102,Left,50,5
+PROD00102,8901000102,Bru Original Instant Coffee 100g,255,0.1,Beverages,Coffee,1,102,102.1,P102,Left,50,5
+PROD00760,8901000760,Bru Original Instant Coffee 1L,434,1.0,Beverages,Coffee,1,102,102.1,P102,Left,50,5
+PROD00758,8901000758,Bru Original Instant Coffee 250ml,140,0.25,Beverages,Coffee,1,102,102.2,P102,Left,50,5
+PROD00761,8901000761,Bru Original Instant Coffee 2L,459,2.0,Beverages,Coffee,1,102,102.2,P102,Left,50,5
+PROD00759,8901000759,Bru Original Instant Coffee 500ml,230,0.5,Beverages,Coffee,1,102,102.2,P102,Left,50,5
+PROD00105,8901000105,Continental Malabar Instant Coffee 100g,290,0.1,Beverages,Coffee,1,102,102.2,P102,Left,50,5
+PROD00772,8901000772,Continental Malabar Instant Coffee 1L,493,1.0,Beverages,Coffee,1,102,102.3,P102,Left,50,5
+PROD00770,8901000770,Continental Malabar Instant Coffee 250ml,160,0.25,Beverages,Coffee,1,102,102.3,P102,Left,50,5
+PROD00773,8901000773,Continental Malabar Instant Coffee 2L,522,2.0,Beverages,Coffee,1,102,102.3,P102,Left,50,5
+PROD00771,8901000771,Continental Malabar Instant Coffee 500ml,261,0.5,Beverages,Coffee,1,102,102.3,P102,Left,50,5
+PROD00108,8901000108,Davidoff Rich Aroma Instant 100g,410,0.1,Beverages,Coffee,1,102,102.4,P102,Left,50,5
+PROD00784,8901000784,Davidoff Rich Aroma Instant 1L,697,1.0,Beverages,Coffee,1,102,102.4,P102,Left,50,5
+PROD00782,8901000782,Davidoff Rich Aroma Instant 250ml,226,0.25,Beverages,Coffee,1,102,102.4,P102,Left,50,5
+PROD00785,8901000785,Davidoff Rich Aroma Instant 2L,738,2.0,Beverages,Coffee,1,102,102.4,P102,Left,50,5
+PROD00783,8901000783,Davidoff Rich Aroma Instant 500ml,369,0.5,Beverages,Coffee,1,102,102.5,P102,Left,50,5
+PROD00780,8901000780,Filter Coffee Kaapi 1L,298,1.0,Beverages,Coffee,1,102,102.5,P102,Left,50,5
+PROD00107,8901000107,Filter Coffee Kaapi 200g,175,0.2,Beverages,Coffee,1,102,102.5,P102,Left,50,5
+PROD00778,8901000778,Filter Coffee Kaapi 250ml,96,0.25,Beverages,Coffee,1,102,102.5,P102,Left,50,5
+PROD00781,8901000781,Filter Coffee Kaapi 2L,315,2.0,Beverages,Coffee,1,102,102.6,P102,Left,50,5
+PROD00779,8901000779,Filter Coffee Kaapi 500ml,158,0.5,Beverages,Coffee,1,102,102.6,P102,Left,50,5
+PROD00764,8901000764,Nescafe Classic 1L,901,1.0,Beverages,Coffee,1,102,102.6,P102,Left,50,5
+PROD00103,8901000103,Nescafe Classic 200g,530,0.2,Beverages,Coffee,1,102,102.6,P102,Left,50,5
+PROD00762,8901000762,Nescafe Classic 250ml,292,0.25,Beverages,Coffee,1,102,102.7,P102,Left,50,5
+PROD00765,8901000765,Nescafe Classic 2L,954,2.0,Beverages,Coffee,1,102,102.7,P102,Left,50,5
+PROD00763,8901000763,Nescafe Classic 500ml,477,0.5,Beverages,Coffee,1,102,102.7,P102,Left,50,5
+PROD00101,8901000101,Nescafe Classic Instant Coffee 100g,290,0.1,Beverages,Coffee,1,102,102.7,P102,Left,50,5
+PROD00756,8901000756,Nescafe Classic Instant Coffee 1L,493,1.0,Beverages,Coffee,1,103,103.1,P103,Left,50,5
+PROD00754,8901000754,Nescafe Classic Instant Coffee 250ml,160,0.25,Beverages,Coffee,1,103,103.1,P103,Left,50,5
+PROD00757,8901000757,Nescafe Classic Instant Coffee 2L,522,2.0,Beverages,Coffee,1,103,103.1,P103,Left,50,5
+PROD00755,8901000755,Nescafe Classic Instant Coffee 500ml,261,0.5,Beverages,Coffee,1,103,103.1,P103,Left,50,5
+PROD00109,8901000109,Nescafe Gold Blend 100g,550,0.1,Beverages,Coffee,1,103,103.2,P103,Left,50,5
+PROD00788,8901000788,Nescafe Gold Blend 1L,935,1.0,Beverages,Coffee,1,103,103.2,P103,Left,50,5
+PROD00786,8901000786,Nescafe Gold Blend 250ml,302,0.25,Beverages,Coffee,1,103,103.2,P103,Left,50,5
+PROD00789,8901000789,Nescafe Gold Blend 2L,990,2.0,Beverages,Coffee,1,103,103.2,P103,Left,50,5
+PROD00787,8901000787,Nescafe Gold Blend 500ml,495,0.5,Beverages,Coffee,1,103,103.3,P103,Left,50,5
+PROD00792,8901000792,Starbucks VIA Colombia Instant 1L,850,1.0,Beverages,Coffee,1,103,103.3,P103,Left,50,5
+PROD00790,8901000790,Starbucks VIA Colombia Instant 250ml,275,0.25,Beverages,Coffee,1,103,103.3,P103,Left,50,5
+PROD00110,8901000110,Starbucks VIA Colombia Instant 26g,500,0.026,Beverages,Coffee,1,103,103.3,P103,Left,50,5
+PROD00793,8901000793,Starbucks VIA Colombia Instant 2L,900,2.0,Beverages,Coffee,1,103,103.4,P103,Left,50,5
+PROD00791,8901000791,Starbucks VIA Colombia Instant 500ml,450,0.5,Beverages,Coffee,1,103,103.4,P103,Left,50,5
+PROD00776,8901000776,Sunrise Special Coffee Powder 1L,332,1.0,Beverages,Coffee,1,103,103.4,P103,Left,50,5
+PROD00106,8901000106,Sunrise Special Coffee Powder 200g,195,0.2,Beverages,Coffee,1,103,103.4,P103,Left,50,5
+PROD00774,8901000774,Sunrise Special Coffee Powder 250ml,107,0.25,Beverages,Coffee,1,103,103.5,P103,Left,50,5
+PROD00777,8901000777,Sunrise Special Coffee Powder 2L,351,2.0,Beverages,Coffee,1,103,103.5,P103,Left,50,5
+PROD00775,8901000775,Sunrise Special Coffee Powder 500ml,176,0.5,Beverages,Coffee,1,103,103.5,P103,Left,50,5
+PROD00884,8901000884,Monster Energy Original 1L,255,1.0,Beverages,Energy,1,103,103.5,P103,Left,50,5
+PROD00883,8901000883,Monster Energy Original 250ml,82,0.25,Beverages,Energy,1,103,103.6,P103,Left,50,5
+PROD00885,8901000885,Monster Energy Original 2L,270,2.0,Beverages,Energy,1,103,103.6,P103,Left,50,5
+PROD00137,8901000137,Monster Energy Original 500ml,150,0.5,Beverages,Energy,1,103,103.6,P103,Left,50,5
+PROD00881,8901000881,Red Bull Energy Drink 1L,212,1.0,Beverages,Energy,1,103,103.6,P103,Left,50,5
+PROD00136,8901000136,Red Bull Energy Drink 250ml,125,0.25,Beverages,Energy,1,103,103.7,P103,Left,50,5
+PROD00882,8901000882,Red Bull Energy Drink 2L,225,2.0,Beverages,Energy,1,103,103.7,P103,Left,50,5
+PROD00880,8901000880,Red Bull Energy Drink 500ml,112,0.5,Beverages,Energy,1,103,103.7,P103,Left,50,5
+PROD00114,8901000114,B Natural Mixed Fruit Juice 1L,90,1.0,Beverages,Juice,1,103,103.7,P103,Left,50,5
+PROD00803,8901000803,B Natural Mixed Fruit Juice 250ml,50,0.25,Beverages,Juice,1,104,104.1,P104,Left,50,5
+PROD00805,8901000805,B Natural Mixed Fruit Juice 2L,162,2.0,Beverages,Juice,1,104,104.1,P104,Left,50,5
+PROD00804,8901000804,B Natural Mixed Fruit Juice 500ml,81,0.5,Beverages,Juice,1,104,104.1,P104,Left,50,5
+PROD00121,8901000121,Dabur Real Pomegranate Juice 1L,135,1.0,Beverages,Juice,1,104,104.1,P104,Left,50,5
+PROD00826,8901000826,Dabur Real Pomegranate Juice 250ml,74,0.25,Beverages,Juice,1,104,104.2,P104,Left,50,5
+PROD00828,8901000828,Dabur Real Pomegranate Juice 2L,243,2.0,Beverages,Juice,1,104,104.2,P104,Left,50,5
+PROD00827,8901000827,Dabur Real Pomegranate Juice 500ml,122,0.5,Beverages,Juice,1,104,104.2,P104,Left,50,5
+PROD00834,8901000834,Maaza Mango 1L,68,1.0,Beverages,Juice,1,104,104.2,P104,Left,50,5
+PROD00832,8901000832,Maaza Mango 250ml,22,0.25,Beverages,Juice,1,104,104.3,P104,Left,50,5
+PROD00835,8901000835,Maaza Mango 2L,72,2.0,Beverages,Juice,1,104,104.3,P104,Left,50,5
+PROD00833,8901000833,Maaza Mango 500ml,36,0.5,Beverages,Juice,1,104,104.3,P104,Left,50,5
+PROD00123,8901000123,Maaza Mango 600ml,40,0.6,Beverages,Juice,1,104,104.3,P104,Left,50,5
+PROD00818,8901000818,Minute Maid Pulpy Orange 1L,51,1.0,Beverages,Juice,1,104,104.4,P104,Left,50,5
+PROD00816,8901000816,Minute Maid Pulpy Orange 250ml,16,0.25,Beverages,Juice,1,104,104.4,P104,Left,50,5
+PROD00819,8901000819,Minute Maid Pulpy Orange 2L,54,2.0,Beverages,Juice,1,104,104.4,P104,Left,50,5
+PROD00118,8901000118,Minute Maid Pulpy Orange 400ml,30,0.4,Beverages,Juice,1,104,104.4,P104,Left,50,5
+PROD00817,8901000817,Minute Maid Pulpy Orange 500ml,27,0.5,Beverages,Juice,1,104,104.5,P104,Left,50,5
+PROD00810,8901000810,Paperboat Aamras 1L,51,1.0,Beverages,Juice,1,104,104.5,P104,Left,50,5
+PROD00116,8901000116,Paperboat Aamras 250ml,30,0.25,Beverages,Juice,1,104,104.5,P104,Left,50,5
+PROD00811,8901000811,Paperboat Aamras 2L,54,2.0,Beverages,Juice,1,104,104.5,P104,Left,50,5
+PROD00809,8901000809,Paperboat Aamras 500ml,27,0.5,Beverages,Juice,1,104,104.6,P104,Left,50,5
+PROD00814,8901000814,Paperboat Jamun Kala Khatta 1L,42,1.0,Beverages,Juice,1,104,104.6,P104,Left,50,5
+PROD00117,8901000117,Paperboat Jamun Kala Khatta 200ml,25,0.2,Beverages,Juice,1,104,104.6,P104,Left,50,5
+PROD00812,8901000812,Paperboat Jamun Kala Khatta 250ml,14,0.25,Beverages,Juice,1,104,104.6,P104,Left,50,5
+PROD00815,8901000815,Paperboat Jamun Kala Khatta 2L,45,2.0,Beverages,Juice,1,104,104.7,P104,Left,50,5
+PROD00813,8901000813,Paperboat Jamun Kala Khatta 500ml,22,0.5,Beverages,Juice,1,104,104.7,P104,Left,50,5
+PROD00120,8901000120,Patanjali Amla Juice 1L,110,1.0,Beverages,Juice,1,104,104.7,P104,Left,50,5
+PROD00823,8901000823,Patanjali Amla Juice 250ml,61,0.25,Beverages,Juice,1,104,104.7,P104,Left,50,5
+PROD00825,8901000825,Patanjali Amla Juice 2L,198,2.0,Beverages,Juice,1,105,105.1,P105,Left,50,5
+PROD00824,8901000824,Patanjali Amla Juice 500ml,99,0.5,Beverages,Juice,1,105,105.1,P105,Left,50,5
+PROD00821,8901000821,Raw Pressery Apple Celery Spinach 1L,153,1.0,Beverages,Juice,1,105,105.1,P105,Left,50,5
+PROD00119,8901000119,Raw Pressery Apple Celery Spinach 250ml,90,0.25,Beverages,Juice,1,105,105.1,P105,Left,50,5
+PROD00822,8901000822,Raw Pressery Apple Celery Spinach 2L,162,2.0,Beverages,Juice,1,105,105.2,P105,Left,50,5
+PROD00820,8901000820,Raw Pressery Apple Celery Spinach 500ml,81,0.5,Beverages,Juice,1,105,105.2,P105,Left,50,5
+PROD00112,8901000112,Real Fruit Power Apple 1L,100,1.0,Beverages,Juice,1,105,105.2,P105,Left,50,5
+PROD00797,8901000797,Real Fruit Power Apple 250ml,55,0.25,Beverages,Juice,1,105,105.2,P105,Left,50,5
+PROD00799,8901000799,Real Fruit Power Apple 2L,180,2.0,Beverages,Juice,1,105,105.3,P105,Left,50,5
+PROD00798,8901000798,Real Fruit Power Apple 500ml,90,0.5,Beverages,Juice,1,105,105.3,P105,Left,50,5
+PROD00115,8901000115,Real Guava Fruit Juice 1L,95,1.0,Beverages,Juice,1,105,105.3,P105,Left,50,5
+PROD00806,8901000806,Real Guava Fruit Juice 250ml,52,0.25,Beverages,Juice,1,105,105.3,P105,Left,50,5
+PROD00808,8901000808,Real Guava Fruit Juice 2L,171,2.0,Beverages,Juice,1,105,105.4,P105,Left,50,5
+PROD00807,8901000807,Real Guava Fruit Juice 500ml,86,0.5,Beverages,Juice,1,105,105.4,P105,Left,50,5
+PROD00122,8901000122,Slice Mango Drink 1L,55,1.0,Beverages,Juice,1,105,105.4,P105,Left,50,5
+PROD00829,8901000829,Slice Mango Drink 250ml,30,0.25,Beverages,Juice,1,105,105.4,P105,Left,50,5
+PROD00831,8901000831,Slice Mango Drink 2L,99,2.0,Beverages,Juice,1,105,105.5,P105,Left,50,5
+PROD00830,8901000830,Slice Mango Drink 500ml,50,0.5,Beverages,Juice,1,105,105.5,P105,Left,50,5
+PROD00113,8901000113,Tropicana Mixed Fruit 1L,115,1.0,Beverages,Juice,1,105,105.5,P105,Left,50,5
+PROD00800,8901000800,Tropicana Mixed Fruit 250ml,63,0.25,Beverages,Juice,1,105,105.5,P105,Left,50,5
+PROD00802,8901000802,Tropicana Mixed Fruit 2L,207,2.0,Beverages,Juice,1,105,105.6,P105,Left,50,5
+PROD00801,8901000801,Tropicana Mixed Fruit 500ml,104,0.5,Beverages,Juice,1,105,105.6,P105,Left,50,5
+PROD00111,8901000111,Tropicana Orange 100% Juice 1L,120,1.0,Beverages,Juice,1,105,105.6,P105,Left,50,5
+PROD00794,8901000794,Tropicana Orange 100% Juice 250ml,66,0.25,Beverages,Juice,1,105,105.6,P105,Left,50,5
+PROD00796,8901000796,Tropicana Orange 100% Juice 2L,216,2.0,Beverages,Juice,1,105,105.7,P105,Left,50,5
+PROD00795,8901000795,Tropicana Orange 100% Juice 500ml,108,0.5,Beverages,Juice,1,105,105.7,P105,Left,50,5
+PROD00862,8901000862,7Up 1L,71,1.0,Beverages,Soda,1,105,105.7,P105,Left,50,5
+PROD00860,8901000860,7Up 250ml,23,0.25,Beverages,Soda,1,105,105.7,P105,Left,50,5
+PROD00863,8901000863,7Up 2L,76,2.0,Beverages,Soda,1,106,106.1,P106,Left,50,5
+PROD00861,8901000861,7Up 500ml,38,0.5,Beverages,Soda,1,106,106.1,P106,Left,50,5
+PROD00130,8901000130,7Up 750ml,42,0.75,Beverages,Soda,1,106,106.1,P106,Left,50,5
+PROD00838,8901000838,Coca Cola 1L,75,1.0,Beverages,Soda,1,106,106.1,P106,Left,50,5
+PROD00836,8901000836,Coca Cola 250ml,24,0.25,Beverages,Soda,1,106,106.2,P106,Left,50,5
+PROD00839,8901000839,Coca Cola 2L,79,2.0,Beverages,Soda,1,106,106.2,P106,Left,50,5
+PROD00837,8901000837,Coca Cola 500ml,40,0.5,Beverages,Soda,1,106,106.2,P106,Left,50,5
+PROD00124,8901000124,Coca Cola 750ml,44,0.75,Beverages,Soda,1,106,106.2,P106,Left,50,5
+PROD00858,8901000858,Fanta Orange 1L,71,1.0,Beverages,Soda,1,106,106.3,P106,Left,50,5
+PROD00856,8901000856,Fanta Orange 250ml,23,0.25,Beverages,Soda,1,106,106.3,P106,Left,50,5
+PROD00859,8901000859,Fanta Orange 2L,76,2.0,Beverages,Soda,1,106,106.3,P106,Left,50,5
+PROD00857,8901000857,Fanta Orange 500ml,38,0.5,Beverages,Soda,1,106,106.3,P106,Left,50,5
+PROD00129,8901000129,Fanta Orange 750ml,42,0.75,Beverages,Soda,1,106,106.4,P106,Left,50,5
+PROD00869,8901000869,Kinley Club Soda 1L,34,1.0,Beverages,Soda,1,106,106.4,P106,Left,50,5
+PROD00868,8901000868,Kinley Club Soda 250ml,11,0.25,Beverages,Soda,1,106,106.4,P106,Left,50,5
+PROD00870,8901000870,Kinley Club Soda 2L,36,2.0,Beverages,Soda,1,106,106.4,P106,Left,50,5
+PROD00132,8901000132,Kinley Club Soda 500ml,20,0.5,Beverages,Soda,1,106,106.5,P106,Left,50,5
+PROD00854,8901000854,Limca 1L,71,1.0,Beverages,Soda,1,106,106.5,P106,Left,50,5
+PROD00852,8901000852,Limca 250ml,23,0.25,Beverages,Soda,1,106,106.5,P106,Left,50,5
+PROD00855,8901000855,Limca 2L,76,2.0,Beverages,Soda,1,106,106.5,P106,Left,50,5
+PROD00853,8901000853,Limca 500ml,38,0.5,Beverages,Soda,1,106,106.6,P106,Left,50,5
+PROD00128,8901000128,Limca 750ml,42,0.75,Beverages,Soda,1,106,106.6,P106,Left,50,5
+PROD00866,8901000866,Mountain Dew 1L,75,1.0,Beverages,Soda,1,106,106.6,P106,Left,50,5
+PROD00864,8901000864,Mountain Dew 250ml,24,0.25,Beverages,Soda,1,106,106.6,P106,Left,50,5
+PROD00867,8901000867,Mountain Dew 2L,79,2.0,Beverages,Soda,1,106,106.7,P106,Left,50,5
+PROD00865,8901000865,Mountain Dew 500ml,40,0.5,Beverages,Soda,1,106,106.7,P106,Left,50,5
+PROD00131,8901000131,Mountain Dew 750ml,44,0.75,Beverages,Soda,1,106,106.7,P106,Left,50,5
+PROD00842,8901000842,Pepsi 1L,71,1.0,Beverages,Soda,1,106,106.7,P106,Left,50,5
+PROD00840,8901000840,Pepsi 250ml,23,0.25,Beverages,Soda,1,107,107.1,P107,Right,50,5
+PROD00843,8901000843,Pepsi 2L,76,2.0,Beverages,Soda,1,107,107.1,P107,Right,50,5
+PROD00841,8901000841,Pepsi 500ml,38,0.5,Beverages,Soda,1,107,107.1,P107,Right,50,5
+PROD00125,8901000125,Pepsi 750ml,42,0.75,Beverages,Soda,1,107,107.1,P107,Right,50,5
+PROD00850,8901000850,Sprite 1L,71,1.0,Beverages,Soda,1,107,107.2,P107,Right,50,5
+PROD00848,8901000848,Sprite 250ml,23,0.25,Beverages,Soda,1,107,107.2,P107,Right,50,5
+PROD00851,8901000851,Sprite 2L,76,2.0,Beverages,Soda,1,107,107.2,P107,Right,50,5
+PROD00849,8901000849,Sprite 500ml,38,0.5,Beverages,Soda,1,107,107.2,P107,Right,50,5
+PROD00127,8901000127,Sprite 750ml,42,0.75,Beverages,Soda,1,107,107.3,P107,Right,50,5
+PROD00846,8901000846,Thums Up 1L,75,1.0,Beverages,Soda,1,107,107.3,P107,Right,50,5
+PROD00844,8901000844,Thums Up 250ml,24,0.25,Beverages,Soda,1,107,107.3,P107,Right,50,5
+PROD00847,8901000847,Thums Up 2L,79,2.0,Beverages,Soda,1,107,107.3,P107,Right,50,5
+PROD00845,8901000845,Thums Up 500ml,40,0.5,Beverages,Soda,1,107,107.4,P107,Right,50,5
+PROD00126,8901000126,Thums Up 750ml,44,0.75,Beverages,Soda,1,107,107.4,P107,Right,50,5
+PROD00716,8901000716,Brooke Bond Taaza Tea 1L,408,1.0,Beverages,Tea,1,107,107.4,P107,Right,50,5
+PROD00714,8901000714,Brooke Bond Taaza Tea 250ml,132,0.25,Beverages,Tea,1,107,107.4,P107,Right,50,5
+PROD00717,8901000717,Brooke Bond Taaza Tea 2L,432,2.0,Beverages,Tea,1,107,107.5,P107,Right,50,5
+PROD00091,8901000091,Brooke Bond Taaza Tea 500g,240,0.5,Beverages,Tea,1,107,107.5,P107,Right,50,5
+PROD00715,8901000715,Brooke Bond Taaza Tea 500ml,216,0.5,Beverages,Tea,1,107,107.5,P107,Right,50,5
+PROD00744,8901000744,Himalaya Tulsi Green Tea 20 1L,170,1.0,Beverages,Tea,1,107,107.5,P107,Right,50,5
+PROD00742,8901000742,Himalaya Tulsi Green Tea 20 250ml,55,0.25,Beverages,Tea,1,107,107.6,P107,Right,50,5
+PROD00745,8901000745,Himalaya Tulsi Green Tea 20 2L,180,2.0,Beverages,Tea,1,107,107.6,P107,Right,50,5
+PROD00743,8901000743,Himalaya Tulsi Green Tea 20 500ml,90,0.5,Beverages,Tea,1,107,107.6,P107,Right,50,5
+PROD00098,8901000098,Himalaya Tulsi Green Tea 20 bags,100,0.03,Beverages,Tea,1,107,107.6,P107,Right,50,5
+PROD00736,8901000736,Lipton Green Tea Honey Lemon 25 1L,212,1.0,Beverages,Tea,1,107,107.7,P107,Right,50,5
+PROD00734,8901000734,Lipton Green Tea Honey Lemon 25 250ml,69,0.25,Beverages,Tea,1,107,107.7,P107,Right,50,5
+PROD00737,8901000737,Lipton Green Tea Honey Lemon 25 2L,225,2.0,Beverages,Tea,1,107,107.7,P107,Right,50,5
+PROD00735,8901000735,Lipton Green Tea Honey Lemon 25 500ml,112,0.5,Beverages,Tea,1,107,107.7,P107,Right,50,5
+PROD00096,8901000096,Lipton Green Tea Honey Lemon 25 bags,125,0.04,Beverages,Tea,1,108,108.1,P108,Right,50,5
+PROD00720,8901000720,Lipton Yellow Label Tea 1L,255,1.0,Beverages,Tea,1,108,108.1,P108,Right,50,5
+PROD00092,8901000092,Lipton Yellow Label Tea 250g,150,0.25,Beverages,Tea,1,108,108.1,P108,Right,50,5
+PROD00718,8901000718,Lipton Yellow Label Tea 250ml,82,0.25,Beverages,Tea,1,108,108.1,P108,Right,50,5
+PROD00721,8901000721,Lipton Yellow Label Tea 2L,270,2.0,Beverages,Tea,1,108,108.2,P108,Right,50,5
+PROD00719,8901000719,Lipton Yellow Label Tea 500ml,135,0.5,Beverages,Tea,1,108,108.2,P108,Right,50,5
+PROD00752,8901000752,Organic India Tulsi Masala Chai 18 1L,374,1.0,Beverages,Tea,1,108,108.2,P108,Right,50,5
+PROD00750,8901000750,Organic India Tulsi Masala Chai 18 250ml,121,0.25,Beverages,Tea,1,108,108.2,P108,Right,50,5
+PROD00753,8901000753,Organic India Tulsi Masala Chai 18 2L,396,2.0,Beverages,Tea,1,108,108.3,P108,Right,50,5
+PROD00751,8901000751,Organic India Tulsi Masala Chai 18 500ml,198,0.5,Beverages,Tea,1,108,108.3,P108,Right,50,5
+PROD00100,8901000100,Organic India Tulsi Masala Chai 18 bags,220,0.04,Beverages,Tea,1,108,108.3,P108,Right,50,5
+PROD00099,8901000099,Patanjali Herbal Tea 100g,90,0.1,Beverages,Tea,1,108,108.3,P108,Right,50,5
+PROD00748,8901000748,Patanjali Herbal Tea 1L,153,1.0,Beverages,Tea,1,108,108.4,P108,Right,50,5
+PROD00746,8901000746,Patanjali Herbal Tea 250ml,50,0.25,Beverages,Tea,1,108,108.4,P108,Right,50,5
+PROD00749,8901000749,Patanjali Herbal Tea 2L,162,2.0,Beverages,Tea,1,108,108.4,P108,Right,50,5
+PROD00747,8901000747,Patanjali Herbal Tea 500ml,81,0.5,Beverages,Tea,1,108,108.4,P108,Right,50,5
+PROD00708,8901000708,Red Label Natural Care Tea 1L,476,1.0,Beverages,Tea,1,108,108.5,P108,Right,50,5
+PROD00706,8901000706,Red Label Natural Care Tea 250ml,154,0.25,Beverages,Tea,1,108,108.5,P108,Right,50,5
+PROD00709,8901000709,Red Label Natural Care Tea 2L,504,2.0,Beverages,Tea,1,108,108.5,P108,Right,50,5
+PROD00089,8901000089,Red Label Natural Care Tea 500g,280,0.5,Beverages,Tea,1,108,108.5,P108,Right,50,5
+PROD00707,8901000707,Red Label Natural Care Tea 500ml,252,0.5,Beverages,Tea,1,108,108.6,P108,Right,50,5
+PROD00728,8901000728,Society Tea Premium 1L,272,1.0,Beverages,Tea,1,108,108.6,P108,Right,50,5
+PROD00094,8901000094,Society Tea Premium 250g,160,0.25,Beverages,Tea,1,108,108.6,P108,Right,50,5
+PROD00726,8901000726,Society Tea Premium 250ml,88,0.25,Beverages,Tea,1,108,108.6,P108,Right,50,5
+PROD00729,8901000729,Society Tea Premium 2L,288,2.0,Beverages,Tea,1,108,108.7,P108,Right,50,5
+PROD00727,8901000727,Society Tea Premium 500ml,144,0.5,Beverages,Tea,1,108,108.7,P108,Right,50,5
+PROD00724,8901000724,Tata Tea Agni 1L,714,1.0,Beverages,Tea,1,108,108.7,P108,Right,50,5
+PROD00093,8901000093,Tata Tea Agni 1kg,420,1.0,Beverages,Tea,1,108,108.7,P108,Right,50,5
+PROD00722,8901000722,Tata Tea Agni 250ml,231,0.25,Beverages,Tea,1,109,109.1,P109,Right,50,5
+PROD00725,8901000725,Tata Tea Agni 2L,756,2.0,Beverages,Tea,1,109,109.1,P109,Right,50,5
+PROD00723,8901000723,Tata Tea Agni 500ml,378,0.5,Beverages,Tea,1,109,109.1,P109,Right,50,5
+PROD00704,8901000704,Tata Tea Gold 1L,493,1.0,Beverages,Tea,1,109,109.1,P109,Right,50,5
+PROD00702,8901000702,Tata Tea Gold 250ml,160,0.25,Beverages,Tea,1,109,109.2,P109,Right,50,5
+PROD00705,8901000705,Tata Tea Gold 2L,522,2.0,Beverages,Tea,1,109,109.2,P109,Right,50,5
+PROD00088,8901000088,Tata Tea Gold 500g,290,0.5,Beverages,Tea,1,109,109.2,P109,Right,50,5
+PROD00703,8901000703,Tata Tea Gold 500ml,261,0.5,Beverages,Tea,1,109,109.2,P109,Right,50,5
+PROD00732,8901000732,Tetley Green Tea 100 1L,332,1.0,Beverages,Tea,1,109,109.3,P109,Right,50,5
+PROD00730,8901000730,Tetley Green Tea 100 250ml,107,0.25,Beverages,Tea,1,109,109.3,P109,Right,50,5
+PROD00733,8901000733,Tetley Green Tea 100 2L,351,2.0,Beverages,Tea,1,109,109.3,P109,Right,50,5
+PROD00731,8901000731,Tetley Green Tea 100 500ml,176,0.5,Beverages,Tea,1,109,109.3,P109,Right,50,5
+PROD00095,8901000095,Tetley Green Tea 100 bags,195,0.15,Beverages,Tea,1,109,109.4,P109,Right,50,5
+PROD00740,8901000740,Twinings English Breakfast 25 1L,468,1.0,Beverages,Tea,1,109,109.4,P109,Right,50,5
+PROD00738,8901000738,Twinings English Breakfast 25 250ml,151,0.25,Beverages,Tea,1,109,109.4,P109,Right,50,5
+PROD00741,8901000741,Twinings English Breakfast 25 2L,495,2.0,Beverages,Tea,1,109,109.4,P109,Right,50,5
+PROD00739,8901000739,Twinings English Breakfast 25 500ml,248,0.5,Beverages,Tea,1,109,109.5,P109,Right,50,5
+PROD00097,8901000097,Twinings English Breakfast 25 bags,275,0.05,Beverages,Tea,1,109,109.5,P109,Right,50,5
+PROD00712,8901000712,Wagh Bakri Premium Leaf Tea 1L,425,1.0,Beverages,Tea,1,109,109.5,P109,Right,50,5
+PROD00710,8901000710,Wagh Bakri Premium Leaf Tea 250ml,138,0.25,Beverages,Tea,1,109,109.5,P109,Right,50,5
+PROD00713,8901000713,Wagh Bakri Premium Leaf Tea 2L,450,2.0,Beverages,Tea,1,109,109.6,P109,Right,50,5
+PROD00090,8901000090,Wagh Bakri Premium Leaf Tea 500g,250,0.5,Beverages,Tea,1,109,109.6,P109,Right,50,5
+PROD00711,8901000711,Wagh Bakri Premium Leaf Tea 500ml,225,0.5,Beverages,Tea,1,109,109.6,P109,Right,50,5
+PROD00133,8901000133,Bisleri Mineral Water 1L,20,1.0,Beverages,Water,1,109,109.6,P109,Right,50,5
+PROD00871,8901000871,Bisleri Mineral Water 250ml,11,0.25,Beverages,Water,1,109,109.7,P109,Right,50,5
+PROD00873,8901000873,Bisleri Mineral Water 2L,36,2.0,Beverages,Water,1,109,109.7,P109,Right,50,5
+PROD00872,8901000872,Bisleri Mineral Water 500ml,18,0.5,Beverages,Water,1,109,109.7,P109,Right,50,5
+PROD00878,8901000878,Himalayan Natural Water 1L,42,1.0,Beverages,Water,1,109,109.7,P109,Right,50,5
+PROD00877,8901000877,Himalayan Natural Water 250ml,14,0.25,Beverages,Water,1,110,110.1,P110,Right,50,5
+PROD00879,8901000879,Himalayan Natural Water 2L,45,2.0,Beverages,Water,1,110,110.1,P110,Right,50,5
+PROD00135,8901000135,Himalayan Natural Water 500ml,25,0.5,Beverages,Water,1,110,110.1,P110,Right,50,5
+PROD00134,8901000134,Kinley Drinking Water 1L,18,1.0,Beverages,Water,1,110,110.1,P110,Right,50,5
+PROD00874,8901000874,Kinley Drinking Water 250ml,10,0.25,Beverages,Water,1,110,110.2,P110,Right,50,5
+PROD00876,8901000876,Kinley Drinking Water 2L,32,2.0,Beverages,Water,1,110,110.2,P110,Right,50,5
+PROD00875,8901000875,Kinley Drinking Water 500ml,16,0.5,Beverages,Water,1,110,110.2,P110,Right,50,5
+PROD00250,8901000250,Bournvita Chocolate Drink 500g,275,0.5,Breakfast,Cereal,1,110,110.2,P110,Right,50,5
+PROD00252,8901000252,Complan Chocolate 500g,305,0.5,Breakfast,Cereal,1,110,110.3,P110,Right,50,5
+PROD00251,8901000251,Horlicks Original 500g,260,0.5,Breakfast,Cereal,1,110,110.3,P110,Right,50,5
+PROD00242,8901000242,Kelloggs Chocos Chocolate 700g,280,0.7,Breakfast,Cereal,1,110,110.3,P110,Right,50,5
+PROD00241,8901000241,Kelloggs Corn Flakes 875g,390,0.875,Breakfast,Cereal,1,110,110.3,P110,Right,50,5
+PROD00243,8901000243,Kelloggs Muesli Fruit 750g,350,0.75,Breakfast,Cereal,1,110,110.4,P110,Right,50,5
+PROD00248,8901000248,Kelloggs Special K 440g,320,0.44,Breakfast,Cereal,1,110,110.4,P110,Right,50,5
+PROD00249,8901000249,Nestle Milo 400g,350,0.4,Breakfast,Cereal,1,110,110.4,P110,Right,50,5
+PROD00244,8901000244,Quaker Oats 2kg,320,2.0,Breakfast,Cereal,1,110,110.4,P110,Right,50,5
+PROD00245,8901000245,Quaker Oats Rolled 500g,130,0.5,Breakfast,Cereal,1,110,110.5,P110,Right,50,5
+PROD00246,8901000246,Saffola Oats 1kg,180,1.0,Breakfast,Cereal,1,110,110.5,P110,Right,50,5
+PROD00247,8901000247,True Elements Rolled Oats 1kg,240,1.0,Breakfast,Cereal,1,110,110.5,P110,Right,50,5
+PROD00253,8901000253,Del Monte Pancake Mix 350g,180,0.35,Breakfast,Pancake,1,110,110.5,P110,Right,50,5
+PROD00254,8901000254,Hersheys Chocolate Chip 340g,350,0.34,Breakfast,Spread,1,110,110.6,P110,Right,50,5
+PROD00289,8901000289,Del Monte Baked Beans 450g,95,0.45,Canned,Beans,1,110,110.6,P110,Right,50,5
+PROD00291,8901000291,Catch Tuna in Brine 185g,130,0.185,Canned,Fish,1,110,110.6,P110,Right,50,5
+PROD00288,8901000288,Del Monte Pineapple Slices 820g,145,0.82,Canned,Fruit,1,110,110.6,P110,Right,50,5
+PROD00290,8901000290,Ragu Tomato Sauce 680g,320,0.68,Canned,Sauce,1,110,110.7,P110,Right,50,5
+PROD00287,8901000287,Canned Whole Tomatoes 400g,80,0.4,Canned,Tomatoes,1,110,110.7,P110,Right,50,5
+PROD00285,8901000285,Del Monte Sweet Corn 420g,85,0.42,Canned,Vegetables,1,110,110.7,P110,Right,50,5
+PROD00286,8901000286,Green Giant Whole Kernel Corn 198g,75,0.198,Canned,Vegetables,1,110,110.7,P110,Right,50,5
+PROD00238,8901000238,Dabur Honey 500g,215,0.5,Condiments,Honey,1,111,111.1,P111,Right,50,5
+PROD00239,8901000239,PatanjaliSpecial Honey 500g,200,0.5,Condiments,Honey,1,111,111.1,P111,Right,50,5
+PROD00233,8901000233,Kissan Mixed Fruit Jam 500g,130,0.5,Condiments,Jam,1,111,111.1,P111,Right,50,5
+PROD00234,8901000234,Smuckers Strawberry Preserve 340g,295,0.34,Condiments,Jam,1,111,111.1,P111,Right,50,5
+PROD00227,8901000227,Dr. Oetker Funfoods Veg Mayo 250g,90,0.25,Condiments,Mayonnaise,1,111,111.2,P111,Right,50,5
+PROD00228,8901000228,Hellmanns Real Mayonnaise 315g,270,0.315,Condiments,Mayonnaise,1,111,111.2,P111,Right,50,5
+PROD00229,8901000229,Veeba Burger Mayo 300g,120,0.3,Condiments,Mayonnaise,1,111,111.2,P111,Right,50,5
+PROD00232,8901000232,Bedekar Mixed Pickle 400g,110,0.4,Condiments,Pickle,1,111,111.2,P111,Right,50,5
+PROD00230,8901000230,Patanjali Mango Pickle 500g,80,0.5,Condiments,Pickle,1,111,111.3,P111,Right,50,5
+PROD00231,8901000231,Priya Avakaya Mango Pickle 300g,95,0.3,Condiments,Pickle,1,111,111.3,P111,Right,50,5
+PROD00223,8901000223,Ching's Red Chilli Sauce 200g,55,0.2,Condiments,Sauce,1,111,111.3,P111,Right,50,5
+PROD00226,8901000226,Del Monte Green Olive Sliced 450g,215,0.45,Condiments,Sauce,1,111,111.3,P111,Right,50,5
+PROD00220,8901000220,Heinz Tomato Ketchup 450g,175,0.45,Condiments,Sauce,1,111,111.4,P111,Right,50,5
+PROD00225,8901000225,Kikkoman Soy Sauce 150ml,145,0.15,Condiments,Sauce,1,111,111.4,P111,Right,50,5
+PROD00219,8901000219,Kissan Tomato Ketchup 1kg,145,1.0,Condiments,Sauce,1,111,111.4,P111,Right,50,5
+PROD00224,8901000224,Lee Kum Kee Soy Sauce 150ml,75,0.15,Condiments,Sauce,1,111,111.4,P111,Right,50,5
+PROD00221,8901000221,Maggi Hot & Sweet Sauce 500g,120,0.5,Condiments,Sauce,1,111,111.5,P111,Right,50,5
+PROD00222,8901000222,Maggi Tamarind Sauce 500g,115,0.5,Condiments,Sauce,1,111,111.5,P111,Right,50,5
+PROD00236,8901000236,Dr. Oetker Peanut Butter Crunchy 350g,240,0.35,Condiments,Spread,1,111,111.5,P111,Right,50,5
+PROD00237,8901000237,Nutella 350g,465,0.35,Condiments,Spread,1,111,111.5,P111,Right,50,5
+PROD00235,8901000235,Sundrop Peanut Butter Creamy 462g,260,0.462,Condiments,Spread,1,111,111.6,P111,Right,50,5
+PROD00240,8901000240,Borges Red Wine Vinegar 500ml,155,0.5,Condiments,Vinegar,1,111,111.6,P111,Right,50,5
+PROD00682,8901000682,Amul Salted Butter 1kg,476,1.0,Dairy,Butter,1,111,111.6,P111,Right,50,5
+PROD00681,8901000681,Amul Salted Butter 250g,154,0.25,Dairy,Butter,1,111,111.6,P111,Right,50,5
+PROD00683,8901000683,Amul Salted Butter 2kg,504,2.0,Dairy,Butter,1,111,111.7,P111,Right,50,5
+PROD00082,8901000082,Amul Salted Butter 500g,280,0.5,Dairy,Butter,1,111,111.7,P111,Right,50,5
+PROD00685,8901000685,Amul Unsalted Butter 1kg,476,1.0,Dairy,Butter,1,111,111.7,P111,Right,50,5
+PROD00684,8901000684,Amul Unsalted Butter 250g,154,0.25,Dairy,Butter,1,111,111.7,P111,Right,50,5
+PROD00686,8901000686,Amul Unsalted Butter 2kg,504,2.0,Dairy,Butter,1,112,112.1,P112,Right,50,5
+PROD00083,8901000083,Amul Unsalted Butter 500g,280,0.5,Dairy,Butter,1,112,112.1,P112,Right,50,5
+PROD00688,8901000688,Mother Dairy Butter 1kg,468,1.0,Dairy,Butter,1,112,112.1,P112,Right,50,5
+PROD00687,8901000687,Mother Dairy Butter 250g,151,0.25,Dairy,Butter,1,112,112.1,P112,Right,50,5
+PROD00689,8901000689,Mother Dairy Butter 2kg,495,2.0,Dairy,Butter,1,112,112.2,P112,Right,50,5
+PROD00084,8901000084,Mother Dairy Butter 500g,275,0.5,Dairy,Butter,1,112,112.2,P112,Right,50,5
+PROD00692,8901000692,Patanjali Butter 1kg,162,1.0,Dairy,Butter,1,112,112.2,P112,Right,50,5
+PROD00085,8901000085,Patanjali Butter 200g,95,0.2,Dairy,Butter,1,112,112.2,P112,Right,50,5
+PROD00690,8901000690,Patanjali Butter 250g,52,0.25,Dairy,Butter,1,112,112.3,P112,Right,50,5
+PROD00693,8901000693,Patanjali Butter 2kg,171,2.0,Dairy,Butter,1,112,112.3,P112,Right,50,5
+PROD00691,8901000691,Patanjali Butter 500g,86,0.5,Dairy,Butter,1,112,112.3,P112,Right,50,5
+PROD00663,8901000663,Amul Cheese Slices 1kg,765,1.0,Dairy,Cheese,1,112,112.3,P112,Right,50,5
+PROD00661,8901000661,Amul Cheese Slices 250g,248,0.25,Dairy,Cheese,1,112,112.4,P112,Right,50,5
+PROD00664,8901000664,Amul Cheese Slices 2kg,810,2.0,Dairy,Cheese,1,112,112.4,P112,Right,50,5
+PROD00662,8901000662,Amul Cheese Slices 500g,405,0.5,Dairy,Cheese,1,112,112.4,P112,Right,50,5
+PROD00077,8901000077,Amul Cheese Slices 750g,450,0.75,Dairy,Cheese,1,112,112.4,P112,Right,50,5
+PROD00679,8901000679,Amul Mozzarella Cheese 1kg,272,1.0,Dairy,Cheese,1,112,112.5,P112,Right,50,5
+PROD00081,8901000081,Amul Mozzarella Cheese 200g,160,0.2,Dairy,Cheese,1,112,112.5,P112,Right,50,5
+PROD00677,8901000677,Amul Mozzarella Cheese 250g,88,0.25,Dairy,Cheese,1,112,112.5,P112,Right,50,5
+PROD00680,8901000680,Amul Mozzarella Cheese 2kg,288,2.0,Dairy,Cheese,1,112,112.5,P112,Right,50,5
+PROD00678,8901000678,Amul Mozzarella Cheese 500g,144,0.5,Dairy,Cheese,1,112,112.6,P112,Right,50,5
+PROD00667,8901000667,Amul Processed Cheese Block 1kg,374,1.0,Dairy,Cheese,1,112,112.6,P112,Right,50,5
+PROD00665,8901000665,Amul Processed Cheese Block 250g,121,0.25,Dairy,Cheese,1,112,112.6,P112,Right,50,5
+PROD00668,8901000668,Amul Processed Cheese Block 2kg,396,2.0,Dairy,Cheese,1,112,112.6,P112,Right,50,5
+PROD00078,8901000078,Amul Processed Cheese Block 400g,220,0.4,Dairy,Cheese,1,112,112.7,P112,Right,50,5
+PROD00666,8901000666,Amul Processed Cheese Block 500g,198,0.5,Dairy,Cheese,1,112,112.7,P112,Right,50,5
+PROD00671,8901000671,Britannia Cheese Slices 1kg,748,1.0,Dairy,Cheese,1,112,112.7,P112,Right,50,5
+PROD00669,8901000669,Britannia Cheese Slices 250g,242,0.25,Dairy,Cheese,1,112,112.7,P112,Right,50,5
+PROD00672,8901000672,Britannia Cheese Slices 2kg,792,2.0,Dairy,Cheese,2,113,113.1,P113,Left,50,5
+PROD00670,8901000670,Britannia Cheese Slices 500g,396,0.5,Dairy,Cheese,2,113,113.1,P113,Left,50,5
+PROD00079,8901000079,Britannia Cheese Slices 750g,440,0.75,Dairy,Cheese,2,113,113.1,P113,Left,50,5
+PROD00675,8901000675,Go Cheddar Cheese 1kg,306,1.0,Dairy,Cheese,2,113,113.1,P113,Left,50,5
+PROD00080,8901000080,Go Cheddar Cheese 200g,180,0.2,Dairy,Cheese,2,113,113.2,P113,Left,50,5
+PROD00673,8901000673,Go Cheddar Cheese 250g,99,0.25,Dairy,Cheese,2,113,113.2,P113,Left,50,5
+PROD00676,8901000676,Go Cheddar Cheese 2kg,324,2.0,Dairy,Cheese,2,113,113.2,P113,Left,50,5
+PROD00674,8901000674,Go Cheddar Cheese 500g,162,0.5,Dairy,Cheese,2,113,113.2,P113,Left,50,5
+PROD00696,8901000696,Amul Fresh Cream 1L,128,1.0,Dairy,Cream,2,113,113.3,P113,Left,50,5
+PROD00086,8901000086,Amul Fresh Cream 200ml,75,0.2,Dairy,Cream,2,113,113.3,P113,Left,50,5
+PROD00694,8901000694,Amul Fresh Cream 250ml,41,0.25,Dairy,Cream,2,113,113.3,P113,Left,50,5
+PROD00697,8901000697,Amul Fresh Cream 2L,135,2.0,Dairy,Cream,2,113,113.3,P113,Left,50,5
+PROD00695,8901000695,Amul Fresh Cream 500ml,68,0.5,Dairy,Cream,2,113,113.4,P113,Left,50,5
+PROD00700,8901000700,Nestle Milkmaid Condensed Milk 1kg,264,1.0,Dairy,Cream,2,113,113.4,P113,Left,50,5
+PROD00698,8901000698,Nestle Milkmaid Condensed Milk 250g,85,0.25,Dairy,Cream,2,113,113.4,P113,Left,50,5
+PROD00701,8901000701,Nestle Milkmaid Condensed Milk 2kg,279,2.0,Dairy,Cream,2,113,113.4,P113,Left,50,5
+PROD00087,8901000087,Nestle Milkmaid Condensed Milk 400g,155,0.4,Dairy,Cream,2,113,113.5,P113,Left,50,5
+PROD00699,8901000699,Nestle Milkmaid Condensed Milk 500g,140,0.5,Dairy,Cream,2,113,113.5,P113,Left,50,5
+PROD00060,8901000060,Amul Gold Full Cream Milk 1L,79,1.02,Dairy,Milk,2,113,113.5,P113,Left,50,5
+PROD00600,8901000600,Amul Gold Full Cream Milk 250ml,43,0.25,Dairy,Milk,2,113,113.5,P113,Left,50,5
+PROD00602,8901000602,Amul Gold Full Cream Milk 2L,142,2.0,Dairy,Milk,2,113,113.6,P113,Left,50,5
+PROD00601,8901000601,Amul Gold Full Cream Milk 500ml,71,0.5,Dairy,Milk,2,113,113.6,P113,Left,50,5
+PROD00614,8901000614,Amul Slim N Trim Milk 1L,65,1.0,Dairy,Milk,2,113,113.6,P113,Left,50,5
+PROD00613,8901000613,Amul Slim N Trim Milk 250ml,21,0.25,Dairy,Milk,2,113,113.6,P113,Left,50,5
+PROD00615,8901000615,Amul Slim N Trim Milk 2L,68,2.0,Dairy,Milk,2,113,113.7,P113,Left,50,5
+PROD00064,8901000064,Amul Slim N Trim Milk 500ml,38,0.5,Dairy,Milk,2,113,113.7,P113,Left,50,5
+PROD00598,8901000598,Amul Taaza Toned Milk 1L 1kg,112,1.0,Dairy,Milk,2,113,113.7,P113,Left,50,5
+PROD00596,8901000596,Amul Taaza Toned Milk 1L 250g,36,0.25,Dairy,Milk,2,113,113.7,P113,Left,50,5
+PROD00599,8901000599,Amul Taaza Toned Milk 1L 2kg,119,2.0,Dairy,Milk,2,114,114.1,P114,Left,50,5
+PROD00597,8901000597,Amul Taaza Toned Milk 1L 500g,59,0.5,Dairy,Milk,2,114,114.1,P114,Left,50,5
+PROD00059,8901000059,Amul Taaza Toned Milk 1L Tetra,66,1.02,Dairy,Milk,2,114,114.1,P114,Left,50,5
+PROD00624,8901000624,Badam Drink Almond Milk 1L,68,1.0,Dairy,Milk,2,114,114.1,P114,Left,50,5
+PROD00067,8901000067,Badam Drink Almond Milk 200ml,40,0.2,Dairy,Milk,2,114,114.2,P114,Left,50,5
+PROD00622,8901000622,Badam Drink Almond Milk 250ml,22,0.25,Dairy,Milk,2,114,114.2,P114,Left,50,5
+PROD00625,8901000625,Badam Drink Almond Milk 2L,72,2.0,Dairy,Milk,2,114,114.2,P114,Left,50,5
+PROD00623,8901000623,Badam Drink Almond Milk 500ml,36,0.5,Dairy,Milk,2,114,114.2,P114,Left,50,5
+PROD00061,8901000061,Mother Dairy Full Cream Milk 1L,68,1.02,Dairy,Milk,2,114,114.3,P114,Left,50,5
+PROD00603,8901000603,Mother Dairy Full Cream Milk 250ml,37,0.25,Dairy,Milk,2,114,114.3,P114,Left,50,5
+PROD00605,8901000605,Mother Dairy Full Cream Milk 2L,122,2.0,Dairy,Milk,2,114,114.3,P114,Left,50,5
+PROD00604,8901000604,Mother Dairy Full Cream Milk 500ml,61,0.5,Dairy,Milk,2,114,114.3,P114,Left,50,5
+PROD00062,8901000062,Nandini Full Cream Milk 1L,62,1.02,Dairy,Milk,2,114,114.4,P114,Left,50,5
+PROD00606,8901000606,Nandini Full Cream Milk 250ml,34,0.25,Dairy,Milk,2,114,114.4,P114,Left,50,5
+PROD00608,8901000608,Nandini Full Cream Milk 2L,112,2.0,Dairy,Milk,2,114,114.4,P114,Left,50,5
+PROD00607,8901000607,Nandini Full Cream Milk 500ml,56,0.5,Dairy,Milk,2,114,114.4,P114,Left,50,5
+PROD00611,8901000611,Nestle a+ Slim Milk 1L 1kg,128,1.0,Dairy,Milk,2,114,114.5,P114,Left,50,5
+PROD00609,8901000609,Nestle a+ Slim Milk 1L 250g,41,0.25,Dairy,Milk,2,114,114.5,P114,Left,50,5
+PROD00612,8901000612,Nestle a+ Slim Milk 1L 2kg,135,2.0,Dairy,Milk,2,114,114.5,P114,Left,50,5
+PROD00610,8901000610,Nestle a+ Slim Milk 1L 500g,68,0.5,Dairy,Milk,2,114,114.5,P114,Left,50,5
+PROD00063,8901000063,Nestle a+ Slim Milk 1L Tetra,75,1.02,Dairy,Milk,2,114,114.6,P114,Left,50,5
+PROD00066,8901000066,Patanjali Cow Milk 1L,65,1.02,Dairy,Milk,2,114,114.6,P114,Left,50,5
+PROD00619,8901000619,Patanjali Cow Milk 250ml,36,0.25,Dairy,Milk,2,114,114.6,P114,Left,50,5
+PROD00621,8901000621,Patanjali Cow Milk 2L,117,2.0,Dairy,Milk,2,114,114.6,P114,Left,50,5
+PROD00620,8901000620,Patanjali Cow Milk 500ml,58,0.5,Dairy,Milk,2,114,114.7,P114,Left,50,5
+PROD00617,8901000617,Sona Cow Milk 1L,54,1.0,Dairy,Milk,2,114,114.7,P114,Left,50,5
+PROD00616,8901000616,Sona Cow Milk 250ml,18,0.25,Dairy,Milk,2,114,114.7,P114,Left,50,5
+PROD00618,8901000618,Sona Cow Milk 2L,58,2.0,Dairy,Milk,2,114,114.7,P114,Left,50,5
+PROD00065,8901000065,Sona Cow Milk 500ml,32,0.5,Dairy,Milk,2,115,115.1,P115,Left,50,5
+PROD00628,8901000628,Amul Fresh Paneer 1kg,153,1.0,Dairy,Paneer,2,115,115.1,P115,Left,50,5
+PROD00068,8901000068,Amul Fresh Paneer 200g,90,0.2,Dairy,Paneer,2,115,115.1,P115,Left,50,5
+PROD00626,8901000626,Amul Fresh Paneer 250g,50,0.25,Dairy,Paneer,2,115,115.1,P115,Left,50,5
+PROD00629,8901000629,Amul Fresh Paneer 2kg,162,2.0,Dairy,Paneer,2,115,115.2,P115,Left,50,5
+PROD00627,8901000627,Amul Fresh Paneer 500g,81,0.5,Dairy,Paneer,2,115,115.2,P115,Left,50,5
+PROD00636,8901000636,Milky Mist Paneer 1kg,146,1.0,Dairy,Paneer,2,115,115.2,P115,Left,50,5
+PROD00070,8901000070,Milky Mist Paneer 200g,86,0.2,Dairy,Paneer,2,115,115.2,P115,Left,50,5
+PROD00634,8901000634,Milky Mist Paneer 250g,47,0.25,Dairy,Paneer,2,115,115.3,P115,Left,50,5
+PROD00637,8901000637,Milky Mist Paneer 2kg,155,2.0,Dairy,Paneer,2,115,115.3,P115,Left,50,5
+PROD00635,8901000635,Milky Mist Paneer 500g,77,0.5,Dairy,Paneer,2,115,115.3,P115,Left,50,5
+PROD00632,8901000632,Mother Dairy Paneer 1kg,150,1.0,Dairy,Paneer,2,115,115.3,P115,Left,50,5
+PROD00069,8901000069,Mother Dairy Paneer 200g,88,0.2,Dairy,Paneer,2,115,115.4,P115,Left,50,5
+PROD00630,8901000630,Mother Dairy Paneer 250g,48,0.25,Dairy,Paneer,2,115,115.4,P115,Left,50,5
+PROD00633,8901000633,Mother Dairy Paneer 2kg,158,2.0,Dairy,Paneer,2,115,115.4,P115,Left,50,5
+PROD00631,8901000631,Mother Dairy Paneer 500g,79,0.5,Dairy,Paneer,2,115,115.4,P115,Left,50,5
+PROD00639,8901000639,Nandini Paneer 1kg,340,1.0,Dairy,Paneer,2,115,115.5,P115,Left,50,5
+PROD00638,8901000638,Nandini Paneer 250g,110,0.25,Dairy,Paneer,2,115,115.5,P115,Left,50,5
+PROD00640,8901000640,Nandini Paneer 2kg,360,2.0,Dairy,Paneer,2,115,115.5,P115,Left,50,5
+PROD00071,8901000071,Nandini Paneer 500g,200,0.5,Dairy,Paneer,2,115,115.5,P115,Left,50,5
+PROD00643,8901000643,Amul Masti Dahi 1kg,68,1.0,Dairy,Yogurt,2,115,115.6,P115,Left,50,5
+PROD00641,8901000641,Amul Masti Dahi 250g,22,0.25,Dairy,Yogurt,2,115,115.6,P115,Left,50,5
+PROD00644,8901000644,Amul Masti Dahi 2kg,72,2.0,Dairy,Yogurt,2,115,115.6,P115,Left,50,5
+PROD00072,8901000072,Amul Masti Dahi 400g,40,0.4,Dairy,Yogurt,2,115,115.6,P115,Left,50,5
+PROD00642,8901000642,Amul Masti Dahi 500g,36,0.5,Dairy,Yogurt,2,115,115.7,P115,Left,50,5
+PROD00651,8901000651,Epigamia Greek Yogurt Honey 1kg,94,1.0,Dairy,Yogurt,2,115,115.7,P115,Left,50,5
+PROD00649,8901000649,Epigamia Greek Yogurt Honey 250g,30,0.25,Dairy,Yogurt,2,115,115.7,P115,Left,50,5
+PROD00652,8901000652,Epigamia Greek Yogurt Honey 2kg,99,2.0,Dairy,Yogurt,2,115,115.7,P115,Left,50,5
+PROD00650,8901000650,Epigamia Greek Yogurt Honey 500g,50,0.5,Dairy,Yogurt,2,116,116.1,P116,Left,50,5
+PROD00074,8901000074,Epigamia Greek Yogurt Honey 90g,55,0.09,Dairy,Yogurt,2,116,116.1,P116,Left,50,5
+PROD00076,8901000076,Go Cheese Spreadable 180g,110,0.18,Dairy,Yogurt,2,116,116.1,P116,Left,50,5
+PROD00659,8901000659,Go Cheese Spreadable 1kg,187,1.0,Dairy,Yogurt,2,116,116.1,P116,Left,50,5
+PROD00657,8901000657,Go Cheese Spreadable 250g,61,0.25,Dairy,Yogurt,2,116,116.2,P116,Left,50,5
+PROD00660,8901000660,Go Cheese Spreadable 2kg,198,2.0,Dairy,Yogurt,2,116,116.2,P116,Left,50,5
+PROD00658,8901000658,Go Cheese Spreadable 500g,99,0.5,Dairy,Yogurt,2,116,116.2,P116,Left,50,5
+PROD00647,8901000647,Mother Dairy Mishti Doi 1L,60,1.0,Dairy,Yogurt,2,116,116.2,P116,Left,50,5
+PROD00073,8901000073,Mother Dairy Mishti Doi 200ml,35,0.2,Dairy,Yogurt,2,116,116.3,P116,Left,50,5
+PROD00645,8901000645,Mother Dairy Mishti Doi 250ml,19,0.25,Dairy,Yogurt,2,116,116.3,P116,Left,50,5
+PROD00648,8901000648,Mother Dairy Mishti Doi 2L,63,2.0,Dairy,Yogurt,2,116,116.3,P116,Left,50,5
+PROD00646,8901000646,Mother Dairy Mishti Doi 500ml,32,0.5,Dairy,Yogurt,2,116,116.3,P116,Left,50,5
+PROD00655,8901000655,Nestle a+ Creme Dahi 1kg,85,1.0,Dairy,Yogurt,2,116,116.4,P116,Left,50,5
+PROD00653,8901000653,Nestle a+ Creme Dahi 250g,28,0.25,Dairy,Yogurt,2,116,116.4,P116,Left,50,5
+PROD00656,8901000656,Nestle a+ Creme Dahi 2kg,90,2.0,Dairy,Yogurt,2,116,116.4,P116,Left,50,5
+PROD00075,8901000075,Nestle a+ Creme Dahi 400g,50,0.4,Dairy,Yogurt,2,116,116.4,P116,Left,50,5
+PROD00654,8901000654,Nestle a+ Creme Dahi 500g,45,0.5,Dairy,Yogurt,2,116,116.5,P116,Left,50,5
+PROD00300,8901000300,Godrej Yummiez Chicken Nuggets 250g,260,0.25,Frozen,Snacks,2,116,116.5,P116,Left,50,5
+PROD00296,8901000296,McCain Cheese Shots 375g,170,0.375,Frozen,Snacks,2,116,116.5,P116,Left,50,5
+PROD00295,8901000295,McCain Classic Smiles 415g,180,0.415,Frozen,Snacks,2,116,116.5,P116,Left,50,5
+PROD00297,8901000297,McCain French Fries 1kg,230,1.0,Frozen,Snacks,2,116,116.6,P116,Left,50,5
+PROD00298,8901000298,Safal Green Peas 500g,75,0.5,Frozen,Veg,2,116,116.6,P116,Left,50,5
+PROD00299,8901000299,Safal Mix Vegetables 500g,90,0.5,Frozen,Veg,2,116,116.6,P116,Left,50,5
+PROD00446,8901000446,Aashirvaad Besan 1kg,110,1.0,Grains,Flour,2,116,116.6,P116,Left,50,5
+PROD00445,8901000445,Aashirvaad Besan 250g,36,0.25,Grains,Flour,2,116,116.7,P116,Left,50,5
+PROD00447,8901000447,Aashirvaad Besan 2kg,117,2.0,Grains,Flour,2,116,116.7,P116,Left,50,5
+PROD00011,8901000011,Aashirvaad Besan 500g,65,0.5,Grains,Flour,2,116,116.7,P116,Left,50,5
+PROD00015,8901000015,Aashirvaad Rava 1kg,60,1.0,Grains,Flour,2,116,116.7,P116,Left,50,5
+PROD00457,8901000457,Aashirvaad Rava 250g,33,0.25,Grains,Flour,2,117,117.1,P117,Left,50,5
+PROD00459,8901000459,Aashirvaad Rava 2kg,108,2.0,Grains,Flour,2,117,117.1,P117,Left,50,5
+PROD00458,8901000458,Aashirvaad Rava 500g,54,0.5,Grains,Flour,2,117,117.1,P117,Left,50,5
+PROD00012,8901000012,Fortune Besan 1kg,115,1.0,Grains,Flour,2,117,117.1,P117,Left,50,5
+PROD00448,8901000448,Fortune Besan 250g,63,0.25,Grains,Flour,2,117,117.2,P117,Left,50,5
+PROD00450,8901000450,Fortune Besan 2kg,207,2.0,Grains,Flour,2,117,117.2,P117,Left,50,5
+PROD00449,8901000449,Fortune Besan 500g,104,0.5,Grains,Flour,2,117,117.2,P117,Left,50,5
+PROD00008,8901000008,Fortune Maida 1kg,48,1.0,Grains,Flour,2,117,117.2,P117,Left,50,5
+PROD00436,8901000436,Fortune Maida 250g,26,0.25,Grains,Flour,2,117,117.3,P117,Left,50,5
+PROD00438,8901000438,Fortune Maida 2kg,86,2.0,Grains,Flour,2,117,117.3,P117,Left,50,5
+PROD00437,8901000437,Fortune Maida 500g,43,0.5,Grains,Flour,2,117,117.3,P117,Left,50,5
+PROD00017,8901000017,Fortune Rice Flour 1kg,75,1.0,Grains,Flour,2,117,117.3,P117,Left,50,5
+PROD00463,8901000463,Fortune Rice Flour 250g,41,0.25,Grains,Flour,2,117,117.4,P117,Left,50,5
+PROD00465,8901000465,Fortune Rice Flour 2kg,135,2.0,Grains,Flour,2,117,117.4,P117,Left,50,5
+PROD00464,8901000464,Fortune Rice Flour 500g,68,0.5,Grains,Flour,2,117,117.4,P117,Left,50,5
+PROD00455,8901000455,MTR Rava Fine 1kg,76,1.0,Grains,Flour,2,117,117.4,P117,Left,50,5
+PROD00454,8901000454,MTR Rava Fine 250g,25,0.25,Grains,Flour,2,117,117.5,P117,Left,50,5
+PROD00456,8901000456,MTR Rava Fine 2kg,81,2.0,Grains,Flour,2,117,117.5,P117,Left,50,5
+PROD00014,8901000014,MTR Rava Fine 500g,45,0.5,Grains,Flour,2,117,117.5,P117,Left,50,5
+PROD00461,8901000461,Nature Fresh Rice Flour 1kg,68,1.0,Grains,Flour,2,117,117.5,P117,Left,50,5
+PROD00460,8901000460,Nature Fresh Rice Flour 250g,22,0.25,Grains,Flour,2,117,117.6,P117,Left,50,5
+PROD00462,8901000462,Nature Fresh Rice Flour 2kg,72,2.0,Grains,Flour,2,117,117.6,P117,Left,50,5
+PROD00016,8901000016,Nature Fresh Rice Flour 500g,40,0.5,Grains,Flour,2,117,117.6,P117,Left,50,5
+PROD00009,8901000009,Pillsbury Maida 1kg,50,1.0,Grains,Flour,2,117,117.6,P117,Left,50,5
+PROD00439,8901000439,Pillsbury Maida 250g,28,0.25,Grains,Flour,2,117,117.7,P117,Left,50,5
+PROD00441,8901000441,Pillsbury Maida 2kg,90,2.0,Grains,Flour,2,117,117.7,P117,Left,50,5
+PROD00440,8901000440,Pillsbury Maida 500g,45,0.5,Grains,Flour,2,117,117.7,P117,Left,50,5
+PROD00013,8901000013,Pillsbury Rava/Sooji 1kg,55,1.0,Grains,Flour,2,117,117.7,P117,Left,50,5
+PROD00451,8901000451,Pillsbury Rava/Sooji 250g,30,0.25,Grains,Flour,2,118,118.1,P118,Left,50,5
+PROD00453,8901000453,Pillsbury Rava/Sooji 2kg,99,2.0,Grains,Flour,2,118,118.1,P118,Left,50,5
+PROD00452,8901000452,Pillsbury Rava/Sooji 500g,50,0.5,Grains,Flour,2,118,118.1,P118,Left,50,5
+PROD00443,8901000443,Rajdhani Besan 1kg,102,1.0,Grains,Flour,2,118,118.1,P118,Left,50,5
+PROD00442,8901000442,Rajdhani Besan 250g,33,0.25,Grains,Flour,2,118,118.2,P118,Left,50,5
+PROD00444,8901000444,Rajdhani Besan 2kg,108,2.0,Grains,Flour,2,118,118.2,P118,Left,50,5
+PROD00010,8901000010,Rajdhani Besan 500g,60,0.5,Grains,Flour,2,118,118.2,P118,Left,50,5
+PROD00276,8901000276,Ching's Secret Hakka Noodles 240g,70,0.24,Grains,Noodles,2,118,118.2,P118,Left,50,5
+PROD00275,8901000275,Knorr Chinese Noodles 70g,30,0.07,Grains,Noodles,2,118,118.3,P118,Left,50,5
+PROD00272,8901000272,Maggi 2-Minute 5-pack Masala 350g,65,0.35,Grains,Noodles,2,118,118.3,P118,Left,50,5
+PROD00271,8901000271,Maggi 2-Minute Noodles Masala 70g,14,0.07,Grains,Noodles,2,118,118.3,P118,Left,50,5
+PROD00274,8901000274,Top Ramen Chicken 75g,14,0.075,Grains,Noodles,2,118,118.3,P118,Left,50,5
+PROD00273,8901000273,Yippee Classic Masala 75g,14,0.075,Grains,Noodles,2,118,118.4,P118,Left,50,5
+PROD00279,8901000279,Barilla Penne Pasta 500g,210,0.5,Grains,Pasta,2,118,118.4,P118,Left,50,5
+PROD00284,8901000284,Barilla Rigatoni 500g,215,0.5,Grains,Pasta,2,118,118.4,P118,Left,50,5
+PROD00280,8901000280,Barilla Spaghetti 500g,210,0.5,Grains,Pasta,2,118,118.4,P118,Left,50,5
+PROD00283,8901000283,Borges Fusilli 500g,120,0.5,Grains,Pasta,2,118,118.5,P118,Left,50,5
+PROD00277,8901000277,Borges Penne Rigate Pasta 500g,120,0.5,Grains,Pasta,2,118,118.5,P118,Left,50,5
+PROD00278,8901000278,Borges Spaghetti Pasta 500g,120,0.5,Grains,Pasta,2,118,118.5,P118,Left,50,5
+PROD00281,8901000281,Del Monte Penne Pasta 500g,130,0.5,Grains,Pasta,2,118,118.5,P118,Left,50,5
+PROD00282,8901000282,Sunfeast Pasta Treat Tomato Basil 70g,30,0.07,Grains,Pasta,2,118,118.6,P118,Left,50,5
+PROD00029,8901000029,Aashirvaad Brown Rice 1kg,130,1.0,Grains,Rice,2,118,118.6,P118,Left,50,5
+PROD00508,8901000508,Aashirvaad Brown Rice 250g,72,0.25,Grains,Rice,2,118,118.6,P118,Left,50,5
+PROD00510,8901000510,Aashirvaad Brown Rice 2kg,234,2.0,Grains,Rice,2,118,118.6,P118,Left,50,5
+PROD00509,8901000509,Aashirvaad Brown Rice 500g,117,0.5,Grains,Rice,2,118,118.7,P118,Left,50,5
+PROD00431,8901000431,Aashirvaad Multigrain Atta 1kg,527,1.0,Grains,Rice,2,118,118.7,P118,Left,50,5
+PROD00429,8901000429,Aashirvaad Multigrain Atta 250g,170,0.25,Grains,Rice,2,118,118.7,P118,Left,50,5
+PROD00432,8901000432,Aashirvaad Multigrain Atta 2kg,558,2.0,Grains,Rice,2,118,118.7,P118,Left,50,5
+PROD00430,8901000430,Aashirvaad Multigrain Atta 500g,279,0.5,Grains,Rice,2,119,119.1,P119,Right,50,5
+PROD00006,8901000006,Aashirvaad Multigrain Atta 5kg,310,5.0,Grains,Rice,2,119,119.1,P119,Right,50,5
+PROD00411,8901000411,Aashirvaad Select Sharbati Atta 1kg,468,1.0,Grains,Rice,2,119,119.1,P119,Right,50,5
+PROD00409,8901000409,Aashirvaad Select Sharbati Atta 250g,151,0.25,Grains,Rice,2,119,119.1,P119,Right,50,5
+PROD00412,8901000412,Aashirvaad Select Sharbati Atta 2kg,495,2.0,Grains,Rice,2,119,119.2,P119,Right,50,5
+PROD00410,8901000410,Aashirvaad Select Sharbati Atta 500g,248,0.5,Grains,Rice,2,119,119.2,P119,Right,50,5
+PROD00001,8901000001,Aashirvaad Select Sharbati Atta 5kg,275,5.0,Grains,Rice,2,119,119.2,P119,Right,50,5
+PROD00007,8901000007,Angel Yeast Maida 1kg,45,1.0,Grains,Rice,2,119,119.2,P119,Right,50,5
+PROD00433,8901000433,Angel Yeast Maida 250g,25,0.25,Grains,Rice,2,119,119.3,P119,Right,50,5
+PROD00435,8901000435,Angel Yeast Maida 2kg,81,2.0,Grains,Rice,2,119,119.3,P119,Right,50,5
+PROD00434,8901000434,Angel Yeast Maida 500g,40,0.5,Grains,Rice,2,119,119.3,P119,Right,50,5
+PROD00472,8901000472,Daawat Rozana Basmati Rice 1kg,986,1.0,Grains,Rice,2,119,119.3,P119,Right,50,5
+PROD00470,8901000470,Daawat Rozana Basmati Rice 250g,319,0.25,Grains,Rice,2,119,119.4,P119,Right,50,5
+PROD00473,8901000473,Daawat Rozana Basmati Rice 2kg,1044,2.0,Grains,Rice,2,119,119.4,P119,Right,50,5
+PROD00471,8901000471,Daawat Rozana Basmati Rice 500g,522,0.5,Grains,Rice,2,119,119.4,P119,Right,50,5
+PROD00019,8901000019,Daawat Rozana Basmati Rice 5kg,580,5.0,Grains,Rice,2,119,119.4,P119,Right,50,5
+PROD00491,8901000491,Daawat Super Basmati 1kg,1224,1.0,Grains,Rice,2,119,119.5,P119,Right,50,5
+PROD00489,8901000489,Daawat Super Basmati 250g,396,0.25,Grains,Rice,2,119,119.5,P119,Right,50,5
+PROD00492,8901000492,Daawat Super Basmati 2kg,1296,2.0,Grains,Rice,2,119,119.5,P119,Right,50,5
+PROD00490,8901000490,Daawat Super Basmati 500g,648,0.5,Grains,Rice,2,119,119.5,P119,Right,50,5
+PROD00024,8901000024,Daawat Super Basmati 5kg,720,5.0,Grains,Rice,2,119,119.6,P119,Right,50,5
+PROD00502,8901000502,Double Horse Idli Rice 1kg,476,1.0,Grains,Rice,2,119,119.6,P119,Right,50,5
+PROD00500,8901000500,Double Horse Idli Rice 250g,154,0.25,Grains,Rice,2,119,119.6,P119,Right,50,5
+PROD00503,8901000503,Double Horse Idli Rice 2kg,504,2.0,Grains,Rice,2,119,119.6,P119,Right,50,5
+PROD00501,8901000501,Double Horse Idli Rice 500g,252,0.5,Grains,Rice,2,119,119.7,P119,Right,50,5
+PROD00027,8901000027,Double Horse Idli Rice 5kg,280,5.0,Grains,Rice,2,119,119.7,P119,Right,50,5
+PROD00480,8901000480,Fortune Biryani Special Basmati 1kg,1190,1.0,Grains,Rice,2,119,119.7,P119,Right,50,5
+PROD00478,8901000478,Fortune Biryani Special Basmati 250g,385,0.25,Grains,Rice,2,119,119.7,P119,Right,50,5
+PROD00481,8901000481,Fortune Biryani Special Basmati 2kg,1260,2.0,Grains,Rice,2,120,120.1,P120,Right,50,5
+PROD00479,8901000479,Fortune Biryani Special Basmati 500g,630,0.5,Grains,Rice,2,120,120.1,P120,Right,50,5
+PROD00021,8901000021,Fortune Biryani Special Basmati 5kg,700,5.0,Grains,Rice,2,120,120.1,P120,Right,50,5
+PROD00002,8901000002,Fortune Chakki Fresh Atta 10kg,430,10.0,Grains,Rice,2,120,120.1,P120,Right,50,5
+PROD00415,8901000415,Fortune Chakki Fresh Atta 1kg,731,1.0,Grains,Rice,2,120,120.2,P120,Right,50,5
+PROD00413,8901000413,Fortune Chakki Fresh Atta 250g,237,0.25,Grains,Rice,2,120,120.2,P120,Right,50,5
+PROD00416,8901000416,Fortune Chakki Fresh Atta 2kg,774,2.0,Grains,Rice,2,120,120.2,P120,Right,50,5
+PROD00414,8901000414,Fortune Chakki Fresh Atta 500g,387,0.5,Grains,Rice,2,120,120.2,P120,Right,50,5
+PROD00468,8901000468,India Gate Basmati Rice Classic 1kg,1105,1.0,Grains,Rice,2,120,120.3,P120,Right,50,5
+PROD00466,8901000466,India Gate Basmati Rice Classic 250g,358,0.25,Grains,Rice,2,120,120.3,P120,Right,50,5
+PROD00469,8901000469,India Gate Basmati Rice Classic 2kg,1170,2.0,Grains,Rice,2,120,120.3,P120,Right,50,5
+PROD00467,8901000467,India Gate Basmati Rice Classic 500g,585,0.5,Grains,Rice,2,120,120.3,P120,Right,50,5
+PROD00018,8901000018,India Gate Basmati Rice Classic 5kg,650,5.0,Grains,Rice,2,120,120.4,P120,Right,50,5
+PROD00487,8901000487,India Gate Feast Rozzana 1kg,833,1.0,Grains,Rice,2,120,120.4,P120,Right,50,5
+PROD00485,8901000485,India Gate Feast Rozzana 250g,270,0.25,Grains,Rice,2,120,120.4,P120,Right,50,5
+PROD00488,8901000488,India Gate Feast Rozzana 2kg,882,2.0,Grains,Rice,2,120,120.4,P120,Right,50,5
+PROD00486,8901000486,India Gate Feast Rozzana 500g,441,0.5,Grains,Rice,2,120,120.5,P120,Right,50,5
+PROD00023,8901000023,India Gate Feast Rozzana 5kg,490,5.0,Grains,Rice,2,120,120.5,P120,Right,50,5
+PROD00506,8901000506,India Gate Sona Masoori 1kg,629,1.0,Grains,Rice,2,120,120.5,P120,Right,50,5
+PROD00504,8901000504,India Gate Sona Masoori 250g,204,0.25,Grains,Rice,2,120,120.5,P120,Right,50,5
+PROD00507,8901000507,India Gate Sona Masoori 2kg,666,2.0,Grains,Rice,2,120,120.6,P120,Right,50,5
+PROD00505,8901000505,India Gate Sona Masoori 500g,333,0.5,Grains,Rice,2,120,120.6,P120,Right,50,5
+PROD00028,8901000028,India Gate Sona Masoori 5kg,370,5.0,Grains,Rice,2,120,120.6,P120,Right,50,5
+PROD00025,8901000025,Kohinoor Brown Basmati Rice 1kg,160,1.0,Grains,Rice,2,120,120.6,P120,Right,50,5
+PROD00493,8901000493,Kohinoor Brown Basmati Rice 250g,88,0.25,Grains,Rice,2,120,120.7,P120,Right,50,5
+PROD00495,8901000495,Kohinoor Brown Basmati Rice 2kg,288,2.0,Grains,Rice,2,120,120.7,P120,Right,50,5
+PROD00494,8901000494,Kohinoor Brown Basmati Rice 500g,144,0.5,Grains,Rice,2,120,120.7,P120,Right,50,5
+PROD00476,8901000476,Kohinoor Silver Basmati Rice 1kg,1054,1.0,Grains,Rice,2,120,120.7,P120,Right,50,5
+PROD00474,8901000474,Kohinoor Silver Basmati Rice 250g,341,0.25,Grains,Rice,2,121,121.1,P121,Right,50,5
+PROD00477,8901000477,Kohinoor Silver Basmati Rice 2kg,1116,2.0,Grains,Rice,2,121,121.1,P121,Right,50,5
+PROD00475,8901000475,Kohinoor Silver Basmati Rice 500g,558,0.5,Grains,Rice,2,121,121.1,P121,Right,50,5
+PROD00020,8901000020,Kohinoor Silver Basmati Rice 5kg,620,5.0,Grains,Rice,2,121,121.1,P121,Right,50,5
+PROD00498,8901000498,Lal Qilla Basmati Rice 1kg,1402,1.0,Grains,Rice,2,121,121.2,P121,Right,50,5
+PROD00496,8901000496,Lal Qilla Basmati Rice 250g,454,0.25,Grains,Rice,2,121,121.2,P121,Right,50,5
+PROD00499,8901000499,Lal Qilla Basmati Rice 2kg,1485,2.0,Grains,Rice,2,121,121.2,P121,Right,50,5
+PROD00497,8901000497,Lal Qilla Basmati Rice 500g,742,0.5,Grains,Rice,2,121,121.2,P121,Right,50,5
+PROD00026,8901000026,Lal Qilla Basmati Rice 5kg,825,5.0,Grains,Rice,2,121,121.3,P121,Right,50,5
+PROD00427,8901000427,Nature Fresh Sampoorna Atta 1kg,442,1.0,Grains,Rice,2,121,121.3,P121,Right,50,5
+PROD00425,8901000425,Nature Fresh Sampoorna Atta 250g,143,0.25,Grains,Rice,2,121,121.3,P121,Right,50,5
+PROD00428,8901000428,Nature Fresh Sampoorna Atta 2kg,468,2.0,Grains,Rice,2,121,121.3,P121,Right,50,5
+PROD00426,8901000426,Nature Fresh Sampoorna Atta 500g,234,0.5,Grains,Rice,2,121,121.4,P121,Right,50,5
+PROD00005,8901000005,Nature Fresh Sampoorna Atta 5kg,260,5.0,Grains,Rice,2,121,121.4,P121,Right,50,5
+PROD00022,8901000022,Patanjali Basmati Rice 1kg,110,1.0,Grains,Rice,2,121,121.4,P121,Right,50,5
+PROD00482,8901000482,Patanjali Basmati Rice 250g,61,0.25,Grains,Rice,2,121,121.4,P121,Right,50,5
+PROD00484,8901000484,Patanjali Basmati Rice 2kg,198,2.0,Grains,Rice,2,121,121.5,P121,Right,50,5
+PROD00483,8901000483,Patanjali Basmati Rice 500g,99,0.5,Grains,Rice,2,121,121.5,P121,Right,50,5
+PROD00419,8901000419,Pillsbury Atta Multigrain 1kg,493,1.0,Grains,Rice,2,121,121.5,P121,Right,50,5
+PROD00417,8901000417,Pillsbury Atta Multigrain 250g,160,0.25,Grains,Rice,2,121,121.5,P121,Right,50,5
+PROD00420,8901000420,Pillsbury Atta Multigrain 2kg,522,2.0,Grains,Rice,2,121,121.6,P121,Right,50,5
+PROD00418,8901000418,Pillsbury Atta Multigrain 500g,261,0.5,Grains,Rice,2,121,121.6,P121,Right,50,5
+PROD00003,8901000003,Pillsbury Atta Multigrain 5kg,290,5.0,Grains,Rice,2,121,121.6,P121,Right,50,5
+PROD00004,8901000004,Rajdhani Whole Wheat Atta 10kg,410,10.0,Grains,Rice,2,121,121.6,P121,Right,50,5
+PROD00423,8901000423,Rajdhani Whole Wheat Atta 1kg,697,1.0,Grains,Rice,2,121,121.7,P121,Right,50,5
+PROD00421,8901000421,Rajdhani Whole Wheat Atta 250g,226,0.25,Grains,Rice,2,121,121.7,P121,Right,50,5
+PROD00424,8901000424,Rajdhani Whole Wheat Atta 2kg,738,2.0,Grains,Rice,2,121,121.7,P121,Right,50,5
+PROD00422,8901000422,Rajdhani Whole Wheat Atta 500g,369,0.5,Grains,Rice,2,121,121.7,P121,Right,50,5
+PROD00403,8901000403,Dabur Chyawanprash 500g,255,0.5,Health,Ayurveda,2,122,122.1,P122,Right,50,5
+PROD00404,8901000404,Patanjali Ashwagandha 60 Tablets,120,0.06,Health,Ayurveda,2,122,122.1,P122,Right,50,5
+PROD00405,8901000405,Eno Fruit Salt Regular 30g,55,0.03,Health,Digestive,2,122,122.1,P122,Right,50,5
+PROD00406,8901000406,Pudin Hara Liquid 25ml,85,0.025,Health,Digestive,2,122,122.1,P122,Right,50,5
+PROD00407,8901000407,Dabur Giloy Juice 1L,185,1.0,Health,Immunity,2,122,122.2,P122,Right,50,5
+PROD00408,8901000408,Patanjali Amla Aloevera Juice 1L,120,1.0,Health,Immunity,2,122,122.2,P122,Right,50,5
+PROD00402,8901000402,MuscleBlaze Whey Active 1kg,1599,1.0,Health,Protein,2,122,122.2,P122,Right,50,5
+PROD00401,8901000401,Saffola Oats & Greek Yogurt Shake 480g,590,0.48,Health,Protein,2,122,122.2,P122,Right,50,5
+PROD00399,8901000399,HealthViva Vitamin C 500mg 60 tablets,275,0.07,Health,Vitamins,2,122,122.3,P122,Right,50,5
+PROD00400,8901000400,MuscleBlaze Vitamin D3 60 capsules,420,0.06,Health,Vitamins,2,122,122.3,P122,Right,50,5
+PROD00383,8901000383,Colin Glass & Surface Cleaner 500ml,150,0.5,Household,Cleaning,2,122,122.3,P122,Right,50,5
+PROD00385,8901000385,Dettol Multi-Use Hygiene Liquid 500ml,195,0.5,Household,Cleaning,2,122,122.3,P122,Right,50,5
+PROD00384,8901000384,Domex Multi-Purpose Ultra Thick Bleach 1L,135,1.0,Household,Cleaning,2,122,122.4,P122,Right,50,5
+PROD00389,8901000389,Exo Dishwash Bar 500g,50,0.5,Household,Cleaning,2,122,122.4,P122,Right,50,5
+PROD00381,8901000381,Harpic Power Plus 1L,165,1.0,Household,Cleaning,2,122,122.4,P122,Right,50,5
+PROD00382,8901000382,Lizol Floor Cleaner Floral 1L,199,1.0,Household,Cleaning,2,122,122.4,P122,Right,50,5
+PROD00387,8901000387,Mr Muscle Advanced Power 5in1 500ml,185,0.5,Household,Cleaning,2,122,122.5,P122,Right,50,5
+PROD00386,8901000386,Scotch Brite Scrub Sponge 3 Pcs,79,0.09,Household,Cleaning,2,122,122.5,P122,Right,50,5
+PROD00388,8901000388,Surf Excel Dishwash Bar 500g,55,0.5,Household,Cleaning,2,122,122.5,P122,Right,50,5
+PROD00396,8901000396,Ezee Aluminium Foil 9m x 30cm,80,0.14,Household,Disposables,2,122,122.5,P122,Right,50,5
+PROD00397,8901000397,Glean Garbage Bags 19x21in 30 Pcs,75,0.15,Household,Disposables,2,122,122.6,P122,Right,50,5
+PROD00395,8901000395,Safal Cling Wrap 100m,130,0.15,Household,Disposables,2,122,122.6,P122,Right,50,5
+PROD00398,8901000398,Wipro Safe Wash Bags Large 30 Pcs,80,0.17,Household,Disposables,2,122,122.6,P122,Right,50,5
+PROD00374,8901000374,Ariel Matic Front Load Powder 1kg,305,1.0,Household,Laundry,2,122,122.6,P122,Right,50,5
+PROD00378,8901000378,Comfort Morning Fresh Fabric Conditioner 800ml,285,0.8,Household,Laundry,2,122,122.7,P122,Right,50,5
+PROD00376,8901000376,Henko Stain Champion Powder 1kg,160,1.0,Household,Laundry,2,122,122.7,P122,Right,50,5
+PROD00379,8901000379,Pril Dishwash Liquid 750ml,135,0.75,Household,Laundry,2,122,122.7,P122,Right,50,5
+PROD00373,8901000373,Surf Excel Matic Liquid 1L,380,1.0,Household,Laundry,2,122,122.7,P122,Right,50,5
+PROD00375,8901000375,Tide Plus Detergent Powder 2kg,290,2.0,Household,Laundry,2,123,123.1,P123,Right,50,5
+PROD00380,8901000380,Vim Dishwash Liquid 750ml,130,0.75,Household,Laundry,2,123,123.1,P123,Right,50,5
+PROD00377,8901000377,Wheel Active 3 Power Detergent 3kg,155,3.0,Household,Laundry,2,123,123.1,P123,Right,50,5
+PROD00392,8901000392,Kimberly Clark Kitchen Towels 2 Rolls,165,0.3,Household,Paper,2,123,123.1,P123,Right,50,5
+PROD00394,8901000394,Kleenex Facial Tissues 200 Sheets,155,0.2,Household,Paper,2,123,123.2,P123,Right,50,5
+PROD00393,8901000393,Namokar Tissues Box 200 Pulls,75,0.18,Household,Paper,2,123,123.2,P123,Right,50,5
+PROD00390,8901000390,Paseo Toilet Tissue 10 Rolls,245,1.1,Household,Paper,2,123,123.2,P123,Right,50,5
+PROD00391,8901000391,Scotts Toilet Tissue 12 Rolls,280,1.3,Household,Paper,2,123,123.2,P123,Right,50,5
+PROD00580,8901000580,Borges Olive Oil Extra Virgin 1L,1105,1.0,Oils,Cooking,2,123,123.3,P123,Right,50,5
+PROD00579,8901000579,Borges Olive Oil Extra Virgin 250ml,358,0.25,Oils,Cooking,2,123,123.3,P123,Right,50,5
+PROD00581,8901000581,Borges Olive Oil Extra Virgin 2L,1170,2.0,Oils,Cooking,2,123,123.3,P123,Right,50,5
+PROD00052,8901000052,Borges Olive Oil Extra Virgin 500ml,650,0.5,Oils,Cooking,2,123,123.3,P123,Right,50,5
+PROD00049,8901000049,Dhara Mustard Oil 1L,180,0.9,Oils,Cooking,2,123,123.4,P123,Right,50,5
+PROD00569,8901000569,Dhara Mustard Oil 250ml,99,0.25,Oils,Cooking,2,123,123.4,P123,Right,50,5
+PROD00571,8901000571,Dhara Mustard Oil 2L,324,2.0,Oils,Cooking,2,123,123.4,P123,Right,50,5
+PROD00570,8901000570,Dhara Mustard Oil 500ml,162,0.5,Oils,Cooking,2,123,123.4,P123,Right,50,5
+PROD00561,8901000561,Dhara Refined Sunflower Oil 1L,1224,1.0,Oils,Cooking,2,123,123.5,P123,Right,50,5
+PROD00559,8901000559,Dhara Refined Sunflower Oil 250ml,396,0.25,Oils,Cooking,2,123,123.5,P123,Right,50,5
+PROD00562,8901000562,Dhara Refined Sunflower Oil 2L,1296,2.0,Oils,Cooking,2,123,123.5,P123,Right,50,5
+PROD00560,8901000560,Dhara Refined Sunflower Oil 500ml,648,0.5,Oils,Cooking,2,123,123.5,P123,Right,50,5
+PROD00046,8901000046,Dhara Refined Sunflower Oil 5L,720,4.5,Oils,Cooking,2,123,123.6,P123,Right,50,5
+PROD00053,8901000053,DiSano Olive Oil 1L,800,0.9,Oils,Cooking,2,123,123.6,P123,Right,50,5
+PROD00582,8901000582,DiSano Olive Oil 250ml,440,0.25,Oils,Cooking,2,123,123.6,P123,Right,50,5
+PROD00584,8901000584,DiSano Olive Oil 2L,1440,2.0,Oils,Cooking,2,123,123.6,P123,Right,50,5
+PROD00583,8901000583,DiSano Olive Oil 500ml,720,0.5,Oils,Cooking,2,123,123.7,P123,Right,50,5
+PROD00047,8901000047,Fortune Refined Soyabean Oil 1L,145,0.9,Oils,Cooking,2,123,123.7,P123,Right,50,5
+PROD00563,8901000563,Fortune Refined Soyabean Oil 250ml,80,0.25,Oils,Cooking,2,123,123.7,P123,Right,50,5
+PROD00565,8901000565,Fortune Refined Soyabean Oil 2L,261,2.0,Oils,Cooking,2,123,123.7,P123,Right,50,5
+PROD00564,8901000564,Fortune Refined Soyabean Oil 500ml,130,0.5,Oils,Cooking,2,124,124.1,P124,Right,50,5
+PROD00044,8901000044,Fortune Sunflower Oil 1L,155,0.9,Oils,Cooking,2,124,124.1,P124,Right,50,5
+PROD00553,8901000553,Fortune Sunflower Oil 250ml,85,0.25,Oils,Cooking,2,124,124.1,P124,Right,50,5
+PROD00555,8901000555,Fortune Sunflower Oil 2L,279,2.0,Oils,Cooking,2,124,124.1,P124,Right,50,5
+PROD00554,8901000554,Fortune Sunflower Oil 500ml,140,0.5,Oils,Cooking,2,124,124.2,P124,Right,50,5
+PROD00577,8901000577,Gokul Groundnut Oil 1L,340,1.0,Oils,Cooking,2,124,124.2,P124,Right,50,5
+PROD00051,8901000051,Gokul Groundnut Oil 1kg,200,0.9,Oils,Cooking,2,124,124.2,P124,Right,50,5
+PROD00575,8901000575,Gokul Groundnut Oil 250ml,110,0.25,Oils,Cooking,2,124,124.2,P124,Right,50,5
+PROD00578,8901000578,Gokul Groundnut Oil 2L,360,2.0,Oils,Cooking,2,124,124.3,P124,Right,50,5
+PROD00576,8901000576,Gokul Groundnut Oil 500ml,180,0.5,Oils,Cooking,2,124,124.3,P124,Right,50,5
+PROD00050,8901000050,Kisan Groundnut Oil 1L,195,0.9,Oils,Cooking,2,124,124.3,P124,Right,50,5
+PROD00572,8901000572,Kisan Groundnut Oil 250ml,107,0.25,Oils,Cooking,2,124,124.3,P124,Right,50,5
+PROD00574,8901000574,Kisan Groundnut Oil 2L,351,2.0,Oils,Cooking,2,124,124.4,P124,Right,50,5
+PROD00573,8901000573,Kisan Groundnut Oil 500ml,176,0.5,Oils,Cooking,2,124,124.4,P124,Right,50,5
+PROD00048,8901000048,Patanjali Mustard Oil 1L,170,0.9,Oils,Cooking,2,124,124.4,P124,Right,50,5
+PROD00566,8901000566,Patanjali Mustard Oil 250ml,94,0.25,Oils,Cooking,2,124,124.4,P124,Right,50,5
+PROD00568,8901000568,Patanjali Mustard Oil 2L,306,2.0,Oils,Cooking,2,124,124.5,P124,Right,50,5
+PROD00567,8901000567,Patanjali Mustard Oil 500ml,153,0.5,Oils,Cooking,2,124,124.5,P124,Right,50,5
+PROD00045,8901000045,Saffola Gold Oil 1L,180,0.9,Oils,Cooking,2,124,124.5,P124,Right,50,5
+PROD00556,8901000556,Saffola Gold Oil 250ml,99,0.25,Oils,Cooking,2,124,124.5,P124,Right,50,5
+PROD00558,8901000558,Saffola Gold Oil 2L,324,2.0,Oils,Cooking,2,124,124.6,P124,Right,50,5
+PROD00557,8901000557,Saffola Gold Oil 500ml,162,0.5,Oils,Cooking,2,124,124.6,P124,Right,50,5
+PROD00594,8901000594,Aashirvaad Svasti Ghee 1L,570,1.0,Oils,Ghee,2,124,124.6,P124,Right,50,5
+PROD00593,8901000593,Aashirvaad Svasti Ghee 250ml,184,0.25,Oils,Ghee,2,124,124.6,P124,Right,50,5
+PROD00595,8901000595,Aashirvaad Svasti Ghee 2L,603,2.0,Oils,Ghee,2,124,124.7,P124,Right,50,5
+PROD00058,8901000058,Aashirvaad Svasti Ghee 500ml,335,0.5,Oils,Ghee,2,124,124.7,P124,Right,50,5
+PROD00055,8901000055,Amul Pure Ghee 1L,660,1.0,Oils,Ghee,2,124,124.7,P124,Right,50,5
+PROD00585,8901000585,Amul Pure Ghee 250ml,187,0.25,Oils,Ghee,2,124,124.7,P124,Right,50,5
+PROD00586,8901000586,Amul Pure Ghee 2L,612,2.0,Oils,Ghee,3,125,125.1,P125,Left,50,5
+PROD00054,8901000054,Amul Pure Ghee 500ml,340,0.5,Oils,Ghee,3,125,125.1,P125,Left,50,5
+PROD00057,8901000057,Mother Dairy Cow Ghee 1L,650,1.0,Oils,Ghee,3,125,125.1,P125,Left,50,5
+PROD00590,8901000590,Mother Dairy Cow Ghee 250ml,358,0.25,Oils,Ghee,3,125,125.1,P125,Left,50,5
+PROD00592,8901000592,Mother Dairy Cow Ghee 2L,1170,2.0,Oils,Ghee,3,125,125.2,P125,Left,50,5
+PROD00591,8901000591,Mother Dairy Cow Ghee 500ml,585,0.5,Oils,Ghee,3,125,125.2,P125,Left,50,5
+PROD00588,8901000588,Patanjali Cow Ghee 1L,544,1.0,Oils,Ghee,3,125,125.2,P125,Left,50,5
+PROD00587,8901000587,Patanjali Cow Ghee 250ml,176,0.25,Oils,Ghee,3,125,125.2,P125,Left,50,5
+PROD00589,8901000589,Patanjali Cow Ghee 2L,576,2.0,Oils,Ghee,3,125,125.3,P125,Left,50,5
+PROD00056,8901000056,Patanjali Cow Ghee 500ml,320,0.5,Oils,Ghee,3,125,125.3,P125,Left,50,5
+PROD00294,8901000294,Campbell Tomato Soup 300ml,85,0.3,Packaged,Soup,3,125,125.3,P125,Left,50,5
+PROD00293,8901000293,Knorr Tomato Soup Mix 75g,55,0.075,Packaged,Soup,3,125,125.3,P125,Left,50,5
+PROD00292,8901000292,Maggi Masala Noodle Soups 55g,35,0.055,Packaged,Soup,3,125,125.4,P125,Left,50,5
+PROD00314,8901000314,Biotique Bio Winter Green Shower Gel 190ml,175,0.19,Personal Care,Body Wash,3,125,125.4,P125,Left,50,5
+PROD00309,8901000309,Dove Go Fresh Body Wash 500ml,330,0.5,Personal Care,Body Wash,3,125,125.4,P125,Left,50,5
+PROD00311,8901000311,Fiama Shower Gel Di Wills 250ml,220,0.25,Personal Care,Body Wash,3,125,125.4,P125,Left,50,5
+PROD00313,8901000313,Himalaya Refreshing Body Wash 200ml,165,0.2,Personal Care,Body Wash,3,125,125.5,P125,Left,50,5
+PROD00310,8901000310,Nivea Fresh Active Body Wash 500ml,290,0.5,Personal Care,Body Wash,3,125,125.5,P125,Left,50,5
+PROD00312,8901000312,Parachute Soft Touch Body Lotion 400ml,195,0.4,Personal Care,Body Wash,3,125,125.5,P125,Left,50,5
+PROD00324,8901000324,Dove Intense Repair Conditioner 180ml,220,0.18,Personal Care,Conditioner,3,125,125.5,P125,Left,50,5
+PROD00326,8901000326,L'Oreal Elseve Total Repair 5 Conditioner 175ml,260,0.175,Personal Care,Conditioner,3,125,125.6,P125,Left,50,5
+PROD00325,8901000325,TRESemme Smooth & Shine Conditioner 190ml,210,0.19,Personal Care,Conditioner,3,125,125.6,P125,Left,50,5
+PROD00360,8901000360,Axe Dark Temptation Deo Spray 150ml,205,0.15,Personal Care,Deo,3,125,125.6,P125,Left,50,5
+PROD00359,8901000359,Dove Original Deo Spray 150ml,225,0.15,Personal Care,Deo,3,125,125.6,P125,Left,50,5
+PROD00357,8901000357,Fogg Fresh Woody Deo Spray 150ml,215,0.15,Personal Care,Deo,3,125,125.7,P125,Left,50,5
+PROD00358,8901000358,Nivea Men Fresh Active Deo 150ml,195,0.15,Personal Care,Deo,3,125,125.7,P125,Left,50,5
+PROD00356,8901000356,Wild Stone Forest Spice Deo Spray 150ml,175,0.15,Personal Care,Deo,3,125,125.7,P125,Left,50,5
+PROD00344,8901000344,Cetaphil Gentle Skin Cleanser 250ml,510,0.25,Personal Care,Face Wash,3,125,125.7,P125,Left,50,5
+PROD00345,8901000345,Garnier Bright Complete Face Wash 100g,150,0.1,Personal Care,Face Wash,3,126,126.1,P126,Left,50,5
+PROD00346,8901000346,Himalaya Purifying Neem Face Wash 200ml,165,0.2,Personal Care,Face Wash,3,126,126.1,P126,Left,50,5
+PROD00329,8901000329,Bajaj Almond Drops Hair Oil 200ml,165,0.2,Personal Care,Hair Oil,3,126,126.1,P126,Left,50,5
+PROD00330,8901000330,Dabur Amla Hair Oil 300ml,140,0.3,Personal Care,Hair Oil,3,126,126.1,P126,Left,50,5
+PROD00331,8901000331,Kesh King Scalp & Hair Oil 300ml,235,0.3,Personal Care,Hair Oil,3,126,126.2,P126,Left,50,5
+PROD00327,8901000327,Parachute Coconut Oil 200ml,100,0.2,Personal Care,Hair Oil,3,126,126.2,P126,Left,50,5
+PROD00328,8901000328,Parachute Coconut Oil 500ml,210,0.5,Personal Care,Hair Oil,3,126,126.2,P126,Left,50,5
+PROD00332,8901000332,Patanjali Kesh Kanti Oil 200ml,90,0.2,Personal Care,Hair Oil,3,126,126.2,P126,Left,50,5
+PROD00333,8901000333,WOW Onion Black Seed Hair Oil 200ml,349,0.2,Personal Care,Hair Oil,3,126,126.3,P126,Left,50,5
+PROD00363,8901000363,Sofy Bodyfit Night 15 Pads,255,0.13,Personal Care,Hygiene,3,126,126.3,P126,Left,50,5
+PROD00362,8901000362,Stayfree Secure Cottony 20 Pads,195,0.1,Personal Care,Hygiene,3,126,126.3,P126,Left,50,5
+PROD00361,8901000361,Whisper Ultra Clean 30 Pads,245,0.13,Personal Care,Hygiene,3,126,126.3,P126,Left,50,5
+PROD00353,8901000353,Colgate Extra Clean Toothbrush Medium,60,0.025,Personal Care,Oral,3,126,126.4,P126,Left,50,5
+PROD00347,8901000347,Colgate MaxFresh Toothpaste 150g,95,0.15,Personal Care,Oral,3,126,126.4,P126,Left,50,5
+PROD00350,8901000350,Himalaya Complete Care Toothpaste 150g,120,0.15,Personal Care,Oral,3,126,126.4,P126,Left,50,5
+PROD00354,8901000354,Listerine Cool Mint Mouthwash 250ml,175,0.25,Personal Care,Oral,3,126,126.4,P126,Left,50,5
+PROD00355,8901000355,Oral-B Mouthwash Healthy White 250ml,190,0.25,Personal Care,Oral,3,126,126.5,P126,Left,50,5
+PROD00352,8901000352,Oral-B Pro-Health Toothbrush Medium,75,0.025,Personal Care,Oral,3,126,126.5,P126,Left,50,5
+PROD00351,8901000351,Patanjali Dant Kanti 200g,60,0.2,Personal Care,Oral,3,126,126.5,P126,Left,50,5
+PROD00349,8901000349,Pepsodent Germicheck Toothpaste 150g,80,0.15,Personal Care,Oral,3,126,126.5,P126,Left,50,5
+PROD00348,8901000348,Sensodyne Fresh Mint Toothpaste 80g,185,0.08,Personal Care,Oral,3,126,126.6,P126,Left,50,5
+PROD00322,8901000322,Biotique Bio Kelp Fresh Growth Shampoo 200ml,265,0.2,Personal Care,Shampoo,3,126,126.6,P126,Left,50,5
+PROD00320,8901000320,Clinic Plus Strength & Shine Shampoo 340ml,140,0.34,Personal Care,Shampoo,3,126,126.6,P126,Left,50,5
+PROD00315,8901000315,Dove Intense Repair Shampoo 340ml,340,0.34,Personal Care,Shampoo,3,126,126.6,P126,Left,50,5
+PROD00316,8901000316,Head & Shoulders Anti Dandruff 340ml,310,0.34,Personal Care,Shampoo,3,126,126.7,P126,Left,50,5
+PROD00323,8901000323,Khadi Natural Amla Shampoo 210ml,195,0.21,Personal Care,Shampoo,3,126,126.7,P126,Left,50,5
+PROD00317,8901000317,L'Oreal Elseve Total Repair 5 Shampoo 175ml,250,0.175,Personal Care,Shampoo,3,126,126.7,P126,Left,50,5
+PROD00318,8901000318,Pantene Pro-V Silky Smooth Shampoo 340ml,320,0.34,Personal Care,Shampoo,3,126,126.7,P126,Left,50,5
+PROD00321,8901000321,Sunsilk Co-Creations 340ml,160,0.34,Personal Care,Shampoo,3,127,127.1,P127,Left,50,5
+PROD00319,8901000319,TRESemme Keratin Smooth Shampoo 340ml,300,0.34,Personal Care,Shampoo,3,127,127.1,P127,Left,50,5
+PROD00339,8901000339,Biotique Bio Fruit 175g,205,0.175,Personal Care,Skin,3,127,127.1,P127,Left,50,5
+PROD00337,8901000337,Cetaphil Moisturising Lotion 250ml,445,0.25,Personal Care,Skin,3,127,127.1,P127,Left,50,5
+PROD00338,8901000338,Himalaya Aloe Vera Gel 300ml,130,0.3,Personal Care,Skin,3,127,127.2,P127,Left,50,5
+PROD00340,8901000340,Lakme Peach Milk Moisturiser SPF 24 120ml,225,0.12,Personal Care,Skin,3,127,127.2,P127,Left,50,5
+PROD00334,8901000334,Nivea Soft Moisturising Cream 200ml,225,0.2,Personal Care,Skin,3,127,127.2,P127,Left,50,5
+PROD00335,8901000335,Ponds Light Moisturiser 147ml,175,0.147,Personal Care,Skin,3,127,127.2,P127,Left,50,5
+PROD00336,8901000336,Vaseline Intensive Care Aloe 400ml,220,0.4,Personal Care,Skin,3,127,127.3,P127,Left,50,5
+PROD00303,8901000303,Dettol Original Bar Soap 125g,60,0.125,Personal Care,Soap,3,127,127.3,P127,Left,50,5
+PROD00301,8901000301,Dove Beauty Cream Bar 100g,55,0.1,Personal Care,Soap,3,127,127.3,P127,Left,50,5
+PROD00305,8901000305,Hamam Bar 150g,55,0.15,Personal Care,Soap,3,127,127.3,P127,Left,50,5
+PROD00307,8901000307,Himalaya Neem Face Wash 150ml,145,0.15,Personal Care,Soap,3,127,127.4,P127,Left,50,5
+PROD00306,8901000306,Lifebuoy Total 10 Soap 100g,35,0.1,Personal Care,Soap,3,127,127.4,P127,Left,50,5
+PROD00302,8901000302,Lux Soft Touch 100g,40,0.1,Personal Care,Soap,3,127,127.4,P127,Left,50,5
+PROD00308,8901000308,Nivea Creme Soft Soap 75g,60,0.075,Personal Care,Soap,3,127,127.4,P127,Left,50,5
+PROD00304,8901000304,Pears Transparent Soap 125g,65,0.125,Personal Care,Soap,3,127,127.5,P127,Left,50,5
+PROD00343,8901000343,Lakme Sun Expert SPF 50 100ml,310,0.1,Personal Care,Sunscreen,3,127,127.5,P127,Left,50,5
+PROD00342,8901000342,Lotus Herbals Safe Sun UV Screen SPF 50 50g,260,0.05,Personal Care,Sunscreen,3,127,127.5,P127,Left,50,5
+PROD00341,8901000341,Neutrogena Ultra Sheer SPF 50+ 88ml,520,0.088,Personal Care,Sunscreen,3,127,127.5,P127,Left,50,5
+PROD00539,8901000539,Black Eyed Peas Lobia 1kg,136,1.0,Pulses,Beans,3,127,127.6,P127,Left,50,5
+PROD00538,8901000538,Black Eyed Peas Lobia 250g,44,0.25,Pulses,Beans,3,127,127.6,P127,Left,50,5
+PROD00540,8901000540,Black Eyed Peas Lobia 2kg,144,2.0,Pulses,Beans,3,127,127.6,P127,Left,50,5
+PROD00039,8901000039,Black Eyed Peas Lobia 500g,80,0.5,Pulses,Beans,3,127,127.6,P127,Left,50,5
+PROD00041,8901000041,Black Gram Kala Chana 1kg,110,1.0,Pulses,Beans,3,127,127.7,P127,Left,50,5
+PROD00544,8901000544,Black Gram Kala Chana 250g,61,0.25,Pulses,Beans,3,127,127.7,P127,Left,50,5
+PROD00546,8901000546,Black Gram Kala Chana 2kg,198,2.0,Pulses,Beans,3,127,127.7,P127,Left,50,5
+PROD00545,8901000545,Black Gram Kala Chana 500g,99,0.5,Pulses,Beans,3,127,127.7,P127,Left,50,5
+PROD00542,8901000542,Green Moong Whole 1kg,162,1.0,Pulses,Beans,3,128,128.1,P128,Left,50,5
+PROD00541,8901000541,Green Moong Whole 250g,52,0.25,Pulses,Beans,3,128,128.1,P128,Left,50,5
+PROD00543,8901000543,Green Moong Whole 2kg,171,2.0,Pulses,Beans,3,128,128.1,P128,Left,50,5
+PROD00040,8901000040,Green Moong Whole 500g,95,0.5,Pulses,Beans,3,128,128.1,P128,Left,50,5
+PROD00037,8901000037,Kabuli Chana 1kg,185,1.0,Pulses,Beans,3,128,128.2,P128,Left,50,5
+PROD00532,8901000532,Kabuli Chana 250g,102,0.25,Pulses,Beans,3,128,128.2,P128,Left,50,5
+PROD00534,8901000534,Kabuli Chana 2kg,333,2.0,Pulses,Beans,3,128,128.2,P128,Left,50,5
+PROD00533,8901000533,Kabuli Chana 500g,166,0.5,Pulses,Beans,3,128,128.2,P128,Left,50,5
+PROD00536,8901000536,Rajma Red Kidney Beans 1kg,153,1.0,Pulses,Beans,3,128,128.3,P128,Left,50,5
+PROD00535,8901000535,Rajma Red Kidney Beans 250g,50,0.25,Pulses,Beans,3,128,128.3,P128,Left,50,5
+PROD00537,8901000537,Rajma Red Kidney Beans 2kg,162,2.0,Pulses,Beans,3,128,128.3,P128,Left,50,5
+PROD00038,8901000038,Rajma Red Kidney Beans 500g,90,0.5,Pulses,Beans,3,128,128.3,P128,Left,50,5
+PROD00551,8901000551,Bb Royal Masoor Dal 1kg,110,1.0,Pulses,Dal,3,128,128.4,P128,Left,50,5
+PROD00550,8901000550,Bb Royal Masoor Dal 250g,36,0.25,Pulses,Dal,3,128,128.4,P128,Left,50,5
+PROD00552,8901000552,Bb Royal Masoor Dal 2kg,117,2.0,Pulses,Dal,3,128,128.4,P128,Left,50,5
+PROD00043,8901000043,Bb Royal Masoor Dal 500g,65,0.5,Pulses,Dal,3,128,128.4,P128,Left,50,5
+PROD00032,8901000032,Chana Dal 1kg,120,1.0,Pulses,Dal,3,128,128.5,P128,Left,50,5
+PROD00517,8901000517,Chana Dal 250g,66,0.25,Pulses,Dal,3,128,128.5,P128,Left,50,5
+PROD00519,8901000519,Chana Dal 2kg,216,2.0,Pulses,Dal,3,128,128.5,P128,Left,50,5
+PROD00518,8901000518,Chana Dal 500g,108,0.5,Pulses,Dal,3,128,128.5,P128,Left,50,5
+PROD00042,8901000042,Fortune Toor Dal 1kg,160,1.0,Pulses,Dal,3,128,128.6,P128,Left,50,5
+PROD00547,8901000547,Fortune Toor Dal 250g,88,0.25,Pulses,Dal,3,128,128.6,P128,Left,50,5
+PROD00549,8901000549,Fortune Toor Dal 2kg,288,2.0,Pulses,Dal,3,128,128.6,P128,Left,50,5
+PROD00548,8901000548,Fortune Toor Dal 500g,144,0.5,Pulses,Dal,3,128,128.6,P128,Left,50,5
+PROD00034,8901000034,Masoor Dal 1kg,120,1.0,Pulses,Dal,3,128,128.7,P128,Left,50,5
+PROD00523,8901000523,Masoor Dal 250g,66,0.25,Pulses,Dal,3,128,128.7,P128,Left,50,5
+PROD00525,8901000525,Masoor Dal 2kg,216,2.0,Pulses,Dal,3,128,128.7,P128,Left,50,5
+PROD00524,8901000524,Masoor Dal 500g,108,0.5,Pulses,Dal,3,128,128.7,P128,Left,50,5
+PROD00031,8901000031,Moong Dal Yellow Split 1kg,150,1.0,Pulses,Dal,3,129,129.1,P129,Left,50,5
+PROD00514,8901000514,Moong Dal Yellow Split 250g,82,0.25,Pulses,Dal,3,129,129.1,P129,Left,50,5
+PROD00516,8901000516,Moong Dal Yellow Split 2kg,270,2.0,Pulses,Dal,3,129,129.1,P129,Left,50,5
+PROD00515,8901000515,Moong Dal Yellow Split 500g,135,0.5,Pulses,Dal,3,129,129.1,P129,Left,50,5
+PROD00036,8901000036,Patanjali Moong Dal 1kg,145,1.0,Pulses,Dal,3,129,129.2,P129,Left,50,5
+PROD00529,8901000529,Patanjali Moong Dal 250g,80,0.25,Pulses,Dal,3,129,129.2,P129,Left,50,5
+PROD00531,8901000531,Patanjali Moong Dal 2kg,261,2.0,Pulses,Dal,3,129,129.2,P129,Left,50,5
+PROD00530,8901000530,Patanjali Moong Dal 500g,130,0.5,Pulses,Dal,3,129,129.2,P129,Left,50,5
+PROD00528,8901000528,Rajdhani Toor Dal 1kg,544,1.0,Pulses,Dal,3,129,129.3,P129,Left,50,5
+PROD00526,8901000526,Rajdhani Toor Dal 250g,176,0.25,Pulses,Dal,3,129,129.3,P129,Left,50,5
+PROD00035,8901000035,Rajdhani Toor Dal 2kg,320,2.0,Pulses,Dal,3,129,129.3,P129,Left,50,5
+PROD00527,8901000527,Rajdhani Toor Dal 500g,288,0.5,Pulses,Dal,3,129,129.3,P129,Left,50,5
+PROD00030,8901000030,Toor Dal 1kg,165,1.0,Pulses,Dal,3,129,129.4,P129,Left,50,5
+PROD00511,8901000511,Toor Dal 250g,91,0.25,Pulses,Dal,3,129,129.4,P129,Left,50,5
+PROD00513,8901000513,Toor Dal 2kg,297,2.0,Pulses,Dal,3,129,129.4,P129,Left,50,5
+PROD00512,8901000512,Toor Dal 500g,148,0.5,Pulses,Dal,3,129,129.4,P129,Left,50,5
+PROD00033,8901000033,Urad Dal White 1kg,155,1.0,Pulses,Dal,3,129,129.5,P129,Left,50,5
+PROD00520,8901000520,Urad Dal White 250g,85,0.25,Pulses,Dal,3,129,129.5,P129,Left,50,5
+PROD00522,8901000522,Urad Dal White 2kg,279,2.0,Pulses,Dal,3,129,129.5,P129,Left,50,5
+PROD00521,8901000521,Urad Dal White 500g,140,0.5,Pulses,Dal,3,129,129.5,P129,Left,50,5
+PROD00163,8901000163,Britannia 50-50 Sweet & Salty 195g,40,0.195,Snacks,Biscuits,3,129,129.6,P129,Left,50,5
+PROD00987,8901000987,Britannia 50-50 Sweet & Salty 1kg,68,1.0,Snacks,Biscuits,3,129,129.6,P129,Left,50,5
+PROD00985,8901000985,Britannia 50-50 Sweet & Salty 250g,22,0.25,Snacks,Biscuits,3,129,129.6,P129,Left,50,5
+PROD00988,8901000988,Britannia 50-50 Sweet & Salty 2kg,72,2.0,Snacks,Biscuits,3,129,129.6,P129,Left,50,5
+PROD00986,8901000986,Britannia 50-50 Sweet & Salty 500g,36,0.5,Snacks,Biscuits,3,129,129.7,P129,Left,50,5
+PROD00980,8901000980,Britannia Bourbon Cream 1kg,76,1.0,Snacks,Biscuits,3,129,129.7,P129,Left,50,5
+PROD00161,8901000161,Britannia Bourbon Cream 200g,45,0.2,Snacks,Biscuits,3,129,129.7,P129,Left,50,5
+PROD00978,8901000978,Britannia Bourbon Cream 250g,25,0.25,Snacks,Biscuits,3,129,129.7,P129,Left,50,5
+PROD00981,8901000981,Britannia Bourbon Cream 2kg,81,2.0,Snacks,Biscuits,3,130,130.1,P130,Left,50,5
+PROD00979,8901000979,Britannia Bourbon Cream 500g,40,0.5,Snacks,Biscuits,3,130,130.1,P130,Left,50,5
+PROD00972,8901000972,Britannia Good Day Cashew 1kg,94,1.0,Snacks,Biscuits,3,130,130.1,P130,Left,50,5
+PROD00159,8901000159,Britannia Good Day Cashew 200g,55,0.2,Snacks,Biscuits,3,130,130.1,P130,Left,50,5
+PROD00970,8901000970,Britannia Good Day Cashew 250g,30,0.25,Snacks,Biscuits,3,130,130.2,P130,Left,50,5
+PROD00973,8901000973,Britannia Good Day Cashew 2kg,99,2.0,Snacks,Biscuits,3,130,130.2,P130,Left,50,5
+PROD00971,8901000971,Britannia Good Day Cashew 500g,50,0.5,Snacks,Biscuits,3,130,130.2,P130,Left,50,5
+PROD00983,8901000983,Britannia Marie Gold 1kg,51,1.0,Snacks,Biscuits,3,130,130.2,P130,Left,50,5
+PROD00162,8901000162,Britannia Marie Gold 250g,30,0.25,Snacks,Biscuits,3,130,130.3,P130,Left,50,5
+PROD00984,8901000984,Britannia Marie Gold 2kg,54,2.0,Snacks,Biscuits,3,130,130.3,P130,Left,50,5
+PROD00982,8901000982,Britannia Marie Gold 500g,27,0.5,Snacks,Biscuits,3,130,130.3,P130,Left,50,5
+PROD00160,8901000160,Britannia NutriChoice 5 Grain 150g,60,0.15,Snacks,Biscuits,3,130,130.3,P130,Left,50,5
+PROD00976,8901000976,Britannia NutriChoice 5 Grain 1kg,102,1.0,Snacks,Biscuits,3,130,130.4,P130,Left,50,5
+PROD00974,8901000974,Britannia NutriChoice 5 Grain 250g,33,0.25,Snacks,Biscuits,3,130,130.4,P130,Left,50,5
+PROD00977,8901000977,Britannia NutriChoice 5 Grain 2kg,108,2.0,Snacks,Biscuits,3,130,130.4,P130,Left,50,5
+PROD00975,8901000975,Britannia NutriChoice 5 Grain 500g,54,0.5,Snacks,Biscuits,3,130,130.4,P130,Left,50,5
+PROD00176,8901000176,Digestive Oat Biscuits 250g,90,0.25,Snacks,Biscuits,3,130,130.5,P130,Left,50,5
+PROD00174,8901000174,Good Day Butter 200g,50,0.2,Snacks,Biscuits,3,130,130.5,P130,Left,50,5
+PROD00173,8901000173,Krackjack Sweet Salty 200g,35,0.2,Snacks,Biscuits,3,130,130.5,P130,Left,50,5
+PROD00172,8901000172,Lotus Biscoff Cookies 250g,195,0.25,Snacks,Biscuits,3,130,130.5,P130,Left,50,5
+PROD00170,8901000170,Mcvities Digestive Original 250g,95,0.25,Snacks,Biscuits,3,130,130.6,P130,Left,50,5
+PROD00171,8901000171,Mcvities Hobnobs Oat 300g,140,0.3,Snacks,Biscuits,3,130,130.6,P130,Left,50,5
+PROD00166,8901000166,Oreo Chocolate Sandwich 120g,40,0.12,Snacks,Biscuits,3,130,130.6,P130,Left,50,5
+PROD00999,8901000999,Oreo Chocolate Sandwich 1kg,68,1.0,Snacks,Biscuits,3,130,130.6,P130,Left,50,5
+PROD00997,8901000997,Oreo Chocolate Sandwich 250g,22,0.25,Snacks,Biscuits,3,130,130.7,P130,Left,50,5
+PROD01000,8901001000,Oreo Chocolate Sandwich 2kg,72,2.0,Snacks,Biscuits,3,130,130.7,P130,Left,50,5
+PROD00998,8901000998,Oreo Chocolate Sandwich 500g,36,0.5,Snacks,Biscuits,3,130,130.7,P130,Left,50,5
+PROD00167,8901000167,Oreo Vanilla Sandwich 120g,40,0.12,Snacks,Biscuits,3,130,130.7,P130,Left,50,5
+PROD00168,8901000168,Parle Hide & Seek Chocolate 100g,35,0.1,Snacks,Biscuits,3,131,131.1,P131,Right,50,5
+PROD00175,8901000175,Parle Monaco Salted 200g,30,0.2,Snacks,Biscuits,3,131,131.1,P131,Right,50,5
+PROD00968,8901000968,Parle-G Glucose Biscuits 1kg,68,1.0,Snacks,Biscuits,3,131,131.1,P131,Right,50,5
+PROD00966,8901000966,Parle-G Glucose Biscuits 250g,22,0.25,Snacks,Biscuits,3,131,131.1,P131,Right,50,5
+PROD00969,8901000969,Parle-G Glucose Biscuits 2kg,72,2.0,Snacks,Biscuits,3,131,131.2,P131,Right,50,5
+PROD00967,8901000967,Parle-G Glucose Biscuits 500g,36,0.5,Snacks,Biscuits,3,131,131.2,P131,Right,50,5
+PROD00158,8901000158,Parle-G Glucose Biscuits 800g,40,0.8,Snacks,Biscuits,3,131,131.2,P131,Right,50,5
+PROD00991,8901000991,Sunfeast Dark Fantasy Choco Fills 1kg,51,1.0,Snacks,Biscuits,3,131,131.2,P131,Right,50,5
+PROD00989,8901000989,Sunfeast Dark Fantasy Choco Fills 250g,16,0.25,Snacks,Biscuits,3,131,131.3,P131,Right,50,5
+PROD00992,8901000992,Sunfeast Dark Fantasy Choco Fills 2kg,54,2.0,Snacks,Biscuits,3,131,131.3,P131,Right,50,5
+PROD00990,8901000990,Sunfeast Dark Fantasy Choco Fills 500g,27,0.5,Snacks,Biscuits,3,131,131.3,P131,Right,50,5
+PROD00164,8901000164,Sunfeast Dark Fantasy Choco Fills 75g,30,0.075,Snacks,Biscuits,3,131,131.3,P131,Right,50,5
+PROD00995,8901000995,Sunfeast Mom's Magic Butter Sugar 1kg,68,1.0,Snacks,Biscuits,3,131,131.4,P131,Right,50,5
+PROD00165,8901000165,Sunfeast Mom's Magic Butter Sugar 200g,40,0.2,Snacks,Biscuits,3,131,131.4,P131,Right,50,5
+PROD00993,8901000993,Sunfeast Mom's Magic Butter Sugar 250g,22,0.25,Snacks,Biscuits,3,131,131.4,P131,Right,50,5
+PROD00996,8901000996,Sunfeast Mom's Magic Butter Sugar 2kg,72,2.0,Snacks,Biscuits,3,131,131.4,P131,Right,50,5
+PROD00994,8901000994,Sunfeast Mom's Magic Butter Sugar 500g,36,0.5,Snacks,Biscuits,3,131,131.5,P131,Right,50,5
+PROD00169,8901000169,Unibic Choco Chip Cookies 150g,55,0.15,Snacks,Biscuits,3,131,131.5,P131,Right,50,5
+PROD00948,8901000948,Bikaji Bikaneri Bhujia 1kg,255,1.0,Snacks,Chips,3,131,131.5,P131,Right,50,5
+PROD00946,8901000946,Bikaji Bikaneri Bhujia 250g,82,0.25,Snacks,Chips,3,131,131.5,P131,Right,50,5
+PROD00949,8901000949,Bikaji Bikaneri Bhujia 2kg,270,2.0,Snacks,Chips,3,131,131.6,P131,Right,50,5
+PROD00153,8901000153,Bikaji Bikaneri Bhujia 400g,150,0.4,Snacks,Chips,3,131,131.6,P131,Right,50,5
+PROD00947,8901000947,Bikaji Bikaneri Bhujia 500g,135,0.5,Snacks,Chips,3,131,131.6,P131,Right,50,5
+PROD00952,8901000952,Bikaji Navratan Mix 1kg,255,1.0,Snacks,Chips,3,131,131.6,P131,Right,50,5
+PROD00950,8901000950,Bikaji Navratan Mix 250g,82,0.25,Snacks,Chips,3,131,131.7,P131,Right,50,5
+PROD00953,8901000953,Bikaji Navratan Mix 2kg,270,2.0,Snacks,Chips,3,131,131.7,P131,Right,50,5
+PROD00154,8901000154,Bikaji Navratan Mix 400g,150,0.4,Snacks,Chips,3,131,131.7,P131,Right,50,5
+PROD00951,8901000951,Bikaji Navratan Mix 500g,135,0.5,Snacks,Chips,3,131,131.7,P131,Right,50,5
+PROD00908,8901000908,Bingo Mad Angles 1kg,17,1.0,Snacks,Chips,3,132,132.1,P132,Right,50,5
+PROD00906,8901000906,Bingo Mad Angles 250g,6,0.25,Snacks,Chips,3,132,132.1,P132,Right,50,5
+PROD00909,8901000909,Bingo Mad Angles 2kg,18,2.0,Snacks,Chips,3,132,132.1,P132,Right,50,5
+PROD00143,8901000143,Bingo Mad Angles 34g,10,0.034,Snacks,Chips,3,132,132.1,P132,Right,50,5
+PROD00907,8901000907,Bingo Mad Angles 500g,9,0.5,Snacks,Chips,3,132,132.2,P132,Right,50,5
+PROD00912,8901000912,Bingo Tedhe Medhe 1kg,34,1.0,Snacks,Chips,3,132,132.2,P132,Right,50,5
+PROD00910,8901000910,Bingo Tedhe Medhe 250g,11,0.25,Snacks,Chips,3,132,132.2,P132,Right,50,5
+PROD00913,8901000913,Bingo Tedhe Medhe 2kg,36,2.0,Snacks,Chips,3,132,132.2,P132,Right,50,5
+PROD00911,8901000911,Bingo Tedhe Medhe 500g,18,0.5,Snacks,Chips,3,132,132.3,P132,Right,50,5
+PROD00144,8901000144,Bingo Tedhe Medhe 60g,20,0.06,Snacks,Chips,3,132,132.3,P132,Right,50,5
+PROD00964,8901000964,Crax Corn Rings 1kg,17,1.0,Snacks,Chips,3,132,132.3,P132,Right,50,5
+PROD00962,8901000962,Crax Corn Rings 250g,6,0.25,Snacks,Chips,3,132,132.3,P132,Right,50,5
+PROD00965,8901000965,Crax Corn Rings 2kg,18,2.0,Snacks,Chips,3,132,132.4,P132,Right,50,5
+PROD00963,8901000963,Crax Corn Rings 500g,9,0.5,Snacks,Chips,3,132,132.4,P132,Right,50,5
+PROD00157,8901000157,Crax Corn Rings 50g,10,0.05,Snacks,Chips,3,132,132.4,P132,Right,50,5
+PROD00928,8901000928,Doritos Cool Ranch 1kg,68,1.0,Snacks,Chips,3,132,132.4,P132,Right,50,5
+PROD00926,8901000926,Doritos Cool Ranch 250g,22,0.25,Snacks,Chips,3,132,132.5,P132,Right,50,5
+PROD00929,8901000929,Doritos Cool Ranch 2kg,72,2.0,Snacks,Chips,3,132,132.5,P132,Right,50,5
+PROD00927,8901000927,Doritos Cool Ranch 500g,36,0.5,Snacks,Chips,3,132,132.5,P132,Right,50,5
+PROD00148,8901000148,Doritos Cool Ranch 70g,40,0.07,Snacks,Chips,3,132,132.5,P132,Right,50,5
+PROD00924,8901000924,Doritos Nacho Cheese 1kg,68,1.0,Snacks,Chips,3,132,132.6,P132,Right,50,5
+PROD00922,8901000922,Doritos Nacho Cheese 250g,22,0.25,Snacks,Chips,3,132,132.6,P132,Right,50,5
+PROD00925,8901000925,Doritos Nacho Cheese 2kg,72,2.0,Snacks,Chips,3,132,132.6,P132,Right,50,5
+PROD00923,8901000923,Doritos Nacho Cheese 500g,36,0.5,Snacks,Chips,3,132,132.6,P132,Right,50,5
+PROD00147,8901000147,Doritos Nacho Cheese 70g,40,0.07,Snacks,Chips,3,132,132.7,P132,Right,50,5
+PROD00932,8901000932,Haldirams Aloo Bhujia 1kg,238,1.0,Snacks,Chips,3,132,132.7,P132,Right,50,5
+PROD00930,8901000930,Haldirams Aloo Bhujia 250g,77,0.25,Snacks,Chips,3,132,132.7,P132,Right,50,5
+PROD00933,8901000933,Haldirams Aloo Bhujia 2kg,252,2.0,Snacks,Chips,3,132,132.7,P132,Right,50,5
+PROD00149,8901000149,Haldirams Aloo Bhujia 400g,140,0.4,Snacks,Chips,3,133,133.1,P133,Right,50,5
+PROD00931,8901000931,Haldirams Aloo Bhujia 500g,126,0.5,Snacks,Chips,3,133,133.1,P133,Right,50,5
+PROD00936,8901000936,Haldirams Bhujia 1kg,221,1.0,Snacks,Chips,3,133,133.1,P133,Right,50,5
+PROD00934,8901000934,Haldirams Bhujia 250g,72,0.25,Snacks,Chips,3,133,133.1,P133,Right,50,5
+PROD00937,8901000937,Haldirams Bhujia 2kg,234,2.0,Snacks,Chips,3,133,133.2,P133,Right,50,5
+PROD00150,8901000150,Haldirams Bhujia 400g,130,0.4,Snacks,Chips,3,133,133.2,P133,Right,50,5
+PROD00935,8901000935,Haldirams Bhujia 500g,117,0.5,Snacks,Chips,3,133,133.2,P133,Right,50,5
+PROD00956,8901000956,Haldirams Namkeen Peanuts 1kg,102,1.0,Snacks,Chips,3,133,133.2,P133,Right,50,5
+PROD00155,8901000155,Haldirams Namkeen Peanuts 200g,60,0.2,Snacks,Chips,3,133,133.3,P133,Right,50,5
+PROD00954,8901000954,Haldirams Namkeen Peanuts 250g,33,0.25,Snacks,Chips,3,133,133.3,P133,Right,50,5
+PROD00957,8901000957,Haldirams Namkeen Peanuts 2kg,108,2.0,Snacks,Chips,3,133,133.3,P133,Right,50,5
+PROD00955,8901000955,Haldirams Namkeen Peanuts 500g,54,0.5,Snacks,Chips,3,133,133.3,P133,Right,50,5
+PROD00900,8901000900,Kurkure Masala Munch 1kg,34,1.0,Snacks,Chips,3,133,133.4,P133,Right,50,5
+PROD00898,8901000898,Kurkure Masala Munch 250g,11,0.25,Snacks,Chips,3,133,133.4,P133,Right,50,5
+PROD00901,8901000901,Kurkure Masala Munch 2kg,36,2.0,Snacks,Chips,3,133,133.4,P133,Right,50,5
+PROD00899,8901000899,Kurkure Masala Munch 500g,18,0.5,Snacks,Chips,3,133,133.4,P133,Right,50,5
+PROD00141,8901000141,Kurkure Masala Munch 90g,20,0.09,Snacks,Chips,3,133,133.5,P133,Right,50,5
+PROD00904,8901000904,Kurkure Triangles Chatpata 1kg,34,1.0,Snacks,Chips,3,133,133.5,P133,Right,50,5
+PROD00902,8901000902,Kurkure Triangles Chatpata 250g,11,0.25,Snacks,Chips,3,133,133.5,P133,Right,50,5
+PROD00905,8901000905,Kurkure Triangles Chatpata 2kg,36,2.0,Snacks,Chips,3,133,133.5,P133,Right,50,5
+PROD00903,8901000903,Kurkure Triangles Chatpata 500g,18,0.5,Snacks,Chips,3,133,133.6,P133,Right,50,5
+PROD00142,8901000142,Kurkure Triangles Chatpata 90g,20,0.09,Snacks,Chips,3,133,133.6,P133,Right,50,5
+PROD00896,8901000896,Lays American Style Cream Onion 1kg,34,1.0,Snacks,Chips,3,133,133.6,P133,Right,50,5
+PROD00894,8901000894,Lays American Style Cream Onion 250g,11,0.25,Snacks,Chips,3,133,133.6,P133,Right,50,5
+PROD00897,8901000897,Lays American Style Cream Onion 2kg,36,2.0,Snacks,Chips,3,133,133.7,P133,Right,50,5
+PROD00895,8901000895,Lays American Style Cream Onion 500g,18,0.5,Snacks,Chips,3,133,133.7,P133,Right,50,5
+PROD00140,8901000140,Lays American Style Cream Onion 50g,20,0.05,Snacks,Chips,3,133,133.7,P133,Right,50,5
+PROD00888,8901000888,Lays Classic Salted 1kg,34,1.0,Snacks,Chips,3,133,133.7,P133,Right,50,5
+PROD00886,8901000886,Lays Classic Salted 250g,11,0.25,Snacks,Chips,3,134,134.1,P134,Right,50,5
+PROD00889,8901000889,Lays Classic Salted 2kg,36,2.0,Snacks,Chips,3,134,134.1,P134,Right,50,5
+PROD00887,8901000887,Lays Classic Salted 500g,18,0.5,Snacks,Chips,3,134,134.1,P134,Right,50,5
+PROD00138,8901000138,Lays Classic Salted 50g,20,0.05,Snacks,Chips,3,134,134.1,P134,Right,50,5
+PROD00892,8901000892,Lays Magic Masala 1kg,34,1.0,Snacks,Chips,3,134,134.2,P134,Right,50,5
+PROD00890,8901000890,Lays Magic Masala 250g,11,0.25,Snacks,Chips,3,134,134.2,P134,Right,50,5
+PROD00893,8901000893,Lays Magic Masala 2kg,36,2.0,Snacks,Chips,3,134,134.2,P134,Right,50,5
+PROD00891,8901000891,Lays Magic Masala 500g,18,0.5,Snacks,Chips,3,134,134.2,P134,Right,50,5
+PROD00139,8901000139,Lays Magic Masala 50g,20,0.05,Snacks,Chips,3,134,134.3,P134,Right,50,5
+PROD00960,8901000960,Lehar Kurkure Puffcorn Yummy Cheese 1kg,34,1.0,Snacks,Chips,3,134,134.3,P134,Right,50,5
+PROD00958,8901000958,Lehar Kurkure Puffcorn Yummy Cheese 250g,11,0.25,Snacks,Chips,3,134,134.3,P134,Right,50,5
+PROD00961,8901000961,Lehar Kurkure Puffcorn Yummy Cheese 2kg,36,2.0,Snacks,Chips,3,134,134.3,P134,Right,50,5
+PROD00959,8901000959,Lehar Kurkure Puffcorn Yummy Cheese 500g,18,0.5,Snacks,Chips,3,134,134.4,P134,Right,50,5
+PROD00156,8901000156,Lehar Kurkure Puffcorn Yummy Cheese 60g,20,0.06,Snacks,Chips,3,134,134.4,P134,Right,50,5
+PROD00145,8901000145,Pringles Original 107g,180,0.107,Snacks,Chips,3,134,134.4,P134,Right,50,5
+PROD00916,8901000916,Pringles Original 1kg,306,1.0,Snacks,Chips,3,134,134.4,P134,Right,50,5
+PROD00914,8901000914,Pringles Original 250g,99,0.25,Snacks,Chips,3,134,134.5,P134,Right,50,5
+PROD00917,8901000917,Pringles Original 2kg,324,2.0,Snacks,Chips,3,134,134.5,P134,Right,50,5
+PROD00915,8901000915,Pringles Original 500g,162,0.5,Snacks,Chips,3,134,134.5,P134,Right,50,5
+PROD00146,8901000146,Pringles Sour Cream Onion 107g,180,0.107,Snacks,Chips,3,134,134.5,P134,Right,50,5
+PROD00920,8901000920,Pringles Sour Cream Onion 1kg,306,1.0,Snacks,Chips,3,134,134.6,P134,Right,50,5
+PROD00918,8901000918,Pringles Sour Cream Onion 250g,99,0.25,Snacks,Chips,3,134,134.6,P134,Right,50,5
+PROD00921,8901000921,Pringles Sour Cream Onion 2kg,324,2.0,Snacks,Chips,3,134,134.6,P134,Right,50,5
+PROD00919,8901000919,Pringles Sour Cream Onion 500g,162,0.5,Snacks,Chips,3,134,134.6,P134,Right,50,5
+PROD00940,8901000940,Too Yumm Multigrain Thins 1kg,34,1.0,Snacks,Chips,3,134,134.7,P134,Right,50,5
+PROD00938,8901000938,Too Yumm Multigrain Thins 250g,11,0.25,Snacks,Chips,3,134,134.7,P134,Right,50,5
+PROD00941,8901000941,Too Yumm Multigrain Thins 2kg,36,2.0,Snacks,Chips,3,134,134.7,P134,Right,50,5
+PROD00939,8901000939,Too Yumm Multigrain Thins 500g,18,0.5,Snacks,Chips,3,134,134.7,P134,Right,50,5
+PROD00151,8901000151,Too Yumm Multigrain Thins 60g,20,0.06,Snacks,Chips,3,135,135.1,P135,Right,50,5
+PROD00944,8901000944,Yellow Diamond Rings 1kg,17,1.0,Snacks,Chips,3,135,135.1,P135,Right,50,5
+PROD00942,8901000942,Yellow Diamond Rings 250g,6,0.25,Snacks,Chips,3,135,135.1,P135,Right,50,5
+PROD00945,8901000945,Yellow Diamond Rings 2kg,18,2.0,Snacks,Chips,3,135,135.1,P135,Right,50,5
+PROD00152,8901000152,Yellow Diamond Rings 45g,10,0.045,Snacks,Chips,3,135,135.2,P135,Right,50,5
+PROD00943,8901000943,Yellow Diamond Rings 500g,9,0.5,Snacks,Chips,3,135,135.2,P135,Right,50,5
+PROD00188,8901000188,Bikaji Peanuts Masala 200g,60,0.2,Snacks,Nuts,3,135,135.2,P135,Right,50,5
+PROD00184,8901000184,Borges Walnuts 200g,350,0.2,Snacks,Nuts,3,135,135.2,P135,Right,50,5
+PROD00178,8901000178,Happilo 100% Natural Almonds 200g,260,0.2,Snacks,Nuts,3,135,135.3,P135,Right,50,5
+PROD00186,8901000186,Happilo Pistachios 200g,380,0.2,Snacks,Nuts,3,135,135.3,P135,Right,50,5
+PROD00182,8901000182,Happilo Raisins Green 200g,110,0.2,Snacks,Nuts,3,135,135.3,P135,Right,50,5
+PROD00190,8901000190,Lion Dates 250g,80,0.25,Snacks,Nuts,3,135,135.3,P135,Right,50,5
+PROD00177,8901000177,Manna Dry Fruits Almonds 200g,280,0.2,Snacks,Nuts,3,135,135.4,P135,Right,50,5
+PROD00179,8901000179,Nutraj Cashews W320 200g,220,0.2,Snacks,Nuts,3,135,135.4,P135,Right,50,5
+PROD00185,8901000185,Nutraj Pistachios Roasted 100g,200,0.1,Snacks,Nuts,3,135,135.4,P135,Right,50,5
+PROD00181,8901000181,Nutraj Raisins 250g,120,0.25,Snacks,Nuts,3,135,135.4,P135,Right,50,5
+PROD00183,8901000183,Nutraj Walnuts Kernels 200g,380,0.2,Snacks,Nuts,3,135,135.5,P135,Right,50,5
+PROD00189,8901000189,Tata Sampann Dry Dates 200g,130,0.2,Snacks,Nuts,3,135,135.5,P135,Right,50,5
+PROD00180,8901000180,Tata Sampann Premium Cashews 200g,230,0.2,Snacks,Nuts,3,135,135.5,P135,Right,50,5
+PROD00187,8901000187,Wonderland Peanuts Roasted Salted 200g,55,0.2,Snacks,Nuts,3,135,135.5,P135,Right,50,5
+PROD00209,8901000209,Catch Biryani Masala 50g,65,0.05,Spices,Masala,3,135,135.6,P135,Right,50,5
+PROD00211,8901000211,Everest Chicken Masala 100g,95,0.1,Spices,Masala,3,135,135.6,P135,Right,50,5
+PROD00208,8901000208,Everest Rajma Masala 100g,80,0.1,Spices,Masala,3,135,135.6,P135,Right,50,5
+PROD00210,8901000210,MDH Biryani Masala 50g,75,0.05,Spices,Masala,3,135,135.6,P135,Right,50,5
+PROD00207,8901000207,MDH Kitchen King Masala 100g,90,0.1,Spices,Masala,3,135,135.7,P135,Right,50,5
+PROD00212,8901000212,MDH Mutton Masala 50g,80,0.05,Spices,Masala,3,135,135.7,P135,Right,50,5
+PROD00214,8901000214,Patanjali Haldi Powder 200g,45,0.2,Spices,Masala,3,135,135.7,P135,Right,50,5
+PROD00213,8901000213,Saffron Kesar 1g,160,0.001,Spices,Masala,3,136,136.1,P136,Right,50,5
+PROD00217,8901000217,Shan Chicken Tikka Mix 50g,55,0.05,Spices,Masala,3,136,136.1,P136,Right,50,5
+PROD00204,8901000204,Catch Coriander Powder 200g,55,0.2,Spices,Powder,3,136,136.1,P136,Right,50,5
+PROD00202,8901000202,Catch Red Chilli Powder 200g,65,0.2,Spices,Powder,3,136,136.2,P136,Right,50,5
+PROD00205,8901000205,Everest Garam Masala 100g,95,0.1,Spices,Powder,3,136,136.2,P136,Right,50,5
+PROD00203,8901000203,Everest Red Chilli Powder 200g,70,0.2,Spices,Powder,3,136,136.2,P136,Right,50,5
+PROD00218,8901000218,Everest Sabzi Masala 100g,80,0.1,Spices,Powder,3,136,136.3,P136,Right,50,5
+PROD00200,8901000200,Everest Turmeric Powder 200g,55,0.2,Spices,Powder,3,136,136.3,P136,Right,50,5
+PROD00206,8901000206,MDH Chana Masala 100g,80,0.1,Spices,Powder,3,136,136.3,P136,Right,50,5
+PROD00216,8901000216,MDH Sambar Masala 200g,115,0.2,Spices,Powder,3,136,136.4,P136,Right,50,5
+PROD00201,8901000201,MDH Turmeric Powder 500g,120,0.5,Spices,Powder,3,136,136.4,P136,Right,50,5
+PROD00215,8901000215,MTR Rasam Powder 100g,65,0.1,Spices,Powder,3,136,136.4,P136,Right,50,5
+PROD00199,8901000199,Bay Leaves 25g,30,0.025,Spices,Whole,3,136,136.5,P136,Right,50,5
+PROD00195,8901000195,Black Pepper Whole 50g,95,0.05,Spices,Whole,3,136,136.5,P136,Right,50,5
+PROD00197,8901000197,Cardamom Green 50g,175,0.05,Spices,Whole,3,136,136.5,P136,Right,50,5
+PROD00193,8901000193,Catch Mustard Seeds 100g,30,0.1,Spices,Whole,3,136,136.6,P136,Right,50,5
+PROD00198,8901000198,Cinnamon Sticks 50g,60,0.05,Spices,Whole,3,136,136.6,P136,Right,50,5
+PROD00196,8901000196,Cloves Whole 50g,120,0.05,Spices,Whole,3,136,136.6,P136,Right,50,5
+PROD00191,8901000191,Everest Cumin Seeds 100g,60,0.1,Spices,Whole,3,136,136.7,P136,Right,50,5
+PROD00194,8901000194,Everest Fennel Seeds 100g,65,0.1,Spices,Whole,3,136,136.7,P136,Right,50,5
+PROD00192,8901000192,MDH Coriander Seeds 100g,35,0.1,Spices,Whole,3,136,136.7,P136,Right,50,5

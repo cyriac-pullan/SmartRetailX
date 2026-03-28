@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - SmartRetailX</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius: 4px;">
+                    SmartRetailX
+                </div>
+                <p style="color: var(--color-text-secondary);">Join us for a smarter shopping experience</p>
+            </div>
+
+            <div id="errorMsg" class="msg-box msg-error"></div>
+            <div id="successMsg" class="msg-box msg-success"></div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="barcode">Barcode <span>(For quick scanning)</span></label>
+                    <input type="text" id="barcode" placeholder="Scan or enter ID (Required)" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username <span>(Optional)</span></label>
+                    <input type="text" id="username" placeholder="Choose a username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password <span>(Required only if username set)</span></label>
+                    <input type="password" id="password" placeholder="Min 4 characters">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="john@example.com">
+                </div>
+
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+
+            <div class="links">
+                <a href="login.html">Already have an account? Log In</a>
+                <br><br>
+                <a href="index.html" style="color: var(--color-text-secondary);">&larr; Back to Store</a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const API_BASE_URL = `${window.location.protocol}//${window.location.hostname}:5000`;
+
+        // Auto-submit on barcode scan (simple logic: if length > 8 and numbers)
+        document.getElementById('barcode').addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            if (val.length >= 8 && /^\d+$/.test(val)) {
+                // If name is filled, maybe submit? Or just focus next.
+                // Usually for registration, we don't auto-submit unless all fields are done.
+                // Let's just focus username for now.
+                // However, user might scan to register quickly. 
+                // Let's keep manual submit for registration to avoid accidental incomplete submissions.
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const barcode = document.getElementById('barcode').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            const errorEl = document.getElementById('errorMsg');
+            const successEl = document.getElementById('successMsg');
+
+            errorEl.style.display = 'none';
+            successEl.style.display = 'none';
+
+            // Validation
+            if (!barcode) {
+                showError('Barcode is required.');
+                return;
+            }
+            if (username && (!password || password.length < 4)) {
+                showError('Password (min 4 chars) is required if creating a username.');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        barcode,
+                        username: username || barcode, // Fallback username to barcode if empty
+                        password,
+                        name,
+                        email
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || 'Registration failed');
+                }
+
+                // Success
+                successEl.textContent = 'Account created successfully! Redirecting...';
+                successEl.style.display = 'block';
+
+                // Auto login
+                localStorage.setItem('customer', JSON.stringify(data));
+
+                setTimeout(() => {
+                    if (data.is_admin) {
+                        window.location.href = 'store.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 1500);
+
+            } catch (err) {
+                showError(err.message);
+            }
+        });
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

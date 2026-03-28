@@ -1,0 +1,58 @@
+@import './tokens.css';
+@import './typography.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg-0);
+    color: var(--text-900);
+    font-family: var(--font-sans);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  html {
+  }
+}
+
+/* Base Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes flash {
+  0% { border-color: transparent; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  50% { border-color: var(--color-success); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.1); }
+  100% { border-color: transparent; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--bg-1) 25%, var(--bg-2) 50%, var(--bg-1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.animate-flash {
+  animation: flash 0.6s ease-out forwards;
+}
+
+/* Frosted Glass Utility */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

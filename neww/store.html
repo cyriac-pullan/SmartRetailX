@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Dashboard - SmartRetailX</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <a href="index.html" class="brand-logo" style="text-decoration:none;">
+            <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius: 4px;">
+            SmartRetailX <span
+                style="font-weight:400; color:var(--color-text-secondary); margin-left:0.5rem; font-size:1rem;">|
+                Dashboard</span>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="btn-ghost">Back to Shop</a>
+            <button onclick="logout()" class="btn-ghost" style="color: var(--color-error);">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <header class="dash-header">
+            <div>
+                <h1 class="page-title" style="margin-bottom:0.5rem;">Store Overview</h1>
+                <p class="text-secondary">Real-time performance and inventory metrics</p>
+            </div>
+            <div class="date-badge">
+                <span id="currentDate">Today</span>
+            </div>
+        </header>
+
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Total Revenue (30d)</div>
+                <div class="metric-value" id="totalSales">₹0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Transactions (30d)</div>
+                <div class="metric-value" id="totalOrders">0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Active Products</div>
+                <div class="metric-value" id="activeProducts">0</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Restock Needed</div>
+                <div class="metric-value" id="lowStockCount">0</div>
+            </div>
+        </div>
+
+        <!-- Analytics Section -->
+        <div class="grid-2-1">
+            <!-- Sales Chart -->
+            <div class="card p-6">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 class="card-title" style="margin-bottom: 0;">Sales Forecast & Trends</h3>
+                    <div style="display: flex; gap: 0.75rem; align-items: center;">
+                        <select id="salesMonth"
+                            style="padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem;">
+                            <option value="">All Time</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="salesYear"
+                            style="padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); background: var(--bg-primary); color: var(--text-primary); font-size: 0.875rem;">
+                            <option value="">Year</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="height: 300px; width: 100%;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Best Sellers -->
+            <div class="card p-6">
+                <h3 class="card-title">Top Performing</h3>
+                <table class="mini-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Cat</th>
+                            <th class="text-right">Rev</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bestSellersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Inventory / Worst Sellers Row -->
+        <div class="grid-2-1" style="margin-top: 1.5rem;">
+            <!-- Inventory -->
+            <div class="card p-6">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <h3 class="card-title" style="margin-bottom:0;">Inventory Restock Status</h3>
+                    <a href="inventory.html" style="font-size:0.8rem;color:var(--color-primary);text-decoration:none;
+                       font-weight:600;">View All →</a>
+                </div>
+                <div class="table-container">
+                    <table class="full-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Stock</th>
+                                <th>Alert Level</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryBody"></tbody>
+                    </table>
+                </div>
+                <a href="inventory.html" style="display:block;margin-top:0.75rem;text-align:center;font-size:0.8rem;
+                          color:var(--color-primary);text-decoration:none;font-weight:600;
+                          padding:0.5rem 0;border-top:1px solid var(--color-border);">
+                    📊 View All Products & Export →
+                </a>
+            </div>
+
+            <!-- Worst Sellers -->
+            <div class="card p-6">
+                <h3 class="card-title">Low Movement</h3>
+                <p class="text-sm text-secondary mb-4">Candidates for clearance or promotion.</p>
+                <table class="mini-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Cat</th>
+                            <th class="text-right">Rev</th>
+                        </tr>
+                    </thead>
+                    <tbody id="worstSellersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================== AI INSIGHTS + ANALYTICS ============================== -->
+        <!-- AI Insights Panel -->
+        <div class="card p-6" style="margin-top:1.5rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <div>
+                    <h3 class="card-title" style="margin-bottom:0.25rem;">
+                        <span class="ai-badge">&#x1F9E0; AI</span> Store Insights
+                    </h3>
+                    <p class="text-secondary" style="font-size:0.82rem;">Auto-detected anomalies and recommendations</p>
+                </div>
+                <button onclick="loadAIInsights()" class="btn-ghost"
+                    style="font-size:0.8rem;border:1px solid var(--border-light);">&#x21BB; Refresh</button>
+            </div>
+            <div id="aiInsightsList">
+                <div class="insight-card insight-info">
+                    <div class="ic-icon">&#x23F3;</div>
+                    <div>
+                        <div class="ic-title">Loading AI Insights…</div>
+                        <div class="ic-sub">Analysing inventory and sales data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Breakdown + Heatmap Row -->
+        <div class="grid-2-1" style="margin-top:1.5rem;">
+            <!-- Category Donut Chart -->
+            <div class="card p-6">
+                <h3 class="card-title" style="margin-bottom:0.25rem;">Category Share</h3>
+                <p class="text-secondary" style="font-size:0.82rem;margin-bottom:0.5rem;">Revenue breakdown by product
+                    category</p>
+                <div id="panelDonut" style="height:260px;position:relative;">
+                    <canvas id="categoryDonut"></canvas>
+                </div>
+            </div>
+
+            <!-- Aisle Traffic Heatmap -->
+            <div class="card p-6">
+                <h3 class="card-title" style="margin-bottom:0.25rem;">Aisle Traffic Heatmap</h3>
+                <p class="text-secondary" style="font-size:0.82rem;margin-bottom:0.5rem;">Purchase density by aisle</p>
+                <div id="aisleHeatmap" class="heatmap-grid"></div>
+            </div>
+        </div>
+
+        <!-- ============================== ADVERTISEMENT SYSTEM ============================== -->
+        <div class="card p-6 mt-8" style="background:var(--bg-secondary); border:1px solid var(--border-light);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
+                <div>
+                    <h2 class="card-title" style="margin-bottom:0.25rem;">📢 In-Store Advertisements</h2>
+                    <p class="text-secondary" style="font-size:0.85rem;">Manage position-based ads and track revenue</p>
+                </div>
+                <div style="display:flex; gap:1rem;">
+                    <div style="text-align:right;">
+                        <div
+                            style="font-size:0.7rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:1px;">
+                            Est. Ad Revenue</div>
+                        <div id="adTotalRevenue" style="font-size:1.5rem; font-weight:700; color:var(--color-primary);">
+                            ₹0.00</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div
+                            style="font-size:0.7rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:1px;">
+                            Total Views</div>
+                        <div id="adTotalImpressions" style="font-size:1.5rem; font-weight:700;">0</div>
+                    </div>
+                    <button onclick="openAdModal()" class="btn-primary" style="height:fit-content; margin-left:1rem;">+
+                        New Ad</button>
+                    <button onclick="setupAdsDb()" class="btn-ghost"
+                        style="height:fit-content; border:1px solid var(--border-light); margin-left:0.5rem;"
+                        title="Initialize tables if missing">⚙️</button>
+                </div>
+            </div>
+
+            <table class="full-table">
+                <thead>
+                    <tr>
+                        <th style="width:250px;">Ad Banner</th>
+                        <th>Target Location</th>
+                        <th>Priority / Type</th>
+                        <th>Stats</th>
+                        <th style="width:100px; text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adsTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center text-secondary py-4">Loading ads...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="all_ads.html" style="display:block;margin-top:0.75rem;text-align:center;font-size:0.8rem;
+                color:var(--color-primary);text-decoration:none;font-weight:600;
+                padding:0.5rem 0;border-top:1px solid var(--color-border);">
+                📢 View All Store Advertisements →
+            </a>
+        </div>
+
+        <!-- Ad Edit Modal -->
+        <div id="adModal"
+            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+            <div
+                style="background:var(--bg-primary); width:90%; max-width:500px; border-radius:12px; padding:2rem; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+                <h3 id="adModalTitle" style="margin-bottom:1rem;">Create Advertisement</h3>
+                <input type="hidden" id="adId">
+                <input type="text" id="adTitleStr" placeholder="Ad Title (e.g. 50% Off Coke)" class="input-light"
+                    style="width:100%; margin-bottom:1rem; padding:0.75rem;">
+                <textarea id="adDescStr" placeholder="Description / Subtitle" class="input-light"
+                    style="width:100%; margin-bottom:1rem; padding:0.75rem; min-height:60px;" rows="2"></textarea>
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <input type="text" id="adImageUrl" placeholder="Image URL (optional)" class="input-light"
+                        style="flex:1; padding:0.75rem;">
+                    <input type="text" id="adProductId" placeholder="Product Barcode (for cart)" class="input-light"
+                        style="width:180px; padding:0.75rem;">
+                </div>
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Target
+                            Aisle</label>
+                        <input type="number" id="adAisle" placeholder="Any" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Target
+                            Position Tag</label>
+                        <input type="text" id="adPositionTag" placeholder="e.g. P101 (Any)" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                </div>
+                <div style="display:flex; gap:1rem; margin-bottom:1.5rem;">
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:0.25rem;">Priority
+                            Score</label>
+                        <input type="number" id="adPriority" value="0" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:0.25rem;">Rev
+                            per View (₹)</label>
+                        <input type="number" id="adRev" value="0" step="0.1" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1; display:flex; align-items:flex-end;">
+                        <label style="display:flex; align-items:center; gap:0.5rem; height:42px; cursor:pointer;">
+                            <input type="checkbox" id="adCompulsory"> <b>Compulsory Ad</b>
+                        </label>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:1rem;">
+                    <button onclick="closeAdModal()" class="btn-ghost">Cancel</button>
+                    <button onclick="saveAd()" class="btn-primary">Save Ad</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ESP Calibration Wizard -->
+        <div id="calibSection" class="card p-6"
+            style="margin-top: 1.5rem; border: 2px solid #6366f1; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: #e2e8f0; position:relative; overflow:hidden;">
+            <!-- Decorative glow -->
+            <div
+                style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(99,102,241,0.3),transparent 70%);pointer-events:none;">
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <div>
+                    <h3 style="margin:0; font-size:1.25rem; font-weight:700; color:#a5b4fc;">📡 ESP Location Calibration
+                        Wizard</h3>
+                    <p style="margin:0.25rem 0 0; font-size:0.85rem; color:#94a3b8;">One-time setup · Teach the system
+                        your store layout</p>
+                </div>
+                <div id="calibStatusBadge"
+                    style="padding:0.4rem 1rem; border-radius:999px; font-size:0.8rem; font-weight:600; background:#1e293b; border:1px solid #334155; color:#94a3b8;">
+                    Checking...</div>
+            </div>
+
+            <!-- Wizard Body -->
+            <div id="wizardContainer">
+
+                <!-- STEP 0: Welcome -->
+                <div id="wStep0" class="wStep">
+                    <div style="text-align:center; padding:2rem 1rem;">
+                        <div style="font-size:3rem; margin-bottom:1rem;">🏪</div>
+                        <h4 style="font-size:1.1rem; font-weight:600; color:#e2e8f0; margin:0 0 0.75rem;">Ready to
+                            calibrate your store?</h4>
+                        <p style="color:#94a3b8; font-size:0.9rem; max-width:480px; margin:0 auto 1.5rem;">
+                            You will walk to <strong style="color:#a5b4fc;">3 spots per aisle</strong> — Start, Middle,
+                            and End.<br>
+                            At each spot the system collects <strong style="color:#a5b4fc;">7 seconds</strong> of ESP
+                            signal data and saves a location fingerprint.
+                        </p>
+                        <div
+                            style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:480px; margin: 0 auto 2rem;">
+                            <div style="background:#1e293b; border-radius:8px; padding:1rem; border:1px solid #334155;">
+                                <div style="font-size:1.5rem;">📍</div>
+                                <div style="font-size:0.8rem; color:#a5b4fc; margin-top:0.25rem;">3 Positions</div>
+                                <div style="font-size:0.7rem; color:#64748b;">per aisle</div>
+                            </div>
+                            <div style="background:#1e293b; border-radius:8px; padding:1rem; border:1px solid #334155;">
+                                <div style="font-size:1.5rem;">📡</div>
+                                <div style="font-size:0.8rem; color:#a5b4fc; margin-top:0.25rem;">3 ESPs</div>
+                                <div style="font-size:0.7rem; color:#64748b;">all measured</div>
+                            </div>
+                            <div style="background:#1e293b; border-radius:8px; padding:1rem; border:1px solid #334155;">
+                                <div style="font-size:1.5rem;">⏱️</div>
+                                <div style="font-size:0.8rem; color:#a5b4fc; margin-top:0.25rem;">7 Seconds</div>
+                                <div style="font-size:0.7rem; color:#64748b;">per capture</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:1rem; justify-content:center;">
+                            <div style="display:flex; align-items:center; gap:0.5rem;">
+                                <label style="color:#94a3b8; font-size:0.85rem;">Number of aisles:</label>
+                                <select id="numAislesSelect"
+                                    style="background:#1e293b; border:1px solid #334155; color:#e2e8f0; padding:0.4rem 0.8rem; border-radius:6px; font-size:0.85rem;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3" selected>3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <button onclick="startCalibWizard()"
+                                style="background:linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; border:none; padding:0.75rem 2rem; border-radius:8px; font-size:0.95rem; font-weight:600; cursor:pointer; box-shadow:0 4px 15px rgba(99,102,241,0.4);">
+                                Start Calibration →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 1 (repeating): Per-aisle, per-position capture -->
+                <div id="wStep1" class="wStep" style="display:none;">
+                    <!-- Progress bar at top -->
+                    <div style="display:flex; gap:4px; margin-bottom:1.5rem;" id="calibProgressBar"></div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+                        <!-- Left: instruction -->
+                        <div>
+                            <div id="captureAisleLabel"
+                                style="font-size:0.8rem; color:#6366f1; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem;">
+                                AISLE 1 · START</div>
+                            <h4 id="captureInstructions"
+                                style="font-size:1.05rem; font-weight:600; color:#e2e8f0; margin:0 0 1rem;">Stand at the
+                                <strong style='color:#a5b4fc;'>START</strong> of Aisle 1
+                            </h4>
+                            <!-- Aisle mini-map -->
+                            <canvas id="calibMiniMap" width="260" height="120"
+                                style="border-radius:8px; background:#0f172a; border:1px solid #334155; display:block;"></canvas>
+                        </div>
+                        <!-- Right: capture panel -->
+                        <div>
+                            <div id="countdownDisplay"
+                                style="text-align:center; font-size:3.5rem; font-weight:800; color:#a5b4fc; font-variant-numeric:tabular-nums; letter-spacing:-2px; margin-bottom:0.5rem;">
+                                7</div>
+                            <p id="captureStatus"
+                                style="text-align:center; font-size:0.85rem; color:#94a3b8; margin-bottom:1rem;">Press
+                                Capture to begin scanning</p>
+                            <!-- ESP signal bars -->
+                            <div id="espBars"
+                                style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+                                <!-- Rendered by JS -->
+                            </div>
+                            <button id="captureBtn" onclick="runCapture()"
+                                style="width:100%; background:linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; border:none; padding:0.7rem; border-radius:8px; font-size:0.95rem; font-weight:600; cursor:pointer;">
+                                📡 Capture Signal (7s)
+                            </button>
+                            <button id="skipBtn" onclick="advanceWizard()"
+                                style="width:100%; margin-top:0.5rem; background:transparent; color:#64748b; border:1px solid #334155; padding:0.6rem; border-radius:8px; font-size:0.85rem; cursor:pointer;">
+                                Skip this step
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Summary & Save -->
+                <div id="wStep2" class="wStep" style="display:none;">
+                    <div style="text-align:center; padding:1.5rem;">
+                        <div style="font-size:2.5rem; margin-bottom:1rem;">✅</div>
+                        <h4 style="font-size:1.1rem; font-weight:600; color:#e2e8f0; margin:0 0 0.5rem;">All positions
+                            captured!</h4>
+                        <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.5rem;">Click Save to permanently
+                            store the fingerprint map.</p>
+                        <div id="calibSummaryGrid"
+                            style="display:grid; gap:0.5rem; max-width:400px; margin:0 auto 2rem; text-align:left;">
+                        </div>
+                        <div style="display:flex; justify-content:center; gap:1rem;">
+                            <button onclick="recalibrateWizard()"
+                                style="background:#1e293b; color:#94a3b8; border:1px solid #334155; padding:0.7rem 1.5rem; border-radius:8px; font-size:0.9rem; cursor:pointer;">↺
+                                Start Over</button>
+                            <button id="saveCalibBtn" onclick="saveCalibration()"
+                                style="background:linear-gradient(135deg,#10b981,#059669); color:#fff; border:none; padding:0.7rem 2rem; border-radius:8px; font-size:0.95rem; font-weight:600; cursor:pointer; box-shadow:0 4px 15px rgba(16,185,129,0.3);">
+                                💾 Save Calibration
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = `${window.location.protocol}//${window.location.hostname}:5000/api`;
+
+        // Check Auth
+        const user = JSON.parse(localStorage.getItem('customer') || '{}');
+        if (!user.is_admin) {
+            alert('Access Denied: Admin privileges required.');
+            window.location.href = 'index.html';
+        }
+
+        async function init() {
+            // Set current month and year as defaults
+            const now = new Date();
+            const currentMonth = now.getMonth() + 1; // 1-12
+            const currentYear = now.getFullYear();
+
+            document.getElementById('salesMonth').value = currentMonth;
+            document.getElementById('salesYear').value = currentYear;
+
+            // Add event listeners to reload chart on filter change
+            document.getElementById('salesMonth').addEventListener('change', loadSalesChart);
+            document.getElementById('salesYear').addEventListener('change', loadSalesChart);
+
+            await Promise.all([
+                loadMetrics(),
+                loadProductPerformance(),
+                loadInventoryStatus(),
+                loadSalesChart(),
+                checkCalibStatus(),
+                loadAdsDashboard(),
+                loadAIInsights(),       // NEW
+                loadCategoryDonut(),    // NEW
+                loadAisleHeatmap()      // NEW
+            ]);
+        }
+
+        async function loadMetrics() {
+            try {
+                // Fetch basic status (using sales analytics for revenue)
+                const res = await fetch(`${API_URL}/analytics/sales`);
+                const salesData = await res.json();
+
+                // Calculate Totals
+                const totalRevenue = salesData.reduce((acc, curr) => acc + (curr.revenue || 0), 0);
+                const totalOrders = salesData.reduce((acc, curr) => acc + (curr.transactions || 0), 0);
+
+                // Update UI (Formatting Currency)
+                document.getElementById('totalSales').textContent = '₹' + totalRevenue.toLocaleString('en-IN');
+                document.getElementById('totalOrders').textContent = totalOrders;
+
+            } catch (e) {
+                console.error("Failed to load metrics", e);
+            }
+        }
+
+        async function loadInventoryStatus() {
+            try {
+                const res = await fetch(`${API_URL}/analytics/inventory`);
+                const inventory = await res.json();
+
+                // Metrics
+                const criticalCount = inventory.filter(i => i.status === 'reorder_needed').length;
+                const lowCount = inventory.filter(i => i.status === 'low').length;
+                const restockCount = criticalCount + lowCount;
+                document.getElementById('lowStockCount').textContent = restockCount;
+                if (restockCount > 0) document.getElementById('lowStockCount').style.color = '#dc2626';
+
+                // Active products = total from both tables (1000)
+                document.getElementById('activeProducts').textContent = inventory.length;
+
+                // Show max 8 critical items only
+                const preview = inventory
+                    .filter(i => i.status !== 'ok')
+                    .slice(0, 8);
+
+                const tbody = document.getElementById('inventoryBody');
+                if (!preview.length) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--color-text-secondary);padding:1rem;">All products are well stocked ✔️</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = preview.map(p => {
+                    const statusClass = p.status === 'reorder_needed' ? 'status-critical' : 'status-low';
+                    const statusText = p.status === 'reorder_needed' ? 'Critical' : 'Low Stock';
+                    return `
+                        <tr>
+                            <td class="font-medium">${p.name}</td>
+                            <td>${p.category}</td>
+                            <td>${p.stock_quantity}</td>
+                            <td class="mono">Re-order: ${p.reorder_level}</td>
+                            <td><span class="status-pill ${statusClass}">${statusText}</span></td>
+                        </tr>`;
+                }).join('');
+
+            } catch (e) { console.error('Inventory error', e); }
+        }
+
+        async function loadProductPerformance() {
+            try {
+                const res = await fetch(`${API_URL}/analytics/products/performance?limit=5`);
+                const data = await res.json();
+
+                // Render Best Sellers
+                renderMiniTable('bestSellersBody', data.best_sellers);
+
+                // Render Worst Sellers
+                renderMiniTable('worstSellersBody', data.worst_sellers);
+
+            } catch (e) { console.error("Performance error", e); }
+        }
+
+        function renderMiniTable(elementId, items) {
+            const tbody = document.getElementById(elementId);
+            if (!items || items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="text-secondary center">No sales data yet</td></tr>';
+                return;
+            }
+            tbody.innerHTML = items.map((p, idx) => {
+                const rankBadge = idx === 0
+                    ? `<span style="background:#fbbf24;color:#1e293b;font-size:0.65rem;font-weight:700;
+                                    padding:1px 5px;border-radius:4px;margin-right:4px;">#1</span>`
+                    : `<span style="color:var(--color-text-secondary);font-size:0.75rem;
+                                    margin-right:4px;">${idx + 1}</span>`;
+                const cat = p.category || '—';
+                const rev = (p.revenue || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+                const sold = p.total_sold || 0;
+                return `
+                <tr>
+                    <td class="font-medium truncate" style="max-width:150px;" title="${p.name}">
+                        ${rankBadge}${p.name}
+                    </td>
+                    <td>${cat}</td>
+                    <td class="text-right">₹${rev} <span style="font-size:0.7rem;color:var(--color-text-secondary);">(${sold} sold)</span></td>
+                </tr>`;
+            }).join('');
+        }
+
+        // ═══════════════ AI INSIGHTS ═════════════════════════
+        async function loadAIInsights() {
+            const el = document.getElementById('aiInsightsList');
+            if (!el) return;
+            el.innerHTML = '<div class="insight-card insight-info"><div class="ic-icon">&#x23F3;</div><div><div class="ic-title">Analysing…</div></div></div>';
+
+            try {
+                // Pull inventory and product performance (reuse existing endpoints)
+                const [invRes, perfRes] = await Promise.all([
+                    fetch(`${API_URL}/analytics/inventory`),
+                    fetch(`${API_URL}/analytics/products/performance?limit=20`)
+                ]);
+                const inventory = await invRes.json();
+                const perf = await perfRes.json();
+
+                const insights = [];
+
+                // Detect slow movers (stock > 50, zero sales in perf)
+                const soldBarcodes = new Set((perf.best_sellers || []).map(p => p.barcode));
+                const slowMovers = (inventory || []).filter(p => !soldBarcodes.has(p.barcode) && p.stock_quantity > 50);
+                if (slowMovers.length) {
+                    insights.push({
+                        type: 'warn',
+                        icon: '&#x1F4E6;',
+                        title: `${slowMovers.length} Slow-Moving Product${slowMovers.length > 1 ? 's' : ''} Detected`,
+                        sub: `${slowMovers.slice(0, 3).map(p => p.name).join(', ')}${slowMovers.length > 3 ? '…' : ''} — consider promotions or clearance.`
+                    });
+                }
+
+                // Detect critical restock (stock <= reorder_level)
+                const critical = (inventory || []).filter(p => p.status === 'reorder_needed');
+                if (critical.length) {
+                    insights.push({
+                        type: 'warn',
+                        icon: '&#x26A0;&#xFE0F;',
+                        title: `${critical.length} Item${critical.length > 1 ? 's' : ''} at Critical Stock`,
+                        sub: `${critical.slice(0, 3).map(p => p.name).join(', ')} — reorder now to avoid stockouts.`
+                    });
+                } else {
+                    insights.push({ type: 'good', icon: '&#x2705;', title: 'No Critical Stock Issues', sub: 'All monitored products are above their reorder threshold.' });
+                }
+
+                // Top performer badge
+                if (perf.best_sellers && perf.best_sellers[0]) {
+                    const top = perf.best_sellers[0];
+                    insights.push({
+                        type: 'info',
+                        icon: '&#x1F3C6;',
+                        title: `Best Seller: ${top.name}`,
+                        sub: `₹${(top.revenue || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })} revenue · ${top.total_sold || 0} units sold. Consider featuring prominently.`
+                    });
+                }
+
+                // Category diversity tip
+                const catSet = new Set((inventory || []).map(p => p.category));
+                if (catSet.size > 5) {
+                    insights.push({ type: 'info', icon: '&#x1F4CB;', title: `${catSet.size} Product Categories Active`, sub: 'Good catalog diversity. Monitor underperforming categories using the donut chart below.' });
+                }
+
+                if (!insights.length) {
+                    insights.push({ type: 'good', icon: '&#x1F4C8;', title: 'All Systems Normal', sub: 'No anomalies detected. Add more sales data for deeper insights.' });
+                }
+
+                el.innerHTML = insights.map(i => `
+                    <div class="insight-card insight-${i.type}">
+                        <div class="ic-icon">${i.icon}</div>
+                        <div>
+                            <div class="ic-title">${i.title}</div>
+                            <div class="ic-sub">${i.sub}</div>
+                        </div>
+                    </div>`).join('');
+            } catch (e) {
+                el.innerHTML = '<div class="insight-card insight-info"><div class="ic-icon">&#x26A1;</div><div><div class="ic-title">Could not load insights</div><div class="ic-sub">Connect backend and try refreshing.</div></div></div>';
+            }
+        }
+
+        // ═══════════════ CATEGORY DONUT ══════════════════════
+        let _donutChart = null;
+        async function loadCategoryDonut() {
+            try {
+                const res = await fetch(`${API_URL}/analytics/category-breakdown`);
+                const data = await res.json();
+                if (!data || !data.length) return;
+
+                const labels = data.slice(0, 8).map(d => d.category);
+                const values = data.slice(0, 8).map(d => d.revenue || d.purchases);
+                const palette = ['#6366f1', '#ec4899', '#10b981', '#f59e0b', '#3b82f6', '#ef4444', '#8b5cf6', '#14b8a6'];
+
+                const ctx = document.getElementById('categoryDonut');
+                if (!ctx) return;
+                if (_donutChart) _donutChart.destroy();
+
+                _donutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels,
+                        datasets: [{
+                            data: values, backgroundColor: palette, borderWidth: 2,
+                            borderColor: 'var(--bg-primary)', hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'right', labels: { color: '#e2e8f0', font: { size: 11 }, padding: 12 } },
+                            tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ₹${ctx.raw.toLocaleString('en-IN', { maximumFractionDigits: 0 })}` } }
+                        }
+                    }
+                });
+            } catch (e) { console.error('Donut chart error', e); }
+        }
+
+        // ═══════════════ AISLE HEATMAP ═══════════════════════
+        async function loadAisleHeatmap() {
+            const el = document.getElementById('aisleHeatmap');
+            if (!el) return;
+            try {
+                const res = await fetch(`${API_URL}/analytics/heatmap`);
+                const data = await res.json();
+                if (!data || !data.length) {
+                    el.innerHTML = '<p style="color:var(--text-secondary);font-size:0.85rem;text-align:center;grid-column:1/-1;padding:1rem;">No heatmap data yet</p>';
+                    return;
+                }
+                const maxD = Math.max(...data.map(d => d.density), 1);
+                const COLOURS = ['#1e293b', '#1e3a5f', '#154e7a', '#0e6080', '#0d7a92', '#0b9290', '#07a28a', '#10b981'];
+                el.innerHTML = data.map(d => {
+                    const bucket = Math.min(Math.floor(d.density / maxD * (COLOURS.length - 1)), COLOURS.length - 1);
+                    const bg = COLOURS[bucket];
+                    const textCol = d.density > 50 ? '#fff' : '#94a3b8';
+                    return `<div class="heatmap-aisle" style="background:${bg};color:${textCol};">
+                        <div class="heatmap-aisle-label">Aisle ${d.aisle}</div>
+                        <div class="heatmap-aisle-value">${d.density}%</div>
+                        <div class="heatmap-aisle-sub">${d.hits} purchases</div>
+                    </div>`;
+                }).join('');
+            } catch (e) { console.error('Heatmap error', e); }
+        }
+
+        // ═══════════════ CHART TAB SWITCHER REMOVED ══════════════════
+
+
+
+        let salesChartInstance = null;
+
+        async function loadSalesChart() {
+            try {
+                const month = document.getElementById('salesMonth').value;
+                const year = document.getElementById('salesYear').value;
+
+                // Build API URL with optional parameters
+                let url = `${API_URL}/analytics/sales`;
+                if (month && year) {
+                    url += `?month=${month}&year=${year}`;
+                }
+
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (!data || data.length === 0) {
+                    // Show empty state
+                    const ctx = document.getElementById('salesChart');
+                    if (salesChartInstance) salesChartInstance.destroy();
+                    salesChartInstance = new Chart(ctx, {
+                        type: 'line',
+                        data: { labels: ['No Data'], datasets: [{ label: 'Revenue', data: [0] }] }
+                    });
+                    return;
+                }
+
+
+                let labels = [];
+                let values = [];
+
+                if (month && year) {
+                    // Full Month View (1 to 30/31)
+                    const yearNum = parseInt(year);
+                    const monthNum = parseInt(month);
+                    const daysInMonth = new Date(yearNum, monthNum, 0).getDate();
+                    const monthName = new Date(yearNum, monthNum - 1, 1).toLocaleString('default', { month: 'short' });
+
+                    // Create map of existing data: "Day -> Revenue"
+                    const dataMap = {};
+                    data.forEach(d => {
+                        const date = new Date(d.date + 'T00:00:00');
+                        dataMap[date.getDate()] = d.revenue || 0;
+                    });
+
+                    // Fill 1 to daysInMonth
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        labels.push(`${monthName} ${day}`);
+                        values.push(dataMap[day] || 0);
+                    }
+                } else {
+                    // All Time View (Last 30 Days) - Sort chronologically
+                    const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                    labels = sortedData.map(d => {
+                        const date = new Date(d.date + 'T00:00:00');
+                        return `${date.toLocaleString('default', { month: 'short' })} ${date.getDate()}`;
+                    });
+                    values = sortedData.map(d => d.revenue || 0);
+                }
+
+
+                const ctx = document.getElementById('salesChart');
+
+                // Destroy previous chart instance if exists
+                if (salesChartInstance) {
+                    salesChartInstance.destroy();
+                }
+
+                salesChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Revenue (₹)',
+                            data: values,
+                            borderColor: '#2563eb',
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        return 'Revenue: ₹' + context.parsed.y.toLocaleString('en-IN');
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    callback: function (value) {
+                                        return '₹' + value.toLocaleString('en-IN');
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#94a3b8' }
+                            }
+                        }
+                    }
+                });
+
+            } catch (e) {
+                console.error("Chart error", e);
+            }
+        }
+
+        // ===== CALIBRATION WIZARD =====
+        const POSITIONS = ['start', 'middle', 'end'];
+        const POSITION_LABELS = { start: 'START of Aisle', middle: 'MIDDLE of Aisle', end: 'END of Aisle' };
+        const POSITION_ICONS = { start: '📍', middle: '🎯', end: '🏁' };
+        const CALIB_DURATION = 7;
+        const ESP_NAMES = ['ESP32_AISLE_1', 'ESP32_AISLE_2', 'ESP32_AISLE_3'];
+
+        let calibData = {}; // { aisle_id: { start:{esp:rssi}, middle:..., end:... } }
+        let numAisles = 3;
+        let wizardSteps = [];  // flat list of {aisle, position}
+        let currentStep = 0;
+        let capturing = false;
+
+        // Check calibration status on load
+        async function checkCalibStatus() {
+            try {
+                const res = await fetch(`${API_URL}/admin/calibration/status`);
+                const data = await res.json();
+                const badge = document.getElementById('calibStatusBadge');
+                if (data.calibrated) {
+                    badge.textContent = `✅ Calibrated (${data.aisle_count} aisles)`;
+                    badge.style.background = 'rgba(16,185,129,0.15)';
+                    badge.style.color = '#10b981';
+                    badge.style.borderColor = '#10b981';
+                } else {
+                    badge.textContent = '⚠️ Not Calibrated';
+                    badge.style.background = 'rgba(245,158,11,0.15)';
+                    badge.style.color = '#f59e0b';
+                    badge.style.borderColor = '#f59e0b';
+                }
+            } catch (e) { }
+        }
+
+        function startCalibWizard() {
+            numAisles = parseInt(document.getElementById('numAislesSelect').value);
+            calibData = {};
+            wizardSteps = [];
+            for (let a = 1; a <= numAisles; a++) {
+                POSITIONS.forEach(p => wizardSteps.push({ aisle: a, position: p }));
+            }
+            currentStep = 0;
+            document.getElementById('wStep0').style.display = 'none';
+            document.getElementById('wStep1').style.display = '';
+            renderProgressBar();
+            renderStep();
+        }
+
+        function renderProgressBar() {
+            const bar = document.getElementById('calibProgressBar');
+            bar.innerHTML = wizardSteps.map((s, i) => {
+                const done = i < currentStep;
+                const active = i === currentStep;
+                const color = done ? '#10b981' : active ? '#6366f1' : '#1e293b';
+                const border = active ? '2px solid #a5b4fc' : done ? '2px solid #10b981' : '1px solid #334155';
+                const label = `A${s.aisle} ${s.position[0].toUpperCase()}`;
+                return `<div style="flex:1;height:8px;border-radius:4px;background:${color};border:${border};position:relative;cursor:default;" title="${label}"></div>`;
+            }).join('');
+        }
+
+        function renderStep() {
+            if (currentStep >= wizardSteps.length) {
+                showSummary();
+                return;
+            }
+            const { aisle, position } = wizardSteps[currentStep];
+            document.getElementById('captureAisleLabel').textContent = `AISLE ${aisle} · ${position.toUpperCase()}`;
+            document.getElementById('captureInstructions').innerHTML = `Stand at the ${POSITION_ICONS[position]} <strong style='color:#a5b4fc;'>${position.toUpperCase()}</strong> of Aisle ${aisle}`;
+            document.getElementById('countdownDisplay').textContent = CALIB_DURATION;
+            document.getElementById('captureStatus').textContent = 'Press Capture to begin scanning';
+            document.getElementById('captureBtn').disabled = false;
+            document.getElementById('captureBtn').style.opacity = '1';
+            renderEspBars(null);
+            drawMiniMap(aisle, position);
+            renderProgressBar();
+        }
+
+        function renderEspBars(rssiMap) {
+            const container = document.getElementById('espBars');
+            container.innerHTML = ESP_NAMES.map(esp => {
+                const rssi = rssiMap ? rssiMap[esp] : null;
+                const pct = rssi !== null ? Math.max(0, Math.min(100, (rssi + 100) / 60 * 100)) : 0;
+                const col = pct > 60 ? '#10b981' : pct > 30 ? '#f59e0b' : '#ef4444';
+                const label = esp.replace('ESP32_AISLE_', 'ESP ');
+                const val = rssi !== null ? `${rssi} dBm` : '—';
+                return `<div style='display:flex;align-items:center;gap:0.75rem;'>
+                    <span style='color:#94a3b8;font-size:0.75rem;width:48px;flex-shrink:0;'>${label}</span>
+                    <div style='flex:1;height:8px;border-radius:4px;background:#1e293b;overflow:hidden;'>
+                        <div style='width:${pct}%;height:100%;background:${col};border-radius:4px;transition:width 0.3s;'></div>
+                    </div>
+                    <span style='color:${col};font-size:0.75rem;font-weight:600;width:56px;text-align:right;'>${val}</span>
+                </div>`;
+            }).join('');
+        }
+
+        function drawMiniMap(currentAisle, currentPos) {
+            const canvas = document.getElementById('calibMiniMap');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const totalAisles = numAisles;
+            const aisleW = (canvas.width - 20) / totalAisles;
+            const aisleH = canvas.height - 20;
+            const posX = { start: 10, middle: aisleH / 2, end: aisleH - 10 };
+
+            for (let a = 1; a <= totalAisles; a++) {
+                const x = 10 + (a - 1) * aisleW;
+                const isActive = a === currentAisle;
+                ctx.fillStyle = isActive ? 'rgba(99,102,241,0.25)' : '#1e293b';
+                ctx.strokeStyle = isActive ? '#6366f1' : '#334155';
+                ctx.lineWidth = isActive ? 2 : 1;
+                ctx.beginPath(); ctx.roundRect(x, 10, aisleW - 6, aisleH, 4); ctx.fill(); ctx.stroke();
+                ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText(`A${a}`, x + (aisleW - 6) / 2, 24);
+
+                if (isActive) {
+                    // Draw 3 position dots
+                    POSITIONS.forEach((pos, pi) => {
+                        const dotY = 10 + 18 + pi * (aisleH - 28) / 2;
+                        const isCurrentPos = pos === currentPos;
+                        ctx.beginPath(); ctx.arc(x + (aisleW - 6) / 2, dotY, isCurrentPos ? 6 : 3, 0, 2 * Math.PI);
+                        ctx.fillStyle = isCurrentPos ? '#a5b4fc' : '#334155';
+                        ctx.fill();
+                        if (isCurrentPos) {
+                            ctx.fillStyle = '#a5b4fc'; ctx.font = 'bold 8px sans-serif';
+                            ctx.fillText(pos[0].toUpperCase(), x + (aisleW - 6) / 2 + 10, dotY + 3);
+                        }
+                    });
+                }
+            }
+        }
+
+        async function runCapture() {
+            if (capturing) return;
+            capturing = true;
+            const btn = document.getElementById('captureBtn');
+            btn.disabled = true; btn.textContent = 'Scanning...';
+            document.getElementById('skipBtn').style.display = 'none';
+
+            // Countdown timer
+            let remaining = CALIB_DURATION;
+            const ticker = setInterval(() => {
+                remaining--;
+                document.getElementById('countdownDisplay').textContent = remaining;
+                document.getElementById('captureStatus').textContent = `Collecting signal data... ${remaining}s`;
+            }, 1000);
+
+            try {
+                const res = await fetch(`${API_URL}/admin/calibration/capture`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ duration: CALIB_DURATION })
+                });
+                const data = await res.json();
+                clearInterval(ticker);
+
+                if (data.success) {
+                    const { aisle, position } = wizardSteps[currentStep];
+                    if (!calibData[aisle]) calibData[aisle] = {};
+                    calibData[aisle][position] = data.rssi;
+                    renderEspBars(data.rssi);
+                    document.getElementById('captureStatus').textContent = `✅ Captured! ${data.samples ? Object.values(data.samples).reduce((a, b) => a + b, 0) : '?'} samples collected.`;
+                    document.getElementById('countdownDisplay').textContent = '✓';
+                    document.getElementById('countdownDisplay').style.color = '#10b981';
+                    // Auto-advance after 1.5s
+                    setTimeout(() => {
+                        document.getElementById('countdownDisplay').style.color = '#a5b4fc';
+                        advanceWizard();
+                    }, 1500);
+                } else {
+                    clearInterval(ticker);
+                    document.getElementById('captureStatus').textContent = `⚠️ No ESP signal detected. Retry or Skip.`;
+                    btn.textContent = '📡 Retry Capture';
+                    btn.disabled = false;
+                    document.getElementById('skipBtn').style.display = '';
+                }
+            } catch (err) {
+                clearInterval(ticker);
+                document.getElementById('captureStatus').textContent = 'Connection error — is the server running?';
+                btn.textContent = '📡 Retry'; btn.disabled = false;
+                document.getElementById('skipBtn').style.display = '';
+            }
+            capturing = false;
+        }
+
+        function advanceWizard() {
+            capturing = false;
+            currentStep++;
+            document.getElementById('skipBtn').style.display = '';
+            document.getElementById('captureBtn').textContent = '📡 Capture Signal (7s)';
+            if (currentStep >= wizardSteps.length) {
+                document.getElementById('wStep1').style.display = 'none';
+                showSummary();
+            } else {
+                renderStep();
+            }
+        }
+
+        function showSummary() {
+            document.getElementById('wStep2').style.display = '';
+            const grid = document.getElementById('calibSummaryGrid');
+            grid.innerHTML = Object.entries(calibData).map(([aisle, positions]) => {
+                const posCount = Object.keys(positions).length;
+                return `<div style="background:#1e293b;border-radius:6px;padding:0.6rem 1rem;border:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
+                    <span style="color:#a5b4fc;font-weight:600;">Aisle ${aisle}</span>
+                    <span style="color:#94a3b8;font-size:0.8rem;">${posCount}/3 positions captured</span>
+                    <span style="color:#10b981;font-size:0.85rem;font-weight:600;">${posCount === 3 ? '✅' : '⚠️'}</span>
+                </div>`;
+            }).join('');
+        }
+
+        async function saveCalibration() {
+            const btn = document.getElementById('saveCalibBtn');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+            try {
+                const res = await fetch(`${API_URL}/admin/calibration/save`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ aisles: calibData })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    btn.textContent = '✅ Saved!';
+                    btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+                    checkCalibStatus();
+                    setTimeout(() => recalibrateWizard(), 2500);
+                } else {
+                    btn.textContent = '❌ Error: ' + (data.error || 'Failed');
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                btn.textContent = '❌ Connection error';
+                btn.disabled = false;
+            }
+        }
+
+        function recalibrateWizard() {
+            calibData = {}; currentStep = 0;
+            document.getElementById('wStep2').style.display = 'none';
+            document.getElementById('wStep1').style.display = 'none';
+            document.getElementById('wStep0').style.display = '';
+        }
+
+        function logout() {
+            localStorage.removeItem('customer');
+            window.location.href = 'login.html';
+        }
+
+        init();
+        // ==========================================
+        // ADVERTISEMENT MANAGER API
+        // ==========================================
+
+        async function loadAdsDashboard() {
+            try {
+                // Load dashboard stats
+                const dashRes = await fetch(`${API_URL}/admin/ads/dashboard`);
+                if (dashRes.ok) {
+                    const stats = await dashRes.json();
+                    document.getElementById('adTotalImpressions').textContent = stats.total_impressions || 0;
+                    document.getElementById('adTotalRevenue').textContent = '₹' + (stats.total_revenue || 0).toFixed(2);
+                }
+
+                // Load list of all ads
+                const listRes = await fetch(`${API_URL}/admin/ads`);
+                if (listRes.ok) {
+                    const data = await listRes.json();
+                    const adsList = data.ads || [];
+                    renderAdsTable(adsList.slice(0, 3));
+                }
+            } catch (e) {
+                console.error("Ads dashboard error:", e);
+                document.getElementById('adsTableBody').innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--color-error);">⚠️ Ensure Ad Tables are initialized. Click ⚙️ to setup.</td></tr>`;
+            }
+        }
+
+        function renderAdsTable(ads) {
+            const tbody = document.getElementById('adsTableBody');
+            if (!ads.length) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2rem; color:var(--text-secondary);">No ads found. Create one to get started.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = ads.map(ad => {
+                const isActive = ad.is_active ? `<span style="color:var(--color-success);">● Active</span>` : `<span style="color:var(--color-error);">● Inactive</span>`;
+                const location = ad.position_tag ? `Aisle ${ad.aisle || 'Any'} • ${ad.position_tag}` : (ad.aisle ? `Aisle ${ad.aisle} • Any` : `Global (All Store)`);
+                const typeStyle = ad.is_compulsory ? `background:var(--color-error);color:#fff;` : `background:var(--bg-tertiary);`;
+
+                return `
+                <tr>
+                    <td>
+                        <div style="font-weight:600; margin-bottom:2px;">${ad.title}</div>
+                        <div style="font-size:0.75rem; color:var(--text-secondary);">${ad.description || 'No description'}</div>
+                        ${ad.product_id ? `<div style="font-size:0.7rem; color:var(--color-primary); margin-top:4px;">🛒 ${ad.product_id}</div>` : ''}
+                    </td>
+                    <td>
+                        <span style="background:var(--bg-tertiary); padding:4px 8px; border-radius:4px; font-family:monospace; font-size:0.8rem;">${location}</span>
+                    </td>
+                    <td>
+                        <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:700; text-transform:uppercase; ${typeStyle}">${ad.is_compulsory ? 'COMPULSORY' : 'Priority ' + ad.priority}</span>
+                        <div style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">${isActive}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight:600;">₹${ad.revenue_per_impression.toFixed(2)} <span style="font-weight:400; font-size:0.75rem; color:var(--text-secondary);">/view</span></div>
+                    </td>
+                    <td style="text-align:right;">
+                        <button onclick='editAd(${JSON.stringify(ad).replace(/'/g, "&apos;")})' class="btn-ghost" style="padding:4px 8px; font-size:0.8rem;">Edit</button>
+                        <button onclick="deleteAd(${ad.ad_id})" class="btn-ghost" style="padding:4px 8px; font-size:0.8rem; color:var(--color-error);">Del</button>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        async function setupAdsDb() {
+            if (!confirm("Initialize Ad Database tables?")) return;
+            try {
+                const r = await fetch(`${API_URL}/admin/ads/setup`, { method: 'POST' });
+                const d = await r.json();
+                if (d.success) { alert("Tables created!"); loadAdsDashboard(); }
+                else alert("Error: " + d.error);
+            } catch (e) { alert(e); }
+        }
+
+        function openAdModal() {
+            document.getElementById('adId').value = '';
+            document.getElementById('adTitleStr').value = '';
+            document.getElementById('adDescStr').value = '';
+            document.getElementById('adImageUrl').value = '';
+            document.getElementById('adProductId').value = '';
+            document.getElementById('adAisle').value = '';
+            document.getElementById('adPositionTag').value = '';
+            document.getElementById('adPriority').value = '0';
+            document.getElementById('adRev').value = '0';
+            document.getElementById('adCompulsory').checked = false;
+            document.getElementById('adModalTitle').textContent = 'Create Advertisement';
+            document.getElementById('adModal').style.display = 'flex';
+        }
+
+        function editAd(ad) {
+            document.getElementById('adId').value = ad.ad_id;
+            document.getElementById('adTitleStr').value = ad.title;
+            document.getElementById('adDescStr').value = ad.description || '';
+            document.getElementById('adImageUrl').value = ad.image_url || '';
+            document.getElementById('adProductId').value = ad.product_id || '';
+            document.getElementById('adAisle').value = ad.aisle || '';
+            document.getElementById('adPositionTag').value = ad.position_tag || '';
+            document.getElementById('adPriority').value = ad.priority;
+            document.getElementById('adRev').value = ad.revenue_per_impression;
+            document.getElementById('adCompulsory').checked = ad.is_compulsory;
+            document.getElementById('adModalTitle').textContent = 'Edit Advertisement';
+            document.getElementById('adModal').style.display = 'flex';
+        }
+
+        function closeAdModal() {
+            document.getElementById('adModal').style.display = 'none';
+        }
+
+        async function saveAd() {
+            const id = document.getElementById('adId').value;
+            const data = {
+                title: document.getElementById('adTitleStr').value,
+                description: document.getElementById('adDescStr').value,
+                image_url: document.getElementById('adImageUrl').value,
+                product_id: document.getElementById('adProductId').value,
+                aisle: document.getElementById('adAisle').value ? parseInt(document.getElementById('adAisle').value) : null,
+                position_tag: document.getElementById('adPositionTag').value || null,
+                priority: parseInt(document.getElementById('adPriority').value || 0),
+                revenue_per_impression: parseFloat(document.getElementById('adRev').value || 0),
+                is_compulsory: document.getElementById('adCompulsory').checked
+            };
+
+            if (!data.title) return alert("Title required!");
+
+            const url = id ? `${API_URL}/admin/ads/${id}` : `${API_URL}/admin/ads`;
+            const method = id ? 'PATCH' : 'POST';
+
+            try {
+                const r = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const res = await r.json();
+                if (res.success) {
+                    closeAdModal();
+                    loadAdsDashboard();
+                } else {
+                    alert('Error: ' + res.error);
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function deleteAd(id) {
+            if (!confirm("Delete this ad forever?")) return;
+            try {
+                const r = await fetch(`${API_URL}/admin/ads/${id}`, { method: 'DELETE' });
+                if (r.ok) loadAdsDashboard();
+            } catch (e) { console.error(e); }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SmartRetailX</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- iOS PWA: full screen, status bar, icon, title -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartRetailX">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="AI-powered supermarket shopping assistant">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icon-167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152.png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ══ WELCOME OVERLAY ══════════════════════════════════════════ */
+        #welcomeOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9500;
+            display: none;
+            /* JS shows it */
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* deep space background */
+        #wlBg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 40%,
+                    #1e1048 0%, #0a0720 60%, #000 100%);
+        }
+
+        /* canvas for particles/stars */
+        #wlCanvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* central content */
+        #wlContent {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            transform: scale(0.85);
+            opacity: 0;
+        }
+
+        #wlContent.wl-enter {
+            animation: wlContentIn 0.7s cubic-bezier(.34, 1.56, .64, 1) forwards;
+        }
+
+        @keyframes wlContentIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Glowing circle behind logo */
+        .wl-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            border: 1.5px solid rgba(129, 140, 248, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            animation: wlPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.25), inset 0 0 20px rgba(99, 102, 241, 0.1);
+        }
+
+        @keyframes wlPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(99, 102, 241, .25), inset 0 0 20px rgba(99, 102, 241, .1);
+            }
+
+            50% {
+                box-shadow: 0 0 70px rgba(129, 140, 248, .45), inset 0 0 35px rgba(129, 140, 248, .2);
+            }
+        }
+
+        .wl-ring img {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            animation: wlLogoPop 0.6s cubic-bezier(.34, 1.56, .64, 1) 0.15s both;
+        }
+
+        @keyframes wlLogoPop {
+            from {
+                transform: scale(0.4) rotate(-20deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* greeting line */
+        .wl-hey {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(129, 140, 248, 0.8);
+            opacity: 0;
+            animation: wlFadeUp 0.5s ease 0.55s forwards;
+            margin-bottom: 0.3rem;
+        }
+
+        /* name — fills letter-by-letter via JS */
+        .wl-name {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            text-shadow:
+                0 0 30px rgba(99, 102, 241, 0.8),
+                0 0 60px rgba(99, 102, 241, 0.4);
+            min-height: 3.8rem;
+        }
+
+        .wl-name .c-hl {
+            color: #a78bfa;
+        }
+
+        /* cursor blink */
+        .wl-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 2.8rem;
+            background: #a78bfa;
+            vertical-align: middle;
+            margin-left: 3px;
+            border-radius: 2px;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        /* tagline */
+        .wl-tag {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.45);
+            opacity: 0;
+            animation: wlFadeUp 0.5s ease 1.8s forwards;
+        }
+
+        /* bottom progress bar */
+        .wl-bar-wrap {
+            width: 180px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 99px;
+            margin: 1.75rem auto 0;
+            overflow: hidden;
+            opacity: 0;
+            animation: wlFadeUp 0.3s ease 0.8s forwards;
+        }
+
+        .wl-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #6366f1, #a78bfa, #ec4899);
+            border-radius: 99px;
+            animation: wlBarFill 2.4s ease 0.9s forwards;
+        }
+
+        @keyframes wlBarFill {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes wlFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* full overlay fade-out */
+        #welcomeOverlay.wl-out {
+            animation: wlOverlayOut 0.6s ease forwards;
+        }
+
+        @keyframes wlOverlayOut {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ══ WELCOME OVERLAY ══ -->
+    <div id="welcomeOverlay">
+        <div id="wlBg"></div>
+        <canvas id="wlCanvas"></canvas>
+
+        <div id="wlContent">
+            <div class="wl-ring">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <div class="wl-hey">Welcome back</div>
+            <div class="wl-name" id="wlName"><span class="wl-cursor"></span></div>
+            <div class="wl-tag" id="wlTag">✨ Ready to shop smart — let's go!</div>
+            <div class="wl-bar-wrap">
+                <div class="wl-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="brand-logo">
+            <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius: 4px;">
+            SmartRetailX
+        </div>
+        <div class="header-actions">
+            <div id="connectionStatus" class="status-badge">
+                <span style="width: 8px; height: 8px; background: currentColor; border-radius: 50%;"></span>
+                Online
+            </div>
+            <a href="billing.html" class="btn-primary"
+                style="padding:0.5rem 1.25rem;border-radius:8px;font-size:0.9rem;width:auto;text-decoration:none;">
+                🛒 Checkout
+            </a>
+            <div id="userSection" class="user-menu" style="display: none;">
+                <button id="adminBtn" class="btn-ghost" onclick="window.location.href='store.html'"
+                    style="display: none; color: var(--color-primary); margin-right: 0.5rem;">
+                    Dashboard
+                </button>
+                <div class="user-profile" style="display:flex; align-items:center;">
+                    <span id="userName">User</span>
+                </div>
+                <button id="logoutBtn" class="btn-ghost" style="color: var(--color-error);">Logout</button>
+            </div>
+            <a href="login.html" id="loginBtn" class="btn-small">Login</a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace">
+
+        <!-- Left: Search, Input & Scan -->
+        <div class="col-left">
+            <!-- Product Search -->
+            <div class="scanner-card" id="productSearchCard">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+                    <h3 style="margin-bottom:0;">Find a Product</h3>
+                    <span class="ai-badge">🤖 AI Search</span>
+                </div>
+                <p style="color: var(--color-text-secondary); font-size: 0.85rem; margin-bottom:0.75rem;">Search by
+                    name, category, or use voice</p>
+                <div style="position:relative; display:flex; gap:0.4rem; align-items:center;">
+                    <input type="text" id="productSearchInput" class="scanner-input" placeholder="Search products…"
+                        autocomplete="off" oninput="debounceSearch(this.value)" style="margin-top:0; flex:1;">
+                    <span id="searchSpinner"
+                        style="display:none;position:absolute;right:3rem;top:50%;transform:translateY(-50%);font-size:0.85rem;">⏳</span>
+                    <!-- Voice Search Mic Button -->
+                    <button id="productVoiceBtn" class="btn-icon" title="Voice Search" style="flex-shrink:0; width:38px; height:38px; display:flex; align-items:center;
+                               justify-content:center; border-radius:8px; border:1px solid var(--color-border);
+                               background:var(--color-primary-light); color:var(--color-primary); cursor:pointer;"
+                        aria-label="Voice Search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Search Results List -->
+                <div id="searchResultsList" style="display:none; max-height:220px; overflow-y:auto;
+                     border:1px solid var(--color-border); border-radius:8px; margin-top:0.75rem;
+                     background:var(--color-bg);">
+                </div>
+                <!-- Path Display -->
+                <div id="pathDisplay" style="display:none; margin-top:0.75rem;">
+                    <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.5rem;">
+                        <span>🗺️</span>
+                        <strong style="font-size:0.9rem;" id="pathProductBadge"></strong>
+                    </div>
+                    <button onclick="openNavModal()" class="btn-small" style="width: 100%;">Start Live
+                        Navigation</button>
+                </div>
+            </div>
+
+            <div class="scanner-card">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                <h3 style="margin-bottom: 0.5rem;">Scan Barcode</h3>
+                <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Use your scanner, type barcode, or tap
+                    Scan</p>
+                <div style="display:flex; gap:0.5rem; align-items:center; width:100%;">
+                    <input type="number" id="barcodeInput" class="barcode-input scanner-input"
+                        placeholder="Add items to cart" autocomplete="off" autofocus style="flex:1; margin-top:0;">
+                    <!-- Scan Button -->
+                    <button id="scanBtn"
+                        style="flex-shrink:0; padding:0.55rem 0.9rem; border-radius:8px; font-size:0.85rem;
+                               font-weight:600; border:none; cursor:pointer; display:flex; align-items:center;
+                               gap:0.3rem; background:var(--color-primary); color:#fff; transition: background 0.2s ease;"
+                        aria-label="Scan barcode">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <rect x="2" y="3" width="4" height="18" rx="1" />
+                            <rect x="8" y="3" width="2" height="18" rx="1" />
+                            <rect x="12" y="3" width="4" height="18" rx="1" />
+                            <rect x="18" y="3" width="4" height="18" rx="1" />
+                        </svg>
+                        Scan
+                    </button>
+                    <!-- Remove Toggle Button -->
+                    <button id="toggleRemoveBtn"
+                        style="flex-shrink:0; padding:0.55rem 0.9rem; border-radius:8px; font-size:0.85rem;
+                               font-weight:600; border:none; cursor:pointer; display:flex; align-items:center;
+                               gap:0.3rem; background:var(--color-bg); color:var(--color-text-secondary); border: 1px solid var(--color-border); transition: all 0.2s ease;"
+                        aria-label="Toggle Remove Mode">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Remove
+                    </button>
+                </div>
+            </div>
+
+            <!-- ESP Location Only -->
+            <div id="espLocationCard" class="scanner-card"
+                style="display: none; background: var(--color-surface); text-align: left;">
+                <div class="section-header" style="margin-bottom: 0.5rem;">
+                    <span>📍 Your Location</span>
+                    <span id="locationBadge" class="status-badge"
+                        style="background:var(--color-bg); color:var(--color-text-secondary)">Scanning...</span>
+                </div>
+            </div>
+
+            <!-- Path Finder (Removed - Replaced by Live Modal) -->
+
+            <div class="rec-section" id="similarOptions" style="display: none;">
+                <div class="section-header">
+                    <span>💡 Similar Options</span>
+                </div>
+                <div id="similarContent">
+                    <!-- Similar items populated here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle: Cart -->
+        <div class="col-mid">
+            <div class="section-header">
+                <span>Current Cart</span>
+                <span id="cartCount" style="transition:transform 0.3s;">0 items</span>
+            </div>
+
+            <div id="cartList" class="cart-list">
+                <div class="empty-cart-enhanced">
+                    <div class="ec-icon">🛒</div>
+                    <h4>Cart is Empty</h4>
+                    <p>Scan items or search products to start shopping</p>
+                </div>
+            </div>
+
+            <!-- Usually Bought Together Panel -->
+            <div id="usuallyBoughtTogether" class="rec-card"
+                style="display:none; margin-top:1rem; border: 1px dashed var(--color-primary); background: rgba(99, 102, 241, 0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <span style="font-weight:700; font-size:0.85rem; color:var(--color-text-primary);">💡 Usually Bought
+                        Together</span>
+                </div>
+                <div id="ubtContent" style="display:flex; flex-direction:column; gap:0.5rem;">
+                    <!-- Auto-populated by JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right: Recommendations -->
+        <div class="col-right">
+
+            <!-- Dynamic Dual Ads Block (Loaded Immediately) -->
+            <div id="dualAdsPanel" class="rec-section" style="margin-bottom: 1.5rem;">
+                <div class="section-header">
+                    <span>📣 Special Offers</span>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                    <!-- Box 2: Compulsory / Priority -->
+                    <div id="adBox2" class="ad-card compulsory-ad"
+                        style="display:none; padding:1.25rem; border-radius:12px; border-left:4px solid var(--color-error); background:var(--bg-tertiary); box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                        <div
+                            style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--color-error); margin-bottom:0.25rem; letter-spacing:0.5px;">
+                            ⭐ Featured Deal</div>
+                        <div id="adBox2Title"
+                            style="font-size:1.15rem; font-weight:700; color:var(--color-text-primary); margin-bottom:0.25rem;">
+                        </div>
+                        <div id="adBox2Desc"
+                            style="font-size:0.85rem; color:var(--color-text-secondary); margin-bottom:0.75rem;"></div>
+                        <img id="adBox2Img" src="" alt="Ad Image"
+                            style="display:none; width:100%; max-height:120px; object-fit:cover; border-radius:6px; margin-bottom:0.75rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                            <span
+                                style="font-size:0.75rem; font-weight:600; color:var(--color-text-secondary);">Sponsored</span>
+                            <div id="adBox2Actions"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- General Recommendations -->
+            <div class="rec-section">
+                <div class="section-header">
+                    <span>✨ Recommended For You</span>
+                </div>
+
+                <!-- Box 1: Location Based / Priority Fallback (Moved from Special Offers) -->
+                <div id="adBox1" class="ad-card local-ad"
+                    style="display:none; padding:1.25rem; border-radius:12px; border-left:4px solid var(--color-primary); background:var(--color-primary-light); box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                    <div id="adBox1Label"
+                        style="font-size:0.75rem; text-transform:uppercase; font-weight:800; color:var(--color-primary); margin-bottom:0.25rem; letter-spacing:0.5px;">
+                        📍 Top Pick For You</div>
+                    <div id="adBox1Title"
+                        style="font-size:1.15rem; font-weight:700; color:var(--color-text-primary); margin-bottom:0.25rem;">
+                    </div>
+                    <div id="adBox1Desc"
+                        style="font-size:0.85rem; color:var(--color-text-secondary); margin-bottom:0.75rem;"></div>
+                    <img id="adBox1Img" src="" alt="Ad Image"
+                        style="display:none; width:100%; max-height:120px; object-fit:cover; border-radius:6px; margin-bottom:0.75rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                        <span
+                            style="font-size:0.75rem; font-weight:600; color:var(--color-text-secondary);">Sponsored</span>
+                        <div id="adBox1Actions"></div>
+                    </div>
+                </div>
+
+                <div id="generalRecList">
+                    <div class="empty-state" style="padding: 1rem; font-size: 0.9rem;">
+                        Scan items to see recommendations
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buy Again / Restock Reminders -->
+            <div id="restockContainer" class="rec-section" style="display: none;">
+                <div class="section-header" style="color: var(--color-warning, #f59e0b);">
+                    <span>🔄 Buy Again</span>
+                </div>
+                <div id="restockList"></div>
+                <a href="restock.html" id="restockViewMore" style="display:none; margin-top:0.5rem; font-size:0.8rem; color:var(--color-primary);
+                          text-decoration:none; font-weight:600; padding:0.5rem 0; display:block;
+                          text-align:center; border-top:1px solid var(--color-border);">
+                    View All Reminders →
+                </a>
+            </div>
+
+            <!-- AI Cart Intelligence Panel -->
+            <div id="aiCartPanel" class="ai-card" style="display:none;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                    <span class="ai-badge">🧠 AI Cart Intelligence</span>
+                    <button
+                        onclick="document.getElementById('aiCartBody').style.display = document.getElementById('aiCartBody').style.display==='none'?'block':'none'"
+                        style="background:none;border:none;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">▾</button>
+                </div>
+                <div id="aiCartBody">
+                    <div class="ai-score-wrap">
+                        <div class="ai-score-ring">
+                            <svg width="64" height="64" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="28" fill="none" stroke="var(--border-light)"
+                                    stroke-width="5" />
+                                <circle id="aiScoreArc" cx="32" cy="32" r="28" fill="none" stroke="var(--primary)"
+                                    stroke-width="5" stroke-dasharray="175.93" stroke-dashoffset="175.93"
+                                    stroke-linecap="round"
+                                    style="transition:stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1);" />
+                            </svg>
+                            <div class="ai-score-num" id="aiScoreNum">—</div>
+                        </div>
+                        <div>
+                            <div class="ai-score-label" id="aiScoreLabel">Analysing…</div>
+                            <div class="ai-score-tip" id="aiScoreTip">Add 2+ items to get insights</div>
+                        </div>
+                    </div>
+                    <div id="aiBreakdown"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chatbot Recipe Finder UI -->
+        <button id="chatbotToggleBtn" class="chat-widget-btn" onclick="toggleChatbot()" title="Open Chatbot">
+            💬 Recipe Finder
+        </button>
+        
+        <div id="chatbotWindow" class="chat-window">
+            <div class="chat-header">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span style="font-size:1.25rem;">👩‍🍳</span>
+                    <h3 style="margin:0; font-size:1rem; color:var(--text-primary);">Recipe Assistant</h3>
+                </div>
+                <button onclick="toggleChatbot()" class="btn-ghost" style="padding:0.25rem 0.5rem;">✕</button>
+            </div>
+            
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-bubble bot">
+                    Hi! I'm your Recipe Assistant. What dish would you like to make today? 
+                    <br><br>
+                    <button class="btn-small" style="width:100%; margin-top:0.5rem;" onclick="askRecipe('pasta')">🍝 Find Pasta Recipe</button>
+                    <button class="btn-small" style="width:100%; margin-top:0.5rem;" onclick="askRecipe('sandwich')">🥪 Find Sandwich Recipe</button>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type a dish name e.g. omelette, pasta..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()" class="chat-send-btn" title="Send">
+                    🚀
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Live Navigation Modal -->
+    <div id="navModal" class="nav-modal" style="display:none;">
+        <div class="nav-modal-content">
+            <div class="nav-modal-header">
+                <h2>🗺️ Live Navigation</h2>
+                <button class="btn-close" onclick="closeNavModal()">✕</button>
+            </div>
+            <div class="nav-modal-body">
+                <div class="nav-status-bar">
+                    <div class="nav-target">
+                        <span style="font-size:0.8rem; color:var(--color-text-secondary);">Navigating to:</span>
+                        <div id="navTargetName" style="font-weight:700; color:var(--color-primary);">Target Product
+                        </div>
+                    </div>
+                    <div class="nav-current">
+                        <span style="font-size:0.8rem; color:var(--color-text-secondary);">Your Location:</span>
+                        <div id="navCurrentPos" style="font-weight:700;">Scanning...</div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:2px;">
+                        <span style="font-size:0.8rem; color:var(--color-text-secondary);">Product Location:</span>
+                        <div id="navProductLoc"
+                            style="font-weight:700; color:#f87171; display:flex; align-items:center; gap:0.35rem;">
+                            <span>📦</span><span id="navProductLocText">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="storeCanvas" width="900" height="650"></canvas>
+                </div>
+                <div id="navRecommendation" class="nav-recommendation" style="display:none;">
+                    <!-- Auto-populates -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/api';
+
+        const state = {
+            cart: [],
+            user: null,
+            api_cache: {},
+            isRemoveMode: false
+        };
+
+        // ── Cart localStorage helpers (top-level so all cart functions can use them) ──
+        const CART_KEY = 'srx_cart';
+        function saveCart() {
+            try { localStorage.setItem(CART_KEY, JSON.stringify(state.cart)); } catch (e) { }
+        }
+        function loadCart() {
+            try {
+                const raw = localStorage.getItem(CART_KEY);
+                if (raw) state.cart = JSON.parse(raw);
+            } catch (e) { state.cart = []; }
+        }
+
+        // --- AUTH ---
+        function initAuth() {
+            const user = localStorage.getItem('customer');
+            const loginBtn = document.getElementById('loginBtn');
+            const userSection = document.getElementById('userSection');
+            const input = document.getElementById('barcodeInput');
+
+            if (user) {
+                state.user = JSON.parse(user);
+                loginBtn.style.display = 'none';
+                userSection.style.display = 'flex';
+                document.getElementById('userName').textContent = state.user.name || 'Customer';
+
+                // Welcome animation — fires on every real login (flag set by login.html)
+                if (sessionStorage.getItem('_showWelcome')) {
+                    sessionStorage.removeItem('_showWelcome');
+                    showWelcomeOverlay(state.user.name || 'Customer');
+                }
+
+                if (state.user.is_admin) {
+                    document.getElementById('adminBtn').style.display = 'inline-flex';
+                } else {
+                    document.getElementById('adminBtn').style.display = 'none';
+                }
+
+                document.getElementById('logoutBtn').onclick = () => {
+                    localStorage.removeItem('customer');
+                    window.location.href = 'login.html';
+                };
+                input.disabled = false;
+                input.focus();
+
+                // Load persistent cart from localStorage
+                loadCart();
+
+                // Load Personal Recommendations
+                loadRestockData();
+                startLocationService();
+            } else {
+                loginBtn.style.display = 'block';
+                userSection.style.display = 'none';
+                input.disabled = true;
+                input.placeholder = "Please Login to Shop";
+            }
+        }
+
+        function showWelcomeOverlay(fullName) {
+            const overlay = document.getElementById('welcomeOverlay');
+            const nameEl = document.getElementById('wlName');
+            const content = document.getElementById('wlContent');
+            const canvas = document.getElementById('wlCanvas');
+
+            // Show overlay
+            overlay.style.display = 'flex';
+
+            // Kick animation on content block
+            requestAnimationFrame(() => content.classList.add('wl-enter'));
+
+            // ── Canvas starfield ──────────────────────────────────────
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const stars = Array.from({ length: 150 }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.4 + 0.3,
+                a: Math.random(),
+                d: (Math.random() - 0.5) * 0.012  // twinkle speed
+            }));
+
+            let raf;
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(s => {
+                    s.a = Math.max(0.05, Math.min(1, s.a + s.d));
+                    if (s.a <= 0.05 || s.a >= 1) s.d *= -1;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(200,200,255,${s.a})`;
+                    ctx.fill();
+                });
+                raf = requestAnimationFrame(drawStars);
+            }
+            drawStars();
+
+            // ── Typewriter name ───────────────────────────────────────
+            const chars = fullName.split('');
+            const cursor = '<span class="wl-cursor"></span>';
+            let typed = '';
+            let charIndex = 0;
+
+            // Start typing after content enters (~0.7s)
+            const typeTimer = setTimeout(function typeNext() {
+                if (charIndex < chars.length) {
+                    typed += `<span class="c-hl">${chars[charIndex++]}</span>`;
+                    nameEl.innerHTML = typed + cursor;
+                    setTimeout(typeNext, 68 + Math.random() * 45);
+                } else {
+                    // Remove cursor after done
+                    setTimeout(() => { nameEl.innerHTML = typed; }, 500);
+                }
+            }, 700);
+
+            // ── Auto dismiss at 3.2 s ─────────────────────────────────
+            setTimeout(() => {
+                cancelAnimationFrame(raf);
+                clearTimeout(typeTimer);
+                overlay.classList.add('wl-out');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    overlay.classList.remove('wl-out');
+                    content.classList.remove('wl-enter');
+                    // reset for next time
+                    nameEl.innerHTML = '<span class="wl-cursor"></span>';
+                    content.style.transform = '';
+                    content.style.opacity = '';
+                }, 650);
+            }, 3200);
+        }
+
+        // --- CART ---
+        async function fetchProduct(barcode) {
+            try {
+                const res = await fetch(`${API_URL}/products/barcode`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ barcode })
+                });
+                if (!res.ok) throw new Error('Product not found');
+                return await res.json();
+            } catch (e) {
+                showToast(e.message, 'error');
+                return null;
+            }
+        }
+
+        async function addToCart(barcode, productData = null) {
+            if (!state.user) {
+                showToast("Please login first", "error");
+                return;
+            }
+
+            // Show a scanning indicator
+            const inputField = document.getElementById('barcodeInput');
+            if (inputField && inputField.value.trim() === barcode) {
+                inputField.style.opacity = '0.5';
+            }
+
+            // If already in cart, increment
+            const existing = state.cart.find(c => c.barcode === barcode || c.product_id === barcode);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                // Fetch if no data provided
+                const product = productData || await fetchProduct(barcode);
+                if (!product) {
+                    // Restore input field if product wasn't found
+                    if (inputField) inputField.style.opacity = '1';
+                    return; // Silent failure here, toast already shown by fetchProduct
+                }
+
+                state.cart.push({ ...product, quantity: 1 });
+            }
+
+            // Success: Now we can clear the barcode input
+            if (inputField && inputField.value.trim() === barcode) {
+                inputField.value = '';
+                inputField.style.opacity = '1';
+                inputField.focus();
+            }
+
+            renderCart();
+            saveCart();
+            showToast('Item Added to Cart');
+
+            // Trigger side effects
+            loadSimilarOptions(barcode);
+            // Trigger AI cart intelligence (debounced)
+            debouncedAiCartAnalysis();
+        }
+
+        function removeFromCartByBarcode(barcode) {
+            const index = state.cart.findIndex(c => c.barcode === barcode || c.product_id === barcode);
+            if (index !== -1) {
+                const item = state.cart[index];
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    showToast(`Removed one ${item.name}`);
+                } else {
+                    state.cart.splice(index, 1);
+                    showToast(`Removed ${item.name} from cart`);
+                }
+
+                // Clear input
+                const inputField = document.getElementById('barcodeInput');
+                if (inputField && inputField.value.trim() === barcode) {
+                    inputField.value = '';
+                    inputField.focus();
+                }
+
+                renderCart();
+                saveCart();
+                debouncedAiCartAnalysis();
+            } else {
+                showToast("Item not found in cart", "error");
+            }
+        }
+
+        // --- ESP LOGIC ---
+        let locationInterval = null;
+        let globalCurrentPartition = null; // Store for pathfinding
+
+        function startLocationService() {
+            // Show Cards
+            const espCard = document.getElementById('espLocationCard');
+            if (espCard) espCard.style.display = 'block';
+
+            // Fire ads instantly BEFORE waiting for the slow 8-second ESP beacon scan
+            fetchDualAds(null, null);
+
+            // Initial call
+            updateLocation();
+            // Poll
+            locationInterval = setInterval(updateLocation, 8000);
+        }
+
+        async function updateLocation() {
+            try {
+                const res = await fetch(`${API_URL}/nav/locate`, { method: 'POST' });
+                const data = await res.json();
+
+                const badge = document.getElementById('locationBadge');
+                if (data.status === 'located') {
+                    badge.textContent = `Aisle ${data.aisle} - ${data.partition || 'General'}`;
+                    badge.style.background = 'var(--color-success-light)';
+                    badge.style.color = 'var(--color-success)';
+
+                    // Use the canonical partition tag for pathfinding
+                    globalCurrentPartition = data.partition;  // e.g. "P113"
+
+                    // Redraw map with live updated tracking coordinate dynamically
+                    if (document.getElementById('navModal').style.display !== 'none') {
+                        pollAndDrawPath();
+                    } else if (currentTargetProduct) {
+                        // Idle: show customer position + product pin (no modal)
+                        const dbTag = currentTargetProduct.position_tag || null;
+                        const dbAisle = currentTargetProduct.aisle || null;
+                        drawStoreMap(globalCurrentPartition, [], null, null, dbTag, dbAisle);
+                    }
+
+                    // Fetch Dual Ads for target location
+                    fetchDualAds(data.aisle, data.partition);
+                } else {
+                    badge.textContent = 'Roaming...';
+                    badge.style.background = 'var(--color-bg)';
+                    badge.style.color = 'var(--color-text-secondary)';
+                    globalCurrentPartition = null;
+
+                    // Always show ads, even roaming (fallback to global priorities)
+                    fetchDualAds(null, null);
+                }
+            } catch (e) {
+                console.log("Locate error (expected if no ESPs):", e);
+                fetchDualAds(null, null); // Fallback so ads don't break if ESPs are offline
+            }
+        }
+
+        async function fetchDualAds(aisle, partition) {
+            try {
+                // Determine query params cleanly
+                let url = `${API_URL}/nav/ads/dual`;
+                let params = [];
+                if (aisle) params.push(`aisle=${aisle}`);
+                if (partition) params.push(`partition=${partition}`);
+                if (params.length) url += '?' + params.join('&');
+
+                const res = await fetch(url);
+                if (!res.ok) return;
+                const data = await res.json();
+
+                // Box 1 (Location/Dynamic)
+                const b1 = document.getElementById('adBox1');
+                if (data.box1) {
+                    b1.style.display = 'block';
+                    document.getElementById('adBox1Title').textContent = data.box1.title;
+                    document.getElementById('adBox1Desc').textContent = data.box1.description || '';
+                    if (data.box1.image_url) {
+                        const img = document.getElementById('adBox1Img');
+                        img.src = data.box1.image_url;
+                        img.style.display = 'block';
+                        img.onerror = () => img.style.display = 'none';
+                    } else {
+                        document.getElementById('adBox1Img').style.display = 'none';
+                    }
+                    if (data.box1.product_data) {
+                        document.getElementById('adBox1Actions').innerHTML = getActionButtonsHTML(JSON.stringify(data.box1.product_data));
+                    } else {
+                        document.getElementById('adBox1Actions').innerHTML = '';
+                    }
+                } else {
+                    b1.style.display = 'none';
+                }
+
+                // Box 2 (Compulsory/Priority)
+                const b2 = document.getElementById('adBox2');
+                if (data.box2) {
+                    b2.style.display = 'block';
+                    document.getElementById('adBox2Title').textContent = data.box2.title;
+                    document.getElementById('adBox2Desc').textContent = data.box2.description || '';
+                    if (data.box2.image_url) {
+                        const img = document.getElementById('adBox2Img');
+                        img.src = data.box2.image_url;
+                        img.style.display = 'block';
+                        img.onerror = () => img.style.display = 'none';
+                    } else {
+                        document.getElementById('adBox2Img').style.display = 'none';
+                    }
+                    if (data.box2.product_data) {
+                        document.getElementById('adBox2Actions').innerHTML = getActionButtonsHTML(JSON.stringify(data.box2.product_data));
+                    } else {
+                        document.getElementById('adBox2Actions').innerHTML = '';
+                    }
+                } else {
+                    b2.style.display = 'none';
+                }
+
+            } catch (e) {
+                console.log("Ad fetching failed:", e);
+                document.getElementById('adBox1').style.display = 'none';
+                document.getElementById('adBox2').style.display = 'none';
+            }
+        }
+
+        async function findPath() {
+            const start = document.getElementById('pathStart').value || 'Entry';
+            const target = document.getElementById('pathTarget').value;
+            const resBox = document.getElementById('pathResult');
+
+            if (!target) {
+                showToast("Please enter a target product", "error");
+                return;
+            }
+
+            resBox.style.display = 'block';
+            resBox.textContent = "Calculating...";
+
+            try {
+                const res = await fetch(`${API_URL}/nav/path?start_node=${start}&target_product=${target}`);
+                const data = await res.json();
+
+                if (data.success) {
+                    resBox.innerHTML = `
+                        <div style="font-weight:600; color:var(--color-success); margin-bottom:0.5rem;">Path Found!</div>
+                        <div style="padding-left: 1rem; border-left: 2px solid var(--color-border);">
+                            ${data.route.map(step => `<div>• ${step}</div>`).join('')}
+                        </div>
+                        <div style="margin-top:0.5rem; font-size:0.8rem;">Target: ${data.target}</div>
+                        ${data.recommendation ? `<div style="margin-top:0.5rem; font-size:0.8rem; color:var(--color-primary);">💡 Grab <b>${data.recommendation}</b> on the way!</div>` : ''}
+                    `;
+                } else {
+                    resBox.textContent = `Error: ${data.message}`;
+                }
+            } catch (e) {
+                resBox.textContent = "Failed to calculate path.";
+            }
+        }
+
+        function removeFromCart(index) {
+            state.cart.splice(index, 1);
+            saveCart();
+            renderCart();
+        }
+
+        // Helper used by nav modal recommendation cards
+        async function addToCartByBarcode(barcode, name) {
+            try {
+                const res = await fetch(`${API_URL}/products/barcode/${encodeURIComponent(barcode)}`);
+                const p = await res.json();
+                if (p && p.name) quickAdd(barcode, p.name, p.price || 0);
+                else quickAdd(barcode, name, 0);
+            } catch (e) {
+                quickAdd(barcode, name, 0);
+            }
+        }
+
+        function updateQty(index, delta) {
+            const item = state.cart[index];
+            if (item.quantity + delta > 0) {
+                item.quantity += delta;
+            } else {
+                state.cart.splice(index, 1);
+            }
+            saveCart();
+            renderCart();
+        }
+
+        // Price trend cache: category -> {trend, insight}
+        const _priceTrendCache = {};
+
+        function priceTrendBadge(category) {
+            if (!category) return '';
+            const data = _priceTrendCache[category];
+            if (!data) {
+                // Fetch async, no badge yet
+                if (!_priceTrendCache['_fetching_' + category]) {
+                    _priceTrendCache['_fetching_' + category] = true;
+                    fetch(`${API_URL}/ai/price-sensitivity`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ category })
+                    }).then(r => r.json()).then(d => {
+                        _priceTrendCache[category] = d;
+                        renderCart(); // re-render with badge
+                    }).catch(() => { });
+                }
+                return '';
+            }
+            if (data.trend === 'volatile') return '<span class="price-trend rising">&uarr; Volatile</span>';
+            if (data.trend === 'premium') return '<span class="price-trend rising">&uarr; Premium</span>';
+            return '<span class="price-trend deal">&darr; Good Value</span>';
+        }
+
+        function renderCart() {
+            const list = document.getElementById('cartList');
+            const count = document.getElementById('cartCount');
+
+            const prevCount = parseInt(count.dataset.prevCount || '0');
+            const newCount = state.cart.length;
+            count.textContent = `${newCount} item${newCount !== 1 ? 's' : ''}`;
+
+            // Pulse count badge when item added
+            if (newCount > prevCount) {
+                count.classList.remove('cart-count-pulse');
+                void count.offsetWidth;
+                count.classList.add('cart-count-pulse');
+                setTimeout(() => count.classList.remove('cart-count-pulse'), 500);
+            }
+            count.dataset.prevCount = newCount;
+
+            if (state.cart.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-cart-enhanced">
+                        <div class="ec-icon">&#x1F6D2;</div>
+                        <h4>Cart is Empty</h4>
+                        <p>Scan items or search products to start shopping</p>
+                    </div>`;
+                // Hide AI panel
+                const aiPanel = document.getElementById('aiCartPanel');
+                if (aiPanel) aiPanel.style.display = 'none';
+                return;
+            }
+
+            list.innerHTML = state.cart.map((item, i) => {
+                function getCategoryImage(cat, name) {
+                    const text = ((cat || '') + ' ' + (name || '')).toLowerCase();
+                    if (text.includes('milk') || text.includes('dairy') || text.includes('cheese') || text.includes('paneer')) return 'https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('bread') || text.includes('bakery') || text.includes('cake')) return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('fruit') || text.includes('apple') || text.includes('banana')) return 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('veg') || text.includes('tomato') || text.includes('onion')) return 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('meat') || text.includes('chicken') || text.includes('fish')) return 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('snack') || text.includes('chips') || text.includes('biscuit')) return 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('drink') || text.includes('juice') || text.includes('water') || text.includes('tea') || text.includes('coffee')) return 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('grain') || text.includes('rice') || text.includes('dal') || text.includes('flour')) return 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('clean') || text.includes('washing') || text.includes('soap')) return 'https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&q=80&w=150&h=150';
+                    if (text.includes('personal') || text.includes('shampoo') || text.includes('care')) return 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=150&h=150';
+                    return 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=150&h=150'; // Default Shopping Bag
+                }
+
+                const trendBadge = priceTrendBadge(item.category);
+                const thumbUrl = getCategoryImage(item.category, item.name);
+                return `
+                <div class="cart-item">
+                    <img src="${thumbUrl}" class="cart-item-img" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=100&h=100'" alt="${item.name}">
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <div class="meta" style="font-family: monospace;">${item.barcode} &middot; <span style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px;">${item.category || 'Item'}</span></div>
+                        <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-top:0.2rem;">&#x20B9;${(item.price * item.quantity).toFixed(2)} ${trendBadge}</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:flex-end; justify-content:center; height:100%;">
+                        <div style="font-weight:600; font-size:1.1rem; color:var(--color-text-primary);">
+                            x${item.quantity}
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+
+            // Identify the last item to trigger cross-sell
+            if (state.cart.length > 0) {
+                const lastItem = state.cart[state.cart.length - 1];
+                updateCrossSell(lastItem.name);
+            }
+
+            // Refresh context recommendations
+            loadContextRecommendations();
+        }
+
+        // --- PRECISE CROSS-SELL LOGIC ---
+        async function updateCrossSell(latestProductName) {
+            const ubtPanel = document.getElementById('usuallyBoughtTogether');
+            const ubtContent = document.getElementById('ubtContent');
+
+            if (!latestProductName || !state.cart.length) {
+                ubtPanel.style.display = 'none';
+                return;
+            }
+
+            try {
+                // Fetch ML-driven Apriori context recommendations from backend
+                const cartBarcodes = state.cart.map(i => i.barcode).filter(Boolean);
+                const customerId = user.customer_id || user.barcode || '';
+
+                const res = await fetch(`${API_URL}/recommendations/context`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        cart_barcodes: cartBarcodes,
+                        customer_id: customerId,
+                        limit: 3
+                    })
+                });
+
+                if (!res.ok) throw new Error('Failed to load cross-sells');
+
+                const data = await res.json();
+                const matches = data.recommendations || [];
+
+                if (matches.length > 0) {
+                    ubtPanel.style.display = 'block';
+                    ubtContent.innerHTML = matches.map(m => `
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-secondary); padding:0.5rem; border-radius:6px; border:1px solid var(--border-light);">
+                            <div>
+                                <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">${m.name}</div>
+                                <div style="font-size:0.75rem; color:var(--primary);">₹${m.price}</div>
+                            </div>
+                            ${getActionButtonsHTML(JSON.stringify(m))}
+                        </div>
+                    `).join('');
+                } else {
+                    ubtPanel.style.display = 'none';
+                }
+            } catch (err) {
+                console.error('Error fetching cross-sells:', err);
+                ubtPanel.style.display = 'none';
+            }
+        }
+
+        function quickAdd(barcode, name, price) {
+            // Smart Helper to add items from recommendations even if we don't have full object
+            // We pass basic details to optimistically update, then fetch details if needed or rely on minimal data
+            // To fix "Add not working", we ensure we handle the click correctly.
+            // If we have basic info (name, price), use it. Ideally we should do a fetch to ensure stock etc.
+
+            // Simplest fix: Just call addToCart which handles fetching if needed.
+            if (name && price) {
+                // Optimization: Pass object to avoid network call
+                addToCart(barcode, {
+                    barcode,
+                    name,
+                    price: parseFloat(price),
+                    product_id: barcode // fallback
+                });
+            } else {
+                addToCart(barcode);
+            }
+        }
+
+        // --- ENHANCED RECOMMENDATION ACTIONS ---
+        function getActionButtonsHTML(productJsonStr) {
+            // productJsonStr should be a stringified object with at least barcode, name, price, position_tag, aisle
+            // We use a safe random ID for the container string since there can be duplicates
+            const uid = 'rec_' + Math.random().toString(36).substr(2, 9);
+            const safeProductStr = productJsonStr.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+
+            return `
+                <div id="${uid}_container" style="display:flex; flex-direction:column; gap:0.5rem; align-items:flex-end;">
+                    <button id="${uid}_addBtn" class="btn-small" style="padding:4px 12px; font-size:0.75rem; background:var(--color-primary); color:white; border-radius:4px;" 
+                            onclick="showRecActions('${uid}')">+ Add</button>
+                    
+                    <div id="${uid}_actions" style="display:none; gap:0.3rem;">
+                        <button class="btn-small" style="padding:4px 8px; font-size:0.75rem; background:var(--color-text); color:var(--color-bg); border-radius:4px; display:flex; align-items:center; gap:0.2rem;" 
+                                onclick="selectProduct('${safeProductStr}')">
+                                <span>📍</span> Navigate
+                        </button>
+                        <button class="btn-small" style="padding:4px 8px; font-size:0.75rem; background:var(--color-surface); color:var(--color-text); border:1px solid var(--color-border); border-radius:4px; display:flex; align-items:center; gap:0.2rem;" 
+                                onclick="toggleRecInlineScan('${uid}')">
+                                <span>📷</span> Scan
+                        </button>
+                        <button class="btn-icon" style="padding:4px 6px; font-size:0.8rem; background:transparent; color:var(--color-text-secondary); border-radius:4px; margin-left:2px;" 
+                                onclick="hideRecActions('${uid}')">
+                                ✕
+                        </button>
+                    </div>
+
+                    <div id="${uid}_scanner" style="display:none; width:100%; max-width:180px; margin-top:0.2rem;">
+                        <div style="display:flex; gap:0.2rem;">
+                            <input type="text" id="${uid}_input" class="scanner-input" placeholder="Scan Barcode" style="padding:0.3rem 0.5rem; font-size:0.8rem; margin:0;"
+                                   onkeypress="if(event.key === 'Enter') { const v = this.value.replace(/\\D/g, ''); if(v) addToCart(v); }">
+                            <button class="btn-icon" style="background:var(--color-success); color:white; border-radius:4px; padding:0 0.5rem;" 
+                                    onclick="const v = document.getElementById('${uid}_input').value.replace(/\\D/g, ''); if(v) addToCart(v);">
+                                ✓
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showRecActions(uid) {
+            document.getElementById(`${uid}_addBtn`).style.display = 'none';
+            document.getElementById(`${uid}_actions`).style.display = 'flex';
+        }
+
+        function hideRecActions(uid) {
+            document.getElementById(`${uid}_actions`).style.display = 'none';
+            const scanner = document.getElementById(`${uid}_scanner`);
+            if (scanner) scanner.style.display = 'none';
+            document.getElementById(`${uid}_addBtn`).style.display = 'block';
+        }
+
+        function toggleRecInlineScan(uid) {
+            const scanner = document.getElementById(`${uid}_scanner`);
+            const input = document.getElementById(`${uid}_input`);
+            if (scanner.style.display === 'none') {
+                scanner.style.display = 'block';
+                input.focus();
+            } else {
+                scanner.style.display = 'none';
+            }
+        }
+
+        // --- RECOMMENDATIONS & API ---
+
+        async function loadContextRecommendations() {
+            // Recommendation based on cart content (context)
+            try {
+                const barcodes = state.cart.map(i => i.barcode);
+                const res = await fetch(`${API_URL}/recommendations/context`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cart_barcodes: barcodes, customer_id: state.user?.customer_id })
+                });
+                const data = await res.json();
+
+                const recList = document.getElementById('generalRecList');
+                // Backend returns { recommendations: [...] }
+                const items = data.recommendations || [];
+
+                if (items.length) {
+                    recList.innerHTML = items.map(i => `
+                        <div class="rec-card">
+                            <div>
+                                <div style="font-weight:600; font-size:0.9rem;">${i.name}</div>
+                                <div style="font-size:0.75rem; color:var(--color-text-secondary);">₹${i.price}</div>
+                            </div>
+                            ${getActionButtonsHTML(JSON.stringify(i))}
+                        </div>
+                    `).join('');
+                } else {
+                    recList.innerHTML = `
+                    <div class="empty-state" style="padding: 1rem; font-size: 0.9rem;">
+                        Scan items to see recommendations
+                    </div>`;
+                }
+
+            } catch (e) { console.error(e); }
+        }
+
+        // --- BUY AGAIN / RESTOCK --- always-visible with retry
+        let _restockRefreshTimer = null;
+
+        async function _fetchRestockWithRetry(customerId, attempts = 3, delayMs = 1500) {
+            for (let i = 0; i < attempts; i++) {
+                try {
+                    const res = await fetch(`${API_URL}/recommendations/restock/${customerId}`);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    // Accept if we got at least some content
+                    if ((data.restock && data.restock.length) || (data.frequent && data.frequent.length)) {
+                        return data;
+                    }
+                    // Got empty — wait and retry
+                    if (i < attempts - 1) await new Promise(r => setTimeout(r, delayMs));
+                } catch (e) {
+                    if (i < attempts - 1) await new Promise(r => setTimeout(r, delayMs));
+                }
+            }
+            return { restock: [], frequent: [] }; // safe fallback
+        }
+
+        async function loadRestockData() {
+            if (!state.user) return;
+
+            const restockCont = document.getElementById('restockContainer');
+            const restockList = document.getElementById('restockList');
+            const vmLink = document.getElementById('restockViewMore');
+            const PREVIEW = 3;
+
+            // Show section immediately with a skeleton so it's never invisible
+            restockCont.style.display = 'block';
+            restockList.innerHTML = `
+                <div style="padding:0.5rem 0;color:var(--color-text-secondary);font-size:0.8rem;text-align:center;">
+                    ⏳ Loading your picks…
+                </div>`;
+            if (vmLink) vmLink.style.display = 'none';
+
+            const data = await _fetchRestockWithRetry(state.user.customer_id);
+
+            // Merge overdue + frequent, overdue first, no duplicates
+            const overdueBarcodes = new Set((data.restock || []).map(x => x.barcode));
+            const merged = [
+                ...(data.restock || []).map(i => ({ ...i, _type: 'overdue' })),
+                ...(data.frequent || []).filter(x => !overdueBarcodes.has(x.barcode))
+                    .map(i => ({ ...i, _type: 'frequent' }))
+            ];
+
+            if (!merged.length) {
+                restockList.innerHTML = `
+                    <div style="padding:0.75rem 0;color:var(--color-text-secondary);font-size:0.82rem;text-align:center;">
+                        Keep shopping to build your personal picks 🛒
+                    </div>`;
+                return;
+            }
+
+            const preview = merged.slice(0, PREVIEW);
+            restockList.innerHTML = preview.map(i => {
+                const badge = i._type === 'overdue'
+                    ? `<div class="badge-tag" style="background:rgba(239,68,68,0.1);color:var(--color-error)">Overdue</div>`
+                    : `<div class="badge-tag" style="background:rgba(37,99,235,0.1);color:var(--color-primary)">Frequent</div>`;
+                const safeName = (i.name || '').replace(/'/g, "\\'");
+                const safePrice = parseFloat(i.price || 0).toFixed(2);
+                return `
+                    <div class="rec-card rec-alert">
+                        <div>
+                            ${badge}
+                            <div style="font-weight:600;font-size:0.9rem;">${i.name || ''}</div>
+                            <div style="font-size:0.75rem;color:var(--color-text-secondary);">
+                                ${i._type === 'overdue' ? `Last: ${i.days_since || '?'}d ago` : `₹${safePrice}`}
+                            </div>
+                        </div>
+                        ${getActionButtonsHTML(JSON.stringify(i))}
+                    </div>`;
+            }).join('');
+
+            if (vmLink) vmLink.style.display = merged.length > PREVIEW ? 'block' : 'none';
+
+            // Auto-refresh every 3 min to self-heal if it was empty first load
+            if (!_restockRefreshTimer) {
+                _restockRefreshTimer = setInterval(loadRestockData, 3 * 60 * 1000);
+            }
+        }
+
+        async function loadSimilarOptions(barcode) {
+            try {
+                const res = await fetch(`${API_URL}/products/similar/${barcode}`);
+                const data = await res.json();
+
+                const cont = document.getElementById('similarOptions');
+                const list = document.getElementById('similarContent');
+
+                if (data && data.length) {
+                    cont.style.display = 'block';
+                    list.innerHTML = data.map(i => `
+                        <div class="rec-card rec-similar">
+                            <div>
+                                <div style="font-weight:600; font-size:0.9rem;">${i.name}</div>
+                                <div style="font-size:0.75rem; font-weight:700;">₹${i.price}</div>
+                            </div>
+                            ${getActionButtonsHTML(JSON.stringify(i))}
+                        </div>
+                    `).join('');
+                } else {
+                    cont.style.display = 'none';
+                }
+
+            } catch (e) { console.error(e); }
+        }
+
+        // --- AI CART INTELLIGENCE ---
+        let _aiCartTimer = null;
+        function debouncedAiCartAnalysis() {
+            clearTimeout(_aiCartTimer);
+            _aiCartTimer = setTimeout(runAiCartAnalysis, 600);
+        }
+
+        async function runAiCartAnalysis() {
+            if (state.cart.length < 2) {
+                const panel = document.getElementById('aiCartPanel');
+                if (panel) panel.style.display = 'none';
+                return;
+            }
+            const panel = document.getElementById('aiCartPanel');
+            if (panel) panel.style.display = 'block';
+
+            try {
+                const barcodes = state.cart.map(i => i.barcode);
+                const prices = {};
+                const quantities = {};
+                state.cart.forEach(i => { prices[i.barcode] = i.price; quantities[i.barcode] = i.quantity; });
+
+                const res = await fetch(`${API_URL}/ai/cart-analysis`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ barcodes, prices, quantities })
+                });
+                const data = await res.json();
+
+                const arc = document.getElementById('aiScoreArc');
+                const numEl = document.getElementById('aiScoreNum');
+                const lblEl = document.getElementById('aiScoreLabel');
+                const tipEl = document.getElementById('aiScoreTip');
+
+                if (arc && data.score !== undefined) {
+                    const circumference = 175.93;
+                    arc.style.strokeDashoffset = circumference - (data.score / 100) * circumference;
+                    arc.style.stroke = data.score >= 80 ? 'var(--success)' : data.score >= 50 ? 'var(--primary)' : 'var(--warning)';
+                    if (numEl) numEl.textContent = data.score;
+                    if (lblEl) lblEl.textContent = data.label || '';
+                    if (tipEl) tipEl.textContent = data.tip || '';
+                }
+
+                const bdEl = document.getElementById('aiBreakdown');
+                if (bdEl && data.breakdown) {
+                    const total = data.total_spend || 1;
+                    bdEl.innerHTML = Object.entries(data.breakdown)
+                        .sort((a, b) => b[1] - a[1])
+                        .map(([cat, amt]) => {
+                            const pct = Math.round(amt / total * 100);
+                            return `<div class="ai-breakdown-row">
+                                <span class="ab-label">${cat}</span>
+                                <div class="ab-bar"><div class="ab-fill" style="width:${pct}%"></div></div>
+                                <span class="ab-value">&#x20B9;${amt.toFixed(0)} <span style="color:var(--text-muted);font-weight:400;">(${pct}%)</span></span>
+                            </div>`;
+                        }).join('');
+                }
+            } catch (e) { console.error('AI cart analysis error', e); }
+        }
+
+
+        // --- UTILS ---
+        function showToast(msg, type = 'info') {
+            const t = document.createElement('div');
+            t.className = 'toast';
+            t.textContent = msg;
+            if (type === 'error') t.style.background = 'var(--color-error)';
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 3000);
+        }
+
+        async function checkout() {
+            if (!state.cart.length) return showToast('Cart is empty!', 'error');
+
+            const customer = JSON.parse(localStorage.getItem('customer') || '{}');
+            if (!customer.customer_id) {
+                showToast('Please login to checkout', 'error');
+                setTimeout(() => window.location.href = 'login.html', 1500);
+                return;
+            }
+
+            showToast('Processing Checkout...', 'info');
+
+            try {
+                // Prepare cart items for backend
+                const items = state.cart.map(item => ({
+                    productId: item.product_id,
+                    quantity: item.quantity
+                }));
+
+                const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const tax = subtotal * 0.05; // 5% tax
+                const total = subtotal + tax;
+
+                // Call backend API
+                const response = await fetch(`${API_URL}/bills`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customer_id: customer.customer_id,
+                        items: items,
+                        subtotal: subtotal,
+                        tax: tax,
+                        total: total
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showToast('Checkout Complete!', 'info');
+                    alert(`Checkout Complete! \n\nBill ID: ${result.billId}\nTotal Paid: ₹${total.toFixed(2)}\n\nThank you for shopping at SmartRetailX.`);
+
+                    // Clear cart
+                    state.cart = [];
+                    renderCart();
+                } else {
+                    showToast(result.error || 'Checkout failed', 'error');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                showToast('Checkout failed. Please try again.', 'error');
+            }
+        }
+
+        // --- INIT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            initAuth();
+
+            document.getElementById('adminBtn').onclick = () => {
+                window.location.href = 'store.html';
+            };
+
+            // Barcode Input
+            const input = document.getElementById('barcodeInput');
+
+            // Toggle Remove Mode
+            const toggleRemoveBtn = document.getElementById('toggleRemoveBtn');
+            const scanBtn = document.getElementById('scanBtn');
+
+            if (toggleRemoveBtn) {
+                toggleRemoveBtn.addEventListener('click', () => {
+                    state.isRemoveMode = !state.isRemoveMode;
+                    if (state.isRemoveMode) {
+                        toggleRemoveBtn.style.background = 'var(--color-error)';
+                        toggleRemoveBtn.style.color = '#fff';
+                        toggleRemoveBtn.style.borderColor = 'var(--color-error)';
+                        scanBtn.style.background = 'var(--color-error)';
+                        input.placeholder = "Scan barcode to remove...";
+                        showToast('🔴 Remove Mode Enabled', 'error');
+                    } else {
+                        toggleRemoveBtn.style.background = 'var(--color-bg)';
+                        toggleRemoveBtn.style.color = 'var(--color-text-secondary)';
+                        toggleRemoveBtn.style.borderColor = 'var(--color-border)';
+                        scanBtn.style.background = 'var(--color-primary)';
+                        input.placeholder = "Add items to cart";
+                        showToast('🟢 Shop Mode Enabled', 'info');
+                    }
+                    input.focus();
+                });
+            }
+
+            input.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    // Force-strip any invisible characters or formatting the Wi-Fi scanner injects
+                    const bc = input.value.replace(/\D/g, '');
+                    if (bc) {
+                        if (state.isRemoveMode) {
+                            removeFromCartByBarcode(bc);
+                        } else {
+                            addToCart(bc);
+                        }
+                    } else {
+                        showToast('Invalid barcode scanned.', 'error');
+                    }
+                }
+            });
+
+            // ── Voice Search (on Product Search section) ─────────────────────────────
+            const productVoiceBtn = document.getElementById('productVoiceBtn');
+            if (productVoiceBtn) {
+                const micSVG = productVoiceBtn.innerHTML;
+                productVoiceBtn.addEventListener('click', async () => {
+                    productVoiceBtn.innerHTML = '<span style="font-size:0.7rem;white-space:nowrap;">🎙️…</span>';
+                    productVoiceBtn.disabled = true;
+                    productVoiceBtn.style.background = 'rgba(239,68,68,0.15)';
+                    productVoiceBtn.style.color = 'var(--color-error)';
+                    showToast('🎙️ Listening for product name...', 'info');
+
+                    try {
+                        const res = await fetch(`${API_URL}/voice_search`, { method: 'POST' });
+                        const data = await res.json();
+
+                        if (data.success && data.product_name) {
+                            const searchInput = document.getElementById('productSearchInput');
+                            searchInput.value = data.product_name;
+                            const countMsg = data.count ? ` — ${data.count} result${data.count !== 1 ? 's' : ''} found` : '';
+                            showToast(`🔍 Searching: "${data.product_name}"${countMsg}`, 'info');
+                            // Trigger the product search with the raw spoken word
+                            searchProducts(data.product_name);
+                        } else {
+                            showToast(data.message || 'Could not understand. Try again.', 'error');
+                        }
+                    } catch (e) {
+                        showToast('Voice Search Error', 'error');
+                        console.error('Voice Error', e);
+                    } finally {
+                        productVoiceBtn.innerHTML = micSVG;
+                        productVoiceBtn.disabled = false;
+                        productVoiceBtn.style.background = '';
+                        productVoiceBtn.style.color = '';
+                    }
+                });
+            }
+
+            // ── Scan Button ───────────────────────────────────────────────────────────
+            if (scanBtn) {
+                scanBtn.addEventListener('click', () => {
+                    const barcodeInput = document.getElementById('barcodeInput');
+                    // Force-strip any invisible characters the Wi-Fi scanner injects
+                    const bc = barcodeInput.value.replace(/\D/g, '');
+
+                    if (bc) {
+                        // User typed a barcode and clicked scan
+                        if (state.isRemoveMode) {
+                            removeFromCartByBarcode(bc);
+                        } else {
+                            addToCart(bc);
+                        }
+                    } else {
+                        // User clicked scan to prepare their physical scanner
+                        barcodeInput.focus();
+                        barcodeInput.select();
+                        // Visual feedback
+                        const origHtml = scanBtn.innerHTML;
+                        const origBg = scanBtn.style.background;
+                        scanBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> Ready';
+                        scanBtn.style.background = 'var(--color-success, #16a34a)';
+                        setTimeout(() => {
+                            scanBtn.innerHTML = origHtml;
+                            scanBtn.style.background = origBg;
+                        }, 1500);
+                        showToast('📷 Scanner ready — scan your barcode now', 'info');
+                    }
+                });
+            }
+        });
+
+        // --- PRODUCT SEARCH & PATH ---
+        let searchTimer = null;
+        function debounceSearch(val) {
+            clearTimeout(searchTimer);
+            if (!val.trim()) {
+                document.getElementById('searchResultsList').style.display = 'none';
+                document.getElementById('pathDisplay').style.display = 'none';
+                const chips = document.getElementById('suggestionChips');
+                if (chips) chips.style.display = 'none';
+                return;
+            }
+            document.getElementById('searchSpinner').style.display = 'inline';
+            searchTimer = setTimeout(() => searchProducts(val.trim()), 350);
+        }
+
+
+        async function searchProducts(query) {
+            try {
+                const res = await fetch(`${API_URL}/products/search?q=${encodeURIComponent(query)}`);
+                const products = await res.json();
+                document.getElementById('searchSpinner').style.display = 'none';
+
+                const list = document.getElementById('searchResultsList');
+                if (!products.length) {
+                    list.innerHTML = `<div style="padding:1rem;text-align:center;color:var(--color-text-secondary);font-size:0.9rem;">
+                        No products found for "${query}"</div>`;
+                    list.style.display = 'block';
+                    return;
+                }
+
+                list.innerHTML = products.map((p, i) => `
+                    <div onclick='selectProduct(${JSON.stringify(JSON.stringify(p))})'
+                         style="display:flex;align-items:center;justify-content:space-between;
+                                padding:0.7rem 0.75rem;cursor:pointer;border-bottom:1px solid var(--color-border);
+                                transition:background 0.15s;"
+                         onmouseover="this.style.background='rgba(255,255,255,0.05)'"
+                         onmouseout="this.style.background=''">  
+                        <div style="min-width:0;">
+                            <div style="font-weight:600;font-size:0.9rem;">${p.name}</div>
+                            <div style="font-size:0.75rem;color:var(--color-text-secondary);">
+                                ${p.category || ''} · Aisle ${p.aisle || '?'}
+                            </div>
+                        </div>
+                        <div style="text-align:right;flex-shrink:0;margin-left:0.75rem;">
+                            <div style="font-weight:700;color:var(--color-primary);font-size:0.9rem;">₹${p.price}</div>
+                        </div>
+                    </div>`).join('');
+                list.style.display = 'block';
+            } catch (e) {
+                document.getElementById('searchSpinner').style.display = 'none';
+                console.error('Search error', e);
+            }
+        }
+
+        // Store target globally to be picked up by the map
+        let currentTargetProduct = null;
+        let navPollInterval = null;
+
+        async function selectProduct(productJson) {
+            const p = JSON.parse(productJson);
+            document.getElementById('searchResultsList').style.display = 'none';
+            document.getElementById('productSearchInput').value = p.name;
+
+            currentTargetProduct = p;
+
+            const pathDisplay = document.getElementById('pathDisplay');
+            document.getElementById('pathProductBadge').textContent = p.name;
+            pathDisplay.style.display = 'block';
+        }
+
+        // --- LIVE CANVAS NAVIGATION ---
+        // Layout orientation:
+        //   TOP    = ESP end (far from entrance)  → ESPs drawn ABOVE each aisle
+        //   BOTTOM = Entrance                     → 🚪 label at bottom
+        //
+        // Globally unique partition numbering:
+        //   Aisle 1: P101–P112  (left: P101-P106, right: P107-P112)
+        //   Aisle 2: P113–P124  (left: P113-P118, right: P119-P124)
+        //   Aisle 3: P125–P136  (left: P125-P130, right: P131-P136)
+        //
+        // Row 1 (bottom) = nearest entrance,  Row 6 (top) = nearest ESP
+
+        const CANVAS_W = 700, CANVAS_H = 470;
+        const AISLE_Y_TOP = 70;   // top of grid (row 6)
+        const AISLE_Y_BOTTOM = 380;  // bottom of grid (row 1)
+        const AISLE_GRID_H = AISLE_Y_BOTTOM - AISLE_Y_TOP;   // 310 px
+        const ROWS = 6, CELL_W = 48, CELL_H = AISLE_GRID_H / ROWS;
+
+        // One entry per aisle: x = left edge of the 2-col block
+        const AISLE_DEFS = [
+            { id: 1, name: 'Snacks', x: 35, startPart: 101, color: 'rgba(239,68,68,0.13)', border: 'rgba(239,68,68,0.55)', esp: '#ef4444' },
+            { id: 2, name: 'Staples', x: 265, startPart: 113, color: 'rgba(245,158,11,0.13)', border: 'rgba(245,158,11,0.55)', esp: '#f59e0b' },
+            { id: 3, name: 'Personal', x: 495, startPart: 125, color: 'rgba(59,130,246,0.13)', border: 'rgba(59,130,246,0.55)', esp: '#3b82f6' },
+        ];
+        // Total aisle width = CELL_W * 2 = 96px
+
+        // Build partition coordinate table.
+        // mapConfig.partitions maps both "Aisle N - PXxx" AND "PXxx" → {x, y}
+        // Since partition numbers are now globally unique, "PXxx" is unambiguous.
+        const mapConfig = {
+            width: CANVAS_W,
+            height: CANVAS_H,
+            partitions: { 'Entry': { x: CANVAS_W / 2, y: CANVAS_H - 25 } }
+        };
+
+        AISLE_DEFS.forEach(aisle => {
+            // startPart = first partition in this aisle (101, 113, or 125)
+            // Parts layout: left col = startPart … startPart+5
+            //               right col = startPart+6 … startPart+11
+            for (let i = 0; i < 12; i++) {
+                const partNum = aisle.startPart + i;
+                const tag = `P${partNum}`;
+                const col = i < 6 ? 0 : 1;           // 0=left, 1=right
+                const rowInCol = i < 6 ? (i + 1) : (i - 5); // 1=bottom … 6=top
+                const cx = aisle.x + col * CELL_W + CELL_W / 2;
+                // row 1 = bottom (AISLE_Y_BOTTOM), row 6 = top (AISLE_Y_TOP)
+                const cy = AISLE_Y_BOTTOM - (rowInCol - 0.5) * CELL_H;
+                const coord = { x: cx, y: cy };
+                mapConfig.partitions[tag] = coord;
+                mapConfig.partitions[`Aisle ${aisle.id} - ${tag}`] = coord;
+            }
+        });
+
+        function openNavModal() {
+            if (!currentTargetProduct) return;
+
+            document.getElementById('navModal').style.display = 'flex';
+            document.getElementById('navTargetName').textContent = currentTargetProduct.name;
+            document.getElementById('navCurrentPos').textContent = 'Scanning...';
+
+            // ── Show product location IMMEDIATELY from DB data ─────────────
+            // position_tag and aisle come directly from the Neon DB search result.
+            // No ESP or API call is needed to find where the product is.
+            const dbTag = currentTargetProduct.position_tag || null;
+            const dbAisle = currentTargetProduct.aisle || null;
+            const locEl = document.getElementById('navProductLocText');
+            if (dbTag) {
+                locEl.textContent = dbAisle ? `Aisle ${dbAisle} — ${dbTag}` : dbTag;
+            } else {
+                locEl.textContent = '—';
+            }
+
+            // Draw map immediately with product pin from DB — customer pos is unknown yet
+            drawStoreMap('Entry', [], null, null, dbTag, dbAisle);
+
+            // Then start live polling for customer location + route line (ESP optional)
+            pollAndDrawPath();
+            navPollInterval = setInterval(pollAndDrawPath, 4000);
+        }
+
+        function closeNavModal() {
+            document.getElementById('navModal').style.display = 'none';
+            if (navPollInterval) { clearInterval(navPollInterval); navPollInterval = null; }
+            if (_pathAnimRAF) { cancelAnimationFrame(_pathAnimRAF); _pathAnimRAF = null; }
+        }
+
+        async function pollAndDrawPath() {
+            const dbTag = currentTargetProduct.position_tag || null;
+            const dbAisle = currentTargetProduct.aisle || null;
+
+            const locEl = document.getElementById('navProductLocText');
+            locEl.textContent = dbTag
+                ? (dbAisle ? `Aisle ${dbAisle} — ${dbTag}` : dbTag) : '—';
+
+            const startNode = globalCurrentPartition || 'Entry';
+            document.getElementById('navCurrentPos').textContent =
+                startNode === 'Entry' ? 'Store Entrance' : startNode;
+
+            try {
+                const res = await fetch(`${API_URL}/nav/path?start_node=${encodeURIComponent(startNode)}&target_product=${encodeURIComponent(currentTargetProduct.name)}`);
+                const data = await res.json();
+
+                if (data.success) {
+                    const recStops = data.recommendation_stops || [];
+                    drawStoreMap(startNode, data.route, data.recommendation_node, data.recommendation, dbTag, dbAisle, recStops);
+
+                    // Recommendation cards removed — drawing directly on canvas now
+                    const recDiv = document.getElementById('navRecommendation');
+                    recDiv.style.display = 'none';
+
+                } else {
+                    drawStoreMap(startNode, [], null, null, dbTag, dbAisle, []);
+                    document.getElementById('navRecommendation').style.display = 'none';
+                }
+            } catch (e) {
+                console.error('Navigation API failed', e);
+                drawStoreMap(startNode, [], null, null, dbTag, dbAisle, []);
+            }
+        }
+
+        // Animated dash offset for path line
+        let _dashOffset = 0;
+        let _pathAnimRAF = null;
+
+        function drawStoreMap(startNode, route, recNode, recName, targetNode, targetAisle, recStops) {
+            recStops = recStops || [];
+            const canvas = document.getElementById('storeCanvas');
+            canvas.width = CANVAS_W;
+            canvas.height = CANVAS_H;
+            const ctx = canvas.getContext('2d');
+            if (_pathAnimRAF) { cancelAnimationFrame(_pathAnimRAF); _pathAnimRAF = null; }
+
+            // Effective target (fallback to last route node if targetNode missing)
+            const effTarget = targetNode || (route && route.length > 0 ? route[route.length - 1] : null);
+
+            function render() {
+                ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+
+                // ── Entrance label ────────────────────────────────────
+                ctx.font = 'bold 12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rgba(148,163,184,0.8)';
+                ctx.fillText('🚪  ENTRANCE', CANVAS_W / 2, CANVAS_H - 8);
+
+                // Divider above entrance
+                ctx.beginPath();
+                ctx.moveTo(20, AISLE_Y_BOTTOM + 12);
+                ctx.lineTo(CANVAS_W - 20, AISLE_Y_BOTTOM + 12);
+                ctx.strokeStyle = 'rgba(148,163,184,0.15)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+
+                AISLE_DEFS.forEach(aisle => {
+                    const totalW = CELL_W * 2;
+
+                    // ── Aisle background fill ─────────────────────────
+                    ctx.fillStyle = aisle.color;
+                    ctx.fillRect(aisle.x, AISLE_Y_TOP, totalW, AISLE_GRID_H);
+
+                    // ── ESP beacon at TOP (opposite entrance) ─────────
+                    const espCX = aisle.x + totalW / 2;
+                    const espCY = AISLE_Y_TOP - 22;
+                    const pulse = 0.2 + 0.15 * Math.sin(Date.now() / 600);
+                    ctx.beginPath(); ctx.arc(espCX, espCY, 16, 0, 2 * Math.PI);
+                    ctx.strokeStyle = aisle.esp + '55'; ctx.lineWidth = 2; ctx.stroke();
+                    ctx.beginPath(); ctx.arc(espCX, espCY, 8, 0, 2 * Math.PI);
+                    ctx.fillStyle = aisle.esp; ctx.fill();
+                    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+                    ctx.fillStyle = '#e2e8f0'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText(`📡 ESP${aisle.id}`, espCX, espCY + 22);
+
+                    // Aisle name label above ESP
+                    ctx.fillStyle = 'rgba(203,213,225,0.9)'; ctx.font = 'bold 10px sans-serif';
+                    ctx.fillText(`Aisle ${aisle.id}`, espCX, AISLE_Y_TOP - 40);
+                    ctx.font = '8px sans-serif'; ctx.fillStyle = 'rgba(148,163,184,0.7)';
+                    ctx.fillText(aisle.name, espCX, AISLE_Y_TOP - 50);
+
+                    // ── 12 partition boxes per aisle ──────────────────
+                    // i=0..5 → left col (P startPart..startPart+5), bottom→top
+                    // i=6..11 → right col (P startPart+6..startPart+11), bottom→top
+                    for (let i = 0; i < 12; i++) {
+                        const partNum = aisle.startPart + i;
+                        const partTag = `P${partNum}`;
+                        const fullKey = `Aisle ${aisle.id} - ${partTag}`;
+                        const col = i < 6 ? 0 : 1;
+                        const rowInCol = i < 6 ? (i + 1) : (i - 5);  // 1(bottom)..6(top)
+                        const bx = aisle.x + col * CELL_W;
+                        const by = AISLE_Y_TOP + (ROWS - rowInCol) * CELL_H;
+
+                        const isProduct = effTarget === partTag || effTarget === fullKey;
+                        const isUser = startNode === partTag || startNode === fullKey;
+
+                        ctx.fillStyle = isProduct ? 'rgba(239,68,68,0.4)'
+                            : isUser ? 'rgba(59,130,246,0.4)'
+                                : 'rgba(255,255,255,0.03)';
+                        ctx.fillRect(bx + 1, by + 1, CELL_W - 2, CELL_H - 2);
+
+                        ctx.strokeStyle = isProduct ? 'rgba(239,68,68,0.9)'
+                            : isUser ? 'rgba(59,130,246,0.9)'
+                                : aisle.border.replace('0.55', '0.2');
+                        ctx.lineWidth = isProduct || isUser ? 2 : 0.5;
+                        ctx.strokeRect(bx + 1, by + 1, CELL_W - 2, CELL_H - 2);
+
+                        const cx = bx + CELL_W / 2, cy = by + CELL_H / 2;
+                        if (isProduct) {
+                            // Large emoji icon
+                            ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
+                            ctx.fillText('📦', cx, cy - 4);
+                            // Bold position tag below emoji
+                            ctx.font = 'bold 7.5px sans-serif';
+                            ctx.fillStyle = '#fca5a5';
+                            ctx.fillText(partTag, cx, cy + 9);
+                            // Tiny aisle badge even lower (if we know it)
+                            if (targetAisle) {
+                                ctx.font = '6px sans-serif';
+                                ctx.fillStyle = 'rgba(252,165,165,0.75)';
+                                ctx.fillText(`Aisle ${targetAisle}`, cx, cy + 18);
+                            }
+                        } else if (isUser) {
+                            ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+                            ctx.fillText('🧍', cx, cy - 3);
+                            ctx.font = 'bold 7px sans-serif'; ctx.fillStyle = '#93c5fd';
+                            ctx.fillText(partTag, cx, cy + 10);
+                        } else {
+                            ctx.font = '6.5px sans-serif';
+                            ctx.fillStyle = 'rgba(148,163,184,0.5)';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(partTag, cx, cy + 2.5);
+                        }
+                    }
+
+                    // Vertical divider between left & right cols
+                    ctx.beginPath();
+                    ctx.moveTo(aisle.x + CELL_W, AISLE_Y_TOP);
+                    ctx.lineTo(aisle.x + CELL_W, AISLE_Y_BOTTOM);
+                    ctx.strokeStyle = aisle.border.replace('0.55', '0.35');
+                    ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]);
+
+                    // Outer border of full aisle
+                    ctx.strokeStyle = aisle.border;
+                    ctx.lineWidth = 1.5;
+                    ctx.strokeRect(aisle.x, AISLE_Y_TOP, totalW, AISLE_GRID_H);
+                });
+
+                // ── Corridor-aware path drawing ───────────────────────
+                // Build waypoints: add U-turn corners and aisle-crossing waypoints
+                const rawPts = [];
+                const startPos = mapConfig.partitions[startNode];
+                if (startPos) rawPts.push({ ...startPos, segIdx: 0 });
+
+                if (route && route.length > 0) {
+                    // Determine which nodes are recommendation stops vs normal
+                    const recNodeSet = new Set(recStops.map(s => s.node));
+                    let segIdx = 0;
+                    route.forEach(node => {
+                        if (recNodeSet.has(node)) segIdx++;
+                        const pos = mapConfig.partitions[node];
+                        if (pos) {
+                            const last = rawPts[rawPts.length - 1];
+                            if (!last || last.x !== pos.x || last.y !== pos.y)
+                                rawPts.push({ ...pos, segIdx });
+                        }
+                        if (recNodeSet.has(node)) segIdx++;
+                    });
+                }
+                if (effTarget && mapConfig.partitions[effTarget]) {
+                    const tpos = mapConfig.partitions[effTarget];
+                    const last = rawPts[rawPts.length - 1];
+                    if (!last || last.x !== tpos.x || last.y !== tpos.y)
+                        rawPts.push({ ...tpos, segIdx: recStops.length + 1 });
+                }
+
+                // Add corridor waypoints (U-turns within aisle, aisle crossings)
+                function buildCorridorWaypoints(pts) {
+                    if (pts.length < 2) return pts;
+                    const out = [pts[0]];
+                    const MID_Y_THRESHOLD = (AISLE_Y_TOP + AISLE_Y_BOTTOM) / 2;
+                    for (let i = 1; i < pts.length; i++) {
+                        const from = pts[i - 1], to = pts[i];
+                        const dx = Math.abs(to.x - from.x);
+                        const dy = Math.abs(to.y - from.y);
+                        // Within same aisle, big Y jump = column U-turn
+                        if (dx < 60 && dy > AISLE_GRID_H * 0.45) {
+                            const atTop = from.y < MID_Y_THRESHOLD;
+                            const turnY = atTop ? AISLE_Y_TOP - 14 : AISLE_Y_BOTTOM + 14;
+                            out.push({ x: from.x, y: turnY, segIdx: from.segIdx });
+                            out.push({ x: to.x, y: turnY, segIdx: to.segIdx });
+                        }
+                        // Between aisles with Y mismatch — add horizontal walkway
+                        else if (dx > 130 && dy > 10) {
+                            const walkY = from.y < MID_Y_THRESHOLD ? AISLE_Y_TOP - 14 : AISLE_Y_BOTTOM + 14;
+                            out.push({ x: from.x, y: walkY, segIdx: from.segIdx });
+                            out.push({ x: to.x, y: walkY, segIdx: to.segIdx });
+                        }
+                        out.push(to);
+                    }
+                    return out;
+                }
+
+                const waypoints = buildCorridorWaypoints(rawPts);
+
+                // Draw the path in colored segments with rounded corners
+                if (waypoints.length > 1) {
+                    // Color map: seg 0=blue, mid=gold, last=orange-red
+                    const totalSegs = recStops.length + 1;
+                    const segColors = ['#60a5fa', '#fbbf24', '#f97316', '#ef4444'];
+                    const getColor = si => segColors[Math.min(si, segColors.length - 1)];
+
+                    // Rounded-corner bezier draw helper
+                    function drawRoundedPath(pts, color) {
+                        if (pts.length < 2) return;
+                        ctx.save();
+                        ctx.shadowColor = color + '88'; ctx.shadowBlur = 8;
+                        ctx.strokeStyle = color;
+                        ctx.lineWidth = 3.5;
+                        ctx.setLineDash([8, 5]);
+                        ctx.lineDashOffset = -_dashOffset;
+                        ctx.beginPath();
+                        ctx.moveTo(pts[0].x, pts[0].y);
+                        const R = 14;
+                        for (let i = 1; i < pts.length - 1; i++) {
+                            const p0 = pts[i - 1], p1 = pts[i], p2 = pts[i + 1];
+                            const d01 = Math.hypot(p1.x - p0.x, p1.y - p0.y) || 1;
+                            const d12 = Math.hypot(p2.x - p1.x, p2.y - p1.y) || 1;
+                            const r = Math.min(R, d01 / 2, d12 / 2);
+                            const t0 = r / d01, t1 = r / d12;
+                            const bx = p1.x + (p0.x - p1.x) * t0, by = p1.y + (p0.y - p1.y) * t0;
+                            const ax = p1.x + (p2.x - p1.x) * t1, ay = p1.y + (p2.y - p1.y) * t1;
+                            ctx.lineTo(bx, by);
+                            ctx.quadraticCurveTo(p1.x, p1.y, ax, ay);
+                        }
+                        ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
+                        ctx.stroke();
+                        ctx.restore();
+                        ctx.setLineDash([]);
+                    }
+
+                    // Group consecutive same-segment waypoints and draw
+                    let segBuf = [waypoints[0]];
+                    for (let i = 1; i < waypoints.length; i++) {
+                        const w = waypoints[i];
+                        if (w.segIdx === segBuf[0].segIdx) {
+                            segBuf.push(w);
+                        } else {
+                            segBuf.push(w); // overlap 1pt for continuity
+                            drawRoundedPath(segBuf, getColor(segBuf[0].segIdx));
+                            segBuf = [w];
+                        }
+                    }
+                    if (segBuf.length > 1) drawRoundedPath(segBuf, getColor(segBuf[0].segIdx));
+
+                    _dashOffset = (_dashOffset + 0.5) % 13;
+
+                    // Draw directional arrows along path
+                    for (let i = 1; i < waypoints.length; i += Math.max(1, Math.floor(waypoints.length / 4))) {
+                        const p0 = waypoints[i - 1], p1 = waypoints[i];
+                        const mx = (p0.x + p1.x) / 2, my = (p0.y + p1.y) / 2;
+                        const ang = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+                        ctx.save();
+                        ctx.translate(mx, my); ctx.rotate(ang);
+                        ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                        ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                        ctx.fillText('▶', 0, 0);
+                        ctx.restore();
+                    }
+                }
+
+                // ── Recommendation Map Popups ───────────────────────
+                window.recPopupHitboxes = []; // Reset hitboxes for clicks
+                recStops.forEach((stop, idx) => {
+                    const pos = mapConfig.partitions[stop.node];
+                    if (!pos) return;
+                    const col = ['#fbbf24', '#f97316'][idx] || '#f59e0b';
+
+                    // 1. Draw glow circle marker (the anchor)
+                    ctx.save();
+                    ctx.shadowColor = col; ctx.shadowBlur = 12;
+                    ctx.beginPath(); ctx.arc(pos.x, pos.y, 9, 0, 2 * Math.PI);
+                    ctx.fillStyle = col + 'cc'; ctx.fill();
+                    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+                    // Bag icon inside marker
+                    ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                    ctx.fillStyle = '#fffbeb'; ctx.fillText('🛍️', pos.x, pos.y);
+                    ctx.restore();
+
+                    // 2. Draw Popup Bubble above the marker
+                    const popW = 110, popH = 46;
+                    const popX = pos.x - popW / 2;
+                    const popY = pos.y - popH - 16; // 16px above marker
+
+                    ctx.save();
+                    // Shadow for floating effect
+                    ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetY = 4;
+
+                    // Safe fallback for drawing rounded rectangles
+                    function drawSafeRoundRect(ctx, x, y, w, h, r) {
+                        ctx.beginPath();
+                        ctx.moveTo(x + r, y);
+                        ctx.lineTo(x + w - r, y);
+                        ctx.arcTo(x + w, y, x + w, y + r, r);
+                        ctx.lineTo(x + w, y + h - r);
+                        ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+                        ctx.lineTo(x + r, y + h);
+                        ctx.arcTo(x, y + h, x, y + h - r, r);
+                        ctx.lineTo(x, y + r);
+                        ctx.arcTo(x, y, x + r, y, r);
+                        ctx.closePath();
+                    }
+
+                    // Bubble Background (rounded rect)
+                    drawSafeRoundRect(ctx, popX, popY, popW, popH, 6);
+                    ctx.fillStyle = '#1e293b'; // dark slate
+                    ctx.fill();
+                    // Border matching segment color
+                    ctx.strokeStyle = col;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    // Pointer triangle at bottom
+                    ctx.beginPath();
+                    ctx.moveTo(pos.x - 6, popY + popH);
+                    ctx.lineTo(pos.x + 6, popY + popH);
+                    ctx.lineTo(pos.x, popY + popH + 6);
+                    ctx.closePath();
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    // Quick hack to draw just the sides of the triangle border
+                    ctx.beginPath();
+                    ctx.moveTo(pos.x - 6, popY + popH);
+                    ctx.lineTo(pos.x, popY + popH + 6);
+                    ctx.lineTo(pos.x + 6, popY + popH);
+                    ctx.strokeStyle = col;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                    ctx.restore();
+
+                    // 3. Popup Content
+                    // Name (truncated)
+                    const label = stop.name.length > 14 ? stop.name.slice(0, 13) + '…' : stop.name;
+                    ctx.font = 'bold 9px sans-serif';
+                    ctx.fillStyle = '#f8fafc';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'top';
+                    ctx.fillText(label, popX + 8, popY + 8);
+
+                    // Aisle / Node info
+                    ctx.font = '7px sans-serif';
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.fillText(`Aisle ${stop.aisle} • ${stop.node}`, popX + 8, popY + 20);
+
+                    // 4. "Add" Button Graphic inside popup
+                    const btnW = 36, btnH = 16;
+                    const btnX = popX + 8;
+                    const btnY = popY + 28;
+                    drawSafeRoundRect(ctx, btnX, btnY, btnW, btnH, 4);
+                    ctx.fillStyle = col;
+                    ctx.fill();
+                    ctx.font = 'bold 8px sans-serif';
+                    ctx.fillStyle = '#0f172a'; // dark text on colored button
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('+ Add', btnX + btnW / 2, btnY + btnH / 2);
+
+                    // Store hitbox for click handler
+                    window.recPopupHitboxes.push({
+                        rect: { x: popX, y: popY, w: popW, h: popH },
+                        btnRect: { x: btnX, y: btnY, w: btnW, h: btnH }, // The button specifically
+                        barcode: stop.barcode,
+                        name: stop.name
+                    });
+                });
+
+                // Old single rec marker (fallback if no recStops)
+                if (recStops.length === 0 && recNode && mapConfig.partitions[recNode]) {
+                    const pos = mapConfig.partitions[recNode];
+                    drawPin(ctx, pos.x, pos.y, 7, '#f59e0b', '💡', '#fffbeb');
+                }
+
+                // ── User ripple ───────────────────────────────────────
+                if (startPos) {
+                    const ripple = (Date.now() % 1000) / 1000;
+                    ctx.beginPath();
+                    ctx.arc(startPos.x, startPos.y, 12 + ripple * 10, 0, 2 * Math.PI);
+                    ctx.strokeStyle = `rgba(59,130,246,${0.45 - ripple * 0.4})`;
+                    ctx.lineWidth = 1.5; ctx.stroke();
+                }
+
+                // ── Product pulse ─────────────────────────────────────
+                if (effTarget && mapConfig.partitions[effTarget]) {
+                    const epos = mapConfig.partitions[effTarget];
+                    const pulse = 0.4 + 0.2 * Math.sin(Date.now() / 350);
+                    ctx.beginPath();
+                    ctx.arc(epos.x, epos.y, 11, 0, 2 * Math.PI);
+                    ctx.strokeStyle = `rgba(239,68,68,${pulse})`;
+                    ctx.lineWidth = 2; ctx.stroke();
+                }
+
+                if (document.getElementById('navModal').style.display !== 'none') {
+                    _pathAnimRAF = requestAnimationFrame(render);
+                }
+            }
+            render();
+        }
+
+        // Draw a pin/circle with emoji label
+        function drawPin(ctx, x, y, r, fillColor, emoji, glowColor) {
+            ctx.save();
+            ctx.shadowColor = glowColor || fillColor;
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, 2 * Math.PI);
+            ctx.fillStyle = fillColor;
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.restore();
+            if (emoji) {
+                ctx.font = `${r + 4}px sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(emoji, x, y);
+                ctx.textBaseline = 'alphabetic';
+            }
+        }
+        // Handle clicks on the canvas for Map Recommendation Popups
+        document.getElementById('storeCanvas').addEventListener('click', (e) => {
+            if (!window.recPopupHitboxes || window.recPopupHitboxes.length === 0) return;
+
+            const rect = e.target.getBoundingClientRect();
+            // Calculate scale in case CSS visually scales the canvas
+            const scaleX = CANVAS_W / rect.width;
+            const scaleY = CANVAS_H / rect.height;
+
+            const x = (e.clientX - rect.left) * scaleX;
+            const y = (e.clientY - rect.top) * scaleY;
+
+            // Check if click is inside any Add button hitbox
+            for (let pop of window.recPopupHitboxes) {
+                const b = pop.btnRect;
+                if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) {
+                    addToCartByBarcode(pop.barcode, pop.name);
+
+                    // Simple visual click feedback
+                    const ogBox = e.target.style.boxShadow;
+                    e.target.style.boxShadow = 'inset 0 0 0 2px var(--color-primary)';
+                    setTimeout(() => e.target.style.boxShadow = ogBox, 200);
+                    break;
+                }
+            }
+        });
+
+        // ── ADVERTISEMENT ENGINE ──────────────────────────────────────────────────
+        let currentAdAisle = null;
+        let aisleAds = [];     // 6 ads fetched for the current aisle
+        let adPartitions = []; // list of partitions for this aisle (e.g. ['P101', 'P102', ...])
+        let currentAdIndex = 0;
+        let adRotationInterval = null;
+
+        /** Called specifically when a new Aisle is detected to load its ads */
+        async function loadAdsForAisle(aisleId) {
+            if (currentAdAisle === aisleId) return; // already loaded
+            currentAdAisle = aisleId;
+            const customer = JSON.parse(localStorage.getItem('customer') || '{}');
+            const custId = customer.customer_id || '';
+
+            try {
+                const res = await fetch(`${API_URL}/nav/ads?aisle=${aisleId}&customer_id=${custId}`);
+                const data = await res.json();
+                aisleAds = data.ads || [];
+                adPartitions = data.partitions || [];
+                currentAdIndex = 0;
+
+                if (aisleAds.length > 0 && customer.customer_id) {
+                    document.getElementById('adBanner').classList.add('show-ad');
+                    renderCurrentAd();
+                    startAdRotation();
+                } else {
+                    document.getElementById('adBanner').classList.remove('show-ad');
+                    stopAdRotation();
+                }
+            } catch (err) {
+                console.error("Failed to load ads:", err);
+            }
+        }
+
+        function renderCurrentAd() {
+            if (!aisleAds.length || currentAdIndex >= aisleAds.length) return;
+            const ad = aisleAds[currentAdIndex];
+
+            document.getElementById('adTitle').textContent = ad.title;
+            document.getElementById('adDesc').textContent = ad.description || '';
+            const imgBox = document.getElementById('adImage');
+
+            if (ad.image_url) {
+                imgBox.innerHTML = `<img src="${ad.image_url}" style="width:100%; height:100%; object-fit:cover; border-radius:6px;">`;
+            } else {
+                imgBox.innerHTML = `<div style="width:100%; height:100%; background:var(--color-primary-light); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; border-radius:6px;">%</div>`;
+            }
+
+            // Bind click handler for Add button if product exists
+            const btn = document.getElementById('adBtn');
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                if (ad.product_id) addToCartByBarcode(ad.product_id, ad.title);
+            };
+
+            // Log impression to backend
+            const customer = JSON.parse(localStorage.getItem('customer') || '{}');
+            if (ad.ad_id && customer.customer_id) {
+                fetch(`${API_URL}/nav/ads/impression`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ad_id: ad.ad_id,
+                        customer_id: customer.customer_id,
+                        position_tag: ad.position_tag,
+                        aisle: currentAdAisle,
+                        revenue_per_impression: ad.revenue_per_impression
+                    })
+                }).catch(e => console.error(e));
+            }
+        }
+
+        function startAdRotation() {
+            stopAdRotation();
+            // 10s per ad
+            adRotationInterval = setInterval(() => {
+                // Fade out
+                const cont = document.getElementById('adBannerContainer');
+                cont.style.opacity = '0';
+
+                setTimeout(() => {
+                    currentAdIndex = (currentAdIndex + 1) % aisleAds.length;
+                    renderCurrentAd();
+                    cont.style.opacity = '1'; // Fade in
+                }, 500); // Wait for fade out CSS transition
+            }, 10000);
+        }
+
+        function stopAdRotation() {
+            if (adRotationInterval) clearInterval(adRotationInterval);
+            adRotationInterval = null;
+        }
+
+    </script>
+
+    <!-- Customer Ad Banner Widget -->
+    <div id="adBanner" class="ad-banner"
+        style="position:fixed; bottom:-200px; right:20px; width:340px; background:var(--bg-primary); border:1px solid var(--border-light); border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); z-index:9000; transition:bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding:1rem; overflow:hidden;">
+        <!-- Top badge -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <div
+                style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-primary); background:var(--color-primary-light); padding:0.2rem 0.5rem; border-radius:4px;">
+                ✨ Featured Offer</div>
+            <button onclick="document.getElementById('adBanner').classList.remove('show-ad')"
+                style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font-size:1rem;">×</button>
+        </div>
+
+        <div id="adBannerContainer" style="display:flex; gap:1rem; transition:opacity 0.5s ease;">
+            <div id="adImage" style="width:80px; height:80px; flex-shrink:0;"></div>
+            <div style="flex:1;">
+                <h4 id="adTitle"
+                    style="margin:0 0 0.25rem; font-size:0.95rem; font-weight:600; color:var(--text-primary); line-height:1.2;">
+                </h4>
+                <p id="adDesc"
+                    style="margin:0 0 0.75rem; font-size:0.8rem; color:var(--text-secondary); line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                </p>
+                <button id="adBtn" class="btn-primary"
+                    style="padding:0.4rem 0.75rem; font-size:0.8rem; width:100%; border-radius:6px;">+ Add to
+                    Cart</button>
+            </div>
+        </div>
+    </div>
+    <style>
+        .ad-banner.show-ad {
+            bottom: 20px !important;
+        }
+    </style>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(r => console.log('SW registered:', r.scope))
+                    .catch(e => console.log('SW error:', e));
+            });
+        }
+    </script>
+</body>
+
+</html>
+<script>
+        // ════════════════════════════════════════
+    // CHATBOT RECIPE FINDER LOGIC
+    // ════════════════════════════════════════
+    let isChatOpen = false;
+
+    function toggleChatbot() {
+        const win = document.getElementById('chatbotWindow');
+        const btn = document.getElementById('chatbotToggleBtn');
+        isChatOpen = !isChatOpen;
+        
+        if(isChatOpen) {
+            win.classList.add('open');
+            btn.innerHTML = '✕ Close Chat';
+            document.getElementById('chatInput').focus();
+        } else {
+            win.classList.remove('open');
+            btn.innerHTML = '💬 Recipe Finder';
+        }
+    }
+
+    function handleChatKey(e) {
+        if(e.key === 'Enter') {
+            sendChatMessage();
+        }
+    }
+
+    function sendChatMessage() {
+        const input = document.getElementById('chatInput');
+        const text = input.value.trim();
+        if(!text) return;
+        
+        // Add user message to UI
+        appendChatMessage(text, 'user');
+        input.value = '';
+        
+        // Call backend API
+        fetchChatRecipe(text);
+    }
+    
+    function askRecipe(dishName) {
+        appendChatMessage(`I want to make ${dishName}`, 'user');
+        fetchChatRecipe(dishName);
+    }
+
+    function appendChatMessage(htmlText, sender) {
+        const chatBox = document.getElementById('chatMessages');
+        const div = document.createElement('div');
+        div.className = `chat-bubble ${sender}`;
+        div.innerHTML = htmlText;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function fetchChatRecipe(message) {
+        // Show loading state
+        const chatBox = document.getElementById('chatMessages');
+        const loadingId = 'loading-' + Date.now();
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = loadingId;
+        loadingDiv.className = 'chat-bubble bot';
+        loadingDiv.innerHTML = '<span style="opacity:0.6">Thinking... 🕒</span>';
+        chatBox.appendChild(loadingDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        try {
+            const response = await fetch(`${API_URL}/chat/recipe`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: message })
+            });
+            const data = await response.json();
+            
+            // Remove loading
+            document.getElementById(loadingId).remove();
+            
+            // Render Bot Reply
+            let replyHtml = `${data.reply}`;
+            
+            if (data.products && data.products.length > 0) {
+                // Generate product cards
+                data.products.forEach(p => {
+                    // Check if already in cart
+                    const inCart = state.cart.some(item => item.barcode === p.barcode);
+                    const btnClass = inCart ? 'btn-locate in-cart' : 'btn-locate';
+                    const btnText = inCart ? '✅ In Cart' : '🔎 Locate & Add';
+                    const btnAction = inCart ? '' : `onclick="locateFromChat('${p.name}', '${p.barcode}')"`;
+                    
+                    replyHtml += `
+                        <div class="chat-product-card" id="chat-p-${p.barcode}">
+                            <div class="cp-info">
+                                <div class="cp-name">${p.name}</div>
+                                <div class="cp-price">₹${p.price}</div>
+                            </div>
+                            <button class="${btnClass}" ${btnAction}>${btnText}</button>
+                        </div>
+                    `;
+                });
+            }
+            
+            appendChatMessage(replyHtml, 'bot');
+            
+        } catch (error) {
+            console.error('Chat API Error:', error);
+            document.getElementById(loadingId).remove();
+            appendChatMessage("Sorry, I'm having trouble connecting right now.", 'bot');
+        }
+    }
+
+    function locateFromChat(productName, barcode) {
+        console.log(`Locating product from chat: ${productName}`);
+        
+        // 1. Close chat smoothly
+        toggleChatbot();
+        
+        // 2. Set search input and focus
+        const searchInput = document.getElementById('productSearchInput');
+        searchInput.value = productName;
+        searchInput.focus();
+        
+        // 3. Trigger debounce search manually immediately
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            searchProducts(productName);
+        }, 100);
+        
+        // 4. Scroll to search card
+        document.querySelector('.product-search-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Wrap addToCart to also update Chatbot UI
+    const originalAddToCart = addToCart;
+    window.addToCart = async function(barcodeStr) {
+        // Run Original
+        await originalAddToCart(barcodeStr);
+        
+        // Update any Chatbot buttons
+        updateChatButtons();
+    };
+
+    function updateChatButtons() {
+        state.cart.forEach(item => {
+            const cards = document.querySelectorAll(`#chat-p-${item.barcode}`);
+            cards.forEach(card => {
+                const btn = card.querySelector('button.btn-locate');
+                if (btn && !btn.classList.contains('in-cart')) {
+                    btn.classList.add('in-cart');
+                    btn.innerText = '✅ In Cart';
+                    btn.onclick = null; // Remove onclick
+                }
+            });
+        });
+    }
+
+    // Call update on load to handle existing cart state
+    setTimeout(updateChatButtons, 2000);
+
+</script>

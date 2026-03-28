@@ -1,0 +1,17 @@
+{
+  "name": "smartretailx-root",
+  "version": "1.0.0",
+  "description": "Root project to run frontend and backend concurrently",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-frontend": "cd frontend-react && npm run dev",
+    "start-backend": "cd backend && \"..\\.venv\\Scripts\\python.exe\" app.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

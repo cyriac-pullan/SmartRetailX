@@ -1,0 +1,1001 @@
+Product_ID,Barcode,Product_Name,Price,Weight_kg,Category,Sub_Category,Aisle_No,Partition_No,Shelf_No,Position_Tag,Side,Stock_Quantity,Reorder_Level
+PROD00001,890100001,Cinthol Body Wash 500g,284,0.5,Personal Care,Soap,1,101,101.1,P101,Left,51,5
+PROD00002,890100002,CloseUp Mouthwash 500g,215,0.5,Personal Care,Oral,1,101,101.1,P101,Left,24,5
+PROD00003,890100003,India Gate Basmati Rice 500g,272,0.5,Grains,Rice,1,101,101.1,P101,Left,91,5
+PROD00004,890100004,Haldiram's Almonds 500g,301,0.5,Snacks,Nuts,1,101,101.1,P101,Left,46,5
+PROD00005,890100005,Fortune Jasmine Rice 500g,332,0.5,Grains,Rice,1,101,101.2,P101,Left,74,5
+PROD00006,890100006,Paseo Kitchen Towel 500g,173,0.5,Household,Paper,1,101,101.2,P101,Left,78,5
+PROD00007,890100007,Aashirvaad Jasmine Rice 500g,303,0.5,Grains,Rice,1,101,101.2,P101,Left,38,5
+PROD00008,890100008,Coca Cola Cola 500ml,355,0.5,Beverages,Soda,1,101,101.2,P101,Left,46,5
+PROD00009,890100009,Oral-B Mouthwash 500g,392,0.5,Personal Care,Oral,1,101,101.3,P101,Left,25,5
+PROD00010,890100010,English Oven Brown Bread 500g,281,0.5,Bakery,Bread,1,101,101.3,P101,Left,19,5
+PROD00011,890100011,Amul Plain Curd 500ml,166,0.5,Dairy,Yogurt,1,101,101.3,P101,Left,15,5
+PROD00012,890100012,B Natural Apple Juice 500ml,20,0.5,Beverages,Juice,1,101,101.3,P101,Left,93,5
+PROD00013,890100013,Ponds Sunscreen 500ml,383,0.5,Personal Care,Skin,1,101,101.4,P101,Left,50,5
+PROD00014,890100014,Clinic Plus Conditioner 500ml,408,0.5,Personal Care,Hair,1,101,101.4,P101,Left,38,5
+PROD00015,890100015,Elite Fruit Cake 500g,144,0.5,Bakery,Cakes,1,101,101.4,P101,Left,19,5
+PROD00016,890100016,Neutrogena Moisturizer 500ml,225,0.5,Personal Care,Skin,1,101,101.4,P101,Left,68,5
+PROD00017,890100017,Milky Mist Mishti Doi 500ml,124,0.5,Dairy,Yogurt,1,101,101.5,P101,Left,99,5
+PROD00018,890100018,Parekh Garbage Bags 500g,331,0.5,Household,Disposables,1,101,101.5,P101,Left,70,5
+PROD00019,890100019,Sunrise Filter Coffee 500g,277,0.5,Beverages,Coffee,1,101,101.5,P101,Left,100,5
+PROD00020,890100020,Too Yumm Potato Chips 500g,252,0.5,Snacks,Chips,1,101,101.5,P101,Left,50,5
+PROD00021,890100021,Ponds Face Wash 500ml,133,0.5,Personal Care,Skin,1,101,101.6,P101,Left,47,5
+PROD00022,890100022,Nutraj Mixed Nuts 500g,211,0.5,Snacks,Nuts,1,101,101.6,P101,Left,88,5
+PROD00023,890100023,Tata Coffee Premix 500g,55,0.5,Beverages,Coffee,1,101,101.6,P101,Left,61,5
+PROD00024,890100024,Elite Swiss Roll 500g,252,0.5,Bakery,Cakes,1,101,101.6,P101,Left,87,5
+PROD00025,890100025,Britannia White Bread 500g,91,0.5,Bakery,Bread,1,101,101.7,P101,Left,66,5
+PROD00026,890100026,Real Apple Juice 500ml,87,0.5,Beverages,Juice,1,101,101.7,P101,Left,52,5
+PROD00027,890100027,Britannia Cupcake 500g,492,0.5,Bakery,Cakes,1,101,101.7,P101,Left,73,5
+PROD00028,890100028,Pillsbury Maida 500g,434,0.5,Grains,Flour,1,101,101.7,P101,Left,30,5
+PROD00029,890100029,Mother Dairy Greek Yogurt 500ml,446,0.5,Dairy,Yogurt,1,102,102.1,P102,Left,33,5
+PROD00030,890100030,Lux Bathing Bar 500g,119,0.5,Personal Care,Soap,1,102,102.1,P102,Left,91,5
+PROD00031,890100031,Dark Fantasy Cookies 500g,226,0.5,Snacks,Biscuits,1,102,102.1,P102,Left,15,5
+PROD00032,890100032,Tata Sampann Pistachios 500g,276,0.5,Snacks,Nuts,1,102,102.1,P102,Left,87,5
+PROD00033,890100033,Go Paneer 500g,413,0.5,Dairy,Cheese,1,102,102.2,P102,Left,61,5
+PROD00034,890100034,Mother Dairy Almond Milk 500ml,122,0.5,Dairy,Milk,1,102,102.2,P102,Left,84,5
+PROD00035,890100035,Britannia Brown Bread 500g,135,0.5,Bakery,Bread,1,102,102.2,P102,Left,91,5
+PROD00036,890100036,Fortune Brown Rice 500g,446,0.5,Grains,Rice,1,102,102.2,P102,Left,72,5
+PROD00037,890100037,Milky Mist Mishti Doi 500ml,116,0.5,Dairy,Yogurt,1,102,102.3,P102,Left,32,5
+PROD00038,890100038,Epigamia Mishti Doi 500ml,205,0.5,Dairy,Yogurt,1,102,102.3,P102,Left,34,5
+PROD00039,890100039,Monginis Cupcake 500g,260,0.5,Bakery,Cakes,1,102,102.3,P102,Left,47,5
+PROD00040,890100040,Amul Paneer 500g,341,0.5,Dairy,Cheese,1,102,102.3,P102,Left,59,5
+PROD00041,890100041,Dove Conditioner 500ml,456,0.5,Personal Care,Hair,1,102,102.4,P102,Left,43,5
+PROD00042,890100042,Barilla Fusilli 500g,422,0.5,Grains,Pasta,1,102,102.4,P102,Left,70,5
+PROD00043,890100043,Vim Dish Liquid 500ml,304,0.5,Household,Cleaning,1,102,102.4,P102,Left,55,5
+PROD00044,890100044,Oreo Nice 500g,162,0.5,Snacks,Biscuits,1,102,102.4,P102,Left,31,5
+PROD00045,890100045,Surf Excel Dish Liquid 500ml,113,0.5,Household,Cleaning,1,102,102.5,P102,Left,15,5
+PROD00046,890100046,Govardhan Soy Milk 500ml,446,0.5,Dairy,Milk,1,102,102.5,P102,Left,89,5
+PROD00047,890100047,Origami Cling Wrap 500g,94,0.5,Household,Disposables,1,102,102.5,P102,Left,90,5
+PROD00048,890100048,Sunfeast Penne 500g,62,0.5,Grains,Pasta,1,102,102.5,P102,Left,88,5
+PROD00049,890100049,Britannia Whole Wheat 500g,138,0.5,Bakery,Bread,1,102,102.6,P102,Left,67,5
+PROD00050,890100050,Mother Dairy Greek Yogurt 500ml,172,0.5,Dairy,Yogurt,1,102,102.6,P102,Left,73,5
+PROD00051,890100051,Too Yumm Spicy Chips 500g,254,0.5,Snacks,Chips,1,102,102.6,P102,Left,75,5
+PROD00052,890100052,Modern Brown Bread 500g,216,0.5,Bakery,Bread,1,102,102.6,P102,Left,26,5
+PROD00053,890100053,Taj Mahal Green Tea 500g,256,0.5,Beverages,Tea,1,102,102.7,P102,Left,37,5
+PROD00054,890100054,Parachute Hair Serum 500ml,426,0.5,Personal Care,Hair,1,102,102.7,P102,Left,45,5
+PROD00055,890100055,Lays Banana Chips 500g,279,0.5,Snacks,Chips,1,102,102.7,P102,Left,61,5
+PROD00056,890100056,Bambino Penne 500g,173,0.5,Grains,Pasta,1,102,102.7,P102,Left,72,5
+PROD00057,890100057,Origami Toilet Roll 500g,156,0.5,Household,Paper,1,103,103.1,P103,Left,81,5
+PROD00058,890100058,Haldiram's Mixed Nuts 500g,340,0.5,Snacks,Nuts,1,103,103.1,P103,Left,57,5
+PROD00059,890100059,Pril Detergent 500ml,348,0.5,Household,Cleaning,1,103,103.1,P103,Left,12,5
+PROD00060,890100060,Ponds Body Lotion 500ml,138,0.5,Personal Care,Skin,1,103,103.1,P103,Left,39,5
+PROD00061,890100061,Nutraj Cashews 500g,185,0.5,Snacks,Nuts,1,103,103.2,P103,Left,45,5
+PROD00062,890100062,Pillsbury Rava 500g,48,0.5,Grains,Flour,1,103,103.2,P103,Left,47,5
+PROD00063,890100063,Tata Sampann Pistachios 500g,69,0.5,Snacks,Nuts,1,103,103.2,P103,Left,24,5
+PROD00064,890100064,Pillsbury Cupcake 500g,271,0.5,Bakery,Cakes,1,103,103.2,P103,Left,37,5
+PROD00065,890100065,Sprite Cola 500ml,139,0.5,Beverages,Soda,1,103,103.3,P103,Left,53,5
+PROD00066,890100066,Fortune Maida 500g,317,0.5,Grains,Flour,1,103,103.3,P103,Left,89,5
+PROD00067,890100067,Colgate Toothpaste 500g,299,0.5,Personal Care,Oral,1,103,103.3,P103,Left,72,5
+PROD00068,890100068,Barilla Macaroni 500g,55,0.5,Grains,Pasta,1,103,103.3,P103,Left,39,5
+PROD00069,890100069,Amul Full Cream Milk 500ml,261,0.5,Dairy,Milk,1,103,103.4,P103,Left,28,5
+PROD00070,890100070,Govardhan Soy Milk 500ml,421,0.5,Dairy,Milk,1,103,103.4,P103,Left,11,5
+PROD00071,890100071,Oral-B Toothpaste 500g,390,0.5,Personal Care,Oral,1,103,103.4,P103,Left,36,5
+PROD00072,890100072,Ezee Garbage Bags 500g,200,0.5,Household,Disposables,1,103,103.4,P103,Left,25,5
+PROD00073,890100073,Mother Dairy Cheese Spread 500g,203,0.5,Dairy,Cheese,1,103,103.5,P103,Left,32,5
+PROD00074,890100074,Elite Croissant 500g,165,0.5,Bakery,Cakes,1,103,103.5,P103,Left,25,5
+PROD00075,890100075,B Natural Mixed Fruit 500ml,336,0.5,Beverages,Juice,1,103,103.5,P103,Left,45,5
+PROD00076,890100076,Elite Swiss Roll 500g,495,0.5,Bakery,Cakes,1,103,103.5,P103,Left,41,5
+PROD00077,890100077,Ezee Paper Cups 500g,291,0.5,Household,Disposables,1,103,103.6,P103,Left,45,5
+PROD00078,890100078,Britannia Sourdough 500g,468,0.5,Bakery,Bread,1,103,103.6,P103,Left,43,5
+PROD00079,890100079,Aashirvaad Rava 500g,496,0.5,Grains,Flour,1,103,103.6,P103,Left,63,5
+PROD00080,890100080,Head & Shoulders Shampoo 500ml,118,0.5,Personal Care,Hair,1,103,103.6,P103,Left,28,5
+PROD00081,890100081,Tong Garden Mixed Nuts 500g,288,0.5,Snacks,Nuts,1,103,103.7,P103,Left,63,5
+PROD00082,890100082,Doritos Nachos 500g,81,0.5,Snacks,Chips,1,103,103.7,P103,Left,30,5
+PROD00083,890100083,Mother Dairy Lassi 500ml,76,0.5,Dairy,Yogurt,1,103,103.7,P103,Left,100,5
+PROD00084,890100084,Aashirvaad Besan 500g,324,0.5,Grains,Flour,1,103,103.7,P103,Left,34,5
+PROD00085,890100085,English Oven Whole Wheat 500g,291,0.5,Bakery,Bread,1,104,104.1,P104,Left,67,5
+PROD00086,890100086,Pepsi Cola 500ml,462,0.5,Beverages,Soda,1,104,104.1,P104,Left,14,5
+PROD00087,890100087,Govardhan Toned Milk 500ml,304,0.5,Dairy,Milk,1,104,104.1,P104,Left,67,5
+PROD00088,890100088,Pillsbury Besan 500g,267,0.5,Grains,Flour,1,104,104.1,P104,Left,15,5
+PROD00089,890100089,Elite Croissant 500g,347,0.5,Bakery,Cakes,1,104,104.2,P104,Left,34,5
+PROD00090,890100090,Harvest Gold Multigrain 500g,64,0.5,Bakery,Bread,1,104,104.2,P104,Left,11,5
+PROD00091,890100091,Go Mozzarella 500g,227,0.5,Dairy,Cheese,1,104,104.2,P104,Left,67,5
+PROD00092,890100092,Tong Garden Pistachios 500g,374,0.5,Snacks,Nuts,1,104,104.2,P104,Left,21,5
+PROD00093,890100093,Dark Fantasy Marie 500g,217,0.5,Snacks,Biscuits,1,104,104.3,P104,Left,75,5
+PROD00094,890100094,Britannia Fruit Cake 500g,189,0.5,Bakery,Cakes,1,104,104.3,P104,Left,29,5
+PROD00095,890100095,Pepsodent Toothbrush 500g,61,0.5,Personal Care,Oral,1,104,104.3,P104,Left,83,5
+PROD00096,890100096,Bambino Noodles 500g,382,0.5,Grains,Pasta,1,104,104.3,P104,Left,74,5
+PROD00097,890100097,Parekh Paper Cups 500g,45,0.5,Household,Disposables,1,104,104.4,P104,Left,43,5
+PROD00098,890100098,Paseo Paper Napkins 500g,179,0.5,Household,Paper,1,104,104.4,P104,Left,24,5
+PROD00099,890100099,Pantene Conditioner 500ml,54,0.5,Personal Care,Hair,1,104,104.4,P104,Left,89,5
+PROD00100,890100100,Vim Glass Cleaner 500ml,310,0.5,Household,Cleaning,1,104,104.4,P104,Left,99,5
+PROD00101,890100101,Lipton Tea Bags 500g,307,0.5,Beverages,Tea,1,104,104.5,P104,Left,98,5
+PROD00102,890100102,Kohinoor Jasmine Rice 500g,259,0.5,Grains,Rice,1,104,104.5,P104,Left,75,5
+PROD00103,890100103,Haldiram's Pistachios 500g,163,0.5,Snacks,Nuts,1,104,104.5,P104,Left,75,5
+PROD00104,890100104,Nandini Almond Milk 500ml,228,0.5,Dairy,Milk,1,104,104.5,P104,Left,94,5
+PROD00105,890100105,Pril Glass Cleaner 500ml,35,0.5,Household,Cleaning,1,104,104.6,P104,Left,79,5
+PROD00106,890100106,Modern Sourdough 500g,45,0.5,Bakery,Bread,1,104,104.6,P104,Left,57,5
+PROD00107,890100107,Parekh Garbage Bags 500g,232,0.5,Household,Disposables,1,104,104.6,P104,Left,64,5
+PROD00108,890100108,Tong Garden Cashews 500g,413,0.5,Snacks,Nuts,1,104,104.6,P104,Left,10,5
+PROD00109,890100109,Origami Paper Napkins 500g,473,0.5,Household,Paper,1,104,104.7,P104,Left,36,5
+PROD00110,890100110,Wagh Bakri Tea Bags 500g,257,0.5,Beverages,Tea,1,104,104.7,P104,Left,36,5
+PROD00111,890100111,Barilla Penne 500g,286,0.5,Grains,Pasta,1,104,104.7,P104,Left,97,5
+PROD00112,890100112,Oreo Marie 500g,205,0.5,Snacks,Biscuits,1,104,104.7,P104,Left,89,5
+PROD00113,890100113,Taj Mahal Green Tea 500g,466,0.5,Beverages,Tea,1,105,105.1,P105,Left,95,5
+PROD00114,890100114,Nestle Toned Milk 500ml,310,0.5,Dairy,Milk,1,105,105.1,P105,Left,43,5
+PROD00115,890100115,Davidoff Filter Coffee 500g,460,0.5,Beverages,Coffee,1,105,105.1,P105,Left,40,5
+PROD00116,890100116,Selpak Tissues 500g,345,0.5,Household,Paper,1,105,105.1,P105,Left,69,5
+PROD00117,890100117,Maggi Noodles 500g,194,0.5,Grains,Pasta,1,105,105.2,P105,Left,44,5
+PROD00118,890100118,Doritos Potato Chips 500g,476,0.5,Snacks,Chips,1,105,105.2,P105,Left,51,5
+PROD00119,890100119,Amul Paneer 500g,175,0.5,Dairy,Cheese,1,105,105.2,P105,Left,34,5
+PROD00120,890100120,Amul Toned Milk 500ml,52,0.5,Dairy,Milk,1,105,105.2,P105,Left,41,5
+PROD00121,890100121,Milky Mist Plain Curd 500ml,242,0.5,Dairy,Yogurt,1,105,105.3,P105,Left,12,5
+PROD00122,890100122,Pillsbury Chocolate Muffin 500g,81,0.5,Bakery,Cakes,1,105,105.3,P105,Left,85,5
+PROD00123,890100123,Modern Sourdough 500g,254,0.5,Bakery,Bread,1,105,105.3,P105,Left,50,5
+PROD00124,890100124,Parle Marie 500g,277,0.5,Snacks,Biscuits,1,105,105.3,P105,Left,56,5
+PROD00125,890100125,Bambino Noodles 500g,249,0.5,Grains,Pasta,1,105,105.4,P105,Left,38,5
+PROD00126,890100126,Amul Mishti Doi 500ml,361,0.5,Dairy,Yogurt,1,105,105.4,P105,Left,40,5
+PROD00127,890100127,Bru Filter Coffee 500g,253,0.5,Beverages,Coffee,1,105,105.4,P105,Left,10,5
+PROD00128,890100128,Britannia Sourdough 500g,387,0.5,Bakery,Bread,1,105,105.4,P105,Left,97,5
+PROD00129,890100129,Fortune Rice Flour 500g,55,0.5,Grains,Flour,1,105,105.5,P105,Left,82,5
+PROD00130,890100130,Aashirvaad Basmati Rice 500g,52,0.5,Grains,Rice,1,105,105.5,P105,Left,98,5
+PROD00131,890100131,CloseUp Toothbrush 500g,91,0.5,Personal Care,Oral,1,105,105.5,P105,Left,52,5
+PROD00132,890100132,Nature Fresh Maida 500g,36,0.5,Grains,Flour,1,105,105.5,P105,Left,50,5
+PROD00133,890100133,Milky Mist Greek Yogurt 500ml,480,0.5,Dairy,Yogurt,1,105,105.6,P105,Left,79,5
+PROD00134,890100134,Pears Hand Wash 500g,181,0.5,Personal Care,Soap,1,105,105.6,P105,Left,20,5
+PROD00135,890100135,Epigamia Plain Curd 500ml,30,0.5,Dairy,Yogurt,1,105,105.6,P105,Left,58,5
+PROD00136,890100136,Mother Dairy Soy Milk 500ml,452,0.5,Dairy,Milk,1,105,105.6,P105,Left,67,5
+PROD00137,890100137,Aashirvaad Besan 500g,178,0.5,Grains,Flour,1,105,105.7,P105,Left,96,5
+PROD00138,890100138,Origami Aluminium Foil 500g,474,0.5,Household,Disposables,1,105,105.7,P105,Left,96,5
+PROD00139,890100139,Epigamia Plain Curd 500ml,46,0.5,Dairy,Yogurt,1,105,105.7,P105,Left,88,5
+PROD00140,890100140,Unibic Marie 500g,461,0.5,Snacks,Biscuits,1,105,105.7,P105,Left,72,5
+PROD00141,890100141,Sunrise Roasted Beans 500g,431,0.5,Beverages,Coffee,1,106,106.1,P106,Left,100,5
+PROD00142,890100142,Haldiram's Onion Rings 500g,131,0.5,Snacks,Chips,1,106,106.1,P106,Left,68,5
+PROD00143,890100143,Pillsbury Fruit Cake 500g,327,0.5,Bakery,Cakes,1,106,106.1,P106,Left,89,5
+PROD00144,890100144,Epigamia Plain Curd 500ml,412,0.5,Dairy,Yogurt,1,106,106.1,P106,Left,12,5
+PROD00145,890100145,Pillsbury Maida 500g,131,0.5,Grains,Flour,1,106,106.2,P106,Left,65,5
+PROD00146,890100146,Epigamia Lassi 500ml,407,0.5,Dairy,Yogurt,1,106,106.2,P106,Left,85,5
+PROD00147,890100147,Sprite Club Soda 500ml,280,0.5,Beverages,Soda,1,106,106.2,P106,Left,57,5
+PROD00148,890100148,Origami Cling Wrap 500g,346,0.5,Household,Disposables,1,106,106.2,P106,Left,56,5
+PROD00149,890100149,Happilo Mixed Nuts 500g,65,0.5,Snacks,Nuts,1,106,106.3,P106,Left,75,5
+PROD00150,890100150,Aashirvaad Maida 500g,330,0.5,Grains,Flour,1,106,106.3,P106,Left,67,5
+PROD00151,890100151,Himalaya Moisturizer 500ml,484,0.5,Personal Care,Skin,1,106,106.3,P106,Left,94,5
+PROD00152,890100152,Paper Boat Mixed Fruit 500ml,255,0.5,Beverages,Juice,1,106,106.3,P106,Left,72,5
+PROD00153,890100153,Mother Dairy Plain Curd 500ml,425,0.5,Dairy,Yogurt,1,106,106.4,P106,Left,91,5
+PROD00154,890100154,Britannia Croissant 500g,271,0.5,Bakery,Cakes,1,106,106.4,P106,Left,35,5
+PROD00155,890100155,Happilo Mixed Nuts 500g,289,0.5,Snacks,Nuts,1,106,106.4,P106,Left,65,5
+PROD00156,890100156,Bru Filter Coffee 500g,143,0.5,Beverages,Coffee,1,106,106.4,P106,Left,26,5
+PROD00157,890100157,Haldiram's Nachos 500g,157,0.5,Snacks,Chips,1,106,106.5,P106,Left,53,5
+PROD00158,890100158,Bingo Nachos 500g,83,0.5,Snacks,Chips,1,106,106.5,P106,Left,28,5
+PROD00159,890100159,Lizol Floor Cleaner 500ml,68,0.5,Household,Cleaning,1,106,106.5,P106,Left,31,5
+PROD00160,890100160,Lux Shower Gel 500g,46,0.5,Personal Care,Soap,1,106,106.5,P106,Left,65,5
+PROD00161,890100161,Lipton Masala Chai 500g,425,0.5,Beverages,Tea,1,106,106.6,P106,Left,14,5
+PROD00162,890100162,Britannia Bourbon 500g,205,0.5,Snacks,Biscuits,1,106,106.6,P106,Left,44,5
+PROD00163,890100163,English Oven Multigrain 500g,407,0.5,Bakery,Bread,1,106,106.6,P106,Left,23,5
+PROD00164,890100164,Dark Fantasy Cream Cracker 500g,318,0.5,Snacks,Biscuits,1,106,106.6,P106,Left,100,5
+PROD00165,890100165,Barilla Spaghetti 500g,348,0.5,Grains,Pasta,1,106,106.7,P106,Left,92,5
+PROD00166,890100166,Limca Club Soda 500ml,291,0.5,Beverages,Soda,1,106,106.7,P106,Left,16,5
+PROD00167,890100167,Lizol Dish Liquid 500ml,329,0.5,Household,Cleaning,1,106,106.7,P106,Left,77,5
+PROD00168,890100168,Mother Dairy Fruit Yogurt 500ml,228,0.5,Dairy,Yogurt,1,106,106.7,P106,Left,52,5
+PROD00169,890100169,Tresemme Conditioner 500ml,450,0.5,Personal Care,Hair,1,107,107.1,P107,Right,13,5
+PROD00170,890100170,Epigamia Greek Yogurt 500ml,101,0.5,Dairy,Yogurt,1,107,107.1,P107,Right,80,5
+PROD00171,890100171,Ezee Paper Cups 500g,230,0.5,Household,Disposables,1,107,107.1,P107,Right,23,5
+PROD00172,890100172,Nestle Plain Curd 500ml,88,0.5,Dairy,Yogurt,1,107,107.1,P107,Right,11,5
+PROD00173,890100173,Raw Pressery Mango Juice 500ml,92,0.5,Beverages,Juice,1,107,107.2,P107,Right,87,5
+PROD00174,890100174,Selpak Tissues 500g,418,0.5,Household,Paper,1,107,107.2,P107,Right,90,5
+PROD00175,890100175,Mother Dairy Fruit Yogurt 500ml,112,0.5,Dairy,Yogurt,1,107,107.2,P107,Right,34,5
+PROD00176,890100176,Amul Fruit Yogurt 500ml,489,0.5,Dairy,Yogurt,1,107,107.2,P107,Right,16,5
+PROD00177,890100177,Britannia Chocolate Muffin 500g,370,0.5,Bakery,Cakes,1,107,107.3,P107,Right,34,5
+PROD00178,890100178,Fortune Wheat Atta 500g,166,0.5,Grains,Flour,1,107,107.3,P107,Right,11,5
+PROD00179,890100179,Modern Whole Wheat 500g,46,0.5,Bakery,Bread,1,107,107.3,P107,Right,62,5
+PROD00180,890100180,Lipton Green Tea 500g,26,0.5,Beverages,Tea,1,107,107.3,P107,Right,73,5
+PROD00181,890100181,Paseo Paper Napkins 500g,354,0.5,Household,Paper,1,107,107.4,P107,Right,30,5
+PROD00182,890100182,Amul Lassi 500ml,214,0.5,Dairy,Yogurt,1,107,107.4,P107,Right,37,5
+PROD00183,890100183,Milky Mist Plain Curd 500ml,136,0.5,Dairy,Yogurt,1,107,107.4,P107,Right,52,5
+PROD00184,890100184,Parekh Garbage Bags 500g,188,0.5,Household,Disposables,1,107,107.4,P107,Right,18,5
+PROD00185,890100185,Tata Tea Masala Chai 500g,253,0.5,Beverages,Tea,1,107,107.5,P107,Right,63,5
+PROD00186,890100186,Fiama Body Wash 500g,62,0.5,Personal Care,Soap,1,107,107.5,P107,Right,40,5
+PROD00187,890100187,Fiama Hand Wash 500g,262,0.5,Personal Care,Soap,1,107,107.5,P107,Right,22,5
+PROD00188,890100188,Origami Aluminium Foil 500g,438,0.5,Household,Disposables,1,107,107.5,P107,Right,100,5
+PROD00189,890100189,Haldiram's Salted Chips 500g,49,0.5,Snacks,Chips,1,107,107.6,P107,Right,15,5
+PROD00190,890100190,Premier Toilet Roll 500g,343,0.5,Household,Paper,1,107,107.6,P107,Right,85,5
+PROD00191,890100191,Domex Glass Cleaner 500ml,325,0.5,Household,Cleaning,1,107,107.6,P107,Right,79,5
+PROD00192,890100192,Wagh Bakri Tea Bags 500g,22,0.5,Beverages,Tea,1,107,107.6,P107,Right,69,5
+PROD00193,890100193,Fortune Rava 500g,451,0.5,Grains,Flour,1,107,107.7,P107,Right,43,5
+PROD00194,890100194,Sunfeast Bourbon 500g,299,0.5,Snacks,Biscuits,1,107,107.7,P107,Right,42,5
+PROD00195,890100195,Nivea Face Wash 500ml,73,0.5,Personal Care,Skin,1,107,107.7,P107,Right,10,5
+PROD00196,890100196,Mother Dairy Cheese Spread 500g,308,0.5,Dairy,Cheese,1,107,107.7,P107,Right,53,5
+PROD00197,890100197,Lays Spicy Chips 500g,353,0.5,Snacks,Chips,1,108,108.1,P108,Right,48,5
+PROD00198,890100198,Red Label Earl Grey 500g,34,0.5,Beverages,Tea,1,108,108.1,P108,Right,12,5
+PROD00199,890100199,Tong Garden Walnuts 500g,413,0.5,Snacks,Nuts,1,108,108.1,P108,Right,87,5
+PROD00200,890100200,Tong Garden Walnuts 500g,277,0.5,Snacks,Nuts,1,108,108.1,P108,Right,74,5
+PROD00201,890100201,Monginis Bun 500g,177,0.5,Bakery,Cakes,1,108,108.2,P108,Right,95,5
+PROD00202,890100202,Oral-B Mouthwash 500g,427,0.5,Personal Care,Oral,1,108,108.2,P108,Right,80,5
+PROD00203,890100203,Amul Cheese Block 500g,258,0.5,Dairy,Cheese,1,108,108.2,P108,Right,48,5
+PROD00204,890100204,Nutraj Almonds 500g,256,0.5,Snacks,Nuts,1,108,108.2,P108,Right,77,5
+PROD00205,890100205,Britannia White Bread 500g,369,0.5,Bakery,Bread,1,108,108.3,P108,Right,96,5
+PROD00206,890100206,Nescafe Filter Coffee 500g,198,0.5,Beverages,Coffee,1,108,108.3,P108,Right,90,5
+PROD00207,890100207,Fortune Besan 500g,453,0.5,Grains,Flour,1,108,108.3,P108,Right,42,5
+PROD00208,890100208,Parle Digestive 500g,363,0.5,Snacks,Biscuits,1,108,108.3,P108,Right,68,5
+PROD00209,890100209,Himalaya Moisturizer 500ml,405,0.5,Personal Care,Skin,1,108,108.4,P108,Right,13,5
+PROD00210,890100210,Modern Sourdough 500g,145,0.5,Bakery,Bread,1,108,108.4,P108,Right,65,5
+PROD00211,890100211,Fortune Basmati Rice 500g,96,0.5,Grains,Rice,1,108,108.4,P108,Right,65,5
+PROD00212,890100212,Mother Dairy Toned Milk 500ml,160,0.5,Dairy,Milk,1,108,108.4,P108,Right,23,5
+PROD00213,890100213,Britannia Fruit Cake 500g,425,0.5,Bakery,Cakes,1,108,108.5,P108,Right,43,5
+PROD00214,890100214,Oreo Digestive 500g,496,0.5,Snacks,Biscuits,1,108,108.5,P108,Right,26,5
+PROD00215,890100215,Milky Mist Plain Curd 500ml,32,0.5,Dairy,Yogurt,1,108,108.5,P108,Right,68,5
+PROD00216,890100216,Premier Paper Napkins 500g,393,0.5,Household,Paper,1,108,108.5,P108,Right,95,5
+PROD00217,890100217,Elite Fruit Cake 500g,499,0.5,Bakery,Cakes,1,108,108.6,P108,Right,77,5
+PROD00218,890100218,Modern Brown Bread 500g,106,0.5,Bakery,Bread,1,108,108.6,P108,Right,69,5
+PROD00219,890100219,Nandini Full Cream Milk 500ml,386,0.5,Dairy,Milk,1,108,108.6,P108,Right,98,5
+PROD00220,890100220,Tong Garden Walnuts 500g,53,0.5,Snacks,Nuts,1,108,108.6,P108,Right,74,5
+PROD00221,890100221,Cinthol Hand Wash 500g,280,0.5,Personal Care,Soap,1,108,108.7,P108,Right,30,5
+PROD00222,890100222,Amul Almond Milk 500ml,322,0.5,Dairy,Milk,1,108,108.7,P108,Right,12,5
+PROD00223,890100223,Bru Instant Coffee 500g,236,0.5,Beverages,Coffee,1,108,108.7,P108,Right,35,5
+PROD00224,890100224,Coca Cola Cola 500ml,468,0.5,Beverages,Soda,1,108,108.7,P108,Right,38,5
+PROD00225,890100225,Haldiram's Banana Chips 500g,166,0.5,Snacks,Chips,1,109,109.1,P109,Right,94,5
+PROD00226,890100226,Unibic Bourbon 500g,470,0.5,Snacks,Biscuits,1,109,109.1,P109,Right,62,5
+PROD00227,890100227,Sensodyne Toothpaste 500g,485,0.5,Personal Care,Oral,1,109,109.1,P109,Right,10,5
+PROD00228,890100228,Monginis Croissant 500g,71,0.5,Bakery,Cakes,1,109,109.1,P109,Right,88,5
+PROD00229,890100229,Mother Dairy Mishti Doi 500ml,103,0.5,Dairy,Yogurt,1,109,109.2,P109,Right,24,5
+PROD00230,890100230,Britannia Whole Wheat 500g,248,0.5,Bakery,Bread,1,109,109.2,P109,Right,85,5
+PROD00231,890100231,Pringles Banana Chips 500g,123,0.5,Snacks,Chips,1,109,109.2,P109,Right,24,5
+PROD00232,890100232,Nature Fresh Maida 500g,466,0.5,Grains,Flour,1,109,109.2,P109,Right,37,5
+PROD00233,890100233,Cetaphil Sunscreen 500ml,391,0.5,Personal Care,Skin,1,109,109.3,P109,Right,71,5
+PROD00234,890100234,Parekh Cling Wrap 500g,85,0.5,Household,Disposables,1,109,109.3,P109,Right,65,5
+PROD00235,890100235,Tata Tea Black Tea 500g,207,0.5,Beverages,Tea,1,109,109.3,P109,Right,77,5
+PROD00236,890100236,Sunfeast Digestive 500g,403,0.5,Snacks,Biscuits,1,109,109.3,P109,Right,12,5
+PROD00237,890100237,Vaseline Sunscreen 500ml,46,0.5,Personal Care,Skin,1,109,109.4,P109,Right,79,5
+PROD00238,890100238,Haldiram's Potato Chips 500g,401,0.5,Snacks,Chips,1,109,109.4,P109,Right,36,5
+PROD00239,890100239,Bru Filter Coffee 500g,94,0.5,Beverages,Coffee,1,109,109.4,P109,Right,59,5
+PROD00240,890100240,Dove Bathing Bar 500g,146,0.5,Personal Care,Soap,1,109,109.4,P109,Right,21,5
+PROD00241,890100241,Coca Cola Ginger Ale 500ml,481,0.5,Beverages,Soda,1,109,109.5,P109,Right,36,5
+PROD00242,890100242,Too Yumm Potato Chips 500g,248,0.5,Snacks,Chips,1,109,109.5,P109,Right,56,5
+PROD00243,890100243,Amul Plain Curd 500ml,174,0.5,Dairy,Yogurt,1,109,109.5,P109,Right,50,5
+PROD00244,890100244,Limca Club Soda 500ml,318,0.5,Beverages,Soda,1,109,109.5,P109,Right,48,5
+PROD00245,890100245,Cetaphil Sunscreen 500ml,330,0.5,Personal Care,Skin,1,109,109.6,P109,Right,75,5
+PROD00246,890100246,Premier Tissues 500g,500,0.5,Household,Paper,1,109,109.6,P109,Right,57,5
+PROD00247,890100247,Modern Whole Wheat 500g,346,0.5,Bakery,Bread,1,109,109.6,P109,Right,85,5
+PROD00248,890100248,Bru Filter Coffee 500g,252,0.5,Beverages,Coffee,1,109,109.6,P109,Right,71,5
+PROD00249,890100249,Sunfeast Bourbon 500g,337,0.5,Snacks,Biscuits,1,109,109.7,P109,Right,49,5
+PROD00250,890100250,Premier Tissues 500g,473,0.5,Household,Paper,1,109,109.7,P109,Right,29,5
+PROD00251,890100251,Cetaphil Body Lotion 500ml,185,0.5,Personal Care,Skin,1,109,109.7,P109,Right,22,5
+PROD00252,890100252,Amul Toned Milk 500ml,446,0.5,Dairy,Milk,1,109,109.7,P109,Right,55,5
+PROD00253,890100253,Amul Slim Milk 500ml,442,0.5,Dairy,Milk,1,110,110.1,P110,Right,76,5
+PROD00254,890100254,Dettol Bathing Bar 500g,312,0.5,Personal Care,Soap,1,110,110.1,P110,Right,90,5
+PROD00255,890100255,CloseUp Mouthwash 500g,30,0.5,Personal Care,Oral,1,110,110.1,P110,Right,54,5
+PROD00256,890100256,Amul Paneer 500g,348,0.5,Dairy,Cheese,1,110,110.1,P110,Right,34,5
+PROD00257,890100257,English Oven Whole Wheat 500g,454,0.5,Bakery,Bread,1,110,110.2,P110,Right,44,5
+PROD00258,890100258,Kohinoor Basmati Rice 500g,142,0.5,Grains,Rice,1,110,110.2,P110,Right,56,5
+PROD00259,890100259,English Oven Multigrain 500g,103,0.5,Bakery,Bread,1,110,110.2,P110,Right,60,5
+PROD00260,890100260,Lizol Glass Cleaner 500ml,114,0.5,Household,Cleaning,1,110,110.2,P110,Right,97,5
+PROD00261,890100261,Parekh Garbage Bags 500g,223,0.5,Household,Disposables,1,110,110.3,P110,Right,78,5
+PROD00262,890100262,Modern White Bread 500g,445,0.5,Bakery,Bread,1,110,110.3,P110,Right,21,5
+PROD00263,890100263,Parekh Cling Wrap 500g,260,0.5,Household,Disposables,1,110,110.3,P110,Right,84,5
+PROD00264,890100264,Sprite Ginger Ale 500ml,196,0.5,Beverages,Soda,1,110,110.3,P110,Right,22,5
+PROD00265,890100265,Limca Club Soda 500ml,284,0.5,Beverages,Soda,1,110,110.4,P110,Right,97,5
+PROD00266,890100266,Nestle Lassi 500ml,480,0.5,Dairy,Yogurt,1,110,110.4,P110,Right,57,5
+PROD00267,890100267,Monginis Fruit Cake 500g,240,0.5,Bakery,Cakes,1,110,110.4,P110,Right,94,5
+PROD00268,890100268,Doritos Cheese Balls 500g,294,0.5,Snacks,Chips,1,110,110.4,P110,Right,13,5
+PROD00269,890100269,Tata Tea Black Tea 500g,222,0.5,Beverages,Tea,1,110,110.5,P110,Right,71,5
+PROD00270,890100270,Govardhan Toned Milk 500ml,420,0.5,Dairy,Milk,1,110,110.5,P110,Right,69,5
+PROD00271,890100271,Go Cheese Slices 500g,402,0.5,Dairy,Cheese,1,110,110.5,P110,Right,36,5
+PROD00272,890100272,Nescafe Premix 500g,381,0.5,Beverages,Coffee,1,110,110.5,P110,Right,13,5
+PROD00273,890100273,Ponds Body Lotion 500ml,487,0.5,Personal Care,Skin,1,110,110.6,P110,Right,26,5
+PROD00274,890100274,Lays Spicy Chips 500g,120,0.5,Snacks,Chips,1,110,110.6,P110,Right,64,5
+PROD00275,890100275,Pepsi Orange Soda 500ml,429,0.5,Beverages,Soda,1,110,110.6,P110,Right,61,5
+PROD00276,890100276,Sunfeast Spaghetti 500g,257,0.5,Grains,Pasta,1,110,110.6,P110,Right,40,5
+PROD00277,890100277,Premier Toilet Roll 500g,331,0.5,Household,Paper,1,110,110.7,P110,Right,92,5
+PROD00278,890100278,English Oven White Bread 500g,454,0.5,Bakery,Bread,1,110,110.7,P110,Right,91,5
+PROD00279,890100279,CloseUp Toothpaste 500g,480,0.5,Personal Care,Oral,1,110,110.7,P110,Right,32,5
+PROD00280,890100280,Colin Glass Cleaner 500ml,73,0.5,Household,Cleaning,1,110,110.7,P110,Right,76,5
+PROD00281,890100281,Nescafe Filter Coffee 500g,480,0.5,Beverages,Coffee,1,111,111.1,P111,Right,84,5
+PROD00282,890100282,Barilla Macaroni 500g,115,0.5,Grains,Pasta,1,111,111.1,P111,Right,66,5
+PROD00283,890100283,Ezee Paper Plates 500g,94,0.5,Household,Disposables,1,111,111.1,P111,Right,93,5
+PROD00284,890100284,Amul Mishti Doi 500ml,259,0.5,Dairy,Yogurt,1,111,111.1,P111,Right,29,5
+PROD00285,890100285,Origami Kitchen Towel 500g,287,0.5,Household,Paper,1,111,111.2,P111,Right,15,5
+PROD00286,890100286,Milky Mist Mishti Doi 500ml,284,0.5,Dairy,Yogurt,1,111,111.2,P111,Right,41,5
+PROD00287,890100287,Tresemme Hair Serum 500ml,377,0.5,Personal Care,Hair,1,111,111.2,P111,Right,40,5
+PROD00288,890100288,Premier Tissues 500g,388,0.5,Household,Paper,1,111,111.2,P111,Right,74,5
+PROD00289,890100289,Cinthol Bathing Bar 500g,428,0.5,Personal Care,Soap,1,111,111.3,P111,Right,44,5
+PROD00290,890100290,Clinic Plus Hair Serum 500ml,492,0.5,Personal Care,Hair,1,111,111.3,P111,Right,35,5
+PROD00291,890100291,Paseo Kitchen Towel 500g,24,0.5,Household,Paper,1,111,111.3,P111,Right,19,5
+PROD00292,890100292,Bru Instant Coffee 500g,267,0.5,Beverages,Coffee,1,111,111.3,P111,Right,24,5
+PROD00293,890100293,Origami Paper Plates 500g,218,0.5,Household,Disposables,1,111,111.4,P111,Right,45,5
+PROD00294,890100294,Kohinoor Basmati Rice 500g,397,0.5,Grains,Rice,1,111,111.4,P111,Right,100,5
+PROD00295,890100295,Britannia Chocolate Muffin 500g,80,0.5,Bakery,Cakes,1,111,111.4,P111,Right,76,5
+PROD00296,890100296,Mother Dairy Greek Yogurt 500ml,356,0.5,Dairy,Yogurt,1,111,111.4,P111,Right,28,5
+PROD00297,890100297,Harvest Gold Brown Bread 500g,369,0.5,Bakery,Bread,1,111,111.5,P111,Right,23,5
+PROD00298,890100298,Modern White Bread 500g,279,0.5,Bakery,Bread,1,111,111.5,P111,Right,33,5
+PROD00299,890100299,Pillsbury Bun 500g,372,0.5,Bakery,Cakes,1,111,111.5,P111,Right,17,5
+PROD00300,890100300,Tropicana Mixed Fruit 500ml,57,0.5,Beverages,Juice,1,111,111.5,P111,Right,96,5
+PROD00301,890100301,Nutraj Almonds 500g,141,0.5,Snacks,Nuts,1,111,111.6,P111,Right,95,5
+PROD00302,890100302,Tropicana Orange Juice 500ml,334,0.5,Beverages,Juice,1,111,111.6,P111,Right,33,5
+PROD00303,890100303,Colgate Toothpaste 500g,461,0.5,Personal Care,Oral,1,111,111.6,P111,Right,29,5
+PROD00304,890100304,Nature Fresh Besan 500g,33,0.5,Grains,Flour,1,111,111.6,P111,Right,49,5
+PROD00305,890100305,Pillsbury Chocolate Muffin 500g,23,0.5,Bakery,Cakes,1,111,111.7,P111,Right,84,5
+PROD00306,890100306,Tong Garden Mixed Nuts 500g,137,0.5,Snacks,Nuts,1,111,111.7,P111,Right,20,5
+PROD00307,890100307,Monginis Chocolate Muffin 500g,166,0.5,Bakery,Cakes,1,111,111.7,P111,Right,21,5
+PROD00308,890100308,Lays Spicy Chips 500g,311,0.5,Snacks,Chips,1,111,111.7,P111,Right,18,5
+PROD00309,890100309,Too Yumm Onion Rings 500g,476,0.5,Snacks,Chips,1,112,112.1,P112,Right,39,5
+PROD00310,890100310,Monginis Fruit Cake 500g,151,0.5,Bakery,Cakes,1,112,112.1,P112,Right,63,5
+PROD00311,890100311,Britannia Whole Wheat 500g,473,0.5,Bakery,Bread,1,112,112.1,P112,Right,23,5
+PROD00312,890100312,Parachute Hair Serum 500ml,90,0.5,Personal Care,Hair,1,112,112.1,P112,Right,35,5
+PROD00313,890100313,Bambino Penne 500g,201,0.5,Grains,Pasta,1,112,112.2,P112,Right,20,5
+PROD00314,890100314,Aashirvaad Wheat Atta 500g,392,0.5,Grains,Flour,1,112,112.2,P112,Right,74,5
+PROD00315,890100315,Pillsbury Besan 500g,351,0.5,Grains,Flour,1,112,112.2,P112,Right,37,5
+PROD00316,890100316,B Natural Grape Juice 500ml,436,0.5,Beverages,Juice,1,112,112.2,P112,Right,61,5
+PROD00317,890100317,Barilla Noodles 500g,100,0.5,Grains,Pasta,1,112,112.3,P112,Right,24,5
+PROD00318,890100318,Haldiram's Cashews 500g,153,0.5,Snacks,Nuts,1,112,112.3,P112,Right,25,5
+PROD00319,890100319,Pillsbury Bun 500g,400,0.5,Bakery,Cakes,1,112,112.3,P112,Right,22,5
+PROD00320,890100320,Mother Dairy Cheese Block 500g,395,0.5,Dairy,Cheese,1,112,112.3,P112,Right,30,5
+PROD00321,890100321,Sunfeast Spaghetti 500g,115,0.5,Grains,Pasta,1,112,112.4,P112,Right,77,5
+PROD00322,890100322,Parachute Conditioner 500ml,394,0.5,Personal Care,Hair,1,112,112.4,P112,Right,20,5
+PROD00323,890100323,Britannia Multigrain 500g,282,0.5,Bakery,Bread,1,112,112.4,P112,Right,26,5
+PROD00324,890100324,Daawat Jasmine Rice 500g,289,0.5,Grains,Rice,1,112,112.4,P112,Right,19,5
+PROD00325,890100325,Aashirvaad Basmati Rice 500g,159,0.5,Grains,Rice,1,112,112.5,P112,Right,63,5
+PROD00326,890100326,Origami Tissues 500g,365,0.5,Household,Paper,1,112,112.5,P112,Right,77,5
+PROD00327,890100327,Bambino Fusilli 500g,447,0.5,Grains,Pasta,1,112,112.5,P112,Right,72,5
+PROD00328,890100328,Sunrise Instant Coffee 500g,202,0.5,Beverages,Coffee,1,112,112.5,P112,Right,13,5
+PROD00329,890100329,Mother Dairy Soy Milk 500ml,361,0.5,Dairy,Milk,1,112,112.6,P112,Right,93,5
+PROD00330,890100330,Tata Sampann Walnuts 500g,491,0.5,Snacks,Nuts,1,112,112.6,P112,Right,11,5
+PROD00331,890100331,Dove Hair Serum 500ml,291,0.5,Personal Care,Hair,1,112,112.6,P112,Right,60,5
+PROD00332,890100332,Nandini Soy Milk 500ml,481,0.5,Dairy,Milk,1,112,112.6,P112,Right,31,5
+PROD00333,890100333,Go Cheddar 500g,399,0.5,Dairy,Cheese,1,112,112.7,P112,Right,76,5
+PROD00334,890100334,Aashirvaad Jasmine Rice 500g,243,0.5,Grains,Rice,1,112,112.7,P112,Right,17,5
+PROD00335,890100335,Mother Dairy Paneer 500g,459,0.5,Dairy,Cheese,1,112,112.7,P112,Right,15,5
+PROD00336,890100336,Dark Fantasy Cookies 500g,51,0.5,Snacks,Biscuits,1,112,112.7,P112,Right,71,5
+PROD00337,890100337,Parekh Paper Cups 500g,53,0.5,Household,Disposables,2,101,101.1,P101,Left,74,5
+PROD00338,890100338,Lizol Dish Liquid 500ml,152,0.5,Household,Cleaning,2,101,101.1,P101,Left,39,5
+PROD00339,890100339,Britannia Multigrain 500g,37,0.5,Bakery,Bread,2,101,101.1,P101,Left,76,5
+PROD00340,890100340,Britannia Cheddar 500g,63,0.5,Dairy,Cheese,2,101,101.1,P101,Left,70,5
+PROD00341,890100341,B Natural Mango Juice 500ml,309,0.5,Beverages,Juice,2,101,101.2,P101,Left,26,5
+PROD00342,890100342,Ezee Aluminium Foil 500g,273,0.5,Household,Disposables,2,101,101.2,P101,Left,94,5
+PROD00343,890100343,Britannia White Bread 500g,120,0.5,Bakery,Bread,2,101,101.2,P101,Left,90,5
+PROD00344,890100344,Britannia Sourdough 500g,41,0.5,Bakery,Bread,2,101,101.2,P101,Left,29,5
+PROD00345,890100345,Oral-B Mouthwash 500g,401,0.5,Personal Care,Oral,2,101,101.3,P101,Left,17,5
+PROD00346,890100346,Monginis Cupcake 500g,397,0.5,Bakery,Cakes,2,101,101.3,P101,Left,23,5
+PROD00347,890100347,Pillsbury Cupcake 500g,234,0.5,Bakery,Cakes,2,101,101.3,P101,Left,50,5
+PROD00348,890100348,Maggi Spaghetti 500g,111,0.5,Grains,Pasta,2,101,101.3,P101,Left,56,5
+PROD00349,890100349,Fanta Cola 500ml,228,0.5,Beverages,Soda,2,101,101.4,P101,Left,100,5
+PROD00350,890100350,CloseUp Mouthwash 500g,284,0.5,Personal Care,Oral,2,101,101.4,P101,Left,65,5
+PROD00351,890100351,Nestle Almond Milk 500ml,132,0.5,Dairy,Milk,2,101,101.4,P101,Left,24,5
+PROD00352,890100352,Too Yumm Potato Chips 500g,434,0.5,Snacks,Chips,2,101,101.4,P101,Left,34,5
+PROD00353,890100353,Nutraj Pistachios 500g,67,0.5,Snacks,Nuts,2,101,101.5,P101,Left,11,5
+PROD00354,890100354,Sprite Club Soda 500ml,472,0.5,Beverages,Soda,2,101,101.5,P101,Left,100,5
+PROD00355,890100355,Parachute Conditioner 500ml,348,0.5,Personal Care,Hair,2,101,101.5,P101,Left,22,5
+PROD00356,890100356,Tropicana Grape Juice 500ml,419,0.5,Beverages,Juice,2,101,101.5,P101,Left,48,5
+PROD00357,890100357,Pepsi Ginger Ale 500ml,60,0.5,Beverages,Soda,2,101,101.6,P101,Left,66,5
+PROD00358,890100358,Thums Up Club Soda 500ml,257,0.5,Beverages,Soda,2,101,101.6,P101,Left,94,5
+PROD00359,890100359,Garnier Sunscreen 500ml,469,0.5,Personal Care,Skin,2,101,101.6,P101,Left,95,5
+PROD00360,890100360,Haldiram's Mixed Nuts 500g,44,0.5,Snacks,Nuts,2,101,101.6,P101,Left,78,5
+PROD00361,890100361,Britannia Cheese Block 500g,428,0.5,Dairy,Cheese,2,101,101.7,P101,Left,18,5
+PROD00362,890100362,Vim Detergent 500ml,229,0.5,Household,Cleaning,2,101,101.7,P101,Left,46,5
+PROD00363,890100363,Pillsbury Besan 500g,411,0.5,Grains,Flour,2,101,101.7,P101,Left,90,5
+PROD00364,890100364,Nature Fresh Rava 500g,75,0.5,Grains,Flour,2,101,101.7,P101,Left,82,5
+PROD00365,890100365,Pepsi Lemon Soda 500ml,156,0.5,Beverages,Soda,2,102,102.1,P102,Left,19,5
+PROD00366,890100366,Sensodyne Toothbrush 500g,79,0.5,Personal Care,Oral,2,102,102.1,P102,Left,71,5
+PROD00367,890100367,Vim Detergent 500ml,186,0.5,Household,Cleaning,2,102,102.1,P102,Left,68,5
+PROD00368,890100368,Himalaya Toothpaste 500g,202,0.5,Personal Care,Oral,2,102,102.1,P102,Left,80,5
+PROD00369,890100369,Paper Boat Apple Juice 500ml,281,0.5,Beverages,Juice,2,102,102.2,P102,Left,17,5
+PROD00370,890100370,Britannia Swiss Roll 500g,441,0.5,Bakery,Cakes,2,102,102.2,P102,Left,42,5
+PROD00371,890100371,Britannia Fruit Cake 500g,373,0.5,Bakery,Cakes,2,102,102.2,P102,Left,74,5
+PROD00372,890100372,Modern Whole Wheat 500g,198,0.5,Bakery,Bread,2,102,102.2,P102,Left,54,5
+PROD00373,890100373,Raw Pressery Mango Juice 500ml,20,0.5,Beverages,Juice,2,102,102.3,P102,Left,75,5
+PROD00374,890100374,Amul Slim Milk 500ml,375,0.5,Dairy,Milk,2,102,102.3,P102,Left,44,5
+PROD00375,890100375,Origami Garbage Bags 500g,389,0.5,Household,Disposables,2,102,102.3,P102,Left,68,5
+PROD00376,890100376,Britannia Cheese Spread 500g,97,0.5,Dairy,Cheese,2,102,102.3,P102,Left,27,5
+PROD00377,890100377,Bru Instant Coffee 500g,432,0.5,Beverages,Coffee,2,102,102.4,P102,Left,88,5
+PROD00378,890100378,Dark Fantasy Cream Cracker 500g,264,0.5,Snacks,Biscuits,2,102,102.4,P102,Left,57,5
+PROD00379,890100379,Tropicana Orange Juice 500ml,402,0.5,Beverages,Juice,2,102,102.4,P102,Left,36,5
+PROD00380,890100380,Unibic Digestive 500g,135,0.5,Snacks,Biscuits,2,102,102.4,P102,Left,82,5
+PROD00381,890100381,Himalaya Toothbrush 500g,212,0.5,Personal Care,Oral,2,102,102.5,P102,Left,74,5
+PROD00382,890100382,Fortune Jasmine Rice 500g,224,0.5,Grains,Rice,2,102,102.5,P102,Left,74,5
+PROD00383,890100383,Barilla Spaghetti 500g,464,0.5,Grains,Pasta,2,102,102.5,P102,Left,17,5
+PROD00384,890100384,Britannia Multigrain 500g,154,0.5,Bakery,Bread,2,102,102.5,P102,Left,72,5
+PROD00385,890100385,Origami Toilet Roll 500g,348,0.5,Household,Paper,2,102,102.6,P102,Left,51,5
+PROD00386,890100386,Britannia Nice 500g,427,0.5,Snacks,Biscuits,2,102,102.6,P102,Left,48,5
+PROD00387,890100387,Amul Cheddar 500g,331,0.5,Dairy,Cheese,2,102,102.6,P102,Left,21,5
+PROD00388,890100388,Amul Plain Curd 500ml,469,0.5,Dairy,Yogurt,2,102,102.6,P102,Left,54,5
+PROD00389,890100389,Epigamia Greek Yogurt 500ml,286,0.5,Dairy,Yogurt,2,102,102.7,P102,Left,30,5
+PROD00390,890100390,Pillsbury Rava 500g,446,0.5,Grains,Flour,2,102,102.7,P102,Left,82,5
+PROD00391,890100391,Oreo Digestive 500g,129,0.5,Snacks,Biscuits,2,102,102.7,P102,Left,56,5
+PROD00392,890100392,Modern Whole Wheat 500g,300,0.5,Bakery,Bread,2,102,102.7,P102,Left,70,5
+PROD00393,890100393,Fortune Jasmine Rice 500g,358,0.5,Grains,Rice,2,103,103.1,P103,Left,98,5
+PROD00394,890100394,Cetaphil Body Lotion 500ml,219,0.5,Personal Care,Skin,2,103,103.1,P103,Left,27,5
+PROD00395,890100395,Elite Bun 500g,237,0.5,Bakery,Cakes,2,103,103.1,P103,Left,37,5
+PROD00396,890100396,Bru Instant Coffee 500g,345,0.5,Beverages,Coffee,2,103,103.1,P103,Left,41,5
+PROD00397,890100397,Cinthol Shower Gel 500g,174,0.5,Personal Care,Soap,2,103,103.2,P103,Left,31,5
+PROD00398,890100398,Daawat Brown Rice 500g,481,0.5,Grains,Rice,2,103,103.2,P103,Left,95,5
+PROD00399,890100399,Harpic Dish Liquid 500ml,481,0.5,Household,Cleaning,2,103,103.2,P103,Left,10,5
+PROD00400,890100400,India Gate Brown Rice 500g,348,0.5,Grains,Rice,2,103,103.2,P103,Left,64,5
+PROD00401,890100401,Pantene Hair Serum 500ml,475,0.5,Personal Care,Hair,2,103,103.3,P103,Left,47,5
+PROD00402,890100402,Go Cheese Slices 500g,372,0.5,Dairy,Cheese,2,103,103.3,P103,Left,82,5
+PROD00403,890100403,Parle Marie 500g,355,0.5,Snacks,Biscuits,2,103,103.3,P103,Left,88,5
+PROD00404,890100404,Amul Greek Yogurt 500ml,235,0.5,Dairy,Yogurt,2,103,103.3,P103,Left,66,5
+PROD00405,890100405,Nutraj Cashews 500g,104,0.5,Snacks,Nuts,2,103,103.4,P103,Left,49,5
+PROD00406,890100406,7Up Ginger Ale 500ml,28,0.5,Beverages,Soda,2,103,103.4,P103,Left,10,5
+PROD00407,890100407,English Oven White Bread 500g,423,0.5,Bakery,Bread,2,103,103.4,P103,Left,61,5
+PROD00408,890100408,Limca Orange Soda 500ml,261,0.5,Beverages,Soda,2,103,103.4,P103,Left,32,5
+PROD00409,890100409,Origami Tissues 500g,42,0.5,Household,Paper,2,103,103.5,P103,Left,60,5
+PROD00410,890100410,Thums Up Orange Soda 500ml,110,0.5,Beverages,Soda,2,103,103.5,P103,Left,63,5
+PROD00411,890100411,Daawat Sona Masoori 500g,137,0.5,Grains,Rice,2,103,103.5,P103,Left,98,5
+PROD00412,890100412,Coca Cola Ginger Ale 500ml,150,0.5,Beverages,Soda,2,103,103.5,P103,Left,97,5
+PROD00413,890100413,Origami Cling Wrap 500g,373,0.5,Household,Disposables,2,103,103.6,P103,Left,63,5
+PROD00414,890100414,Govardhan Almond Milk 500ml,451,0.5,Dairy,Milk,2,103,103.6,P103,Left,47,5
+PROD00415,890100415,Dettol Bathing Bar 500g,368,0.5,Personal Care,Soap,2,103,103.6,P103,Left,22,5
+PROD00416,890100416,English Oven Multigrain 500g,484,0.5,Bakery,Bread,2,103,103.6,P103,Left,87,5
+PROD00417,890100417,Bambino Macaroni 500g,382,0.5,Grains,Pasta,2,103,103.7,P103,Left,100,5
+PROD00418,890100418,Bingo Onion Rings 500g,496,0.5,Snacks,Chips,2,103,103.7,P103,Left,65,5
+PROD00419,890100419,Lifebuoy Hand Wash 500g,134,0.5,Personal Care,Soap,2,103,103.7,P103,Left,15,5
+PROD00420,890100420,Barilla Spaghetti 500g,331,0.5,Grains,Pasta,2,103,103.7,P103,Left,55,5
+PROD00421,890100421,Limca Ginger Ale 500ml,45,0.5,Beverages,Soda,2,104,104.1,P104,Left,71,5
+PROD00422,890100422,Premier Toilet Roll 500g,185,0.5,Household,Paper,2,104,104.1,P104,Left,47,5
+PROD00423,890100423,Elite Bun 500g,52,0.5,Bakery,Cakes,2,104,104.1,P104,Left,45,5
+PROD00424,890100424,Fortune Basmati Rice 500g,342,0.5,Grains,Rice,2,104,104.1,P104,Left,37,5
+PROD00425,890100425,Neutrogena Body Lotion 500ml,53,0.5,Personal Care,Skin,2,104,104.2,P104,Left,98,5
+PROD00426,890100426,Nutraj Cashews 500g,281,0.5,Snacks,Nuts,2,104,104.2,P104,Left,78,5
+PROD00427,890100427,Cinthol Bathing Bar 500g,186,0.5,Personal Care,Soap,2,104,104.2,P104,Left,68,5
+PROD00428,890100428,Cetaphil Cream 500ml,362,0.5,Personal Care,Skin,2,104,104.2,P104,Left,42,5
+PROD00429,890100429,Clinic Plus Conditioner 500ml,467,0.5,Personal Care,Hair,2,104,104.3,P104,Left,85,5
+PROD00430,890100430,Too Yumm Cheese Balls 500g,45,0.5,Snacks,Chips,2,104,104.3,P104,Left,78,5
+PROD00431,890100431,Sunfeast Fusilli 500g,189,0.5,Grains,Pasta,2,104,104.3,P104,Left,59,5
+PROD00432,890100432,B Natural Mixed Fruit 500ml,48,0.5,Beverages,Juice,2,104,104.3,P104,Left,51,5
+PROD00433,890100433,Britannia Brown Bread 500g,28,0.5,Bakery,Bread,2,104,104.4,P104,Left,78,5
+PROD00434,890100434,Lifebuoy Bathing Bar 500g,268,0.5,Personal Care,Soap,2,104,104.4,P104,Left,25,5
+PROD00435,890100435,Sunfeast Marie 500g,65,0.5,Snacks,Biscuits,2,104,104.4,P104,Left,36,5
+PROD00436,890100436,Surf Excel Toilet Cleaner 500ml,231,0.5,Household,Cleaning,2,104,104.4,P104,Left,78,5
+PROD00437,890100437,Doritos Salted Chips 500g,257,0.5,Snacks,Chips,2,104,104.5,P104,Left,91,5
+PROD00438,890100438,Nestle Fruit Yogurt 500ml,251,0.5,Dairy,Yogurt,2,104,104.5,P104,Left,92,5
+PROD00439,890100439,Harpic Glass Cleaner 500ml,497,0.5,Household,Cleaning,2,104,104.5,P104,Left,21,5
+PROD00440,890100440,L'Oreal Shampoo 500ml,294,0.5,Personal Care,Hair,2,104,104.5,P104,Left,66,5
+PROD00441,890100441,Lux Body Wash 500g,318,0.5,Personal Care,Soap,2,104,104.6,P104,Left,79,5
+PROD00442,890100442,Parekh Garbage Bags 500g,410,0.5,Household,Disposables,2,104,104.6,P104,Left,74,5
+PROD00443,890100443,Harpic Toilet Cleaner 500ml,325,0.5,Household,Cleaning,2,104,104.6,P104,Left,46,5
+PROD00444,890100444,Britannia Whole Wheat 500g,124,0.5,Bakery,Bread,2,104,104.6,P104,Left,89,5
+PROD00445,890100445,Fortune Brown Rice 500g,186,0.5,Grains,Rice,2,104,104.7,P104,Left,53,5
+PROD00446,890100446,Modern Whole Wheat 500g,162,0.5,Bakery,Bread,2,104,104.7,P104,Left,42,5
+PROD00447,890100447,Fanta Orange Soda 500ml,306,0.5,Beverages,Soda,2,104,104.7,P104,Left,94,5
+PROD00448,890100448,Cetaphil Cream 500ml,357,0.5,Personal Care,Skin,2,104,104.7,P104,Left,98,5
+PROD00449,890100449,Parachute Hair Oil 500ml,28,0.5,Personal Care,Hair,2,105,105.1,P105,Left,68,5
+PROD00450,890100450,7Up Lemon Soda 500ml,208,0.5,Beverages,Soda,2,105,105.1,P105,Left,17,5
+PROD00451,890100451,Nutraj Almonds 500g,21,0.5,Snacks,Nuts,2,105,105.1,P105,Left,83,5
+PROD00452,890100452,Tata Coffee Premix 500g,340,0.5,Beverages,Coffee,2,105,105.1,P105,Left,46,5
+PROD00453,890100453,Britannia Sourdough 500g,289,0.5,Bakery,Bread,2,105,105.2,P105,Left,56,5
+PROD00454,890100454,Doritos Banana Chips 500g,27,0.5,Snacks,Chips,2,105,105.2,P105,Left,90,5
+PROD00455,890100455,7Up Ginger Ale 500ml,155,0.5,Beverages,Soda,2,105,105.2,P105,Left,46,5
+PROD00456,890100456,Monginis Chocolate Muffin 500g,172,0.5,Bakery,Cakes,2,105,105.2,P105,Left,100,5
+PROD00457,890100457,Epigamia Greek Yogurt 500ml,425,0.5,Dairy,Yogurt,2,105,105.3,P105,Left,62,5
+PROD00458,890100458,Pears Hand Wash 500g,154,0.5,Personal Care,Soap,2,105,105.3,P105,Left,59,5
+PROD00459,890100459,Pears Hand Wash 500g,100,0.5,Personal Care,Soap,2,105,105.3,P105,Left,75,5
+PROD00460,890100460,Nestle Slim Milk 500ml,40,0.5,Dairy,Milk,2,105,105.3,P105,Left,76,5
+PROD00461,890100461,CloseUp Mouthwash 500g,45,0.5,Personal Care,Oral,2,105,105.4,P105,Left,17,5
+PROD00462,890100462,Modern Brown Bread 500g,156,0.5,Bakery,Bread,2,105,105.4,P105,Left,47,5
+PROD00463,890100463,Tropicana Mixed Fruit 500ml,319,0.5,Beverages,Juice,2,105,105.4,P105,Left,51,5
+PROD00464,890100464,Paseo Toilet Roll 500g,73,0.5,Household,Paper,2,105,105.4,P105,Left,23,5
+PROD00465,890100465,Unibic Nice 500g,192,0.5,Snacks,Biscuits,2,105,105.5,P105,Left,62,5
+PROD00466,890100466,Himalaya Moisturizer 500ml,197,0.5,Personal Care,Skin,2,105,105.5,P105,Left,92,5
+PROD00467,890100467,Nescafe Filter Coffee 500g,315,0.5,Beverages,Coffee,2,105,105.5,P105,Left,32,5
+PROD00468,890100468,Raw Pressery Grape Juice 500ml,107,0.5,Beverages,Juice,2,105,105.5,P105,Left,29,5
+PROD00469,890100469,Pillsbury Wheat Atta 500g,353,0.5,Grains,Flour,2,105,105.6,P105,Left,59,5
+PROD00470,890100470,Britannia White Bread 500g,48,0.5,Bakery,Bread,2,105,105.6,P105,Left,77,5
+PROD00471,890100471,Sensodyne Toothpaste 500g,93,0.5,Personal Care,Oral,2,105,105.6,P105,Left,16,5
+PROD00472,890100472,Milky Mist Lassi 500ml,431,0.5,Dairy,Yogurt,2,105,105.6,P105,Left,20,5
+PROD00473,890100473,Selpak Toilet Roll 500g,108,0.5,Household,Paper,2,105,105.7,P105,Left,58,5
+PROD00474,890100474,Taj Mahal Tea Bags 500g,319,0.5,Beverages,Tea,2,105,105.7,P105,Left,61,5
+PROD00475,890100475,Ponds Moisturizer 500ml,251,0.5,Personal Care,Skin,2,105,105.7,P105,Left,15,5
+PROD00476,890100476,Sunfeast Digestive 500g,44,0.5,Snacks,Biscuits,2,105,105.7,P105,Left,100,5
+PROD00477,890100477,Govardhan Slim Milk 500ml,332,0.5,Dairy,Milk,2,106,106.1,P106,Left,58,5
+PROD00478,890100478,Lizol Detergent 500ml,420,0.5,Household,Cleaning,2,106,106.1,P106,Left,42,5
+PROD00479,890100479,Amul Soy Milk 500ml,440,0.5,Dairy,Milk,2,106,106.1,P106,Left,95,5
+PROD00480,890100480,Taj Mahal Tea Bags 500g,490,0.5,Beverages,Tea,2,106,106.1,P106,Left,26,5
+PROD00481,890100481,Premier Paper Napkins 500g,140,0.5,Household,Paper,2,106,106.2,P106,Left,56,5
+PROD00482,890100482,Pillsbury Chocolate Muffin 500g,48,0.5,Bakery,Cakes,2,106,106.2,P106,Left,74,5
+PROD00483,890100483,Wagh Bakri Tea Bags 500g,392,0.5,Beverages,Tea,2,106,106.2,P106,Left,68,5
+PROD00484,890100484,Nestle Mishti Doi 500ml,87,0.5,Dairy,Yogurt,2,106,106.2,P106,Left,19,5
+PROD00485,890100485,Harvest Gold Sourdough 500g,158,0.5,Bakery,Bread,2,106,106.3,P106,Left,100,5
+PROD00486,890100486,Aashirvaad Wheat Atta 500g,298,0.5,Grains,Flour,2,106,106.3,P106,Left,26,5
+PROD00487,890100487,Real Orange Juice 500ml,487,0.5,Beverages,Juice,2,106,106.3,P106,Left,24,5
+PROD00488,890100488,Modern Sourdough 500g,359,0.5,Bakery,Bread,2,106,106.3,P106,Left,52,5
+PROD00489,890100489,Nandini Almond Milk 500ml,31,0.5,Dairy,Milk,2,106,106.4,P106,Left,41,5
+PROD00490,890100490,Cetaphil Body Lotion 500ml,439,0.5,Personal Care,Skin,2,106,106.4,P106,Left,30,5
+PROD00491,890100491,Clinic Plus Conditioner 500ml,476,0.5,Personal Care,Hair,2,106,106.4,P106,Left,67,5
+PROD00492,890100492,Colin Detergent 500ml,286,0.5,Household,Cleaning,2,106,106.4,P106,Left,51,5
+PROD00493,890100493,Thums Up Ginger Ale 500ml,274,0.5,Beverages,Soda,2,106,106.5,P106,Left,24,5
+PROD00494,890100494,Britannia Bourbon 500g,315,0.5,Snacks,Biscuits,2,106,106.5,P106,Left,74,5
+PROD00495,890100495,English Oven Whole Wheat 500g,441,0.5,Bakery,Bread,2,106,106.5,P106,Left,67,5
+PROD00496,890100496,Tresemme Hair Oil 500ml,21,0.5,Personal Care,Hair,2,106,106.5,P106,Left,81,5
+PROD00497,890100497,Cinthol Shower Gel 500g,177,0.5,Personal Care,Soap,2,106,106.6,P106,Left,77,5
+PROD00498,890100498,Britannia Bun 500g,479,0.5,Bakery,Cakes,2,106,106.6,P106,Left,52,5
+PROD00499,890100499,Mother Dairy Cheese Spread 500g,127,0.5,Dairy,Cheese,2,106,106.6,P106,Left,93,5
+PROD00500,890100500,English Oven Multigrain 500g,38,0.5,Bakery,Bread,2,106,106.6,P106,Left,10,5
+PROD00501,890100501,Lizol Floor Cleaner 500ml,309,0.5,Household,Cleaning,2,106,106.7,P106,Left,82,5
+PROD00502,890100502,Modern Brown Bread 500g,171,0.5,Bakery,Bread,2,106,106.7,P106,Left,74,5
+PROD00503,890100503,Parekh Paper Cups 500g,55,0.5,Household,Disposables,2,106,106.7,P106,Left,12,5
+PROD00504,890100504,Amul Almond Milk 500ml,408,0.5,Dairy,Milk,2,106,106.7,P106,Left,45,5
+PROD00505,890100505,Nestle Fruit Yogurt 500ml,368,0.5,Dairy,Yogurt,2,107,107.1,P107,Right,41,5
+PROD00506,890100506,Go Cheese Block 500g,283,0.5,Dairy,Cheese,2,107,107.1,P107,Right,67,5
+PROD00507,890100507,Parekh Aluminium Foil 500g,291,0.5,Household,Disposables,2,107,107.1,P107,Right,51,5
+PROD00508,890100508,Pepsodent Toothpaste 500g,135,0.5,Personal Care,Oral,2,107,107.1,P107,Right,24,5
+PROD00509,890100509,Origami Tissues 500g,232,0.5,Household,Paper,2,107,107.2,P107,Right,74,5
+PROD00510,890100510,Tata Coffee Premix 500g,31,0.5,Beverages,Coffee,2,107,107.2,P107,Right,66,5
+PROD00511,890100511,Govardhan Almond Milk 500ml,330,0.5,Dairy,Milk,2,107,107.2,P107,Right,12,5
+PROD00512,890100512,Tong Garden Cashews 500g,98,0.5,Snacks,Nuts,2,107,107.2,P107,Right,44,5
+PROD00513,890100513,Sunfeast Cream Cracker 500g,310,0.5,Snacks,Biscuits,2,107,107.3,P107,Right,19,5
+PROD00514,890100514,Harvest Gold Multigrain 500g,492,0.5,Bakery,Bread,2,107,107.3,P107,Right,53,5
+PROD00515,890100515,Mother Dairy Plain Curd 500ml,248,0.5,Dairy,Yogurt,2,107,107.3,P107,Right,34,5
+PROD00516,890100516,Mother Dairy Fruit Yogurt 500ml,386,0.5,Dairy,Yogurt,2,107,107.3,P107,Right,47,5
+PROD00517,890100517,Tata Tea Green Tea 500g,230,0.5,Beverages,Tea,2,107,107.4,P107,Right,29,5
+PROD00518,890100518,Sunfeast Fusilli 500g,374,0.5,Grains,Pasta,2,107,107.4,P107,Right,41,5
+PROD00519,890100519,Nescafe Premix 500g,490,0.5,Beverages,Coffee,2,107,107.4,P107,Right,55,5
+PROD00520,890100520,Elite Bun 500g,298,0.5,Bakery,Cakes,2,107,107.4,P107,Right,74,5
+PROD00521,890100521,Pril Detergent 500ml,390,0.5,Household,Cleaning,2,107,107.5,P107,Right,47,5
+PROD00522,890100522,Nandini Toned Milk 500ml,389,0.5,Dairy,Milk,2,107,107.5,P107,Right,32,5
+PROD00523,890100523,Modern Multigrain 500g,106,0.5,Bakery,Bread,2,107,107.5,P107,Right,48,5
+PROD00524,890100524,Mother Dairy Paneer 500g,404,0.5,Dairy,Cheese,2,107,107.5,P107,Right,89,5
+PROD00525,890100525,Origami Paper Napkins 500g,333,0.5,Household,Paper,2,107,107.6,P107,Right,81,5
+PROD00526,890100526,Lays Cheese Balls 500g,113,0.5,Snacks,Chips,2,107,107.6,P107,Right,41,5
+PROD00527,890100527,Pillsbury Maida 500g,188,0.5,Grains,Flour,2,107,107.6,P107,Right,50,5
+PROD00528,890100528,Pillsbury Rice Flour 500g,237,0.5,Grains,Flour,2,107,107.6,P107,Right,37,5
+PROD00529,890100529,Selpak Tissues 500g,255,0.5,Household,Paper,2,107,107.7,P107,Right,98,5
+PROD00530,890100530,Origami Paper Plates 500g,488,0.5,Household,Disposables,2,107,107.7,P107,Right,17,5
+PROD00531,890100531,Tata Coffee Premix 500g,148,0.5,Beverages,Coffee,2,107,107.7,P107,Right,24,5
+PROD00532,890100532,Pantene Conditioner 500ml,28,0.5,Personal Care,Hair,2,107,107.7,P107,Right,31,5
+PROD00533,890100533,Sunfeast Nice 500g,54,0.5,Snacks,Biscuits,2,108,108.1,P108,Right,58,5
+PROD00534,890100534,Pillsbury Croissant 500g,455,0.5,Bakery,Cakes,2,108,108.1,P108,Right,71,5
+PROD00535,890100535,Raw Pressery Mango Juice 500ml,215,0.5,Beverages,Juice,2,108,108.1,P108,Right,70,5
+PROD00536,890100536,Epigamia Lassi 500ml,110,0.5,Dairy,Yogurt,2,108,108.1,P108,Right,51,5
+PROD00537,890100537,Sensodyne Mouthwash 500g,109,0.5,Personal Care,Oral,2,108,108.2,P108,Right,30,5
+PROD00538,890100538,Fiama Body Wash 500g,433,0.5,Personal Care,Soap,2,108,108.2,P108,Right,72,5
+PROD00539,890100539,Mother Dairy Greek Yogurt 500ml,279,0.5,Dairy,Yogurt,2,108,108.2,P108,Right,11,5
+PROD00540,890100540,Happilo Mixed Nuts 500g,381,0.5,Snacks,Nuts,2,108,108.2,P108,Right,90,5
+PROD00541,890100541,Britannia Croissant 500g,343,0.5,Bakery,Cakes,2,108,108.3,P108,Right,19,5
+PROD00542,890100542,Modern Whole Wheat 500g,74,0.5,Bakery,Bread,2,108,108.3,P108,Right,24,5
+PROD00543,890100543,Daawat Basmati Rice 500g,232,0.5,Grains,Rice,2,108,108.3,P108,Right,20,5
+PROD00544,890100544,Elite Swiss Roll 500g,367,0.5,Bakery,Cakes,2,108,108.3,P108,Right,37,5
+PROD00545,890100545,Haldiram's Cashews 500g,414,0.5,Snacks,Nuts,2,108,108.4,P108,Right,91,5
+PROD00546,890100546,Origami Paper Plates 500g,93,0.5,Household,Disposables,2,108,108.4,P108,Right,64,5
+PROD00547,890100547,Ezee Garbage Bags 500g,348,0.5,Household,Disposables,2,108,108.4,P108,Right,63,5
+PROD00548,890100548,Bambino Fusilli 500g,368,0.5,Grains,Pasta,2,108,108.4,P108,Right,59,5
+PROD00549,890100549,Pillsbury Maida 500g,177,0.5,Grains,Flour,2,108,108.5,P108,Right,16,5
+PROD00550,890100550,Nutraj Walnuts 500g,134,0.5,Snacks,Nuts,2,108,108.5,P108,Right,78,5
+PROD00551,890100551,Pillsbury Fruit Cake 500g,353,0.5,Bakery,Cakes,2,108,108.5,P108,Right,30,5
+PROD00552,890100552,Monginis Fruit Cake 500g,97,0.5,Bakery,Cakes,2,108,108.5,P108,Right,15,5
+PROD00553,890100553,Unibic Digestive 500g,296,0.5,Snacks,Biscuits,2,108,108.6,P108,Right,43,5
+PROD00554,890100554,Monginis Croissant 500g,92,0.5,Bakery,Cakes,2,108,108.6,P108,Right,60,5
+PROD00555,890100555,Nestle Soy Milk 500ml,395,0.5,Dairy,Milk,2,108,108.6,P108,Right,59,5
+PROD00556,890100556,Harvest Gold Sourdough 500g,465,0.5,Bakery,Bread,2,108,108.6,P108,Right,79,5
+PROD00557,890100557,Go Mozzarella 500g,154,0.5,Dairy,Cheese,2,108,108.7,P108,Right,15,5
+PROD00558,890100558,Amul Fruit Yogurt 500ml,445,0.5,Dairy,Yogurt,2,108,108.7,P108,Right,95,5
+PROD00559,890100559,Monginis Chocolate Muffin 500g,59,0.5,Bakery,Cakes,2,108,108.7,P108,Right,32,5
+PROD00560,890100560,Maggi Penne 500g,450,0.5,Grains,Pasta,2,108,108.7,P108,Right,33,5
+PROD00561,890100561,Amul Cheese Slices 500g,190,0.5,Dairy,Cheese,2,109,109.1,P109,Right,94,5
+PROD00562,890100562,Dettol Shower Gel 500g,322,0.5,Personal Care,Soap,2,109,109.1,P109,Right,14,5
+PROD00563,890100563,Tresemme Hair Oil 500ml,51,0.5,Personal Care,Hair,2,109,109.1,P109,Right,92,5
+PROD00564,890100564,Daawat Sona Masoori 500g,94,0.5,Grains,Rice,2,109,109.1,P109,Right,63,5
+PROD00565,890100565,Britannia Sourdough 500g,134,0.5,Bakery,Bread,2,109,109.2,P109,Right,93,5
+PROD00566,890100566,7Up Club Soda 500ml,243,0.5,Beverages,Soda,2,109,109.2,P109,Right,78,5
+PROD00567,890100567,Pillsbury Bun 500g,386,0.5,Bakery,Cakes,2,109,109.2,P109,Right,78,5
+PROD00568,890100568,Britannia Paneer 500g,92,0.5,Dairy,Cheese,2,109,109.2,P109,Right,29,5
+PROD00569,890100569,Cinthol Body Wash 500g,372,0.5,Personal Care,Soap,2,109,109.3,P109,Right,41,5
+PROD00570,890100570,Harvest Gold White Bread 500g,35,0.5,Bakery,Bread,2,109,109.3,P109,Right,87,5
+PROD00571,890100571,Vim Floor Cleaner 500ml,100,0.5,Household,Cleaning,2,109,109.3,P109,Right,82,5
+PROD00572,890100572,Bingo Cheese Balls 500g,221,0.5,Snacks,Chips,2,109,109.3,P109,Right,63,5
+PROD00573,890100573,Selpak Kitchen Towel 500g,188,0.5,Household,Paper,2,109,109.4,P109,Right,35,5
+PROD00574,890100574,Monginis Chocolate Muffin 500g,460,0.5,Bakery,Cakes,2,109,109.4,P109,Right,46,5
+PROD00575,890100575,Bambino Penne 500g,484,0.5,Grains,Pasta,2,109,109.4,P109,Right,97,5
+PROD00576,890100576,Britannia Cupcake 500g,485,0.5,Bakery,Cakes,2,109,109.4,P109,Right,18,5
+PROD00577,890100577,Amul Slim Milk 500ml,135,0.5,Dairy,Milk,2,109,109.5,P109,Right,70,5
+PROD00578,890100578,Parekh Aluminium Foil 500g,433,0.5,Household,Disposables,2,109,109.5,P109,Right,45,5
+PROD00579,890100579,Maggi Penne 500g,262,0.5,Grains,Pasta,2,109,109.5,P109,Right,93,5
+PROD00580,890100580,Bingo Nachos 500g,457,0.5,Snacks,Chips,2,109,109.5,P109,Right,57,5
+PROD00581,890100581,Nescafe Instant Coffee 500g,495,0.5,Beverages,Coffee,2,109,109.6,P109,Right,67,5
+PROD00582,890100582,Nutraj Walnuts 500g,434,0.5,Snacks,Nuts,2,109,109.6,P109,Right,78,5
+PROD00583,890100583,Head & Shoulders Shampoo 500ml,429,0.5,Personal Care,Hair,2,109,109.6,P109,Right,64,5
+PROD00584,890100584,Daawat Brown Rice 500g,330,0.5,Grains,Rice,2,109,109.6,P109,Right,84,5
+PROD00585,890100585,Fortune Rava 500g,149,0.5,Grains,Flour,2,109,109.7,P109,Right,32,5
+PROD00586,890100586,Sunfeast Cookies 500g,72,0.5,Snacks,Biscuits,2,109,109.7,P109,Right,60,5
+PROD00587,890100587,Amul Mozzarella 500g,152,0.5,Dairy,Cheese,2,109,109.7,P109,Right,100,5
+PROD00588,890100588,Raw Pressery Orange Juice 500ml,267,0.5,Beverages,Juice,2,109,109.7,P109,Right,19,5
+PROD00589,890100589,Clinic Plus Conditioner 500ml,351,0.5,Personal Care,Hair,2,110,110.1,P110,Right,11,5
+PROD00590,890100590,Parle Nice 500g,84,0.5,Snacks,Biscuits,2,110,110.1,P110,Right,10,5
+PROD00591,890100591,Unibic Bourbon 500g,44,0.5,Snacks,Biscuits,2,110,110.1,P110,Right,76,5
+PROD00592,890100592,Nandini Full Cream Milk 500ml,415,0.5,Dairy,Milk,2,110,110.1,P110,Right,60,5
+PROD00593,890100593,Ponds Cream 500ml,118,0.5,Personal Care,Skin,2,110,110.2,P110,Right,89,5
+PROD00594,890100594,Oral-B Mouthwash 500g,417,0.5,Personal Care,Oral,2,110,110.2,P110,Right,15,5
+PROD00595,890100595,Milky Mist Lassi 500ml,64,0.5,Dairy,Yogurt,2,110,110.2,P110,Right,13,5
+PROD00596,890100596,Dark Fantasy Cream Cracker 500g,134,0.5,Snacks,Biscuits,2,110,110.2,P110,Right,68,5
+PROD00597,890100597,Parle Bourbon 500g,79,0.5,Snacks,Biscuits,2,110,110.3,P110,Right,24,5
+PROD00598,890100598,Red Label Black Tea 500g,158,0.5,Beverages,Tea,2,110,110.3,P110,Right,23,5
+PROD00599,890100599,Mother Dairy Cheese Spread 500g,377,0.5,Dairy,Cheese,2,110,110.3,P110,Right,61,5
+PROD00600,890100600,Maggi Fusilli 500g,146,0.5,Grains,Pasta,2,110,110.3,P110,Right,69,5
+PROD00601,890100601,Pepsi Orange Soda 500ml,209,0.5,Beverages,Soda,2,110,110.4,P110,Right,16,5
+PROD00602,890100602,Parle Bourbon 500g,161,0.5,Snacks,Biscuits,2,110,110.4,P110,Right,53,5
+PROD00603,890100603,Dove Body Wash 500g,312,0.5,Personal Care,Soap,2,110,110.4,P110,Right,48,5
+PROD00604,890100604,Sunfeast Spaghetti 500g,90,0.5,Grains,Pasta,2,110,110.4,P110,Right,86,5
+PROD00605,890100605,Premier Toilet Roll 500g,283,0.5,Household,Paper,2,110,110.5,P110,Right,37,5
+PROD00606,890100606,Parekh Garbage Bags 500g,449,0.5,Household,Disposables,2,110,110.5,P110,Right,80,5
+PROD00607,890100607,Ezee Paper Cups 500g,160,0.5,Household,Disposables,2,110,110.5,P110,Right,39,5
+PROD00608,890100608,Wagh Bakri Green Tea 500g,310,0.5,Beverages,Tea,2,110,110.5,P110,Right,56,5
+PROD00609,890100609,Nutraj Pistachios 500g,131,0.5,Snacks,Nuts,2,110,110.6,P110,Right,68,5
+PROD00610,890100610,Kohinoor Brown Rice 500g,219,0.5,Grains,Rice,2,110,110.6,P110,Right,67,5
+PROD00611,890100611,Origami Paper Cups 500g,84,0.5,Household,Disposables,2,110,110.6,P110,Right,43,5
+PROD00612,890100612,Fiama Bathing Bar 500g,381,0.5,Personal Care,Soap,2,110,110.6,P110,Right,32,5
+PROD00613,890100613,Go Cheese Block 500g,271,0.5,Dairy,Cheese,2,110,110.7,P110,Right,80,5
+PROD00614,890100614,Nature Fresh Rava 500g,457,0.5,Grains,Flour,2,110,110.7,P110,Right,23,5
+PROD00615,890100615,Tata Sampann Almonds 500g,201,0.5,Snacks,Nuts,2,110,110.7,P110,Right,57,5
+PROD00616,890100616,Lizol Floor Cleaner 500ml,317,0.5,Household,Cleaning,2,110,110.7,P110,Right,41,5
+PROD00617,890100617,Dark Fantasy Marie 500g,221,0.5,Snacks,Biscuits,2,111,111.1,P111,Right,78,5
+PROD00618,890100618,Tong Garden Almonds 500g,483,0.5,Snacks,Nuts,2,111,111.1,P111,Right,85,5
+PROD00619,890100619,Paseo Toilet Roll 500g,469,0.5,Household,Paper,2,111,111.1,P111,Right,25,5
+PROD00620,890100620,Maggi Noodles 500g,394,0.5,Grains,Pasta,2,111,111.1,P111,Right,92,5
+PROD00621,890100621,Mother Dairy Cheese Slices 500g,373,0.5,Dairy,Cheese,2,111,111.2,P111,Right,96,5
+PROD00622,890100622,Fortune Basmati Rice 500g,109,0.5,Grains,Rice,2,111,111.2,P111,Right,18,5
+PROD00623,890100623,Go Cheese Slices 500g,76,0.5,Dairy,Cheese,2,111,111.2,P111,Right,84,5
+PROD00624,890100624,Nestle Slim Milk 500ml,478,0.5,Dairy,Milk,2,111,111.2,P111,Right,68,5
+PROD00625,890100625,Maggi Spaghetti 500g,300,0.5,Grains,Pasta,2,111,111.3,P111,Right,19,5
+PROD00626,890100626,Harvest Gold Multigrain 500g,444,0.5,Bakery,Bread,2,111,111.3,P111,Right,35,5
+PROD00627,890100627,English Oven Multigrain 500g,496,0.5,Bakery,Bread,2,111,111.3,P111,Right,46,5
+PROD00628,890100628,Harpic Detergent 500ml,175,0.5,Household,Cleaning,2,111,111.3,P111,Right,33,5
+PROD00629,890100629,Amul Paneer 500g,109,0.5,Dairy,Cheese,2,111,111.4,P111,Right,16,5
+PROD00630,890100630,Modern Sourdough 500g,256,0.5,Bakery,Bread,2,111,111.4,P111,Right,34,5
+PROD00631,890100631,Himalaya Mouthwash 500g,451,0.5,Personal Care,Oral,2,111,111.4,P111,Right,56,5
+PROD00632,890100632,Taj Mahal Green Tea 500g,494,0.5,Beverages,Tea,2,111,111.4,P111,Right,18,5
+PROD00633,890100633,Monginis Fruit Cake 500g,107,0.5,Bakery,Cakes,2,111,111.5,P111,Right,20,5
+PROD00634,890100634,Britannia Cheese Spread 500g,69,0.5,Dairy,Cheese,2,111,111.5,P111,Right,99,5
+PROD00635,890100635,Surf Excel Floor Cleaner 500ml,60,0.5,Household,Cleaning,2,111,111.5,P111,Right,48,5
+PROD00636,890100636,Haldiram's Mixed Nuts 500g,146,0.5,Snacks,Nuts,2,111,111.5,P111,Right,85,5
+PROD00637,890100637,Too Yumm Cheese Balls 500g,310,0.5,Snacks,Chips,2,111,111.6,P111,Right,23,5
+PROD00638,890100638,Ponds Cream 500ml,208,0.5,Personal Care,Skin,2,111,111.6,P111,Right,43,5
+PROD00639,890100639,Britannia Sourdough 500g,193,0.5,Bakery,Bread,2,111,111.6,P111,Right,29,5
+PROD00640,890100640,Lifebuoy Hand Wash 500g,226,0.5,Personal Care,Soap,2,111,111.6,P111,Right,52,5
+PROD00641,890100641,Colgate Toothpaste 500g,110,0.5,Personal Care,Oral,2,111,111.7,P111,Right,58,5
+PROD00642,890100642,Britannia Marie 500g,346,0.5,Snacks,Biscuits,2,111,111.7,P111,Right,24,5
+PROD00643,890100643,Origami Aluminium Foil 500g,321,0.5,Household,Disposables,2,111,111.7,P111,Right,89,5
+PROD00644,890100644,Pillsbury Wheat Atta 500g,484,0.5,Grains,Flour,2,111,111.7,P111,Right,91,5
+PROD00645,890100645,Harvest Gold Multigrain 500g,453,0.5,Bakery,Bread,2,112,112.1,P112,Right,26,5
+PROD00646,890100646,Harvest Gold Whole Wheat 500g,270,0.5,Bakery,Bread,2,112,112.1,P112,Right,38,5
+PROD00647,890100647,Fortune Jasmine Rice 500g,42,0.5,Grains,Rice,2,112,112.1,P112,Right,95,5
+PROD00648,890100648,Fortune Basmati Rice 500g,192,0.5,Grains,Rice,2,112,112.1,P112,Right,44,5
+PROD00649,890100649,Tetley Masala Chai 500g,233,0.5,Beverages,Tea,2,112,112.2,P112,Right,94,5
+PROD00650,890100650,Haldiram's Onion Rings 500g,45,0.5,Snacks,Chips,2,112,112.2,P112,Right,58,5
+PROD00651,890100651,Neutrogena Face Wash 500ml,60,0.5,Personal Care,Skin,2,112,112.2,P112,Right,53,5
+PROD00652,890100652,Britannia Cream Cracker 500g,98,0.5,Snacks,Biscuits,2,112,112.2,P112,Right,66,5
+PROD00653,890100653,Thums Up Orange Soda 500ml,470,0.5,Beverages,Soda,2,112,112.3,P112,Right,32,5
+PROD00654,890100654,Coca Cola Lemon Soda 500ml,394,0.5,Beverages,Soda,2,112,112.3,P112,Right,32,5
+PROD00655,890100655,Pillsbury Chocolate Muffin 500g,260,0.5,Bakery,Cakes,2,112,112.3,P112,Right,38,5
+PROD00656,890100656,Parachute Shampoo 500ml,52,0.5,Personal Care,Hair,2,112,112.3,P112,Right,80,5
+PROD00657,890100657,B Natural Orange Juice 500ml,428,0.5,Beverages,Juice,2,112,112.4,P112,Right,15,5
+PROD00658,890100658,Barilla Fusilli 500g,108,0.5,Grains,Pasta,2,112,112.4,P112,Right,15,5
+PROD00659,890100659,Govardhan Almond Milk 500ml,219,0.5,Dairy,Milk,2,112,112.4,P112,Right,21,5
+PROD00660,890100660,Fiama Hand Wash 500g,304,0.5,Personal Care,Soap,2,112,112.4,P112,Right,55,5
+PROD00661,890100661,Dove Hand Wash 500g,133,0.5,Personal Care,Soap,2,112,112.5,P112,Right,51,5
+PROD00662,890100662,Barilla Macaroni 500g,492,0.5,Grains,Pasta,2,112,112.5,P112,Right,33,5
+PROD00663,890100663,Vim Dish Liquid 500ml,126,0.5,Household,Cleaning,2,112,112.5,P112,Right,62,5
+PROD00664,890100664,Pillsbury Chocolate Muffin 500g,404,0.5,Bakery,Cakes,2,112,112.5,P112,Right,99,5
+PROD00665,890100665,Dark Fantasy Nice 500g,196,0.5,Snacks,Biscuits,2,112,112.6,P112,Right,81,5
+PROD00666,890100666,Paper Boat Mango Juice 500ml,116,0.5,Beverages,Juice,2,112,112.6,P112,Right,83,5
+PROD00667,890100667,Selpak Kitchen Towel 500g,59,0.5,Household,Paper,2,112,112.6,P112,Right,57,5
+PROD00668,890100668,Britannia Cupcake 500g,357,0.5,Bakery,Cakes,2,112,112.6,P112,Right,49,5
+PROD00669,890100669,Pantene Shampoo 500ml,432,0.5,Personal Care,Hair,2,112,112.7,P112,Right,16,5
+PROD00670,890100670,Milky Mist Plain Curd 500ml,214,0.5,Dairy,Yogurt,2,112,112.7,P112,Right,68,5
+PROD00671,890100671,Britannia Fruit Cake 500g,247,0.5,Bakery,Cakes,2,112,112.7,P112,Right,36,5
+PROD00672,890100672,Mother Dairy Mozzarella 500g,169,0.5,Dairy,Cheese,2,112,112.7,P112,Right,21,5
+PROD00673,890100673,Ezee Garbage Bags 500g,58,0.5,Household,Disposables,3,101,101.1,P101,Left,49,5
+PROD00674,890100674,Haldiram's Cheese Balls 500g,294,0.5,Snacks,Chips,3,101,101.1,P101,Left,47,5
+PROD00675,890100675,Thums Up Ginger Ale 500ml,272,0.5,Beverages,Soda,3,101,101.1,P101,Left,38,5
+PROD00676,890100676,Pringles Banana Chips 500g,180,0.5,Snacks,Chips,3,101,101.1,P101,Left,12,5
+PROD00677,890100677,Parachute Hair Serum 500ml,66,0.5,Personal Care,Hair,3,101,101.2,P101,Left,23,5
+PROD00678,890100678,Doritos Spicy Chips 500g,357,0.5,Snacks,Chips,3,101,101.2,P101,Left,15,5
+PROD00679,890100679,Ezee Paper Plates 500g,167,0.5,Household,Disposables,3,101,101.2,P101,Left,29,5
+PROD00680,890100680,Dove Shampoo 500ml,93,0.5,Personal Care,Hair,3,101,101.2,P101,Left,91,5
+PROD00681,890100681,Pears Shower Gel 500g,187,0.5,Personal Care,Soap,3,101,101.3,P101,Left,59,5
+PROD00682,890100682,Ezee Garbage Bags 500g,348,0.5,Household,Disposables,3,101,101.3,P101,Left,63,5
+PROD00683,890100683,Amul Mozzarella 500g,138,0.5,Dairy,Cheese,3,101,101.3,P101,Left,80,5
+PROD00684,890100684,Vaseline Sunscreen 500ml,94,0.5,Personal Care,Skin,3,101,101.3,P101,Left,13,5
+PROD00685,890100685,Amul Fruit Yogurt 500ml,246,0.5,Dairy,Yogurt,3,101,101.4,P101,Left,63,5
+PROD00686,890100686,Nescafe Premix 500g,250,0.5,Beverages,Coffee,3,101,101.4,P101,Left,32,5
+PROD00687,890100687,Lux Hand Wash 500g,311,0.5,Personal Care,Soap,3,101,101.4,P101,Left,21,5
+PROD00688,890100688,Britannia Mozzarella 500g,68,0.5,Dairy,Cheese,3,101,101.4,P101,Left,15,5
+PROD00689,890100689,Origami Paper Cups 500g,377,0.5,Household,Disposables,3,101,101.5,P101,Left,49,5
+PROD00690,890100690,Wagh Bakri Earl Grey 500g,212,0.5,Beverages,Tea,3,101,101.5,P101,Left,91,5
+PROD00691,890100691,Haldiram's Onion Rings 500g,96,0.5,Snacks,Chips,3,101,101.5,P101,Left,55,5
+PROD00692,890100692,Paper Boat Orange Juice 500ml,472,0.5,Beverages,Juice,3,101,101.5,P101,Left,75,5
+PROD00693,890100693,Sunrise Instant Coffee 500g,326,0.5,Beverages,Coffee,3,101,101.6,P101,Left,76,5
+PROD00694,890100694,Vaseline Cream 500ml,455,0.5,Personal Care,Skin,3,101,101.6,P101,Left,14,5
+PROD00695,890100695,Pepsi Ginger Ale 500ml,307,0.5,Beverages,Soda,3,101,101.6,P101,Left,38,5
+PROD00696,890100696,Mother Dairy Fruit Yogurt 500ml,279,0.5,Dairy,Yogurt,3,101,101.6,P101,Left,28,5
+PROD00697,890100697,Kohinoor Basmati Rice 500g,471,0.5,Grains,Rice,3,101,101.7,P101,Left,40,5
+PROD00698,890100698,Milky Mist Plain Curd 500ml,57,0.5,Dairy,Yogurt,3,101,101.7,P101,Left,56,5
+PROD00699,890100699,Bambino Noodles 500g,159,0.5,Grains,Pasta,3,101,101.7,P101,Left,84,5
+PROD00700,890100700,Monginis Chocolate Muffin 500g,304,0.5,Bakery,Cakes,3,101,101.7,P101,Left,87,5
+PROD00701,890100701,Govardhan Soy Milk 500ml,68,0.5,Dairy,Milk,3,102,102.1,P102,Left,29,5
+PROD00702,890100702,Haldiram's Banana Chips 500g,136,0.5,Snacks,Chips,3,102,102.1,P102,Left,58,5
+PROD00703,890100703,Amul Paneer 500g,400,0.5,Dairy,Cheese,3,102,102.1,P102,Left,79,5
+PROD00704,890100704,Bambino Penne 500g,130,0.5,Grains,Pasta,3,102,102.1,P102,Left,61,5
+PROD00705,890100705,Nandini Full Cream Milk 500ml,368,0.5,Dairy,Milk,3,102,102.2,P102,Left,40,5
+PROD00706,890100706,Pepsodent Toothpaste 500g,326,0.5,Personal Care,Oral,3,102,102.2,P102,Left,22,5
+PROD00707,890100707,Red Label Tea Bags 500g,248,0.5,Beverages,Tea,3,102,102.2,P102,Left,82,5
+PROD00708,890100708,Mother Dairy Greek Yogurt 500ml,174,0.5,Dairy,Yogurt,3,102,102.2,P102,Left,67,5
+PROD00709,890100709,Lipton Tea Bags 500g,92,0.5,Beverages,Tea,3,102,102.3,P102,Left,85,5
+PROD00710,890100710,CloseUp Toothbrush 500g,403,0.5,Personal Care,Oral,3,102,102.3,P102,Left,76,5
+PROD00711,890100711,Sunfeast Fusilli 500g,175,0.5,Grains,Pasta,3,102,102.3,P102,Left,96,5
+PROD00712,890100712,Tetley Green Tea 500g,169,0.5,Beverages,Tea,3,102,102.3,P102,Left,24,5
+PROD00713,890100713,Monginis Croissant 500g,218,0.5,Bakery,Cakes,3,102,102.4,P102,Left,41,5
+PROD00714,890100714,Selpak Toilet Roll 500g,475,0.5,Household,Paper,3,102,102.4,P102,Left,89,5
+PROD00715,890100715,Lipton Black Tea 500g,429,0.5,Beverages,Tea,3,102,102.4,P102,Left,19,5
+PROD00716,890100716,Tata Coffee Instant Coffee 500g,325,0.5,Beverages,Coffee,3,102,102.4,P102,Left,46,5
+PROD00717,890100717,Tropicana Mango Juice 500ml,260,0.5,Beverages,Juice,3,102,102.5,P102,Left,14,5
+PROD00718,890100718,Nivea Moisturizer 500ml,106,0.5,Personal Care,Skin,3,102,102.5,P102,Left,89,5
+PROD00719,890100719,Unibic Cookies 500g,108,0.5,Snacks,Biscuits,3,102,102.5,P102,Left,81,5
+PROD00720,890100720,Tata Coffee Roasted Beans 500g,480,0.5,Beverages,Coffee,3,102,102.5,P102,Left,93,5
+PROD00721,890100721,Parekh Cling Wrap 500g,440,0.5,Household,Disposables,3,102,102.6,P102,Left,29,5
+PROD00722,890100722,Lifebuoy Shower Gel 500g,331,0.5,Personal Care,Soap,3,102,102.6,P102,Left,53,5
+PROD00723,890100723,Bru Filter Coffee 500g,471,0.5,Beverages,Coffee,3,102,102.6,P102,Left,51,5
+PROD00724,890100724,Monginis Croissant 500g,135,0.5,Bakery,Cakes,3,102,102.6,P102,Left,93,5
+PROD00725,890100725,Cinthol Bathing Bar 500g,21,0.5,Personal Care,Soap,3,102,102.7,P102,Left,27,5
+PROD00726,890100726,Domex Floor Cleaner 500ml,480,0.5,Household,Cleaning,3,102,102.7,P102,Left,34,5
+PROD00727,890100727,Maggi Macaroni 500g,245,0.5,Grains,Pasta,3,102,102.7,P102,Left,70,5
+PROD00728,890100728,Elite Bun 500g,469,0.5,Bakery,Cakes,3,102,102.7,P102,Left,10,5
+PROD00729,890100729,Premier Kitchen Towel 500g,432,0.5,Household,Paper,3,103,103.1,P103,Left,70,5
+PROD00730,890100730,Pillsbury Rice Flour 500g,111,0.5,Grains,Flour,3,103,103.1,P103,Left,69,5
+PROD00731,890100731,Mother Dairy Lassi 500ml,266,0.5,Dairy,Yogurt,3,103,103.1,P103,Left,42,5
+PROD00732,890100732,Dove Conditioner 500ml,328,0.5,Personal Care,Hair,3,103,103.1,P103,Left,43,5
+PROD00733,890100733,L'Oreal Hair Oil 500ml,383,0.5,Personal Care,Hair,3,103,103.2,P103,Left,57,5
+PROD00734,890100734,Fortune Rice Flour 500g,288,0.5,Grains,Flour,3,103,103.2,P103,Left,83,5
+PROD00735,890100735,Harvest Gold White Bread 500g,367,0.5,Bakery,Bread,3,103,103.2,P103,Left,23,5
+PROD00736,890100736,Nandini Toned Milk 500ml,97,0.5,Dairy,Milk,3,103,103.2,P103,Left,53,5
+PROD00737,890100737,Origami Paper Napkins 500g,80,0.5,Household,Paper,3,103,103.3,P103,Left,86,5
+PROD00738,890100738,Haldiram's Pistachios 500g,423,0.5,Snacks,Nuts,3,103,103.3,P103,Left,50,5
+PROD00739,890100739,Premier Tissues 500g,351,0.5,Household,Paper,3,103,103.3,P103,Left,80,5
+PROD00740,890100740,Nestle Slim Milk 500ml,363,0.5,Dairy,Milk,3,103,103.3,P103,Left,91,5
+PROD00741,890100741,B Natural Apple Juice 500ml,63,0.5,Beverages,Juice,3,103,103.4,P103,Left,95,5
+PROD00742,890100742,Britannia Bourbon 500g,285,0.5,Snacks,Biscuits,3,103,103.4,P103,Left,22,5
+PROD00743,890100743,Domex Glass Cleaner 500ml,186,0.5,Household,Cleaning,3,103,103.4,P103,Left,71,5
+PROD00744,890100744,Origami Paper Plates 500g,166,0.5,Household,Disposables,3,103,103.4,P103,Left,32,5
+PROD00745,890100745,Mother Dairy Almond Milk 500ml,125,0.5,Dairy,Milk,3,103,103.5,P103,Left,29,5
+PROD00746,890100746,Govardhan Almond Milk 500ml,68,0.5,Dairy,Milk,3,103,103.5,P103,Left,94,5
+PROD00747,890100747,Dove Conditioner 500ml,488,0.5,Personal Care,Hair,3,103,103.5,P103,Left,36,5
+PROD00748,890100748,Paseo Kitchen Towel 500g,327,0.5,Household,Paper,3,103,103.5,P103,Left,83,5
+PROD00749,890100749,English Oven Brown Bread 500g,42,0.5,Bakery,Bread,3,103,103.6,P103,Left,32,5
+PROD00750,890100750,Neutrogena Body Lotion 500ml,429,0.5,Personal Care,Skin,3,103,103.6,P103,Left,78,5
+PROD00751,890100751,Head & Shoulders Hair Serum 500ml,253,0.5,Personal Care,Hair,3,103,103.6,P103,Left,56,5
+PROD00752,890100752,Nivea Moisturizer 500ml,271,0.5,Personal Care,Skin,3,103,103.6,P103,Left,76,5
+PROD00753,890100753,Nature Fresh Maida 500g,30,0.5,Grains,Flour,3,103,103.7,P103,Left,52,5
+PROD00754,890100754,Happilo Cashews 500g,498,0.5,Snacks,Nuts,3,103,103.7,P103,Left,27,5
+PROD00755,890100755,Haldiram's Mixed Nuts 500g,342,0.5,Snacks,Nuts,3,103,103.7,P103,Left,66,5
+PROD00756,890100756,Selpak Tissues 500g,20,0.5,Household,Paper,3,103,103.7,P103,Left,17,5
+PROD00757,890100757,Dark Fantasy Marie 500g,264,0.5,Snacks,Biscuits,3,104,104.1,P104,Left,91,5
+PROD00758,890100758,Maggi Penne 500g,172,0.5,Grains,Pasta,3,104,104.1,P104,Left,27,5
+PROD00759,890100759,Vaseline Face Wash 500ml,408,0.5,Personal Care,Skin,3,104,104.1,P104,Left,73,5
+PROD00760,890100760,Dettol Shower Gel 500g,457,0.5,Personal Care,Soap,3,104,104.1,P104,Left,37,5
+PROD00761,890100761,Oreo Bourbon 500g,173,0.5,Snacks,Biscuits,3,104,104.2,P104,Left,17,5
+PROD00762,890100762,Tata Sampann Walnuts 500g,210,0.5,Snacks,Nuts,3,104,104.2,P104,Left,53,5
+PROD00763,890100763,Parle Bourbon 500g,222,0.5,Snacks,Biscuits,3,104,104.2,P104,Left,49,5
+PROD00764,890100764,Colgate Toothpaste 500g,490,0.5,Personal Care,Oral,3,104,104.2,P104,Left,76,5
+PROD00765,890100765,Clinic Plus Hair Oil 500ml,491,0.5,Personal Care,Hair,3,104,104.3,P104,Left,57,5
+PROD00766,890100766,B Natural Mixed Fruit 500ml,252,0.5,Beverages,Juice,3,104,104.3,P104,Left,25,5
+PROD00767,890100767,Govardhan Full Cream Milk 500ml,302,0.5,Dairy,Milk,3,104,104.3,P104,Left,92,5
+PROD00768,890100768,Sunfeast Spaghetti 500g,349,0.5,Grains,Pasta,3,104,104.3,P104,Left,47,5
+PROD00769,890100769,Nestle Lassi 500ml,492,0.5,Dairy,Yogurt,3,104,104.4,P104,Left,88,5
+PROD00770,890100770,Lizol Dish Liquid 500ml,37,0.5,Household,Cleaning,3,104,104.4,P104,Left,85,5
+PROD00771,890100771,Parekh Cling Wrap 500g,34,0.5,Household,Disposables,3,104,104.4,P104,Left,64,5
+PROD00772,890100772,Nestle Greek Yogurt 500ml,161,0.5,Dairy,Yogurt,3,104,104.4,P104,Left,38,5
+PROD00773,890100773,Pillsbury Wheat Atta 500g,84,0.5,Grains,Flour,3,104,104.5,P104,Left,10,5
+PROD00774,890100774,Nandini Almond Milk 500ml,489,0.5,Dairy,Milk,3,104,104.5,P104,Left,12,5
+PROD00775,890100775,Nandini Almond Milk 500ml,307,0.5,Dairy,Milk,3,104,104.5,P104,Left,54,5
+PROD00776,890100776,Britannia Bun 500g,403,0.5,Bakery,Cakes,3,104,104.5,P104,Left,45,5
+PROD00777,890100777,Tetley Black Tea 500g,187,0.5,Beverages,Tea,3,104,104.6,P104,Left,43,5
+PROD00778,890100778,Raw Pressery Mixed Fruit 500ml,129,0.5,Beverages,Juice,3,104,104.6,P104,Left,28,5
+PROD00779,890100779,Himalaya Toothbrush 500g,127,0.5,Personal Care,Oral,3,104,104.6,P104,Left,55,5
+PROD00780,890100780,Tata Sampann Cashews 500g,314,0.5,Snacks,Nuts,3,104,104.6,P104,Left,83,5
+PROD00781,890100781,Pantene Hair Oil 500ml,334,0.5,Personal Care,Hair,3,104,104.7,P104,Left,60,5
+PROD00782,890100782,Kohinoor Sona Masoori 500g,30,0.5,Grains,Rice,3,104,104.7,P104,Left,11,5
+PROD00783,890100783,Neutrogena Sunscreen 500ml,332,0.5,Personal Care,Skin,3,104,104.7,P104,Left,37,5
+PROD00784,890100784,Bambino Fusilli 500g,375,0.5,Grains,Pasta,3,104,104.7,P104,Left,42,5
+PROD00785,890100785,Premier Paper Napkins 500g,186,0.5,Household,Paper,3,105,105.1,P105,Left,33,5
+PROD00786,890100786,Maggi Fusilli 500g,391,0.5,Grains,Pasta,3,105,105.1,P105,Left,54,5
+PROD00787,890100787,Maggi Penne 500g,29,0.5,Grains,Pasta,3,105,105.1,P105,Left,49,5
+PROD00788,890100788,Premier Tissues 500g,297,0.5,Household,Paper,3,105,105.1,P105,Left,51,5
+PROD00789,890100789,Britannia Bourbon 500g,74,0.5,Snacks,Biscuits,3,105,105.2,P105,Left,52,5
+PROD00790,890100790,Pillsbury Croissant 500g,326,0.5,Bakery,Cakes,3,105,105.2,P105,Left,93,5
+PROD00791,890100791,Nestle Greek Yogurt 500ml,130,0.5,Dairy,Yogurt,3,105,105.2,P105,Left,81,5
+PROD00792,890100792,Cinthol Bathing Bar 500g,369,0.5,Personal Care,Soap,3,105,105.2,P105,Left,49,5
+PROD00793,890100793,Britannia White Bread 500g,384,0.5,Bakery,Bread,3,105,105.3,P105,Left,91,5
+PROD00794,890100794,Pillsbury Rava 500g,59,0.5,Grains,Flour,3,105,105.3,P105,Left,25,5
+PROD00795,890100795,Britannia Marie 500g,65,0.5,Snacks,Biscuits,3,105,105.3,P105,Left,11,5
+PROD00796,890100796,Premier Paper Napkins 500g,101,0.5,Household,Paper,3,105,105.3,P105,Left,63,5
+PROD00797,890100797,Maggi Macaroni 500g,349,0.5,Grains,Pasta,3,105,105.4,P105,Left,32,5
+PROD00798,890100798,Bambino Spaghetti 500g,155,0.5,Grains,Pasta,3,105,105.4,P105,Left,21,5
+PROD00799,890100799,Maggi Penne 500g,207,0.5,Grains,Pasta,3,105,105.4,P105,Left,95,5
+PROD00800,890100800,Colgate Mouthwash 500g,399,0.5,Personal Care,Oral,3,105,105.4,P105,Left,84,5
+PROD00801,890100801,Mother Dairy Toned Milk 500ml,479,0.5,Dairy,Milk,3,105,105.5,P105,Left,51,5
+PROD00802,890100802,Too Yumm Spicy Chips 500g,411,0.5,Snacks,Chips,3,105,105.5,P105,Left,39,5
+PROD00803,890100803,Bingo Spicy Chips 500g,331,0.5,Snacks,Chips,3,105,105.5,P105,Left,77,5
+PROD00804,890100804,Happilo Pistachios 500g,333,0.5,Snacks,Nuts,3,105,105.5,P105,Left,94,5
+PROD00805,890100805,Epigamia Greek Yogurt 500ml,154,0.5,Dairy,Yogurt,3,105,105.6,P105,Left,25,5
+PROD00806,890100806,Ezee Aluminium Foil 500g,190,0.5,Household,Disposables,3,105,105.6,P105,Left,25,5
+PROD00807,890100807,Monginis Swiss Roll 500g,40,0.5,Bakery,Cakes,3,105,105.6,P105,Left,71,5
+PROD00808,890100808,Barilla Spaghetti 500g,122,0.5,Grains,Pasta,3,105,105.6,P105,Left,53,5
+PROD00809,890100809,Cinthol Body Wash 500g,252,0.5,Personal Care,Soap,3,105,105.7,P105,Left,22,5
+PROD00810,890100810,English Oven Multigrain 500g,160,0.5,Bakery,Bread,3,105,105.7,P105,Left,72,5
+PROD00811,890100811,Paseo Kitchen Towel 500g,356,0.5,Household,Paper,3,105,105.7,P105,Left,35,5
+PROD00812,890100812,Amul Soy Milk 500ml,182,0.5,Dairy,Milk,3,105,105.7,P105,Left,20,5
+PROD00813,890100813,Selpak Paper Napkins 500g,295,0.5,Household,Paper,3,106,106.1,P106,Left,53,5
+PROD00814,890100814,Parachute Hair Serum 500ml,283,0.5,Personal Care,Hair,3,106,106.1,P106,Left,17,5
+PROD00815,890100815,Pillsbury Fruit Cake 500g,115,0.5,Bakery,Cakes,3,106,106.1,P106,Left,12,5
+PROD00816,890100816,Nutraj Mixed Nuts 500g,296,0.5,Snacks,Nuts,3,106,106.1,P106,Left,47,5
+PROD00817,890100817,Britannia Bun 500g,172,0.5,Bakery,Cakes,3,106,106.2,P106,Left,53,5
+PROD00818,890100818,Nature Fresh Rava 500g,361,0.5,Grains,Flour,3,106,106.2,P106,Left,30,5
+PROD00819,890100819,Oral-B Toothbrush 500g,313,0.5,Personal Care,Oral,3,106,106.2,P106,Left,78,5
+PROD00820,890100820,Tata Coffee Premix 500g,191,0.5,Beverages,Coffee,3,106,106.2,P106,Left,52,5
+PROD00821,890100821,Lipton Tea Bags 500g,62,0.5,Beverages,Tea,3,106,106.3,P106,Left,78,5
+PROD00822,890100822,Oral-B Toothpaste 500g,295,0.5,Personal Care,Oral,3,106,106.3,P106,Left,21,5
+PROD00823,890100823,Haldiram's Pistachios 500g,96,0.5,Snacks,Nuts,3,106,106.3,P106,Left,55,5
+PROD00824,890100824,Tropicana Mixed Fruit 500ml,282,0.5,Beverages,Juice,3,106,106.3,P106,Left,74,5
+PROD00825,890100825,Amul Mozzarella 500g,105,0.5,Dairy,Cheese,3,106,106.4,P106,Left,75,5
+PROD00826,890100826,Kohinoor Basmati Rice 500g,495,0.5,Grains,Rice,3,106,106.4,P106,Left,94,5
+PROD00827,890100827,Doritos Nachos 500g,468,0.5,Snacks,Chips,3,106,106.4,P106,Left,66,5
+PROD00828,890100828,Dark Fantasy Bourbon 500g,443,0.5,Snacks,Biscuits,3,106,106.4,P106,Left,79,5
+PROD00829,890100829,Nandini Soy Milk 500ml,396,0.5,Dairy,Milk,3,106,106.5,P106,Left,56,5
+PROD00830,890100830,Britannia Sourdough 500g,30,0.5,Bakery,Bread,3,106,106.5,P106,Left,100,5
+PROD00831,890100831,Modern Multigrain 500g,161,0.5,Bakery,Bread,3,106,106.5,P106,Left,46,5
+PROD00832,890100832,Britannia Cheese Spread 500g,487,0.5,Dairy,Cheese,3,106,106.5,P106,Left,35,5
+PROD00833,890100833,Britannia Marie 500g,336,0.5,Snacks,Biscuits,3,106,106.6,P106,Left,54,5
+PROD00834,890100834,Mother Dairy Almond Milk 500ml,378,0.5,Dairy,Milk,3,106,106.6,P106,Left,78,5
+PROD00835,890100835,Davidoff Roasted Beans 500g,91,0.5,Beverages,Coffee,3,106,106.6,P106,Left,32,5
+PROD00836,890100836,Nandini Almond Milk 500ml,378,0.5,Dairy,Milk,3,106,106.6,P106,Left,37,5
+PROD00837,890100837,Mother Dairy Slim Milk 500ml,463,0.5,Dairy,Milk,3,106,106.7,P106,Left,35,5
+PROD00838,890100838,Lays Spicy Chips 500g,353,0.5,Snacks,Chips,3,106,106.7,P106,Left,77,5
+PROD00839,890100839,Tropicana Orange Juice 500ml,377,0.5,Beverages,Juice,3,106,106.7,P106,Left,21,5
+PROD00840,890100840,Head & Shoulders Shampoo 500ml,150,0.5,Personal Care,Hair,3,106,106.7,P106,Left,67,5
+PROD00841,890100841,7Up Lemon Soda 500ml,378,0.5,Beverages,Soda,3,107,107.1,P107,Right,56,5
+PROD00842,890100842,Too Yumm Salted Chips 500g,332,0.5,Snacks,Chips,3,107,107.1,P107,Right,75,5
+PROD00843,890100843,Pillsbury Maida 500g,410,0.5,Grains,Flour,3,107,107.1,P107,Right,37,5
+PROD00844,890100844,Elite Swiss Roll 500g,438,0.5,Bakery,Cakes,3,107,107.1,P107,Right,92,5
+PROD00845,890100845,Nestle Toned Milk 500ml,447,0.5,Dairy,Milk,3,107,107.2,P107,Right,35,5
+PROD00846,890100846,Pillsbury Swiss Roll 500g,421,0.5,Bakery,Cakes,3,107,107.2,P107,Right,26,5
+PROD00847,890100847,Lifebuoy Body Wash 500g,468,0.5,Personal Care,Soap,3,107,107.2,P107,Right,47,5
+PROD00848,890100848,Tata Coffee Filter Coffee 500g,469,0.5,Beverages,Coffee,3,107,107.2,P107,Right,24,5
+PROD00849,890100849,Bambino Fusilli 500g,222,0.5,Grains,Pasta,3,107,107.3,P107,Right,97,5
+PROD00850,890100850,Pepsodent Toothbrush 500g,72,0.5,Personal Care,Oral,3,107,107.3,P107,Right,21,5
+PROD00851,890100851,Britannia Marie 500g,333,0.5,Snacks,Biscuits,3,107,107.3,P107,Right,19,5
+PROD00852,890100852,Pillsbury Rava 500g,37,0.5,Grains,Flour,3,107,107.3,P107,Right,36,5
+PROD00853,890100853,English Oven Whole Wheat 500g,281,0.5,Bakery,Bread,3,107,107.4,P107,Right,49,5
+PROD00854,890100854,Britannia White Bread 500g,258,0.5,Bakery,Bread,3,107,107.4,P107,Right,13,5
+PROD00855,890100855,Monginis Fruit Cake 500g,24,0.5,Bakery,Cakes,3,107,107.4,P107,Right,45,5
+PROD00856,890100856,Britannia Cheese Block 500g,385,0.5,Dairy,Cheese,3,107,107.4,P107,Right,94,5
+PROD00857,890100857,Fortune Besan 500g,208,0.5,Grains,Flour,3,107,107.5,P107,Right,19,5
+PROD00858,890100858,Origami Aluminium Foil 500g,290,0.5,Household,Disposables,3,107,107.5,P107,Right,57,5
+PROD00859,890100859,Aashirvaad Wheat Atta 500g,341,0.5,Grains,Flour,3,107,107.5,P107,Right,100,5
+PROD00860,890100860,Clinic Plus Conditioner 500ml,378,0.5,Personal Care,Hair,3,107,107.5,P107,Right,76,5
+PROD00861,890100861,Sensodyne Toothpaste 500g,166,0.5,Personal Care,Oral,3,107,107.6,P107,Right,48,5
+PROD00862,890100862,Surf Excel Glass Cleaner 500ml,470,0.5,Household,Cleaning,3,107,107.6,P107,Right,88,5
+PROD00863,890100863,Nature Fresh Rava 500g,159,0.5,Grains,Flour,3,107,107.6,P107,Right,73,5
+PROD00864,890100864,Bingo Onion Rings 500g,220,0.5,Snacks,Chips,3,107,107.6,P107,Right,78,5
+PROD00865,890100865,Nature Fresh Rice Flour 500g,263,0.5,Grains,Flour,3,107,107.7,P107,Right,93,5
+PROD00866,890100866,Kohinoor Jasmine Rice 500g,31,0.5,Grains,Rice,3,107,107.7,P107,Right,83,5
+PROD00867,890100867,Davidoff Instant Coffee 500g,304,0.5,Beverages,Coffee,3,107,107.7,P107,Right,65,5
+PROD00868,890100868,Oral-B Mouthwash 500g,47,0.5,Personal Care,Oral,3,107,107.7,P107,Right,29,5
+PROD00869,890100869,Britannia Swiss Roll 500g,389,0.5,Bakery,Cakes,3,108,108.1,P108,Right,74,5
+PROD00870,890100870,Paseo Toilet Roll 500g,394,0.5,Household,Paper,3,108,108.1,P108,Right,42,5
+PROD00871,890100871,Tresemme Conditioner 500ml,339,0.5,Personal Care,Hair,3,108,108.1,P108,Right,19,5
+PROD00872,890100872,Amul Greek Yogurt 500ml,340,0.5,Dairy,Yogurt,3,108,108.1,P108,Right,21,5
+PROD00873,890100873,Paper Boat Orange Juice 500ml,145,0.5,Beverages,Juice,3,108,108.2,P108,Right,27,5
+PROD00874,890100874,Too Yumm Onion Rings 500g,446,0.5,Snacks,Chips,3,108,108.2,P108,Right,99,5
+PROD00875,890100875,Tong Garden Cashews 500g,130,0.5,Snacks,Nuts,3,108,108.2,P108,Right,41,5
+PROD00876,890100876,Parekh Cling Wrap 500g,171,0.5,Household,Disposables,3,108,108.2,P108,Right,50,5
+PROD00877,890100877,Harpic Glass Cleaner 500ml,268,0.5,Household,Cleaning,3,108,108.3,P108,Right,83,5
+PROD00878,890100878,Davidoff Instant Coffee 500g,58,0.5,Beverages,Coffee,3,108,108.3,P108,Right,99,5
+PROD00879,890100879,Limca Lemon Soda 500ml,325,0.5,Beverages,Soda,3,108,108.3,P108,Right,98,5
+PROD00880,890100880,Fortune Brown Rice 500g,201,0.5,Grains,Rice,3,108,108.3,P108,Right,87,5
+PROD00881,890100881,Elite Chocolate Muffin 500g,145,0.5,Bakery,Cakes,3,108,108.4,P108,Right,16,5
+PROD00882,890100882,Domex Dish Liquid 500ml,138,0.5,Household,Cleaning,3,108,108.4,P108,Right,26,5
+PROD00883,890100883,Pringles Cheese Balls 500g,435,0.5,Snacks,Chips,3,108,108.4,P108,Right,53,5
+PROD00884,890100884,Tresemme Hair Serum 500ml,71,0.5,Personal Care,Hair,3,108,108.4,P108,Right,12,5
+PROD00885,890100885,Modern Brown Bread 500g,30,0.5,Bakery,Bread,3,108,108.5,P108,Right,37,5
+PROD00886,890100886,Neutrogena Face Wash 500ml,49,0.5,Personal Care,Skin,3,108,108.5,P108,Right,75,5
+PROD00887,890100887,Parekh Garbage Bags 500g,164,0.5,Household,Disposables,3,108,108.5,P108,Right,18,5
+PROD00888,890100888,Aashirvaad Wheat Atta 500g,488,0.5,Grains,Flour,3,108,108.5,P108,Right,57,5
+PROD00889,890100889,Lifebuoy Body Wash 500g,428,0.5,Personal Care,Soap,3,108,108.6,P108,Right,66,5
+PROD00890,890100890,Sprite Ginger Ale 500ml,390,0.5,Beverages,Soda,3,108,108.6,P108,Right,13,5
+PROD00891,890100891,Britannia Bun 500g,359,0.5,Bakery,Cakes,3,108,108.6,P108,Right,42,5
+PROD00892,890100892,Happilo Walnuts 500g,289,0.5,Snacks,Nuts,3,108,108.6,P108,Right,96,5
+PROD00893,890100893,Pril Detergent 500ml,421,0.5,Household,Cleaning,3,108,108.7,P108,Right,62,5
+PROD00894,890100894,Amul Mozzarella 500g,310,0.5,Dairy,Cheese,3,108,108.7,P108,Right,99,5
+PROD00895,890100895,Pril Floor Cleaner 500ml,233,0.5,Household,Cleaning,3,108,108.7,P108,Right,73,5
+PROD00896,890100896,English Oven Sourdough 500g,212,0.5,Bakery,Bread,3,108,108.7,P108,Right,100,5
+PROD00897,890100897,Monginis Chocolate Muffin 500g,138,0.5,Bakery,Cakes,3,109,109.1,P109,Right,48,5
+PROD00898,890100898,Britannia Chocolate Muffin 500g,485,0.5,Bakery,Cakes,3,109,109.1,P109,Right,69,5
+PROD00899,890100899,Origami Garbage Bags 500g,167,0.5,Household,Disposables,3,109,109.1,P109,Right,47,5
+PROD00900,890100900,Paseo Toilet Roll 500g,22,0.5,Household,Paper,3,109,109.1,P109,Right,17,5
+PROD00901,890100901,Nutraj Cashews 500g,348,0.5,Snacks,Nuts,3,109,109.2,P109,Right,31,5
+PROD00902,890100902,Colgate Toothbrush 500g,464,0.5,Personal Care,Oral,3,109,109.2,P109,Right,64,5
+PROD00903,890100903,Surf Excel Toilet Cleaner 500ml,425,0.5,Household,Cleaning,3,109,109.2,P109,Right,76,5
+PROD00904,890100904,Ezee Aluminium Foil 500g,67,0.5,Household,Disposables,3,109,109.2,P109,Right,29,5
+PROD00905,890100905,Thums Up Ginger Ale 500ml,337,0.5,Beverages,Soda,3,109,109.3,P109,Right,72,5
+PROD00906,890100906,Mother Dairy Greek Yogurt 500ml,210,0.5,Dairy,Yogurt,3,109,109.3,P109,Right,17,5
+PROD00907,890100907,Origami Aluminium Foil 500g,284,0.5,Household,Disposables,3,109,109.3,P109,Right,34,5
+PROD00908,890100908,English Oven Brown Bread 500g,390,0.5,Bakery,Bread,3,109,109.3,P109,Right,11,5
+PROD00909,890100909,Nestle Lassi 500ml,315,0.5,Dairy,Yogurt,3,109,109.4,P109,Right,84,5
+PROD00910,890100910,Nestle Soy Milk 500ml,487,0.5,Dairy,Milk,3,109,109.4,P109,Right,59,5
+PROD00911,890100911,English Oven Brown Bread 500g,340,0.5,Bakery,Bread,3,109,109.4,P109,Right,89,5
+PROD00912,890100912,Nature Fresh Rice Flour 500g,29,0.5,Grains,Flour,3,109,109.4,P109,Right,32,5
+PROD00913,890100913,Modern Brown Bread 500g,480,0.5,Bakery,Bread,3,109,109.5,P109,Right,97,5
+PROD00914,890100914,Tata Coffee Instant Coffee 500g,393,0.5,Beverages,Coffee,3,109,109.5,P109,Right,69,5
+PROD00915,890100915,English Oven Sourdough 500g,114,0.5,Bakery,Bread,3,109,109.5,P109,Right,19,5
+PROD00916,890100916,Mother Dairy Cheese Block 500g,469,0.5,Dairy,Cheese,3,109,109.5,P109,Right,68,5
+PROD00917,890100917,Nature Fresh Rice Flour 500g,469,0.5,Grains,Flour,3,109,109.6,P109,Right,98,5
+PROD00918,890100918,Nestle Greek Yogurt 500ml,167,0.5,Dairy,Yogurt,3,109,109.6,P109,Right,81,5
+PROD00919,890100919,Origami Tissues 500g,435,0.5,Household,Paper,3,109,109.6,P109,Right,12,5
+PROD00920,890100920,Nandini Full Cream Milk 500ml,391,0.5,Dairy,Milk,3,109,109.6,P109,Right,64,5
+PROD00921,890100921,Parle Cream Cracker 500g,86,0.5,Snacks,Biscuits,3,109,109.7,P109,Right,33,5
+PROD00922,890100922,Britannia Cupcake 500g,165,0.5,Bakery,Cakes,3,109,109.7,P109,Right,85,5
+PROD00923,890100923,Milky Mist Greek Yogurt 500ml,453,0.5,Dairy,Yogurt,3,109,109.7,P109,Right,26,5
+PROD00924,890100924,Ezee Cling Wrap 500g,253,0.5,Household,Disposables,3,109,109.7,P109,Right,53,5
+PROD00925,890100925,Origami Paper Plates 500g,447,0.5,Household,Disposables,3,110,110.1,P110,Right,38,5
+PROD00926,890100926,Origami Toilet Roll 500g,228,0.5,Household,Paper,3,110,110.1,P110,Right,64,5
+PROD00927,890100927,Amul Soy Milk 500ml,385,0.5,Dairy,Milk,3,110,110.1,P110,Right,26,5
+PROD00928,890100928,Parekh Paper Plates 500g,297,0.5,Household,Disposables,3,110,110.1,P110,Right,98,5
+PROD00929,890100929,Nestle Slim Milk 500ml,428,0.5,Dairy,Milk,3,110,110.2,P110,Right,51,5
+PROD00930,890100930,Lays Banana Chips 500g,426,0.5,Snacks,Chips,3,110,110.2,P110,Right,95,5
+PROD00931,890100931,Britannia White Bread 500g,148,0.5,Bakery,Bread,3,110,110.2,P110,Right,47,5
+PROD00932,890100932,Sunfeast Marie 500g,84,0.5,Snacks,Biscuits,3,110,110.2,P110,Right,42,5
+PROD00933,890100933,Thums Up Lemon Soda 500ml,210,0.5,Beverages,Soda,3,110,110.3,P110,Right,21,5
+PROD00934,890100934,Nivea Body Lotion 500ml,301,0.5,Personal Care,Skin,3,110,110.3,P110,Right,69,5
+PROD00935,890100935,Britannia Cheese Spread 500g,91,0.5,Dairy,Cheese,3,110,110.3,P110,Right,79,5
+PROD00936,890100936,Nandini Slim Milk 500ml,229,0.5,Dairy,Milk,3,110,110.3,P110,Right,75,5
+PROD00937,890100937,Vaseline Cream 500ml,83,0.5,Personal Care,Skin,3,110,110.4,P110,Right,39,5
+PROD00938,890100938,Parekh Paper Plates 500g,73,0.5,Household,Disposables,3,110,110.4,P110,Right,97,5
+PROD00939,890100939,Nutraj Mixed Nuts 500g,297,0.5,Snacks,Nuts,3,110,110.4,P110,Right,59,5
+PROD00940,890100940,Kohinoor Basmati Rice 500g,85,0.5,Grains,Rice,3,110,110.4,P110,Right,24,5
+PROD00941,890100941,Thums Up Cola 500ml,324,0.5,Beverages,Soda,3,110,110.5,P110,Right,41,5
+PROD00942,890100942,Parekh Paper Plates 500g,365,0.5,Household,Disposables,3,110,110.5,P110,Right,37,5
+PROD00943,890100943,Ezee Garbage Bags 500g,425,0.5,Household,Disposables,3,110,110.5,P110,Right,18,5
+PROD00944,890100944,Pillsbury Chocolate Muffin 500g,113,0.5,Bakery,Cakes,3,110,110.5,P110,Right,43,5
+PROD00945,890100945,Ponds Face Wash 500ml,442,0.5,Personal Care,Skin,3,110,110.6,P110,Right,79,5
+PROD00946,890100946,Aashirvaad Wheat Atta 500g,333,0.5,Grains,Flour,3,110,110.6,P110,Right,12,5
+PROD00947,890100947,Too Yumm Onion Rings 500g,138,0.5,Snacks,Chips,3,110,110.6,P110,Right,84,5
+PROD00948,890100948,Epigamia Greek Yogurt 500ml,351,0.5,Dairy,Yogurt,3,110,110.6,P110,Right,53,5
+PROD00949,890100949,Dark Fantasy Bourbon 500g,403,0.5,Snacks,Biscuits,3,110,110.7,P110,Right,86,5
+PROD00950,890100950,Pillsbury Besan 500g,255,0.5,Grains,Flour,3,110,110.7,P110,Right,75,5
+PROD00951,890100951,Monginis Croissant 500g,172,0.5,Bakery,Cakes,3,110,110.7,P110,Right,18,5
+PROD00952,890100952,Mother Dairy Slim Milk 500ml,395,0.5,Dairy,Milk,3,110,110.7,P110,Right,16,5
+PROD00953,890100953,Harpic Dish Liquid 500ml,500,0.5,Household,Cleaning,3,111,111.1,P111,Right,27,5
+PROD00954,890100954,Pillsbury Wheat Atta 500g,24,0.5,Grains,Flour,3,111,111.1,P111,Right,78,5
+PROD00955,890100955,Oral-B Toothbrush 500g,395,0.5,Personal Care,Oral,3,111,111.1,P111,Right,76,5
+PROD00956,890100956,Britannia White Bread 500g,301,0.5,Bakery,Bread,3,111,111.1,P111,Right,22,5
+PROD00957,890100957,Raw Pressery Orange Juice 500ml,250,0.5,Beverages,Juice,3,111,111.2,P111,Right,59,5
+PROD00958,890100958,Tata Sampann Cashews 500g,176,0.5,Snacks,Nuts,3,111,111.2,P111,Right,77,5
+PROD00959,890100959,Barilla Penne 500g,498,0.5,Grains,Pasta,3,111,111.2,P111,Right,73,5
+PROD00960,890100960,Tata Coffee Filter Coffee 500g,87,0.5,Beverages,Coffee,3,111,111.2,P111,Right,83,5
+PROD00961,890100961,Coca Cola Ginger Ale 500ml,78,0.5,Beverages,Soda,3,111,111.3,P111,Right,62,5
+PROD00962,890100962,Tata Tea Tea Bags 500g,496,0.5,Beverages,Tea,3,111,111.3,P111,Right,86,5
+PROD00963,890100963,Ponds Face Wash 500ml,392,0.5,Personal Care,Skin,3,111,111.3,P111,Right,22,5
+PROD00964,890100964,Ponds Face Wash 500ml,316,0.5,Personal Care,Skin,3,111,111.3,P111,Right,14,5
+PROD00965,890100965,Colgate Mouthwash 500g,86,0.5,Personal Care,Oral,3,111,111.4,P111,Right,21,5
+PROD00966,890100966,Tresemme Conditioner 500ml,473,0.5,Personal Care,Hair,3,111,111.4,P111,Right,52,5
+PROD00967,890100967,Raw Pressery Orange Juice 500ml,211,0.5,Beverages,Juice,3,111,111.4,P111,Right,41,5
+PROD00968,890100968,Selpak Kitchen Towel 500g,350,0.5,Household,Paper,3,111,111.4,P111,Right,95,5
+PROD00969,890100969,Pringles Salted Chips 500g,201,0.5,Snacks,Chips,3,111,111.5,P111,Right,40,5
+PROD00970,890100970,Britannia Swiss Roll 500g,378,0.5,Bakery,Cakes,3,111,111.5,P111,Right,64,5
+PROD00971,890100971,Nestle Soy Milk 500ml,146,0.5,Dairy,Milk,3,111,111.5,P111,Right,71,5
+PROD00972,890100972,B Natural Orange Juice 500ml,38,0.5,Beverages,Juice,3,111,111.5,P111,Right,87,5
+PROD00973,890100973,Sprite Ginger Ale 500ml,296,0.5,Beverages,Soda,3,111,111.6,P111,Right,21,5
+PROD00974,890100974,Neutrogena Moisturizer 500ml,482,0.5,Personal Care,Skin,3,111,111.6,P111,Right,49,5
+PROD00975,890100975,Parekh Garbage Bags 500g,312,0.5,Household,Disposables,3,111,111.6,P111,Right,11,5
+PROD00976,890100976,Britannia Bun 500g,463,0.5,Bakery,Cakes,3,111,111.6,P111,Right,88,5
+PROD00977,890100977,Colin Toilet Cleaner 500ml,463,0.5,Household,Cleaning,3,111,111.7,P111,Right,31,5
+PROD00978,890100978,7Up Cola 500ml,164,0.5,Beverages,Soda,3,111,111.7,P111,Right,30,5
+PROD00979,890100979,Mother Dairy Cheese Slices 500g,408,0.5,Dairy,Cheese,3,111,111.7,P111,Right,97,5
+PROD00980,890100980,Britannia Swiss Roll 500g,476,0.5,Bakery,Cakes,3,112,112.1,P112,Right,85,5
+PROD00981,890100981,English Oven Multigrain 500g,95,0.5,Bakery,Bread,3,112,112.1,P112,Right,33,5
+PROD00982,890100982,Paper Boat Grape Juice 500ml,437,0.5,Beverages,Juice,3,112,112.1,P112,Right,83,5
+PROD00983,890100983,Surf Excel Toilet Cleaner 500ml,137,0.5,Household,Cleaning,3,112,112.2,P112,Right,80,5
+PROD00984,890100984,Domex Detergent 500ml,279,0.5,Household,Cleaning,3,112,112.2,P112,Right,65,5
+PROD00985,890100985,Head & Shoulders Hair Oil 500ml,466,0.5,Personal Care,Hair,3,112,112.2,P112,Right,14,5
+PROD00986,890100986,Red Label Green Tea 500g,337,0.5,Beverages,Tea,3,112,112.3,P112,Right,26,5
+PROD00987,890100987,Davidoff Filter Coffee 500g,276,0.5,Beverages,Coffee,3,112,112.3,P112,Right,17,5
+PROD00988,890100988,Fortune Brown Rice 500g,414,0.5,Grains,Rice,3,112,112.3,P112,Right,81,5
+PROD00989,890100989,Unibic Nice 500g,244,0.5,Snacks,Biscuits,3,112,112.4,P112,Right,14,5
+PROD00990,890100990,Dark Fantasy Cream Cracker 500g,77,0.5,Snacks,Biscuits,3,112,112.4,P112,Right,67,5
+PROD00991,890100991,Paseo Paper Napkins 500g,203,0.5,Household,Paper,3,112,112.4,P112,Right,51,5
+PROD00992,890100992,Real Mango Juice 500ml,394,0.5,Beverages,Juice,3,112,112.5,P112,Right,55,5
+PROD00993,890100993,Bambino Fusilli 500g,350,0.5,Grains,Pasta,3,112,112.5,P112,Right,95,5
+PROD00994,890100994,Britannia White Bread 500g,207,0.5,Bakery,Bread,3,112,112.5,P112,Right,88,5
+PROD00995,890100995,Parekh Paper Cups 500g,22,0.5,Household,Disposables,3,112,112.6,P112,Right,19,5
+PROD00996,890100996,Fortune Maida 500g,132,0.5,Grains,Flour,3,112,112.6,P112,Right,49,5
+PROD00997,890100997,Britannia Brown Bread 500g,92,0.5,Bakery,Bread,3,112,112.6,P112,Right,81,5
+PROD00998,890100998,Origami Cling Wrap 500g,77,0.5,Household,Disposables,3,112,112.7,P112,Right,79,5
+PROD00999,890100999,Pril Detergent 500ml,111,0.5,Household,Cleaning,3,112,112.7,P112,Right,87,5
+PROD01000,890101000,Garnier Body Lotion 500ml,478,0.5,Personal Care,Skin,3,112,112.7,P112,Right,65,5

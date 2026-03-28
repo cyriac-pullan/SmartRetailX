@@ -1,0 +1,110 @@
+﻿python : Traceback 
+(most recent call 
+last):
+At line:1 char:1
++ python 
+backend/app.py > 
+error_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Traceback (mo   
+ st recent call las    
+t)::String) [], Re    
+moteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  File 
+"M:\Projects\MAJ FIN 
+LAT\MAJ 
+FIN\backend\app.py", 
+line 74, in <module>
+    smart_cart_service 
+= SmartCartService()
+  File 
+"M:\Projects\MAJ FIN 
+LAT\MAJ FIN\backend\bac
+kend_service.py", line 
+28, in __init__
+    self.gb = 
+GraphBuilder(CSV_FILE)
+              
+~~~~~~~~~~~~^^^^^^^^^^
+  File 
+"M:\Projects\MAJ FIN 
+LAT\MAJ FIN\backend\pat
+h_planner.py", line 
+10, in __init__
+    self.df = 
+pd.read_csv(csv_file)
+              
+~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\iammo\
+AppData\Local\Programs\
+Python\Python313\Lib\si
+te-packages\pandas\io\p
+arsers\readers.py", 
+line 1026, in read_csv
+    return _read(filepa
+th_or_buffer, kwds)
+  File "C:\Users\iammo\
+AppData\Local\Programs\
+Python\Python313\Lib\si
+te-packages\pandas\io\p
+arsers\readers.py", 
+line 620, in _read
+    parser = TextFileRe
+ader(filepath_or_buffer
+, **kwds)
+  File "C:\Users\iammo\
+AppData\Local\Programs\
+Python\Python313\Lib\si
+te-packages\pandas\io\p
+arsers\readers.py", 
+line 1620, in __init__
+    self._engine = 
+self._make_engine(f, 
+self.engine)
+                   ~~~~
+~~~~~~~~~~~~~^^^^^^^^^^
+^^^^^^
+  File "C:\Users\iammo\
+AppData\Local\Programs\
+Python\Python313\Lib\si
+te-packages\pandas\io\p
+arsers\readers.py", 
+line 1880, in 
+_make_engine
+    self.handles = 
+get_handle(
+                   
+~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options
+=self.options.get("stor
+age_options", None),
+        ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\iammo\
+AppData\Local\Programs\
+Python\Python313\Lib\si
+te-packages\pandas\io\c
+ommon.py", line 873, 
+in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: 
+[Errno 2] No such file 
+or directory: 'store_in
+ventory_optimized.csv'

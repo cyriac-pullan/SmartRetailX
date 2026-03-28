@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Login - SmartRetailX</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-page {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #020617, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+            animation: floatOrb 25s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            width: 40vw;
+            height: 40vw;
+            background: #3b82f6;
+            top: -10vh;
+            left: -10vw;
+            opacity: 0.15;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 35vw;
+            height: 35vw;
+            background: #8b5cf6;
+            bottom: -15vh;
+            right: -5vw;
+            opacity: 0.15;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 30vw;
+            height: 30vw;
+            background: #0ea5e9;
+            top: 30vh;
+            left: 40vw;
+            opacity: 0.10;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(80px, 40px) scale(1.1);
+            }
+        }
+
+        .auth-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="auth-page">
+    <!-- Ambient Animated Orbs Container -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
+    <div class="auth-wrapper fade-in">
+        <div class="auth-brand-center">
+            <img src="logo.png" alt="SmartRetailX" class="auth-logo-img" onerror="this.style.display='none'">
+            <h1 class="auth-brand-name">Smart<span>Retail</span>X</h1>
+            <p class="auth-brand-tag">Welcome back. Please sign in.</p>
+        </div>
+
+        <div class="auth-card-modern">
+            <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+            <div class="form-group-modern">
+                <label>Barcode ID / Username</label>
+                <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <input type="text" id="identifier" class="input-modern" placeholder="Scan or type username"
+                        autocomplete="username" style="flex:1; margin:0;">
+                    <button onclick="openLoginCameraScanner()"
+                        style="flex-shrink:0; padding:0.7rem 1rem; border-radius:10px; border:none;
+                               background:linear-gradient(135deg,#6366f1,#a78bfa); color:#fff;
+                               font-size:0.9rem; font-weight:600; cursor:pointer; white-space:nowrap;"
+                        title="Scan barcode with camera">
+                        📷 Scan
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group-modern">
+                <label>Password (Optional for Barcode)</label>
+                <input type="password" id="password" class="input-modern" placeholder="••••••••"
+                    autocomplete="current-password">
+            </div>
+
+            <button class="btn-modern-primary" onclick="login()">Sign In</button>
+
+            <div class="auth-footer">
+                <a href="register.html" class="auth-link">Create Account</a>
+                <span class="auth-divider">•</span>
+                <a href="index.html" class="auth-link muted">Return to Store</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function login() {
+            let identifier = document.getElementById('identifier').value.trim();
+            let password = document.getElementById('password').value;
+            const btn = document.querySelector('.btn-modern-primary');
+
+            // --- 7-Digit Auto-Login Feature ---
+            if (identifier.length === 7 && /^\d+$/.test(identifier)) {
+                // If input is exactly 7 digits, it's the User ID. Password is hardcoded.
+                password = '12345678';
+
+                // Update password field for visual feedback before submission
+                document.getElementById('password').value = password;
+            }
+
+            if (!identifier) { showError('Please enter a barcode or username.'); return; }
+
+            const origText = btn.textContent;
+            btn.textContent = 'Signing in...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${window.location.protocol}//${window.location.hostname}:5000/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ identifier, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem('customer', JSON.stringify(data));
+                    sessionStorage.setItem('_showWelcome', '1');
+                    window.location.href = 'index.html';
+                } else {
+                    showError(data.error || 'Login failed.');
+                    btn.textContent = origText;
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                showError(e.message.includes('fetch') ? 'Server offline — Cannot connect.' : 'Network error.');
+                btn.textContent = origText;
+                btn.disabled = false;
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        // Enter key support & Auto-submit for 7-digit barcodes
+        document.getElementById('identifier').addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            // Automatically log in if exactly 7 digits are scanned
+            if (val.length === 7 && /^\d+$/.test(val)) {
+                login();
+            }
+        });
+
+        document.querySelectorAll('input').forEach(i =>
+            i.addEventListener('keyup', e => { if (e.key === 'Enter') login(); })
+        );
+    </script>
+</body>
+
+</html>

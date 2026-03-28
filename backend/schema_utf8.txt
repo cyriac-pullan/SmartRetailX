@@ -1,0 +1,36 @@
+--- bills ---
+created_at
+total_amount
+expected_weight_kg
+actual_weight_kg
+weight_variance_kg
+items_count
+subtotal
+tax
+discount
+cart_id
+customer_id
+status
+bill_id
+--- bill_items ---
+id
+quantity
+unit_price
+total_price
+barcode
+bill_id
+product_id
+product_name
+--- purchase_history ---
+id
+quantity
+purchased_at
+customer_id
+barcode
+--- billings ---
+amount
+timestamp
+transaction_id
+bill_id
+customer_id
+payment_method

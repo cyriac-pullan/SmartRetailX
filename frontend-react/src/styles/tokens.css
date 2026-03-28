@@ -1,0 +1,54 @@
+/* Design Tokens - Light Professional Theme */
+:root {
+    /* Background Scale */
+    --bg-0: #FAFAFA;
+    --bg-1: #F4F5F7;
+    --bg-2: #EBEDF2;
+
+    /* Surface Cards */
+    --surface: rgba(255, 255, 255, 0.85);
+
+    /* Brand Primary (Indigo) */
+    --brand-50: #EEF2FF;
+    --brand-100: #E0E7FF;
+    --brand-200: #C7D2FE;
+    --brand-300: #A5B4FC;
+    --brand-400: #818CF8;
+    --brand-500: #6366F1;
+    --brand-600: #4F46E5;
+    --brand-700: #4338CA;
+    --brand-800: #3730A3;
+    --brand-900: #1E1B4B;
+
+    /* Brand Accent (Amber) */
+    --accent-50: #FFFBEB;
+    --accent-100: #FEF3C7;
+    --accent-200: #FDE68A;
+    --accent-300: #FCD34D;
+    --accent-400: #FBBF24;
+    --accent-500: #F59E0B;
+    --accent-600: #D97706;
+    --accent-700: #B45309;
+
+    /* Text Scale */
+    --text-900: #0F172A;
+    --text-600: #475569;
+    --text-400: #94A3B8;
+
+    /* Semantic Colors */
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-card: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-float: 0 30px 60px rgba(0,0,0,0.12);
+
+    /* Radius */
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --r-xl: 28px;
+    --r-full: 9999px;
+}

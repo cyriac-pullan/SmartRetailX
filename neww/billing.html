@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout &amp; Billing - SmartRetailX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .billing-workspace {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - var(--header-height));
+            align-items: start;
+        }
+
+        @media(max-width:900px) {
+            .billing-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-light);
+            gap: 1rem;
+        }
+
+        .bill-item:last-child {
+            border-bottom: none;
+        }
+
+        .bill-item .item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .bill-item .item-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.15rem;
+        }
+
+        .bill-item .item-qty {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bill-item .item-qty button {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+        }
+
+        .bill-item .item-qty button:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .bill-item .item-price {
+            font-weight: 700;
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .bill-item .item-remove {
+            color: var(--error);
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0.6;
+            transition: opacity 0.15s;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .bill-item .item-remove:hover {
+            opacity: 1;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        .summary-row.total {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            border-top: 2px solid var(--border-light);
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .summary-row.total .amount {
+            color: var(--primary);
+        }
+
+        .btn-checkout-big {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+        }
+
+        .btn-checkout-big:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn-checkout-big:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .empty-cart .icon {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ── Thank-you overlay ── */
+        .receipt-card {
+            background: var(--bg-primary);
+            /* Changed from hardcoded white to dark var */
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            /* Stronger shadow for dark mode */
+            position: relative;
+            z-index: 9002;
+            animation: receiptPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        #receiptModal {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            background: rgba(15, 23, 42, 0.85);
+            /* Darker frost for the overlay */
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9001;
+        }
+
+        @keyframes receiptPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes checkDraw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes ringGrow {
+            from {
+                transform: scale(0.6);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <a href="index.html" class="brand-logo" style="text-decoration:none;">
+            <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius:4px;">
+            SmartRetailX <span
+                style="font-weight:400;color:var(--color-text-secondary);margin-left:0.5rem;font-size:1rem;">|
+                Billing</span>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="btn-ghost">&larr; Back to Shop</a>
+            <button onclick="logout()" class="btn-ghost" style="color:var(--color-error);">Logout</button>
+        </div>
+    </header>
+
+    <div class="billing-workspace">
+
+        <!-- LEFT: Cart Items -->
+        <div>
+            <div class="card p-6">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                    <h3 class="card-title" style="margin-bottom:0;">&#x1F6D2; Your Cart</h3>
+                    <span id="itemCount" style="font-size:0.85rem;color:var(--text-secondary);">0 items</span>
+                </div>
+                <div id="cartItemsList">
+                    <div class="empty-cart">
+                        <div class="icon">&#x1F6D2;</div>
+                        <p>Your cart is empty &mdash; <a href="index.html">go back to shop</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save for Later Section -->
+            <div class="card p-6" style="margin-top:1.5rem;" id="savedItemsCard">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                    <h3 class="card-title" style="margin-bottom:0;">&#x1F4BE; Saved for Later</h3>
+                    <span id="savedCount" style="font-size:0.85rem;color:var(--text-secondary);">0 items</span>
+                </div>
+                <div id="savedItemsList"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Billing Summary -->
+        <div>
+            <div class="card p-6" style="position:sticky;top:calc(var(--header-height) + 1.5rem);">
+                <h3 class="card-title">&#x1F4B3; Billing Summary</h3>
+
+                <div id="summarySection">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">&#x20B9;0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (5%)</span>
+                        <span id="taxAmount">&#x20B9;0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Discount</span>
+                        <span id="discount" style="color:var(--success);">-&#x20B9;0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span class="amount" id="totalAmount">&#x20B9;0.00</span>
+                    </div>
+                </div>
+
+                <!-- Promo Code -->
+                <div style="margin-top:1.5rem;display:flex;gap:0.5rem;align-items:stretch;">
+                    <input type="text" id="promoCodeInput" placeholder="Promo code (e.g. WELCOME10)"
+                        style="flex:1;padding:0.75rem;border-radius:8px;border:1px solid var(--border-light);background:var(--bg-primary);color:var(--text-primary);font-weight:600;text-transform:uppercase;">
+                    <button onclick="applyPromoCode()" class="btn-primary"
+                        style="padding:0 1.25rem;border-radius:8px;font-weight:700;">Apply</button>
+                </div>
+                <div id="promoMessage" style="font-size:0.8rem;margin-top:0.4rem;display:none;"></div>
+
+                <div style="margin-top:1.5rem;">
+                    <label
+                        style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);display:block;margin-bottom:0.4rem;">
+                        Payment Method
+                    </label>
+                    <select id="paymentMethod" style="padding:0.6rem;border-radius:8px;">
+                        <option value="cash">&#x1F4B5; Cash</option>
+                        <option value="card">&#x1F4B3; Card</option>
+                        <option value="upi">&#x1F4F1; UPI</option>
+                    </select>
+                </div>
+
+                <button id="checkoutBtn" class="btn-checkout-big" onclick="processCheckout()" disabled>
+                    Complete Checkout
+                </button>
+
+                <button onclick="clearCart()" class="btn-ghost"
+                    style="width:100%;margin-top:0.75rem;text-align:center;color:var(--error);">
+                    &#x1F5D1; Clear Cart
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Thank-You / Receipt Overlay -->
+    <div id="receiptModal">
+        <canvas id="confettiCanvas"></canvas>
+
+        <div class="receipt-card" id="receiptContent">
+            <!-- Close button (x) -->
+            <button onclick="closeReceipt()"
+                style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-secondary);">&times;</button>
+
+            <!-- Success checkmark SVG -->
+            <div style="margin:0 auto 1.5rem;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                    style="background:var(--success); border-radius:50%; padding:14px; box-shadow:0 8px 24px rgba(16, 185, 129, 0.4);">
+                    <path d="M12 24l12 12L52 12" stroke="white" stroke-width="6" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"
+                        style="animation:checkDraw 0.4s ease 0.5s forwards;" />
+                </svg>
+            </div>
+
+            <div id="rcThankYou"
+                style="font-size:1.45rem;font-weight:800;margin-bottom:0.35rem;color:var(--text-primary);">
+                You&rsquo;re all set! &#x1F389;
+            </div>
+            <div id="rcSubline" style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.5rem;"></div>
+
+            <div style="background:var(--bg-secondary);border-radius:12px;padding:1rem;margin-bottom:1.25rem;">
+                <div id="rcAmount" style="font-size:2rem;font-weight:800;color:var(--primary);"></div>
+                <div id="rcMethod" style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.2rem;"></div>
+            </div>
+
+            <div id="rcMeta" style="font-size:0.8rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">
+            </div>
+
+            <button onclick="closeReceipt()" class="btn-checkout-big" style="margin-top:0;">
+                Done &mdash; Back to Shop
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes receiptPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script>
+        const API_URL = `${window.location.protocol}//${window.location.hostname}:5000/api`;
+        const CART_KEY = 'srx_cart';
+        const user = JSON.parse(localStorage.getItem('customer') || '{}');
+        if (!user.customer_id && !user.barcode) {
+            alert('Please login first.');
+            window.location.href = 'login.html';
+        }
+
+        // ── Cart & Saved for Later helpers ─────────────────────────────
+        let cart = [];
+        let saved = [];
+        let activeDiscount = 0; // Number (amount)
+
+        const VALID_PROMOS = {
+            'WELCOME10': 0.10, // 10% off
+            'SAVE50': 50,      // ₹50 flat
+            'FESTIVE25': 0.25  // 25% off
+        };
+
+        function loadCart() {
+            try {
+                const r = localStorage.getItem(CART_KEY);
+                cart = r ? JSON.parse(r) : [];
+                const s = localStorage.getItem(CART_KEY + '_saved');
+                saved = s ? JSON.parse(s) : [];
+            }
+            catch (e) { cart = []; saved = []; }
+        }
+        function saveCart() {
+            try {
+                localStorage.setItem(CART_KEY, JSON.stringify(cart));
+                localStorage.setItem(CART_KEY + '_saved', JSON.stringify(saved));
+            } catch (e) { }
+        }
+        function clearCartStorage() {
+            try {
+                localStorage.removeItem(CART_KEY);
+                // Keep saved items even if cart cleared
+            } catch (e) { }
+        }
+
+        // ── Promo Code ─────────────────────────────────────────────────
+        function applyPromoCode() {
+            const input = document.getElementById('promoCodeInput');
+            const msg = document.getElementById('promoMessage');
+            const code = (input.value || '').trim().toUpperCase();
+
+            msg.style.display = 'block';
+            if (!code) {
+                activeDiscount = 0;
+                msg.textContent = 'Removed promo code.';
+                msg.style.color = 'var(--text-secondary)';
+                updateSummary();
+                return;
+            }
+
+            if (VALID_PROMOS[code]) {
+                activeDiscount = VALID_PROMOS[code];
+                msg.textContent = `Applied ${code}!`;
+                msg.style.color = 'var(--success)';
+            } else {
+                activeDiscount = 0;
+                msg.textContent = 'Invalid promo code.';
+                msg.style.color = 'var(--error)';
+            }
+            updateSummary();
+        }
+
+        // ── Save for Later ─────────────────────────────────────────────
+        function saveForLater(barcode) {
+            const idx = cart.findIndex(c => c.barcode === barcode);
+            if (idx > -1) {
+                const item = cart[idx];
+                cart.splice(idx, 1);
+                saved.push(item);
+                saveCart(); renderCart(); renderSaved();
+            }
+        }
+
+        function moveToCart(barcode) {
+            const idx = saved.findIndex(c => c.barcode === barcode);
+            if (idx > -1) {
+                const item = saved[idx];
+                saved.splice(idx, 1);
+                cart.push(item);
+                saveCart(); renderCart(); renderSaved();
+            }
+        }
+
+        function removeSaved(barcode) {
+            saved = saved.filter(c => c.barcode !== barcode);
+            saveCart(); renderSaved();
+        }
+
+        function renderSaved() {
+            const card = document.getElementById('savedItemsCard');
+            const list = document.getElementById('savedItemsList');
+            const count = document.getElementById('savedCount');
+
+            if (!saved || saved.length === 0) {
+                if (card) card.style.display = 'none';
+                return;
+            }
+
+            if (card) card.style.display = 'block';
+            if (count) count.textContent = `${saved.length} item${saved.length !== 1 ? 's' : ''}`;
+
+            if (list) list.innerHTML = saved.map(item => `
+                <div class="bill-item" style="opacity:0.85;">
+                    <div style="flex:1;">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-meta">₹${item.price}</div>
+                    </div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;">
+                        <button class="btn-primary" style="padding:0.35rem 0.75rem;font-size:0.75rem;border-radius:6px;" onclick="moveToCart('${item.barcode}')">Move to Cart</button>
+                        <button class="item-remove" onclick="removeSaved('${item.barcode}')" title="Remove item">&#x2715;</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ── Mutations ──────────────────────────────────────────────────
+        function updateQty(barcode, delta) {
+            const item = cart.find(c => c.barcode === barcode);
+            if (!item) return;
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(c => c.barcode !== barcode);
+            saveCart(); renderCart();
+        }
+        function removeItem(barcode) {
+            cart = cart.filter(c => c.barcode !== barcode);
+            saveCart(); renderCart();
+        }
+        function clearCart() {
+            if (cart.length && !confirm('Clear all items?')) return;
+            cart = []; activeDiscount = 0;
+            const pi = document.getElementById('promoCodeInput');
+            if (pi) pi.value = '';
+            const pm = document.getElementById('promoMessage');
+            if (pm) pm.style.display = 'none';
+            clearCartStorage(); renderCart();
+        }
+
+        // ── Render ─────────────────────────────────────────────────────
+        function renderCart() {
+            const list = document.getElementById('cartItemsList');
+            const countEl = document.getElementById('itemCount');
+            const checkBtn = document.getElementById('checkoutBtn');
+
+            const totalItems = cart.reduce((s, c) => s + c.quantity, 0);
+            countEl.textContent = totalItems + ' item' + (totalItems !== 1 ? 's' : '');
+
+            if (!cart.length) {
+                list.innerHTML = '<div class="empty-cart"><div class="icon">&#x1F6D2;</div>' +
+                    '<p>Your cart is empty &mdash; <a href="index.html">go back to shop</a></p></div>';
+                checkBtn.disabled = true;
+                updateSummary(); return;
+            }
+
+            checkBtn.disabled = false;
+            list.innerHTML = cart.map(function (item) {
+                var b = item.barcode;
+                var n = (item.name || '').replace(/'/g, '&#39;');
+                var px = (item.price * item.quantity).toFixed(2);
+                var meta = b + (item.category ? ' &middot; ' + item.category : '') +
+                    (item.aisle ? ' &middot; Aisle ' + item.aisle : '');
+                return '<div class="bill-item">' +
+                    '<div style="flex:1;min-width:0;">' +
+                    '<div class="item-name">' + item.name + '</div>' +
+                    '<div class="item-meta">' + meta + '</div>' +
+                    '<button class="btn-ghost" style="padding:0;margin-top:0.4rem;font-size:0.75rem;color:var(--primary);" onclick="saveForLater(\'' + b + '\')">&#x1F4BE; Save for later</button>' +
+                    '</div>' +
+                    '<div class="item-qty">' +
+                    '<button onclick="updateQty(\'' + b + '\',-1)">&minus;</button>' +
+                    '<span style="min-width:24px;text-align:center;font-weight:600;">' + item.quantity + '</span>' +
+                    '<button onclick="updateQty(\'' + b + '\',1)">+</button>' +
+                    '</div>' +
+                    '<div class="item-price">&#x20B9;' + px + '</div>' +
+                    '<button class="item-remove" onclick="removeItem(\'' + b + '\')" title="Remove">&#x2715;</button>' +
+                    '</div>';
+            }).join('');
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            var subtotal = cart.reduce(function (s, c) { return s + c.price * c.quantity; }, 0);
+            var tax = subtotal * 0.05;
+
+            var discountAmt = 0;
+            if (activeDiscount > 0) {
+                if (activeDiscount <= 1) discountAmt = subtotal * activeDiscount; // percentage
+                else discountAmt = Math.min(activeDiscount, subtotal);            // flat amount
+            }
+
+            var total = subtotal + tax - discountAmt;
+
+            var rs = '₹';
+            document.getElementById('subtotal').innerHTML = rs + subtotal.toFixed(2);
+            document.getElementById('taxAmount').innerHTML = rs + tax.toFixed(2);
+
+            const discEl = document.getElementById('discount');
+            if (discEl) {
+                discEl.innerHTML = '-' + rs + discountAmt.toFixed(2);
+                discEl.style.display = discountAmt > 0 ? '' : 'none';
+                if (discEl.previousElementSibling) {
+                    discEl.previousElementSibling.style.display = discountAmt > 0 ? '' : 'none';
+                }
+            }
+
+            document.getElementById('totalAmount').innerHTML = rs + total.toFixed(2);
+
+            const btn = document.getElementById('checkoutBtn');
+            if (cart.length > 0) {
+                btn.disabled = false;
+                btn.textContent = `Pay ${rs}${total.toFixed(2)}`;
+            } else {
+                btn.disabled = true;
+                btn.textContent = 'Complete Checkout';
+            }
+        }
+
+        // ── Checkout ───────────────────────────────────────────────────
+        async function processCheckout() {
+            if (!cart.length) return;
+            const btn = document.getElementById('checkoutBtn');
+            btn.disabled = true;
+            btn.textContent = 'Processing\u2026';
+
+            const subtotal = cart.reduce((s, c) => s + c.price * c.quantity, 0);
+            const tax = subtotal * 0.05;
+            let discountAmt = 0;
+            if (activeDiscount > 0) {
+                if (activeDiscount <= 1) discountAmt = subtotal * activeDiscount;
+                else discountAmt = Math.min(activeDiscount, subtotal);
+            }
+            const totalWeight = cart.reduce((s, c) => s + (parseFloat(c.weight_kg) || 0) * c.quantity, 0);
+            const total = subtotal + tax - discountAmt;
+            const method = document.getElementById('paymentMethod').value;
+
+            // 1. Capture payload for the background request
+            const payload = {
+                customer_id: user.customer_id || user.barcode,
+                items: cart.map(c => ({
+                    barcode: c.barcode,
+                    product_id: c.product_id || c.id,
+                    name: c.name,
+                    quantity: c.quantity,
+                    unit_price: c.price,
+                    weight_kg: parseFloat(c.weight_kg) || 0
+                })),
+                subtotal, tax, discount: discountAmt,
+                total_amount: total,
+                expected_weight_kg: totalWeight,
+                payment_method: method
+            };
+
+            // 2. Clear UI instantly before any network requests (True Optimistic UI)
+            cart = [];
+            activeDiscount = 0;
+            const pi = document.getElementById('promoCodeInput');
+            if (pi) pi.value = '';
+            const pm = document.getElementById('promoMessage');
+            if (pm) pm.style.display = 'none';
+
+            clearCartStorage();
+            renderCart();
+
+            // Show success receipt instantly with placeholder IDs
+            const previewData = { bill_id: 'Processing...', transaction_id: 'Generating...' };
+            showReceipt(previewData, total, method);
+
+            // Reset checkout button
+            btn.disabled = true;
+            btn.textContent = 'Complete Checkout';
+
+            // 3. Fire and forget the actual billing request in the background
+            fetch(API_URL + '/bills', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(res => res.json()).then(data => {
+                // Silently update the receipt IDs when the server finishes
+                if (data.bill_id) {
+                    const bEl = document.getElementById('rcBillId');
+                    if (bEl) bEl.textContent = 'Bill #' + data.bill_id;
+                }
+                if (data.transaction_id) {
+                    const tEl = document.getElementById('rcTxnId');
+                    if (tEl) tEl.textContent = 'Txn: ' + data.transaction_id;
+                }
+            }).catch(e => {
+                console.error("Background billing failed:", e);
+                // In a perfect system, we'd queue this to retry via service worker
+            });
+        }
+
+        // ── Receipt overlay ────────────────────────────────────────────
+        var catchy = [
+            'Smart choices, smarter cart! &#x1F9E0;',
+            'You shopped like a pro! &#x1F4BC;',
+            'That\'s a cart we\'re proud of! &#x1F6D2;',
+            'Fantastic picks \u2014 see you soon! &#x1F44B;',
+            'Shop. Save. Smile. Repeat! &#x1F60A;'
+        ];
+
+        function showReceipt(data, total, method) {
+            var labels = { cash: 'Cash', card: 'Debit / Credit Card', upi: 'UPI' };
+            document.getElementById('rcThankYou').innerHTML = 'You\'re all set! &#x1F389;';
+            document.getElementById('rcSubline').innerHTML = catchy[Math.floor(Math.random() * catchy.length)];
+            document.getElementById('rcAmount').innerHTML = '&#x20B9;' + total.toFixed(2);
+            document.getElementById('rcMethod').textContent = 'Paid via ' + (labels[method] || method);
+            document.getElementById('rcMeta').innerHTML =
+                '<span id="rcBillId"></span><br><span id="rcTxnId"></span>' +
+                '<div>' + new Date().toLocaleString() + '</div>';
+
+            // Reset animation
+            var card = document.getElementById('receiptCard');
+            card.style.animation = 'none'; void card.offsetHeight; card.style.animation = '';
+
+            document.getElementById('receiptModal').style.display = 'flex';
+            runConfetti();
+        }
+
+        function closeReceipt() {
+            document.getElementById('receiptModal').style.display = 'none';
+            stopConfetti();
+            window.location.href = 'index.html';
+        }
+
+        // ── Lightweight confetti ───────────────────────────────────────
+        var confettiAnim = null;
+        function runConfetti() {
+            var canvas = document.getElementById('confettiCanvas');
+            var ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            var cols = ['#4f46e5', '#7c3aed', '#06b6d4', '#f59e0b', '#ec4899', '#10b981'];
+            var pieces = [];
+            for (var i = 0; i < 60; i++) {
+                pieces.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height * 0.5 - canvas.height * 0.5,
+                    r: Math.random() * 6 + 3,
+                    d: Math.random() * 2 + 1,
+                    c: cols[Math.floor(Math.random() * cols.length)],
+                    t: Math.random() * Math.PI * 2,
+                    ts: (Math.random() - 0.5) * 0.08
+                });
+            }
+
+            var frame = 0;
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                var alpha = Math.max(0, 1 - frame / 180);
+                pieces.forEach(function (p) {
+                    p.y += p.d; p.t += p.ts; p.x += Math.sin(p.t);
+                    ctx.save();
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = p.c;
+                    ctx.translate(p.x, p.y); ctx.rotate(p.t);
+                    ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.5);
+                    ctx.restore();
+                });
+                frame++;
+                if (frame < 190) confettiAnim = requestAnimationFrame(draw);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            if (confettiAnim) cancelAnimationFrame(confettiAnim);
+            draw();
+        }
+
+        function stopConfetti() {
+            if (confettiAnim) cancelAnimationFrame(confettiAnim);
+            var canvas = document.getElementById('confettiCanvas');
+            if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function logout() {
+            localStorage.removeItem('customer');
+            clearCartStorage();
+            window.location.href = 'login.html';
+        }
+
+        // ── Bootstrap ──────────────────────────────────────────────────
+        loadCart();
+        renderCart();
+    </script>
+</body>
+
+</html>

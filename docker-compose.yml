@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  smartretailx-api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=sqlite:///smartretail.db
+    volumes:
+      - ./database:/app/database
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  smartretailx-weight:
+    build: .
+    command: python weight_mock.py
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+
+  smartretailx-ml:
+    build: .
+    command: python ml_complete.py
+    ports:
+      - "5003:5003"
+    restart: unless-stopped
+
+  smartretailx-frontend:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - smartretailx-api
+    restart: unless-stopped
+{
+  "cells": [],
+  "metadata": {
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 2
+}

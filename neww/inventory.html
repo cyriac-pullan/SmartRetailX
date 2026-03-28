@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Status - SmartRetailX Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        .inv-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem;
+        }
+
+        .inv-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .inv-topbar h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .inv-actions {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .filter-bar input,
+        .filter-bar select {
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 0.875rem;
+        }
+
+        .filter-bar input {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .stat-chip {
+            padding: 0.4rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .stat-chip.total {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+        }
+
+        .stat-chip.crit {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+
+        .stat-chip.low {
+            background: rgba(245, 158, 11, 0.1);
+            color: #d97706;
+        }
+
+        .stat-chip.ok {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16a34a;
+        }
+
+        .inv-table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius-md, 10px);
+            border: 1px solid var(--color-border);
+        }
+
+        .inv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .inv-table thead {
+            background: var(--color-surface);
+            position: sticky;
+            top: 0;
+        }
+
+        .inv-table th {
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .inv-table th:hover {
+            color: var(--color-primary);
+        }
+
+        .inv-table td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .inv-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .inv-table tbody tr:hover {
+            background: var(--color-surface);
+        }
+
+        .btn-export {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1.1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.15s;
+        }
+
+        .btn-export:hover {
+            opacity: 0.88;
+        }
+
+        .btn-export:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .page-info {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+
+        .page-btns {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .page-btn {
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <a href="store.html" class="brand-logo" style="text-decoration:none;">
+            <img src="logo.png" alt="Logo" width="28" height="28" style="border-radius:4px;">
+            SmartRetailX
+            <span style="font-weight:400;color:var(--color-text-secondary);margin-left:0.5rem;font-size:1rem;">|
+                Inventory</span>
+        </a>
+        <div class="header-actions">
+            <a href="store.html" class="btn-ghost">← Dashboard</a>
+        </div>
+    </header>
+
+    <div class="inv-container">
+        <div class="inv-topbar">
+            <div>
+                <a href="store.html" style="font-size:0.8rem;color:var(--color-text-secondary);text-decoration:none;">←
+                    Dashboard</a>
+                <h1 style="margin-top:0.25rem;">📦 Full Inventory Status</h1>
+            </div>
+            <div class="inv-actions">
+                <button class="btn-export" id="exportBtn" onclick="exportPDF()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Export PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Stat chips -->
+        <div class="stats-row" id="statsRow">
+            <div class="stat-chip total">⏳ Loading…</div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search by name or category…" oninput="applyFilters()">
+            <select id="statusFilter" onchange="applyFilters()">
+                <option value="">All Statuses</option>
+                <option value="reorder_needed">Critical</option>
+                <option value="low">Low Stock</option>
+                <option value="ok">In Stock</option>
+            </select>
+        </div>
+
+        <!-- Table -->
+        <div class="inv-table-wrap">
+            <table class="inv-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortBy('name')">Product ↕</th>
+                        <th onclick="sortBy('category')">Category ↕</th>
+                        <th onclick="sortBy('stock_quantity')">Stock ↕</th>
+                        <th onclick="sortBy('reorder_level')">Reorder At ↕</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="invBody">
+                    <tr>
+                        <td colspan="5" style="text-align:center;padding:2rem;color:var(--color-text-secondary);">
+                            Loading inventory…</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <div class="page-info" id="pageInfo">—</div>
+            <div class="page-btns" id="pageBtns"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://127.0.0.1:5000/api';
+        const admin = JSON.parse(localStorage.getItem('admin') || localStorage.getItem('customer') || '{}');
+        if (!admin.customer_id && !admin.is_admin) {
+            // soft gate — just warn
+            console.warn('Not logged in as admin.');
+        }
+
+        let allData = [];
+        let filteredData = [];
+        let sortKey = 'stock_quantity';
+        let sortAsc = true;
+        const PAGE_SIZE = 25;
+        let currentPage = 1;
+
+        const STATUS_LABEL = { reorder_needed: 'Critical', low: 'Low Stock', ok: 'In Stock' };
+        const STATUS_CLASS = { reorder_needed: 'status-critical', low: 'status-low', ok: 'status-ok' };
+
+        async function load() {
+            try {
+                const res = await fetch(`${API_URL}/analytics/inventory`);
+                const raw = await res.json();
+                allData = raw; // keep full set for stats
+
+                // Stats
+                const total = raw.length;
+                const crit = raw.filter(i => i.status === 'reorder_needed').length;
+                const low = raw.filter(i => i.status === 'low').length;
+                const ok = total - crit - low;
+                document.getElementById('statsRow').innerHTML = `
+                    <div class="stat-chip total">📦 ${total} Products</div>
+                    <div class="stat-chip crit">🔴 ${crit} Critical</div>
+                    <div class="stat-chip low">🟡 ${low} Low Stock</div>
+                    <div class="stat-chip ok">🟢 ${ok} In Stock</div>`;
+
+                // Default view: only critical + low (exclude in-stock)
+                allData = raw.filter(i => i.status !== 'ok');
+                applyFilters();
+            } catch (e) {
+                console.error(e);
+                document.getElementById('invBody').innerHTML =
+                    '<tr><td colspan="5" style="text-align:center;color:#dc2626;padding:2rem;">⚠️ Could not load — ensure backend is running.</td></tr>';
+            }
+        }
+
+        function applyFilters() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            const status = document.getElementById('statusFilter').value;
+            filteredData = allData.filter(p => {
+                const matchQ = !q || p.name.toLowerCase().includes(q) || (p.category || '').toLowerCase().includes(q);
+                const matchS = !status || p.status === status;
+                return matchQ && matchS;
+            });
+            sortData();
+            currentPage = 1;
+            render();
+        }
+
+        function sortBy(key) {
+            if (sortKey === key) { sortAsc = !sortAsc; }
+            else { sortKey = key; sortAsc = true; }
+            sortData();
+            render();
+        }
+
+        function sortData() {
+            filteredData.sort((a, b) => {
+                const av = a[sortKey] ?? '';
+                const bv = b[sortKey] ?? '';
+                if (typeof av === 'number') return sortAsc ? av - bv : bv - av;
+                return sortAsc ? String(av).localeCompare(String(bv)) : String(bv).localeCompare(String(av));
+            });
+        }
+
+        function render() {
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const page = filteredData.slice(start, start + PAGE_SIZE);
+            const total = filteredData.length;
+            const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+            document.getElementById('pageInfo').textContent =
+                `Showing ${start + 1}–${Math.min(start + PAGE_SIZE, total)} of ${total} products`;
+
+            document.getElementById('invBody').innerHTML = page.length
+                ? page.map(p => `
+                    <tr>
+                        <td class="font-medium">${p.name}</td>
+                        <td>${p.category || '—'}</td>
+                        <td><strong>${p.stock_quantity}</strong></td>
+                        <td style="color:var(--color-text-secondary);">${p.reorder_level}</td>
+                        <td><span class="status-pill ${STATUS_CLASS[p.status]}">${STATUS_LABEL[p.status]}</span></td>
+                    </tr>`).join('')
+                : '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--color-text-secondary);">No products match your filter.</td></tr>';
+
+            // Pagination buttons (show 5 around current)
+            const pBtn = document.getElementById('pageBtns');
+            pBtn.innerHTML = '';
+            const prev = document.createElement('button');
+            prev.className = 'page-btn'; prev.textContent = '← Prev';
+            prev.disabled = currentPage === 1;
+            prev.onclick = () => { currentPage--; render(); };
+            pBtn.appendChild(prev);
+
+            const range = [...new Set([1, currentPage - 1, currentPage, currentPage + 1, pages])]
+                .filter(n => n >= 1 && n <= pages).sort((a, b) => a - b);
+            range.forEach(n => {
+                const btn = document.createElement('button');
+                btn.className = 'page-btn' + (n === currentPage ? ' active' : '');
+                btn.textContent = n;
+                btn.onclick = () => { currentPage = n; render(); };
+                pBtn.appendChild(btn);
+            });
+
+            const next = document.createElement('button');
+            next.className = 'page-btn'; next.textContent = 'Next →';
+            next.disabled = currentPage === pages;
+            next.onclick = () => { currentPage++; render(); };
+            pBtn.appendChild(next);
+        }
+
+        async function exportPDF() {
+            const btn = document.getElementById('exportBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ Generating…';
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+
+                // Header
+                doc.setFontSize(16); doc.setFont('helvetica', 'bold');
+                doc.text('SmartRetailX — Inventory Status Report', 14, 18);
+                doc.setFontSize(9); doc.setFont('helvetica', 'normal');
+                doc.setTextColor(120);
+                doc.text(`Generated: ${new Date().toLocaleString()}   |   Total: ${filteredData.length} products`, 14, 25);
+                doc.setTextColor(0);
+
+                // Stats summary line
+                const crit = filteredData.filter(i => i.status === 'reorder_needed').length;
+                const low = filteredData.filter(i => i.status === 'low').length;
+                const ok = filteredData.length - crit - low;
+                doc.setFontSize(9);
+                doc.text(`🔴 Critical: ${crit}   🟡 Low: ${low}   🟢 OK: ${ok}`, 14, 31);
+
+                // Table
+                const rows = filteredData.map(p => [
+                    p.name,
+                    p.category || '—',
+                    p.stock_quantity,
+                    p.reorder_level,
+                    STATUS_LABEL[p.status] || p.status
+                ]);
+
+                doc.autoTable({
+                    head: [['Product', 'Category', 'Stock Qty', 'Reorder At', 'Status']],
+                    body: rows,
+                    startY: 36,
+                    styles: { fontSize: 8, cellPadding: 2.5 },
+                    headStyles: { fillColor: [79, 70, 229], textColor: 255, fontStyle: 'bold' },
+                    alternateRowStyles: { fillColor: [248, 250, 252] },
+                    didDrawCell(data) {
+                        if (data.column.index === 4 && data.section === 'body') {
+                            const status = data.cell.text[0];
+                            if (status === 'Critical') data.cell.styles.textColor = [220, 38, 38];
+                            if (status === 'Low Stock') data.cell.styles.textColor = [217, 119, 6];
+                            if (status === 'In Stock') data.cell.styles.textColor = [22, 163, 74];
+                        }
+                    }
+                });
+
+                // Footer pages
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    doc.setPage(i);
+                    doc.setFontSize(8); doc.setTextColor(160);
+                    doc.text(`Page ${i} of ${pageCount} — SmartRetailX Inventory`, 14, doc.internal.pageSize.height - 8);
+                }
+
+                doc.save(`SmartRetailX_Inventory_${new Date().toISOString().slice(0, 10)}.pdf`);
+            } catch (err) {
+                alert('PDF export failed: ' + err.message);
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg> Export PDF`;
+            }
+        }
+
+        load();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Advertisements - SmartRetailX</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .full-table th,
+        .full-table td {
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <a href="index.html" class="brand-logo" style="text-decoration:none;">
+            <img src="logo.png" alt="SmartRetailX Logo" width="28" height="28" style="border-radius: 4px;">
+            SmartRetailX <span
+                style="font-weight:400; color:var(--color-text-secondary); margin-left:0.5rem; font-size:1rem;">|
+                Advertisements</span>
+        </a>
+        <div class="header-actions">
+            <a href="store.html" class="btn-ghost">Back to Dashboard</a>
+            <button onclick="logout()" class="btn-ghost" style="color: var(--color-error);">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <header class="dash-header" style="align-items: center;">
+            <div>
+                <h1 class="page-title" style="margin-bottom:0.5rem;">All Advertisements</h1>
+                <p class="text-secondary">Manage full list of position-based ads and track revenue</p>
+            </div>
+            <div style="display:flex; gap:1.5rem; align-items:center;">
+                <div style="text-align:right;">
+                    <div
+                        style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:1px;">
+                        Est. Ad Revenue</div>
+                    <div id="adTotalRevenue" style="font-size:1.75rem; font-weight:700; color:var(--color-primary);">
+                        ₹0.00</div>
+                </div>
+                <div style="text-align:right;">
+                    <div
+                        style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); letter-spacing:1px;">
+                        Total Views</div>
+                    <div id="adTotalImpressions" style="font-size:1.75rem; font-weight:700;">0</div>
+                </div>
+                <button onclick="openAdModal()" class="btn-primary" style="height:fit-content; margin-left:1rem;">+
+                    New Ad</button>
+            </div>
+        </header>
+
+        <div class="card p-6" style="background:var(--bg-secondary); border:1px solid var(--border-light);">
+            <table class="full-table">
+                <thead>
+                    <tr>
+                        <th style="width:300px;">Ad Banner</th>
+                        <th>Target Location</th>
+                        <th>Priority / Type</th>
+                        <th>Stats</th>
+                        <th style="width:120px; text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adsTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center text-secondary py-4">Loading ads...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ad Edit Modal -->
+        <div id="adModal"
+            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+            <div
+                style="background:var(--bg-primary); width:90%; max-width:500px; border-radius:12px; padding:2rem; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+                <h3 id="adModalTitle" style="margin-bottom:1rem;">Create Advertisement</h3>
+                <input type="hidden" id="adId">
+                <input type="text" id="adTitleStr" placeholder="Ad Title (e.g. 50% Off Coke)" class="input-light"
+                    style="width:100%; margin-bottom:1rem; padding:0.75rem;">
+                <textarea id="adDescStr" placeholder="Description / Subtitle" class="input-light"
+                    style="width:100%; margin-bottom:1rem; padding:0.75rem; min-height:60px;" rows="2"></textarea>
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <input type="text" id="adImageUrl" placeholder="Image URL (optional)" class="input-light"
+                        style="flex:1; padding:0.75rem;">
+                    <input type="text" id="adProductId" placeholder="Product Barcode (for cart)" class="input-light"
+                        style="width:180px; padding:0.75rem;">
+                </div>
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Target
+                            Aisle</label>
+                        <input type="number" id="adAisle" placeholder="Any" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Target
+                            Position Tag</label>
+                        <input type="text" id="adPositionTag" placeholder="e.g. P101 (Any)" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                </div>
+                <div style="display:flex; gap:1rem; margin-bottom:1.5rem;">
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:0.25rem;">Priority
+                            Score</label>
+                        <input type="number" id="adPriority" value="0" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1;">
+                        <label
+                            style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:0.25rem;">Rev
+                            per View (₹)</label>
+                        <input type="number" id="adRev" value="0" step="0.1" class="input-light"
+                            style="width:100%; padding:0.75rem;">
+                    </div>
+                    <div style="flex:1; display:flex; align-items:flex-end;">
+                        <label style="display:flex; align-items:center; gap:0.5rem; height:42px; cursor:pointer;">
+                            <input type="checkbox" id="adCompulsory"> <b>Compulsory Ad</b>
+                        </label>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:1rem;">
+                    <button onclick="closeAdModal()" class="btn-ghost" style="padding: 0.5rem 1rem;">Cancel</button>
+                    <button onclick="saveAd()" class="btn-primary" style="padding: 0.5rem 1rem;">Save Ad</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = `${window.location.protocol}//${window.location.hostname}:5000/api`;
+
+        // Check Auth
+        const user = JSON.parse(localStorage.getItem('customer') || '{}');
+        if (!user.is_admin) {
+            alert('Access Denied: Admin privileges required.');
+            window.location.href = 'index.html';
+        }
+
+        async function init() {
+            await Promise.all([
+                loadAdsDashboard()
+            ]);
+        }
+
+        async function loadAdsDashboard() {
+            try {
+                // Load dashboard stats
+                const dashRes = await fetch(`${API_URL}/admin/ads/dashboard`);
+                if (dashRes.ok) {
+                    const stats = await dashRes.json();
+                    document.getElementById('adTotalImpressions').textContent = stats.total_impressions || 0;
+                    document.getElementById('adTotalRevenue').textContent = '₹' + (stats.total_revenue || 0).toFixed(2);
+                }
+
+                // Load list of all ads
+                const listRes = await fetch(`${API_URL}/admin/ads`);
+                if (listRes.ok) {
+                    const data = await listRes.json();
+                    renderAdsTable(data.ads || []);
+                }
+            } catch (e) {
+                console.error("Ads dashboard error:", e);
+                document.getElementById('adsTableBody').innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--color-error);">⚠️ Ensure Ad Tables are initialized.</td></tr>`;
+            }
+        }
+
+        function renderAdsTable(ads) {
+            const tbody = document.getElementById('adsTableBody');
+            if (!ads.length) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2rem; color:var(--text-secondary);">No ads found. Create one to get started.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = ads.map(ad => {
+                const isActive = ad.is_active ? `<span style="color:var(--color-success);">● Active</span>` : `<span style="color:var(--color-error);">● Inactive</span>`;
+                const location = ad.position_tag ? `Aisle ${ad.aisle || 'Any'} • ${ad.position_tag}` : (ad.aisle ? `Aisle ${ad.aisle} • Any` : `Global (All Store)`);
+                const typeStyle = ad.is_compulsory ? `background:var(--color-error);color:#fff;` : `background:var(--bg-tertiary);`;
+
+                return `
+                <tr>
+                    <td>
+                        <div style="font-weight:600; margin-bottom:2px; font-size:1.05rem;">${ad.title}</div>
+                        <div style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:4px;">${ad.description || 'No description'}</div>
+                        ${ad.product_id ? `<div style="font-size:0.8rem; color:var(--color-primary); font-weight:500;">🛒 Barcode: ${ad.product_id}</div>` : ''}
+                    </td>
+                    <td>
+                        <span style="background:var(--bg-tertiary); padding:6px 10px; border-radius:6px; font-family:monospace; font-size:0.85rem;">${location}</span>
+                    </td>
+                    <td>
+                        <span style="display:inline-block; padding:3px 8px; border-radius:4px; font-size:0.75rem; font-weight:700; text-transform:uppercase; ${typeStyle}">${ad.is_compulsory ? 'COMPULSORY' : 'Priority ' + ad.priority}</span>
+                        <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:6px;">${isActive}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight:600; font-size:1.1rem;">₹${ad.revenue_per_impression.toFixed(2)}</div>
+                        <div style="font-weight:400; font-size:0.8rem; color:var(--text-secondary);">per view</div>
+                    </td>
+                    <td style="text-align:right;">
+                        <button onclick='editAd(${JSON.stringify(ad).replace(/'/g, "&apos;")})' class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; margin-right:4px;">Edit</button>
+                        <button onclick="deleteAd(${ad.ad_id})" class="btn-ghost" style="padding:6px 12px; font-size:0.85rem; color:var(--color-error);">Del</button>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        function openAdModal() {
+            document.getElementById('adId').value = '';
+            document.getElementById('adTitleStr').value = '';
+            document.getElementById('adDescStr').value = '';
+            document.getElementById('adImageUrl').value = '';
+            document.getElementById('adProductId').value = '';
+            document.getElementById('adAisle').value = '';
+            document.getElementById('adPositionTag').value = '';
+            document.getElementById('adPriority').value = '0';
+            document.getElementById('adRev').value = '0';
+            document.getElementById('adCompulsory').checked = false;
+            document.getElementById('adModalTitle').textContent = 'Create Advertisement';
+            document.getElementById('adModal').style.display = 'flex';
+        }
+
+        function editAd(ad) {
+            document.getElementById('adId').value = ad.ad_id;
+            document.getElementById('adTitleStr').value = ad.title;
+            document.getElementById('adDescStr').value = ad.description || '';
+            document.getElementById('adImageUrl').value = ad.image_url || '';
+            document.getElementById('adProductId').value = ad.product_id || '';
+            document.getElementById('adAisle').value = ad.aisle || '';
+            document.getElementById('adPositionTag').value = ad.position_tag || '';
+            document.getElementById('adPriority').value = ad.priority;
+            document.getElementById('adRev').value = ad.revenue_per_impression;
+            document.getElementById('adCompulsory').checked = ad.is_compulsory;
+            document.getElementById('adModalTitle').textContent = 'Edit Advertisement';
+            document.getElementById('adModal').style.display = 'flex';
+        }
+
+        function closeAdModal() {
+            document.getElementById('adModal').style.display = 'none';
+        }
+
+        async function saveAd() {
+            const id = document.getElementById('adId').value;
+            const data = {
+                title: document.getElementById('adTitleStr').value,
+                description: document.getElementById('adDescStr').value,
+                image_url: document.getElementById('adImageUrl').value,
+                product_id: document.getElementById('adProductId').value,
+                aisle: document.getElementById('adAisle').value ? parseInt(document.getElementById('adAisle').value) : null,
+                position_tag: document.getElementById('adPositionTag').value || null,
+                priority: parseInt(document.getElementById('adPriority').value || 0),
+                revenue_per_impression: parseFloat(document.getElementById('adRev').value || 0),
+                is_compulsory: document.getElementById('adCompulsory').checked
+            };
+
+            if (!data.title) return alert("Title required!");
+
+            const url = id ? `${API_URL}/admin/ads/${id}` : `${API_URL}/admin/ads`;
+            const method = id ? 'PATCH' : 'POST';
+
+            try {
+                const r = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const res = await r.json();
+                if (res.success) {
+                    closeAdModal();
+                    loadAdsDashboard();
+                } else {
+                    alert('Error: ' + res.error);
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function deleteAd(id) {
+            if (!confirm("Delete this ad forever?")) return;
+            try {
+                const r = await fetch(`${API_URL}/admin/ads/${id}`, { method: 'DELETE' });
+                if (r.ok) loadAdsDashboard();
+            } catch (e) { console.error(e); }
+        }
+
+        function logout() {
+            localStorage.removeItem('customer');
+            window.location.href = 'login.html';
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

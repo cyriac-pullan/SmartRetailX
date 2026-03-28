@@ -1,0 +1,47 @@
+Product_Name,Price,Category,Aisle_No,Position_Tag,Side
+"Coca Cola 500ml",40,"Drinks",1,"P101",Left
+"Pepsi 500ml",40,"Drinks",1,"P101",Left
+"Fruit Juice Mango",100,"Drinks",1,"P101",Left
+"Lays Chips Classic",20,"Snacks",1,"P102",Left
+"Bingo Mad Angles",20,"Snacks",1,"P102",Left
+"Chocolates Cadbury",50,"Snacks",1,"P102",Left
+"Biscuits Britannia",30,"Snacks",1,"P102",Left
+"Cookies Fantasy",40,"Snacks",1,"P102",Right
+"Water Bottle 1L",20,"Drinks",1,"P103",Left
+"Energy Drink RedBull",120,"Drinks",1,"P103",Left
+"Rice Basmati 5kg",600,"Staples",2,"P104",Left
+"Rice Matta 5kg",450,"Staples",2,"P105",Left
+"Atta (Wheat Flour) 5kg",250,"Staples",2,"P105",Left
+"Dal Toor 1kg",140,"Staples",2,"P106",Left
+"Sugar 1kg",45,"Staples",2,"P106",Right
+"Salt 1kg",20,"Staples",2,"P106",Right
+"Cooking Oil Sunflower 1L",150,"Staples",2,"P107",Left
+"Cooking Oil Coconut 1L",200,"Staples",2,"P107",Left
+"Spices Chili Powder",60,"Staples",2,"P107",Right
+"Spices Turmeric",60,"Staples",2,"P107",Right
+"Shampoo Head&Shoulders",250,"Personal Care",3,"P108",Left
+"Soap Lux",40,"Personal Care",3,"P108",Left
+"Toothpaste Colgate",80,"Personal Care",3,"P109",Left
+"Toothbrush",30,"Personal Care",3,"P109",Left
+"Detergent Surf Excel 1kg",120,"Household",3,"P110",Left
+"Dishwash Gel Vim",90,"Household",3,"P110",Right
+"Toilet Cleaner Harpic",100,"Household",3,"P110",Right
+"Diapers Pampers",800,"Baby Care",3,"P111",Left
+"Baby Wipes",150,"Baby Care",3,"P111",Right
+"Milk Amul Toned 500ml",28,"Dairy",4,"P112",Left
+"Milk Full Cream 500ml",34,"Dairy",4,"P112",Left
+"Butter Amul 100g",58,"Dairy",4,"P113",Left
+"Cheese Slices",140,"Dairy",4,"P113",Right
+"Paneer 200g",100,"Dairy",4,"P113",Right
+"Curd 500g",40,"Dairy",4,"P113",Right
+"Bread Modern White",45,"Bakery",4,"P114",Left
+"Bread Wheat",50,"Bakery",4,"P114",Left
+"Eggs Dozen",90,"Bakery",4,"P114",Right
+"Ice Cream Vanilla",200,"Frozen",4,"P115",Left
+"Frozen Peas",80,"Frozen",4,"P115",Right
+"Apples 1kg",220,"Fresh",5,"P116",Left
+"Bananas Dozen",60,"Fresh",5,"P116",Left
+"Oranges 1kg",100,"Fresh",5,"P116",Right
+"Potatoes 1kg",40,"Fresh",5,"P117",Left
+"Onions 1kg",50,"Fresh",5,"P117",Left
+"Tomatoes 1kg",60,"Fresh",5,"P117",Right
