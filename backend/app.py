@@ -2468,11 +2468,29 @@ def product_count():
 
 # ===== ESP NAVIGATION & CALIBRATION INTEGRATION =====
 
-# Configuration
-ESP_NAMES = ["ESP32_AISLE_1", "ESP32_AISLE_2", "ESP32_AISLE_3"]
+# Configuration — 4 corridor-based ESP32 beacons (using existing device names)
+ESP_NAMES = ["ESP32_AISLE_1", "ESP32_AISLE_2", "ESP32_AISLE_3", "ESP32_AISLE_4"]
 CALIBRATION_FILE = "calibration_config.json"
 SCAN_DURATION_INITIAL = 5
 RSSI_THRESHOLD = -90
+
+# Corridor → Partition mapping
+# Each corridor provides access to specific partition ranges
+CORRIDOR_PARTITIONS = {
+    "L":  list(range(101, 107)),   # P101-P106: A1 left side
+    "12": list(range(107, 119)),   # P107-P118: A1 right + A2 left
+    "23": list(range(119, 131)),   # P119-P130: A2 right + A3 left
+    "R":  list(range(131, 137)),   # P131-P136: A3 right side
+}
+
+# ESP name → corridor ID mapping
+# ESP32_AISLE_1 placed in Left corridor, _2 in Corr-12, _3 in Corr-23, _4 in Corr-R
+ESP_TO_CORRIDOR = {
+    "ESP32_AISLE_1": "L",
+    "ESP32_AISLE_2": "12",
+    "ESP32_AISLE_3": "23",
+    "ESP32_AISLE_4": "R",
+}
 
 # Global State for Nav
 nav_state = {
@@ -2551,48 +2569,51 @@ async def scan_ble_devices(duration=5.0):
         return {}
 
 
-def estimate_partition(rssi_map, aisle_id=None):
+def estimate_partition(rssi_map, corridor_id=None):
     """
-    Fingerprint-based nearest-neighbour location estimation.
+    Corridor-based fingerprint location estimation.
     rssi_map: dict of {esp_name: rssi_value} for current scan.
-    Returns (partition_tag, aisle_id) of best-matching calibration fingerprint.
+    corridor_id: strongest corridor detected (L, 12, 23, R).
+    Returns partition tag (e.g. 'P119') of best-matching position.
     """
     config = nav_state.get("calibration_config", {})
-    aisles_data = config.get("aisles", {})
+    corridors_data = config.get("corridors", config.get("aisles", {}))
     
-    if not aisles_data:
-        # Fallback: no calibration loaded, use old linear logic
-        if aisle_id is None: return None
-        partitions_map = nav_state["graph_builder"].get_partitions_by_aisle() if nav_state["graph_builder"] else {}
-        parts = partitions_map.get(aisle_id, [])
+    if not corridors_data or not corridor_id:
+        # Fallback: no calibration loaded, use corridor midpoint
+        if corridor_id is None: return None
+        parts = CORRIDOR_PARTITIONS.get(corridor_id, [])
         if not parts: return None
-        # Use strongest ESP signal
-        esp_name = f"ESP32_AISLE_{aisle_id}"
-        rssi = rssi_map.get(esp_name)
-        if rssi is None: return parts[len(parts) // 2]
-        old_cfg = {"max_rssi": -40, "min_rssi": -90}
+        # Find the ESP that maps to this corridor
+
+        esp_name = next((n for n, c in ESP_TO_CORRIDOR.items() if c == corridor_id), None)
+
+        rssi = rssi_map.get(esp_name) if esp_name else None
+
+        if rssi is None: return f"P{parts[len(parts) // 2]}"
+        # Linear mapping: stronger signal = closer to ESP (placed at start of corridor)
+        old_cfg = {"max_rssi": -30, "min_rssi": -90}
         normalized = min(max(rssi, old_cfg["min_rssi"]), old_cfg["max_rssi"])
         strength = (normalized - old_cfg["min_rssi"]) / (old_cfg["max_rssi"] - old_cfg["min_rssi"])
         index = min(int(strength * len(parts)), len(parts) - 1)
-        return parts[index]
+        return f"P{parts[index]}"
 
     # --- Fingerprint nearest-neighbor ---
-    POSITION_TO_PARTITION_INDEX = {"start": 0, "middle": 0.5, "end": 1.0}  # fraction along aisle
+    POSITION_TO_FRACTION = {"start": 0, "middle": 0.5, "end": 1.0}
 
     best_dist = float('inf')
     best_partition = None
-    best_aisle = None
-    
-    if not nav_state.get("graph_builder"): return None
-    partitions_map = nav_state["graph_builder"].get_partitions_by_aisle()
 
-    for a_id_str, positions in aisles_data.items():
-        a_id = int(a_id_str)
-        parts = partitions_map.get(a_id, [])
+    for corr_id_str, positions in corridors_data.items():
+        # Only check the matching corridor if we received one
+        if corridor_id and corr_id_str != corridor_id:
+            continue
+            
+        parts = CORRIDOR_PARTITIONS.get(corr_id_str, [])
         if not parts: continue
         
         for pos_name, fingerprint in positions.items():
-            # Euclidean distance in RSSI space (only detected ESPs contribute)
+            # Euclidean distance in RSSI space
             sq_dist = 0.0
             count = 0
             for esp, cal_rssi in fingerprint.items():
@@ -2608,11 +2629,10 @@ def estimate_partition(rssi_map, aisle_id=None):
             
             if dist < best_dist:
                 best_dist = dist
-                best_aisle = a_id
-                # Map position name to a partition index
-                frac = POSITION_TO_PARTITION_INDEX.get(pos_name, 0.5)
+                # Map position name to a partition index within this corridor
+                frac = POSITION_TO_FRACTION.get(pos_name, 0.5)
                 idx = min(int(frac * (len(parts) - 1) + 0.5), len(parts) - 1)
-                best_partition = parts[max(0, idx)]
+                best_partition = f"P{parts[max(0, idx)]}"
 
     return best_partition
 
@@ -2620,37 +2640,69 @@ def estimate_partition(rssi_map, aisle_id=None):
 
 
 # --- NAV ENDPOINTS ---
+@app.route('/api/nav/esp-status', methods=['GET'])
+
+def get_esp_status():
+
+    """Return live position from background BLE scanner."""
+
+    # Read from background service (avoids BLE adapter conflict)
+
+    if smart_cart_service:
+
+        loc = getattr(smart_cart_service, 'current_location', None)
+
+        if loc and loc.get("partition"):
+
+            corridor_id = loc.get("corridor", "")
+
+            partition = loc.get("partition", "")
+
+            corridor_labels = {"L": "Corr-L", "12": "Corr-A1A2", "23": "Corr-A2A3", "R": "Corr-R"}
+
+            label = corridor_labels.get(corridor_id, "")
+
+            return jsonify({
+
+                "position": f"{partition} ({label})" if label else partition,
+
+                "corridor": corridor_id,
+
+                "partition": partition,
+
+                "esp": loc.get("esp", ""),
+
+                "rssi": loc.get("raw_rssi", 0),
+                "smoothed_rssi": loc.get("smoothed_rssi", 0),
+
+            })
+
+    return jsonify({"position": "Scanning..."})
+
+
+
+
 
 @app.route('/api/nav/locate', methods=['POST'])
 def nav_locate():
-    """Trigger BLE scan to find current location"""
-    # Run async scan synchronously
+    """Return high-accuracy filtered location using corridor-based ESP32s from tracker engine."""
     try:
-        medians = asyncio.run(scan_ble_devices(SCAN_DURATION_INITIAL))
+        if smart_cart_service:
+            loc = getattr(smart_cart_service, 'current_location', None)
+            if loc and loc.get("partition"):
+                corridor_to_aisle = {"L": 1, "12": 1, "23": 2, "R": 3}
+                return jsonify({
+                    "status": "located",
+                    "corridor": loc.get("corridor"),
+                    "aisle": corridor_to_aisle.get(loc.get("corridor"), 0),
+                    "esp_name": loc.get("esp"),
+                    "rssi": loc.get("raw_rssi", 0),
+                    "smoothed_rssi": loc.get("smoothed_rssi", 0),
+                    "partition": loc.get("partition"),
+                    "all_signals": loc.get("all_smoothed", {})
+                })
+        return jsonify({"status": "wandering", "message": "Location unknown"}), 200
         
-        if not medians:
-            return jsonify({"status": "wandering", "message": "No aisle detected"}), 200
-            
-        # Find strongest ESP (for display / fallback)
-        sorted_esps = sorted(medians.items(), key=lambda x: x[1], reverse=True)
-        best_name, best_rssi = sorted_esps[0]
-        
-        # Parse Aisle ID from Name (ESP32_AISLE_1 -> 1) for fallback mode
-        try:
-            aisle_id = int(best_name.split('_')[-1])
-        except:
-            aisle_id = 0
-            
-        # Fingerprint-based partition estimation using ALL esp signals
-        partition = estimate_partition(medians, aisle_id)
-        
-        return jsonify({
-            "status": "located",
-            "aisle": aisle_id,
-            "esp_name": best_name,
-            "rssi": best_rssi,
-            "partition": partition
-        })
     except Exception as e:
         logging.error(f"Locate Error: {e}")
         return jsonify({"error": str(e)}), 500
@@ -2951,13 +3003,13 @@ def nav_ads_dual():
 def calibration_status():
     """Check if a valid calibration exists"""
     config = nav_state.get("calibration_config", {})
-    has_calibration = bool(config.get("aisles"))
+    has_calibration = bool(config.get("corridors", config.get("aisles")))
     calibrated_at = config.get("calibrated_at", None)
-    aisle_count = len(config.get("aisles", {}))
+    corridor_count = len(config.get("corridors", config.get("aisles", {})))
     return jsonify({
         "calibrated": has_calibration,
         "calibrated_at": calibrated_at,
-        "aisle_count": aisle_count,
+        "corridor_count": corridor_count,
         "esp_names": ESP_NAMES
     })
 
@@ -3002,23 +3054,23 @@ def calibration_capture():
 def calibrate_save():
     """
     Save the full fingerprint map to file.
-    Expects body: { "aisles": { "1": { "start": {esp: rssi, ...}, "middle": {...}, "end": {...} }, ... } }
+    Expects body: { "corridors": { "L": { "start": {esp: rssi, ...}, "middle": {...}, "end": {...} }, ... } }
     """
     data = request.get_json() or {}
-    aisles = data.get("aisles")
-    if not aisles:
-        return jsonify({"error": "No aisle fingerprints provided"}), 400
+    corridors = data.get("corridors", data.get("aisles"))
+    if not corridors:
+        return jsonify({"error": "No corridor fingerprints provided"}), 400
 
     config = {
         "calibrated_at": datetime.utcnow().isoformat() + "Z",
-        "aisles": aisles
+        "corridors": corridors
     }
     try:
         nav_state["calibration_config"] = config
         with open(CALIBRATION_FILE, 'w') as f:
             json.dump(config, f, indent=4)
-        logging.info(f"✅ Calibration saved for {len(aisles)} aisles")
-        return jsonify({"success": True, "calibrated_at": config["calibrated_at"], "aisle_count": len(aisles)})
+        logging.info(f"✅ Calibration saved for {len(corridors)} corridors")
+        return jsonify({"success": True, "calibrated_at": config["calibrated_at"], "corridor_count": len(corridors)})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

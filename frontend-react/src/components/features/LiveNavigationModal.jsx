@@ -90,11 +90,27 @@ function buildLayout(W, H) {
 }
 
 // ─── Path points (corridor-only routing) ─────────────────────────────────────
-function makePath(lay, info, partitionNo) {
+function makePath(lay, info, partitionNo, currentPartition) {
   const { corrCx, TOP, cellH, enterX, enterY, botCorrY } = lay
   const corrKey = getAccessCorridor(partitionNo)
   const cx      = corrCx[corrKey]
   const rowCY   = TOP + info.indexInSide * cellH + cellH / 2
+
+  if (currentPartition) {
+    const pNum = parseInt(currentPartition.replace('P', ''))
+    const sInfo = getPartitionInfo(pNum)
+    if (sInfo) {
+      const sCorr = getAccessCorridor(pNum)
+      const sx = corrCx[sCorr]
+      const sy = TOP + sInfo.indexInSide * cellH + cellH / 2
+      
+      if (sx === cx) {
+        return [ { x: sx, y: sy }, { x: cx, y: rowCY } ]
+      } else {
+        return [ { x: sx, y: sy }, { x: sx, y: botCorrY }, { x: cx, y: botCorrY }, { x: cx, y: rowCY } ]
+      }
+    }
+  }
 
   // ENTER → drop to bottom corridor → slide to the right corridor → climb up
   return [
@@ -148,7 +164,7 @@ function strokePoly(ctx, pts, t) {
 }
 
 // ─── Main canvas draw ─────────────────────────────────────────────────────────
-function drawMap(canvas, targetPartition, animT, pulseT, suggestions = []) {
+function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], currentPartition = null) {
   if (!canvas) return
   const ctx = canvas.getContext('2d')
   const W = canvas.width, H = canvas.height
@@ -282,31 +298,49 @@ function drawMap(canvas, targetPartition, animT, pulseT, suggestions = []) {
   ctx.stroke()
   ctx.setLineDash([])
 
-  // ── 5. ENTER marker ──────────────────────────────────────────────────
-  // Outer ring
+  // ── 5. User marker ──────────────────────────────────────────────────
+  let userX = enterX;
+  let userY = enterY;
+  let userLabel = 'ENTER';
+
+  if (currentPartition) {
+    const pNum = parseInt(currentPartition.replace('P', ''));
+    const sInfo = getPartitionInfo(pNum);
+    if (sInfo) {
+      const sCorr = getAccessCorridor(pNum);
+      userX = corrCx[sCorr];
+      userY = TOP + sInfo.indexInSide * cellH + cellH / 2;
+      userLabel = 'YOU';
+    }
+  }
+
+  // Outer ring (animated pulse)
   ctx.beginPath()
-  ctx.arc(enterX, enterY, 13, 0, Math.PI*2)
-  ctx.fillStyle = 'rgba(16,185,129,0.15)'
+  ctx.arc(userX, userY, 13 + pulseT * 4, 0, Math.PI*2)
+  ctx.fillStyle = `rgba(16,185,129,${0.25 * (1 - pulseT)})`
   ctx.fill()
+  
   // Inner dot
   ctx.beginPath()
-  ctx.arc(enterX, enterY, 8, 0, Math.PI*2)
+  ctx.arc(userX, userY, 8, 0, Math.PI*2)
   ctx.fillStyle = '#10b981'
   ctx.fill()
+  
   // White centre
   ctx.beginPath()
-  ctx.arc(enterX, enterY, 4, 0, Math.PI*2)
+  ctx.arc(userX, userY, 4, 0, Math.PI*2)
   ctx.fillStyle = '#fff'
   ctx.fill()
+  
   // Label
   ctx.fillStyle = '#065f46'
-  ctx.font = 'bold 9px Inter, system-ui, sans-serif'
+  ctx.font = 'bold 10px Inter, system-ui, sans-serif'
   ctx.textAlign = 'center'
-  ctx.fillText('ENTER', enterX, enterY + 20)
+  ctx.fillText(userLabel, userX, userY + 20)
 
   // ── 6. Animated path ─────────────────────────────────────────────────
   if (info && animT > 0) {
-    const pts = makePath(lay, info, targetPartition)
+    const pts = makePath(lay, info, targetPartition, currentPartition)
 
     // Glow halo
     ctx.strokeStyle = 'rgba(99,102,241,0.25)'
@@ -349,11 +383,12 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
   const [suggestions, setSuggestions] = useState([])
   const animRef   = useRef(null)
   const pollRef   = useRef(null)
-  const stateRef  = useRef({ animT: 0, pulseT: 0, pulsing: false })
+  const stateRef  = useRef({ animT: 0, pulseT: 0, pulsing: false, currentPartition: null })
 
   const startAnim = useCallback((partitionNo, suggs = []) => {
     if (animRef.current) cancelAnimationFrame(animRef.current)
-    stateRef.current = { animT: 0, pulseT: 0, pulsing: false }
+    const curP = stateRef.current?.currentPartition
+    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP }
     let last = null
     const tick = (ts) => {
       if (!last) last = ts
@@ -366,7 +401,7 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
       } else {
         s.pulseT = (s.pulseT + dt * 1.8) % 1
       }
-      drawMap(canvasRef.current, partitionNo, s.animT, s.pulseT, suggs)
+      drawMap(canvasRef.current, partitionNo, s.animT, s.pulseT, suggs, s.currentPartition)
       animRef.current = requestAnimationFrame(tick)
     }
     animRef.current = requestAnimationFrame(tick)
@@ -376,7 +411,7 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
   useEffect(() => {
     if (open) {
       // Small delay so the canvas is painted in the DOM
-      const id = setTimeout(() => drawMap(canvasRef.current, null, 0, 0), 30)
+      const id = setTimeout(() => drawMap(canvasRef.current, null, 0, 0, [], stateRef.current?.currentPartition), 30)
       return () => clearTimeout(id)
     }
   }, [open])
@@ -386,7 +421,8 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
     setLocationData(null)
     setSuggestions([])
     setLoading(true)
-    stateRef.current = { animT: 0, pulseT: 0, pulsing: false }
+    const curP = stateRef.current?.currentPartition
+    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP }
 
     searchProducts(productName).then(({ data }) => {
       const results = Array.isArray(data) ? data : (data?.results || [])
@@ -421,11 +457,14 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
       } else {
         setLocationData(product?.aisle ? { aisle: product.aisle } : null)
         setLoading(false)
-        setTimeout(() => drawMap(canvasRef.current, null, 1, 0, []), 60)
+        setTimeout(() => drawMap(canvasRef.current, null, 1, 0, [], stateRef.current?.currentPartition), 60)
       }
     })
 
-    const poll = () => getEspStatus().then(({ data }) => { if (data?.position) setEspPos(data.position) })
+    const poll = () => getEspStatus().then(({ data }) => { 
+      if (data?.position) setEspPos(data.position) 
+      if (data?.partition) stateRef.current.currentPartition = data.partition 
+    })
     poll()
     pollRef.current = setInterval(poll, 3000)
 

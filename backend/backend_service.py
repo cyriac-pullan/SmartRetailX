@@ -7,13 +7,14 @@ import random
 from bleak import BleakScanner
 from path_planner import GraphBuilder, MarketBasket, PathFinder
 from visualizer import StoreVisualizer
+from esp32_tracker import IndoorPositioning
 
 import os
 # Config
 CSV_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "products_unique_remapped.csv")
 ASSOCIATIONS_FILE = "associations.json"
 CALIBRATION_FILE = "calibration_config.json"
-ESP_AISLES = {"ESP32_AISLE_1": 1, "ESP32_AISLE_2": 2, "ESP32_AISLE_3": 3}
+ESP_CORRIDORS = {"ESP32_AISLE_1": "L", "ESP32_AISLE_2": "12", "ESP32_AISLE_3": "23", "ESP32_AISLE_4": "R"}
 
 class SmartCartService:
     def __init__(self):
@@ -39,6 +40,9 @@ class SmartCartService:
         # Calibration
         self.rssi_config = {}
         self.load_calibration()
+        
+        # Advanced ESP32 Tracker Engine
+        self.tracker = IndoorPositioning(walkway_length_m=6.0)
         
         # Thread control
         self.stop_event = threading.Event()
@@ -152,14 +156,20 @@ class SmartCartService:
                 "aisles": aisles
             }
 
-    def _estimate_partition(self, rssi, aisle_id):
-        # We know partitions range 1-6 standard mappings. i.e P101 ... P106
-        esp_name = f"ESP32_AISLE_{aisle_id}"
-        max_rssi = -40
+    def _estimate_partition(self, rssi, corridor_id):
+        # Find which ESP serves this corridor
+        esp_name = None
+        for name, corr in ESP_CORRIDORS.items():
+            if corr == corridor_id:
+                esp_name = name
+                break
+        if not esp_name:
+            esp_name = f"ESP32_AISLE_{corridor_id}"
+        max_rssi = -30
         min_rssi = -90
         
         if esp_name in self.rssi_config:
-            max_rssi = self.rssi_config[esp_name].get("max_rssi", -40)
+            max_rssi = self.rssi_config[esp_name].get("max_rssi", -30)
             min_rssi = self.rssi_config[esp_name].get("min_rssi", -90)
             
         # Standardize normalization bounds mapping linearly to distance
@@ -167,13 +177,16 @@ class SmartCartService:
         if max_rssi == min_rssi: strength = 0.5
         else: strength = (normalized - min_rssi) / (max_rssi - min_rssi)
         
-        # User defined ESP is at END of 6 meter Aisle. 
-        # So stronger RSSI (strength=1.0) equates closely to P106 (index 5)
-        # Weaker RSSI (strength=0.0) mapping closely to P101 (index 0)
-        
-        index = int(strength * 6)
-        if index >= 6: index = 5 # Ensure bounding limits correctly (0-5 scale)
-        return f"P10{index + 1}"
+        # Map to corridor partitions
+        CORRIDOR_PARTS = {
+            "L":  list(range(101, 107)),
+            "12": list(range(107, 119)),
+            "23": list(range(119, 131)),
+            "R":  list(range(131, 137)),
+        }
+        parts = CORRIDOR_PARTS.get(corridor_id, list(range(101, 107)))
+        index = min(int(strength * len(parts)), len(parts) - 1)
+        return f"P{parts[index]}"
 
     def _run_async_loop(self):
         asyncio.run(self._main_loop())
@@ -201,9 +214,9 @@ class SmartCartService:
                     continue
 
                 # 2. Normal Scan Mode
-                rssi_data = {name: [] for name in ESP_AISLES}
+                rssi_data = {name: [] for name in ESP_CORRIDORS}
                 def callback(device, advertisement_data):
-                     if device.name in ESP_AISLES and advertisement_data.rssi > -95:
+                     if device.name in ESP_CORRIDORS and advertisement_data.rssi > -95:
                          rssi_data[device.name].append(advertisement_data.rssi)
                 
                 scanner = BleakScanner(callback)
@@ -217,26 +230,34 @@ class SmartCartService:
                     if vals: medians[name] = sorted(vals)[len(vals)//2]
                 
                 if medians:
-                    best_name, best_rssi = sorted(medians.items(), key=lambda x:x[1], reverse=True)[0]
-                    aisle_id = ESP_AISLES[best_name]
-                    partition = self._estimate_partition(best_rssi, aisle_id)
-                    
-                    with self.lock:
-                        self.current_location = {
-                            "aisle": aisle_id,
-                            "esp": best_name,
-                            "partition": partition,
-                            "rssi": best_rssi
-                        }
+                    location_data = self.tracker.update_rssi(medians)
+                    if location_data:
+                        partition = location_data['partition']
+                        corridor_id = location_data['corridor']
+                        best_name = location_data['esp']
+                        best_rssi = location_data['raw_rssi']
+                        distance = location_data['distance_m']
                         
-                        # Set Ad (Simple Logic)
-                        # Pick random product from this partition
-                        subset = self.gb.df[(self.gb.df["Aisle_No"] == aisle_id) & (self.gb.df["Position_Tag"] == partition)]
-                        if not subset.empty:
-                            item = subset.sample(1).iloc[0]
-                            self.last_ad = f"OFFER: {item['Product_Name']} @ ₹{item['Price']}"
-                        else:
-                            self.last_ad = "Welcome to Smart Mart!"
+                        with self.lock:
+                            self.current_location = location_data
+                            
+                            # Determine aisle from corridor for backward compatibility
+                            corridor_to_aisle = {"L": 1, "12": 1, "23": 2, "R": 3}
+                            aisle_id = corridor_to_aisle.get(corridor_id, 0)
+    
+                            # Set Ad (Simple Logic)
+                            subset = self.gb.df[(self.gb.df["Aisle_No"] == aisle_id) & (self.gb.df["Position_Tag"] == partition)]
+                            if not subset.empty:
+                                item = subset.sample(1).iloc[0]
+                                self.last_ad = f"OFFER: {item['Product_Name']} @ ₹{item['Price']}"
+                            else:
+                                self.last_ad = "Welcome to Smart Mart!"
+                        
+                        print(f"📍 Pos: {partition} | Dist: {distance}m | Corr: {corridor_id} | ESP: {best_name} (Raw: {best_rssi}, Smooth: {location_data['smoothed_rssi']})")
+                    else:
+                        print("📡 Position data could not be resolved this cycle")
+                else:
+                    print("📡 No ESP32 beacons detected this scan cycle")
                 
             except Exception as e:
                 print(f"Loop Error: {e}")
