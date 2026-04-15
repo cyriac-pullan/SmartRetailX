@@ -1410,12 +1410,45 @@ def search_products():
     if category:
         where += " AND category = %s"
         params.append(category)
+        
     sql = f"SELECT * FROM products {where} LIMIT 50"
     params_tuple = tuple(params)
-    
-    # Run in parallel
     products = query_products_parallel(sql, params_tuple)
     return jsonify([dict(p) for p in products])
+
+@app.route('/api/nav/status', methods=['GET'])
+def get_nav_status():
+    """Return current cart location and active ad."""
+    if not smart_cart_service:
+        return jsonify({"error": "Service not initialized"}), 500
+    return jsonify(smart_cart_service.get_status())
+
+@app.route('/api/nav/esp-status', methods=['GET'])
+def get_esp_status_endpoint():
+    """Detailed ESP tracking info for the Live Navigation Modal."""
+    if not smart_cart_service:
+        return jsonify({"position": "Service Offline"})
+    
+    loc = getattr(smart_cart_service, 'current_location', None)
+    if loc and loc.get("partition"):
+        partition = loc.get("partition")
+        corridor_id = loc.get("corridor", "")
+        
+        # Friendly labels for AISLE mapping
+        labels = {"L": "Left Corridor", "12": "Aisle 1-2", "23": "Aisle 2-3", "R": "Right Corridor"}
+        lbl = labels.get(corridor_id, corridor_id)
+        
+        return jsonify({
+            "position": f"{partition} ({lbl})",
+            "partition": partition,
+            "corridor": corridor_id,
+            "esp": loc.get("esp", "Searching..."),
+            "distance": loc.get("distance_m", 0),
+            "rssi": loc.get("raw_rssi", 0)
+        })
+    
+    return jsonify({"position": "Scanning for beacons...", "partition": None})
+
 
 # ===== AUTH ENDPOINTS =====
 

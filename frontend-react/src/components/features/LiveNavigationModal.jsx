@@ -299,8 +299,9 @@ function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], curre
   ctx.setLineDash([])
 
   // ── 5. User marker ──────────────────────────────────────────────────
-  let userX = enterX;
-  let userY = enterY;
+  // Calculate target position
+  let targetUserX = enterX;
+  let targetUserY = enterY;
   let userLabel = 'ENTER';
 
   if (currentPartition) {
@@ -308,11 +309,24 @@ function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], curre
     const sInfo = getPartitionInfo(pNum);
     if (sInfo) {
       const sCorr = getAccessCorridor(pNum);
-      userX = corrCx[sCorr];
-      userY = TOP + sInfo.indexInSide * cellH + cellH / 2;
+      targetUserX = corrCx[sCorr];
+      targetUserY = TOP + sInfo.indexInSide * cellH + cellH / 2;
       userLabel = 'YOU';
     }
   }
+
+  // Linear interpolation for smooth movement
+  if (stateRef.current.userX === undefined) {
+    stateRef.current.userX = targetUserX;
+    stateRef.current.userY = targetUserY;
+  }
+  
+  // Follow speed: 0.1 per frame (approx 10% move every 16ms)
+  stateRef.current.userX += (targetUserX - stateRef.current.userX) * 0.1;
+  stateRef.current.userY += (targetUserY - stateRef.current.userY) * 0.1;
+  
+  const userX = stateRef.current.userX;
+  const userY = stateRef.current.userY;
 
   // Outer ring (animated pulse)
   ctx.beginPath()
@@ -466,7 +480,7 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
       if (data?.partition) stateRef.current.currentPartition = data.partition 
     })
     poll()
-    pollRef.current = setInterval(poll, 3000)
+    pollRef.current = setInterval(poll, 1500)
 
     return () => {
       clearInterval(pollRef.current)
