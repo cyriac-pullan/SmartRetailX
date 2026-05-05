@@ -42,7 +42,7 @@ class SmartCartService:
         self.load_calibration()
         
         # Advanced ESP32 Tracker Engine
-        self.tracker = IndoorPositioning(walkway_length_m=6.0)
+        self.tracker = IndoorPositioning(walkway_length_m=1.5)
         
         # Thread control
         self.stop_event = threading.Event()

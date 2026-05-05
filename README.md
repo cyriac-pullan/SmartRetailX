@@ -312,55 +312,23 @@ Place the 4 ESP32 boards in a line, spaced approximately **2.0–2.5 meters apar
 
 ## Step 5: Calibration (IMPORTANT)
 
-Calibration ensures the system accurately measures distance from RSSI signals. **Do this at the demo location.**
+Calibration ensures the system accurately measures your position using a **k-Nearest Neighbor (k-NN) fingerprinting algorithm**. This replaces noisy mathematical estimates with exact mapping and must be done at the physical demo location.
 
-### 5.1 Run the Calibration Tool
+### 5.1 Run the Live Calibration Wizard
+1. Open the frontend browser at `http://localhost:5173`
+2. Go to the **Admin Dashboard** (link in the footer or directly to `/admin`)
+3. Scroll down to the **Indoor Navigation Config & Calibration** section.
 
-Make sure the backend virtual environment is active, then:
+### 5.2 Follow the Walkthrough Map
+1. **Setup:** Ensure the 4 ESP32 beacons are placed at the edge of the table (spaced 0.5m apart) as shown on the visual map.
+2. **Select Corridor & Position:** The wizard will prompt you to stand at specific positions (e.g., "Left Corridor - Nearest to ESP").
+3. **Capture Signal:** Stand exactly where the map shows the person icon and click **Capture Signal**. Wait 7 seconds for the system to sample the BLE environment.
+4. **Repeat:** Do this for all 12 positions (Start, Middle, End for all 4 Corridors).
 
-```bash
-cd backend
-python calibrate_esp32.py
-```
-
-### 5.2 Take the Measurement
-
-1. Stand exactly **1 meter away** from any one of your powered ESP32 beacons
-2. The tool will print live RSSI readings every 3 seconds:
-   ```
-   ----------------------------------------
-   FOUND -> ESP32_AISLE_1: -82.5 dBm (10 packets)
-   FOUND -> ESP32_AISLE_2: -89.1 dBm (8 packets)
-   ...
-   ```
-3. Note the **dBm value** of the ESP32 you are standing closest to (it should be the strongest / least negative number, e.g., `-82`)
-4. Press `Ctrl+C` to stop
-
-### 5.3 Update the Calibration Value
-
-Open `backend/esp32_tracker.py` in any text editor and update **line 15**:
-
-```python
-self.tx_power = -82  # <-- Replace -82 with your measured value
-```
-
-For example, if your reading was `-78 dBm` at 1 meter, change it to:
-```python
-self.tx_power = -78
-```
-
-> **Rule of thumb:** The `tx_power` value should equal the average RSSI you see when standing 1 meter from a beacon. Current default is `-82` which works well for most indoor environments.
-
-### 5.4 Adjust Scale (Optional)
-
-If your demo area is very small (e.g., a classroom table), you can adjust the walkway length on **line 4** of `esp32_tracker.py`:
-
-```python
-self.walkway_length_m = 2.0  # Total corridor length in meters
-```
-
-- For a **small table demo**: Use `1.0` to `2.0`
-- For a **room-sized demo**: Use `3.0` to `6.0`
+### 5.3 Activate Calibration
+1. Once all 12 fingerprints are recorded (they will turn green), click **Activate Calibration**.
+2. The backend will instantly save `backend/calibration_config.json` and load it into the live `IndoorPositioning` engine.
+3. The tracking is now perfectly tuned to the specific signal bounces and reflections of your room!
 
 ---
 
@@ -425,11 +393,17 @@ Follow these steps during the live demo to showcase all features:
 2. These are products the user has bought before that are located **along the walking path**
 3. The amber dots also appear on the map canvas
 
-### Demo Step 5: Additional Features to Show
+### Demo Step 5: Intelligent Targeted Ads (Market Basket Analysis)
+1. While navigating to a product (e.g., "Milk"), look below the Live Navigation map.
+2. An amber **Smart Suggestions** box will slide in featuring complementary products (e.g., Bread, Butter).
+3. Point out to the audience that these are NOT random ads—they are generated dynamically by the backend's **Market Basket Analysis (MBA)** engine reading from `associations.json`.
+4. Point out the **Amber Stars (★)** that appear on the live map—the system physically highlights where the ad products are located along the user's path.
+
+### Demo Step 6: Additional Features to Show
 - **Barcode Scanner:** Click the barcode icon to scan product barcodes
 - **AI Chatbot:** Click the chat icon and ask for recipe suggestions (e.g., "How to make biryani?")
 - **Cart System:** Add products to cart, view totals
-- **Ads System:** Contextual advertisements appear based on aisle position
+- **Admin Dashboard:** Show the live inventory restock interface and calibration tools.
 
 ---
 
@@ -469,9 +443,8 @@ Follow these steps during the live demo to showcase all features:
 2. The **backend BLE scanner** (using `bleak` library) picks up these signals every 2 seconds
 3. The **IndoorPositioning engine** (`esp32_tracker.py`):
    - Applies an **Exponential Moving Average (EMA)** filter to smooth noisy RSSI values
-   - Uses **hysteresis** to prevent the position from "bouncing" between corridors
-   - Converts RSSI to **distance** using the Log-Distance Path Loss Model
-   - Maps the distance to a specific **partition** (shelf position) in the store
+   - Uses a **k-Nearest Neighbor (k-NN)** algorithm to compare the live 4-beacon signal against the 12 fingerprints recorded during calibration.
+   - Interpolates the closest matches to generate a highly stable, bounce-free location estimate.
 4. The **frontend** polls the `/api/nav/esp-status` endpoint every 1.5 seconds
 5. The **LiveNavigationModal** canvas renders the user's position and draws an animated path
 

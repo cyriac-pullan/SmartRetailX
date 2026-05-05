@@ -14,6 +14,7 @@ const DashboardPage = lazy(() => import('./pages/DashboardPage'))
 const InventoryPage = lazy(() => import('./pages/InventoryPage'))
 const RestockPage = lazy(() => import('./pages/RestockPage'))
 const UserAccountPage = lazy(() => import('./pages/UserAccountPage'))
+const AdminPage = lazy(() => import('./pages/AdminPage'))
 
 // Loading Fallback
 const PageLoader = () => (
@@ -88,6 +89,12 @@ function AnimatedRoutes() {
         <Route path="/inventory" element={
           <AdminRoute>
             <PageTransition><InventoryPage /></PageTransition>
+          </AdminRoute>
+        } />
+        
+        <Route path="/admin" element={
+          <AdminRoute>
+            <PageTransition><AdminPage /></PageTransition>
           </AdminRoute>
         } />
         

@@ -207,7 +207,7 @@ NEON_ANALYTICS_DSN  = NEON_DB_DSN
 
 # ===== CONNECTION POOLING =====
 POOLS = {}
-EXECUTOR = concurrent.futures.ThreadPoolExecutor(max_workers=10)
+EXECUTOR = concurrent.futures.ThreadPoolExecutor(max_workers=20)
 
 # ===== SMART CART SERVICE & VOICE SERVICE =====
 smart_cart_service = SmartCartService()
@@ -216,7 +216,7 @@ voice_assistant_service = SmartRetailXVoice()
 def init_pools():
     # Single DB — one pool is sufficient
     try:
-        POOLS[NEON_DB_DSN] = psycopg2.pool.ThreadedConnectionPool(1, 10, NEON_DB_DSN, sslmode="require")
+        POOLS[NEON_DB_DSN] = psycopg2.pool.ThreadedConnectionPool(2, 20, NEON_DB_DSN, sslmode="require")
         logging.info("Initialized connection pool for NEON_DB")
     except Exception as e:
         logging.error(f"Failed to init pool: {e}")
@@ -596,9 +596,9 @@ def get_customer_by_barcode_or_username(identifier: str):
         """
         SELECT customer_id, barcode, username, password_hash, name, email, is_admin
         FROM customers
-        WHERE barcode = %s OR username = %s
+        WHERE barcode = %s OR username = %s OR email = %s
         """,
-        (identifier, identifier),
+        (identifier, identifier, identifier),
     )
 
 
@@ -1478,7 +1478,7 @@ def register():
         return jsonify({'error': 'account already exists for this barcode/username'}), 409
 
     customer_id = f"CUST_{uuid.uuid4().hex}"
-    password_hash = hash_password(password) if username else None
+    password_hash = hash_password(password) if password else None
 
     pg_execute(
         NEON_AUTH_DSN,
@@ -2288,6 +2288,84 @@ def verify_weight():
 
 # ===== ANALYTICS ENDPOINTS =====
 
+@app.route('/api/analytics/dashboard', methods=['GET'])
+@db_error
+def get_dashboard_stats():
+    """Aggregated dashboard stats — sequential queries, each independently safe."""
+
+    # Revenue + orders
+    try:
+        rev_row = pg_query_one(NEON_DB_DSN,
+            "SELECT COALESCE(SUM(total_amount),0) AS rev, COUNT(*) AS orders FROM bills WHERE status != 'cancelled'", ()) or {}
+    except Exception:
+        rev_row = {}
+
+    # Customer count
+    try:
+        cust_row = pg_query_one(NEON_DB_DSN, "SELECT COUNT(*) AS cnt FROM customers", ()) or {}
+        customers = int(cust_row.get('cnt') or 0)
+    except Exception:
+        customers = 0
+
+    # Low stock
+    try:
+        ls_row = pg_query_one(NEON_DB_DSN,
+            "SELECT COUNT(*) AS cnt FROM products WHERE stock_quantity <= reorder_level", ()) or {}
+        low_stock = int(ls_row.get('cnt') or 0)
+    except Exception:
+        low_stock = 0
+
+    # Chart data
+    try:
+        chart_rows = pg_query_all(NEON_DB_DSN, """
+            SELECT DATE(created_at) AS date,
+                   COUNT(*) AS transactions,
+                   COALESCE(SUM(total_amount),0) AS revenue
+            FROM bills WHERE status != 'cancelled'
+            GROUP BY DATE(created_at) ORDER BY date ASC LIMIT 30
+        """, ()) or []
+    except Exception:
+        chart_rows = []
+
+    # Recent transactions
+    try:
+        tx_rows = pg_query_all(NEON_DB_DSN, """
+            SELECT bill_id AS id, customer_id AS customer,
+                   total_amount AS amount, status, created_at AS date
+            FROM bills ORDER BY created_at DESC LIMIT 8
+        """, ()) or []
+    except Exception:
+        tx_rows = []
+
+    chart_data = []
+    for row in chart_rows:
+        d = dict(row)
+        if d.get('date'):
+            d['date'] = d['date'].isoformat() if hasattr(d['date'], 'isoformat') else str(d['date'])
+        d['revenue'] = float(d.get('revenue') or 0)
+        d['transactions'] = int(d.get('transactions') or 0)
+        chart_data.append(d)
+
+    recent_tx = []
+    for row in tx_rows:
+        d = dict(row)
+        if d.get('date'):
+            d['date'] = str(d['date'])[:16]
+        amt = float(d.get('amount') or 0)
+        d['amount'] = f"\u20b9{amt:,.0f}"
+        d['status'] = (d.get('status') or 'paid').title()
+        recent_tx.append(d)
+
+    return jsonify({
+        'total_revenue':       float(rev_row.get('rev') or 0),
+        'total_orders':        int(rev_row.get('orders') or 0),
+        'total_customers':     customers,
+        'low_stock_items':     low_stock,
+        'sales_chart_data':    chart_data,
+        'recent_transactions': recent_tx,
+    })
+
+
 @app.route('/api/analytics/sales', methods=['GET'])
 @db_error
 def get_sales_analytics():
@@ -2996,6 +3074,95 @@ def voice_search_api():
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
 
+
+# ── Targeted Advertisement (Market Basket Analysis) ────────────────────────────
+@app.route('/api/nav/targeted-ad', methods=['POST'])
+def nav_targeted_ad():
+    """
+    Given a product name/category the shopper is navigating to,
+    return complementary products (from MBA associations.json) that are
+    located along or near their path — perfect for a demo of
+    'intelligent in-store advertising'.
+    """
+    data = request.get_json() or {}
+    product_name = data.get('product_name', '')
+    product_category = data.get('category', '')
+    current_corridor = data.get('corridor', '')  # e.g. "L", "12"
+    limit = int(data.get('limit', 3))
+
+    if not product_name:
+        return jsonify({"ads": [], "reason": "No product specified"}), 200
+
+    try:
+        # 1. Get MBA companion product name hints
+        companion_hints = _get_fbt_from_associations(product_name, product_category, limit * 2)
+
+        if not companion_hints:
+            # Fallback: try matching just by category keywords
+            for key in _ASSOCIATIONS:
+                if key.lower() in product_name.lower() or key.lower() in product_category.lower():
+                    companion_hints.extend(_ASSOCIATIONS[key])
+            companion_hints = list(dict.fromkeys(companion_hints))[:limit * 2]
+
+        # 2. Resolve to real products with full location info
+        ads = []
+        seen = set()
+        for hint in companion_hints:
+            if len(ads) >= limit:
+                break
+            try:
+                sql = """
+                    SELECT product_id, barcode, name, price, category, aisle,
+                           partition_no, position_tag, side
+                    FROM products WHERE name ILIKE %s LIMIT 1
+                """
+                row = pg_query_one(NEON_PRODUCTS_DSN, sql, (f'%{hint}%',))
+                if row and row.get('barcode') not in seen:
+                    seen.add(row['barcode'])
+                    # Build the ad card
+                    ad_messages = {
+                        'Milk':       'Goes great with your milk! 🥛',
+                        'Bread':      'Perfect with bread! 🍞',
+                        'Rice':       'Complete your meal! 🍚',
+                        'Coffee':     'Pair with your coffee ☕',
+                        'Tea':        'Great with tea! 🍵',
+                        'Chips':      'Snack combo! 🎉',
+                        'Shampoo':    'Complete your hair care 💇',
+                        'Eggs':       'Breakfast combo! 🍳',
+                    }
+                    # Find a matching tagline
+                    tagline = 'Frequently bought together! ⭐'
+                    for kw, msg in ad_messages.items():
+                        if kw.lower() in product_name.lower() or kw.lower() in product_category.lower():
+                            tagline = msg
+                            break
+
+                    ads.append({
+                        'name': row['name'],
+                        'price': row.get('price', 0),
+                        'category': row.get('category', ''),
+                        'barcode': row['barcode'],
+                        'aisle': row.get('aisle'),
+                        'partition_no': row.get('partition_no'),
+                        'position_tag': row.get('position_tag', ''),
+                        'side': row.get('side', ''),
+                        'tagline': tagline,
+                        'reason': f'People who buy {product_name} also buy this',
+                        'confidence': round(0.75 + (len(ads) * -0.1), 2),  # simulated MBA confidence
+                    })
+            except Exception:
+                continue
+
+        return jsonify({
+            "ads": ads,
+            "source": "market_basket_analysis",
+            "target_product": product_name,
+            "rule_count": len(companion_hints),
+        })
+    except Exception as e:
+        logging.error(f"Targeted ad error: {e}")
+        return jsonify({"ads": [], "error": str(e)}), 200
+
 @app.route('/api/nav/ads/dual', methods=['GET'])
 def nav_ads_dual():
     """Get two featured products for the advertisement boxes"""
@@ -3028,6 +3195,71 @@ def nav_ads_dual():
             "product_data": ad2
         }
     })
+
+
+# --- TRACKER CONFIG ENDPOINTS ---
+
+@app.route('/api/admin/tracker/config', methods=['GET'])
+def get_tracker_config():
+    """Return the current live tracker parameters."""
+    if not smart_cart_service or not hasattr(smart_cart_service, 'tracker'):
+        return jsonify({'error': 'Tracker not initialised'}), 503
+    t = smart_cart_service.tracker
+    tx = t.tx_power
+    return jsonify({
+        'tx_power': tx if isinstance(tx, dict) else {
+            'ESP32_AISLE_1': tx, 'ESP32_AISLE_2': tx,
+            'ESP32_AISLE_3': tx, 'ESP32_AISLE_4': tx,
+        },
+        'walkway_length_m': t.walkway_length_m,
+        'n_path_loss': t.n_path_loss,
+        'ema_alpha': t.ema_alpha,
+        'hysteresis_threshold': t.hysteresis_threshold,
+    })
+
+
+@app.route('/api/admin/tracker/config', methods=['POST'])
+def update_tracker_config():
+    """Update live tracker parameters without restarting the backend."""
+    if not smart_cart_service or not hasattr(smart_cart_service, 'tracker'):
+        return jsonify({'error': 'Tracker not initialised'}), 503
+    data = request.get_json() or {}
+    t = smart_cart_service.tracker
+    changed = []
+
+    # tx_power — accepts dict {esp_name: value} or a single number
+    if 'tx_power' in data:
+        val = data['tx_power']
+        if isinstance(val, dict):
+            if not isinstance(t.tx_power, dict):
+                t.tx_power = {}
+            for k, v in val.items():
+                t.tx_power[k] = float(v)
+        else:
+            t.tx_power = {
+                'ESP32_AISLE_1': float(val), 'ESP32_AISLE_2': float(val),
+                'ESP32_AISLE_3': float(val), 'ESP32_AISLE_4': float(val),
+            }
+        changed.append('tx_power')
+
+    if 'walkway_length_m' in data:
+        t.walkway_length_m = float(data['walkway_length_m'])
+        changed.append('walkway_length_m')
+
+    if 'n_path_loss' in data:
+        t.n_path_loss = float(data['n_path_loss'])
+        changed.append('n_path_loss')
+
+    if 'ema_alpha' in data:
+        t.ema_alpha = max(0.01, min(1.0, float(data['ema_alpha'])))
+        changed.append('ema_alpha')
+
+    if 'hysteresis_threshold' in data:
+        t.hysteresis_threshold = float(data['hysteresis_threshold'])
+        changed.append('hysteresis_threshold')
+
+    logging.info(f"Tracker config updated: {changed}")
+    return jsonify({'success': True, 'updated': changed})
 
 
 # --- CALIBRATION ENDPOINTS ---
@@ -3102,6 +3334,12 @@ def calibrate_save():
         nav_state["calibration_config"] = config
         with open(CALIBRATION_FILE, 'w') as f:
             json.dump(config, f, indent=4)
+
+        # ── Push new fingerprints into the LIVE tracker immediately ──
+        if smart_cart_service and hasattr(smart_cart_service, 'tracker'):
+            smart_cart_service.tracker.calibration = corridors
+            logging.info("🔄 Live tracker fingerprint map updated in-memory")
+
         logging.info(f"✅ Calibration saved for {len(corridors)} corridors")
         return jsonify({"success": True, "calibrated_at": config["calibrated_at"], "corridor_count": len(corridors)})
     except Exception as e:
@@ -3359,28 +3597,42 @@ def log_ad_impression():
 
 @app.route('/api/admin/ads', methods=['GET'])
 def admin_list_ads():
-    """List all advertisements."""
+    """List all advertisements with live impression counts."""
     try:
         rows = pg_query_all(
             NEON_PRODUCTS_DSN,
-            """SELECT ad_id, title, description, image_url, position_tag, aisle,
-                      is_compulsory, priority, revenue_per_impression, is_active, created_at, product_id
-               FROM advertisements ORDER BY is_compulsory DESC, priority DESC, ad_id DESC""",
+            """SELECT a.ad_id, a.title, a.description, a.image_url, a.position_tag, a.aisle,
+                      a.is_compulsory, a.priority, a.revenue_per_impression, a.is_active,
+                      a.created_at, a.product_id,
+                      COUNT(i.id) AS impressions,
+                      COALESCE(SUM(i.revenue_earned), 0) AS total_revenue
+               FROM advertisements a
+               LEFT JOIN ad_impressions i ON a.ad_id = i.ad_id
+               GROUP BY a.ad_id, a.title, a.description, a.image_url, a.position_tag, a.aisle,
+                        a.is_compulsory, a.priority, a.revenue_per_impression, a.is_active,
+                        a.created_at, a.product_id
+               ORDER BY a.is_compulsory DESC, a.priority DESC, a.ad_id DESC""",
             ()
         ) or []
         ads = []
         for r in rows:
+            impressions = int(r['impressions'] or 0)
+            total_rev = float(r['total_revenue'] or 0)
+            rev_per = round(total_rev / impressions, 2) if impressions > 0 else float(r['revenue_per_impression'] or 0)
             ads.append({
                 "ad_id": r['ad_id'], "title": r['title'], "description": r['description'],
                 "image_url": r['image_url'], "position_tag": r['position_tag'], "aisle": r['aisle'],
                 "is_compulsory": r['is_compulsory'], "priority": r['priority'],
-                "revenue_per_impression": float(r['revenue_per_impression'] or 0),
+                "revenue_per_impression": rev_per,
+                "impressions": impressions,
+                "total_revenue": total_rev,
                 "is_active": r['is_active'],
                 "created_at": r['created_at'].isoformat() if r['created_at'] else None,
                 "product_id": r['product_id']
             })
         return jsonify({"ads": ads})
     except Exception as e:
+        logging.exception("admin_list_ads error")
         return jsonify({"error": str(e)}), 500
 
 
@@ -3749,18 +4001,24 @@ def analytics_heatmap():
 @app.route('/api/inventory/all', methods=['GET'])
 @db_error
 def get_inventory_all():
-    sql = "SELECT product_id, barcode, name, price, weight_kg, category, sub_category, aisle, partition_no, shelf_no, position_tag, side, stock_quantity, reorder_level FROM products ORDER BY name"
-    rows = pg_query_all(NEON_DB_DSN, sql, ()) or []
+    sql = "SELECT product_id, barcode, name, price, weight_kg, category, sub_category, aisle, partition_no, shelf_no, position_tag, side, stock_quantity, reorder_level FROM products ORDER BY name LIMIT 600"
     sql2 = sql.replace("FROM products", "FROM products2")
-    rows2 = pg_query_all(NEON_DB_DSN, sql2, ()) or []
-    
+    try:
+        rows = pg_query_all(NEON_DB_DSN, sql, ()) or []
+    except Exception:
+        rows = []
+    try:
+        rows2 = pg_query_all(NEON_DB_DSN, sql2, ()) or []
+    except Exception:
+        rows2 = []
+
     seen = set()
     unique_rows = []
     for r in rows + rows2:
-        if r['barcode'] not in seen:
+        if r and r.get('barcode') and r['barcode'] not in seen:
             seen.add(r['barcode'])
-            unique_rows.append(r)
-            
+            unique_rows.append(dict(r))
+
     return jsonify(unique_rows)
 
 @app.route('/api/inventory/update', methods=['POST'])

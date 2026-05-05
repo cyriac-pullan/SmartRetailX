@@ -130,3 +130,9 @@ export const saveCalibration = (calibData) =>
 
 export const captureSignal = (aisleNum, position) =>
   request('/api/admin/calibration/capture', { method: 'POST', body: JSON.stringify({ aisle: aisleNum, position }) })
+
+export const getTrackerConfig = () =>
+  request('/api/admin/tracker/config')
+
+export const updateTrackerConfig = (config) =>
+  request('/api/admin/tracker/config', { method: 'POST', body: JSON.stringify(config) })

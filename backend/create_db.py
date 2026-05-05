@@ -90,10 +90,14 @@ CREATE TABLE IF NOT EXISTS weight_readings (
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS customers (
     customer_id TEXT PRIMARY KEY,
+    barcode TEXT UNIQUE,
+    username TEXT UNIQUE,
+    password_hash TEXT,
     name TEXT,
     email TEXT,
     phone TEXT,
     loyalty_points INT DEFAULT 0,
+    is_admin BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ''')

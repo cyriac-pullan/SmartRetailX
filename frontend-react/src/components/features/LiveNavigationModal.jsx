@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, MapPin, Navigation2, Loader2, Sparkles, ChevronRight } from 'lucide-react'
+import { X, MapPin, Navigation2, Loader2, Sparkles, ChevronRight, ShoppingCart, TrendingUp, Tag } from 'lucide-react'
 import { searchProducts, getEspStatus, getPathSuggestions } from '../../services/api'
 import { useAppStore } from '../../store/useAppStore'
 
@@ -164,7 +164,7 @@ function strokePoly(ctx, pts, t) {
 }
 
 // ─── Main canvas draw ─────────────────────────────────────────────────────────
-function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], currentPartition = null) {
+function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], currentPartition = null, userPos = null, targetedAds = []) {
   if (!canvas) return
   const ctx = canvas.getContext('2d')
   const W = canvas.width, H = canvas.height
@@ -230,30 +230,38 @@ function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], curre
       const cy  = TOP + i * cellH
       const isTgt = pno === targetPartition
       const isSugg = !isTgt && suggestions.some(s => parseInt(s.partition_no) === pno)
+      const isAd = !isTgt && targetedAds.some(a => parseInt(a.partition_no) === pno)
 
       ctx.fillStyle = isTgt ? 'rgba(99,102,241,0.18)' : (i%2===0 ? '#eef2ff' : '#e8edfa')
-      if (isSugg) ctx.fillStyle = 'rgba(245,158,11,0.1)' // faint amber for suggestions
+      if (isSugg || isAd) ctx.fillStyle = 'rgba(245,158,11,0.1)' // faint amber for suggestions/ads
       
       ctx.beginPath()
       if (ctx.roundRect) ctx.roundRect(sx+1, cy+1, stripW-2, cellH-3, 4)
       else ctx.rect(sx+1, cy+1, stripW-2, cellH-3)
       ctx.fill()
 
-      ctx.strokeStyle = isTgt ? '#6366f1' : (isSugg ? 'rgba(245,158,11,0.5)' : 'rgba(148,163,184,0.3)')
-      ctx.lineWidth = isTgt || isSugg ? 2 : 0.7
+      ctx.strokeStyle = isTgt ? '#6366f1' : ((isSugg || isAd) ? 'rgba(245,158,11,0.5)' : 'rgba(148,163,184,0.3)')
+      ctx.lineWidth = isTgt || isSugg || isAd ? 2 : 0.7
       ctx.stroke()
 
-      ctx.fillStyle = isTgt ? '#4338ca' : (isSugg ? '#d97706' : '#94a3b8')
-      ctx.font = `${isTgt || isSugg ? 'bold' : 'normal'} 8px Inter, system-ui, sans-serif`
+      ctx.fillStyle = isTgt ? '#4338ca' : ((isSugg || isAd) ? '#d97706' : '#94a3b8')
+      ctx.font = `${isTgt || isSugg || isAd ? 'bold' : 'normal'} 8px Inter, system-ui, sans-serif`
       ctx.textAlign = 'center'
       ctx.fillText(`P${pno}`, sx + stripW/2, cy + cellH/2 + 3)
 
-      if (isSugg) {
+      if (isSugg && !isAd) {
         // Draw small amber dot for suggestion
         ctx.beginPath()
         ctx.arc(sx + stripW/2 + 14, cy + cellH/2, 2.5, 0, Math.PI*2)
         ctx.fillStyle = '#f59e0b'
         ctx.fill()
+      }
+
+      if (isAd) {
+        // Draw a star/tag for the targeted ad
+        ctx.fillStyle = '#f59e0b'
+        ctx.font = '10px sans-serif'
+        ctx.fillText('★', sx + stripW/2 + 14, cy + cellH/2 + 3)
       }
 
       // Target pulsing halo
@@ -299,34 +307,10 @@ function drawMap(canvas, targetPartition, animT, pulseT, suggestions = [], curre
   ctx.setLineDash([])
 
   // ── 5. User marker ──────────────────────────────────────────────────
-  // Calculate target position
-  let targetUserX = enterX;
-  let targetUserY = enterY;
-  let userLabel = 'ENTER';
-
-  if (currentPartition) {
-    const pNum = parseInt(currentPartition.replace('P', ''));
-    const sInfo = getPartitionInfo(pNum);
-    if (sInfo) {
-      const sCorr = getAccessCorridor(pNum);
-      targetUserX = corrCx[sCorr];
-      targetUserY = TOP + sInfo.indexInSide * cellH + cellH / 2;
-      userLabel = 'YOU';
-    }
-  }
-
-  // Linear interpolation for smooth movement
-  if (stateRef.current.userX === undefined) {
-    stateRef.current.userX = targetUserX;
-    stateRef.current.userY = targetUserY;
-  }
-  
-  // Follow speed: 0.1 per frame (approx 10% move every 16ms)
-  stateRef.current.userX += (targetUserX - stateRef.current.userX) * 0.1;
-  stateRef.current.userY += (targetUserY - stateRef.current.userY) * 0.1;
-  
-  const userX = stateRef.current.userX;
-  const userY = stateRef.current.userY;
+  // Use pre-computed interpolated position passed in from component
+  const userX = userPos ? userPos.x : enterX;
+  const userY = userPos ? userPos.y : enterY;
+  const userLabel = userPos ? 'YOU' : 'ENTER';
 
   // Outer ring (animated pulse)
   ctx.beginPath()
@@ -395,14 +379,20 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
   const [loading, setLoading]   = useState(false)
   const [espPos,   setEspPos]   = useState('Scanning...')
   const [suggestions, setSuggestions] = useState([])
+  const [targetedAds, setTargetedAds] = useState([])
+  const addToCart = useAppStore(state => state.addToCart)
   const animRef   = useRef(null)
   const pollRef   = useRef(null)
-  const stateRef  = useRef({ animT: 0, pulseT: 0, pulsing: false, currentPartition: null })
+  const stateRef  = useRef({ animT: 0, pulseT: 0, pulsing: false, currentPartition: null, userX: undefined, userY: undefined, suggs: [], ads: [] })
 
-  const startAnim = useCallback((partitionNo, suggs = []) => {
+  const startAnim = useCallback((partitionNo) => {
     if (animRef.current) cancelAnimationFrame(animRef.current)
     const curP = stateRef.current?.currentPartition
-    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP }
+    const prevUserX = stateRef.current?.userX
+    const prevUserY = stateRef.current?.userY
+    const curSuggs = stateRef.current?.suggs || []
+    const curAds = stateRef.current?.ads || []
+    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP, userX: prevUserX, userY: prevUserY, suggs: curSuggs, ads: curAds }
     let last = null
     const tick = (ts) => {
       if (!last) last = ts
@@ -415,7 +405,29 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
       } else {
         s.pulseT = (s.pulseT + dt * 1.8) % 1
       }
-      drawMap(canvasRef.current, partitionNo, s.animT, s.pulseT, suggs, s.currentPartition)
+
+      // Compute target user position from currentPartition
+      const canvas = canvasRef.current
+      if (canvas) {
+        const lay = buildLayout(canvas.width, canvas.height)
+        let targetUX = lay.enterX
+        let targetUY = lay.enterY
+        if (s.currentPartition) {
+          const pn = parseInt(s.currentPartition.replace('P', ''))
+          const si = getPartitionInfo(pn)
+          if (si) {
+            const sc = getAccessCorridor(pn)
+            targetUX = lay.corrCx[sc]
+            targetUY = lay.TOP + si.indexInSide * lay.cellH + lay.cellH / 2
+          }
+        }
+        if (s.userX === undefined) { s.userX = targetUX; s.userY = targetUY }
+        s.userX += (targetUX - s.userX) * 0.08
+        s.userY += (targetUY - s.userY) * 0.08
+      }
+
+      const userPos = s.userX !== undefined ? { x: s.userX, y: s.userY } : null
+      drawMap(canvasRef.current, partitionNo, s.animT, s.pulseT, s.suggs, s.currentPartition, userPos, s.ads)
       animRef.current = requestAnimationFrame(tick)
     }
     animRef.current = requestAnimationFrame(tick)
@@ -424,8 +436,11 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
   // Draw initial empty map whenever the modal opens
   useEffect(() => {
     if (open) {
-      // Small delay so the canvas is painted in the DOM
-      const id = setTimeout(() => drawMap(canvasRef.current, null, 0, 0, [], stateRef.current?.currentPartition), 30)
+      const id = setTimeout(() => {
+        const s = stateRef.current
+        const userPos = s.userX !== undefined ? { x: s.userX, y: s.userY } : null
+        drawMap(canvasRef.current, null, 0, 0, [], s?.currentPartition, userPos)
+      }, 30)
       return () => clearTimeout(id)
     }
   }, [open])
@@ -434,9 +449,10 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
     if (!open || !productName) return
     setLocationData(null)
     setSuggestions([])
+    setTargetedAds([])
     setLoading(true)
     const curP = stateRef.current?.currentPartition
-    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP }
+    stateRef.current = { animT: 0, pulseT: 0, pulsing: false, currentPartition: curP, suggs: [], ads: [] }
 
     searchProducts(productName).then(({ data }) => {
       const results = Array.isArray(data) ? data : (data?.results || [])
@@ -454,19 +470,32 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
         }
         setLocationData(loc)
         setLoading(false)
+
+        // Fetch targeted ads (Market Basket Analysis)
+        fetch('http://127.0.0.1:5000/api/nav/targeted-ad', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product_name: productName, category: product.category || '' })
+        }).then(r => r.json()).then(d => {
+          if (d?.ads?.length) {
+            setTargetedAds(d.ads)
+            stateRef.current.ads = d.ads
+          }
+        }).catch(() => {})
         
         // Fetch path suggestions if user is logged in
         if (user?.customer_id) {
           getPathSuggestions(user.customer_id, pno).then(({ data: suggs }) => {
             if (Array.isArray(suggs) && suggs.length > 0) {
               setSuggestions(suggs)
-              startAnim(pno, suggs)
+              stateRef.current.suggs = suggs
+              startAnim(pno)
             } else {
-              startAnim(pno, [])
+              startAnim(pno)
             }
-          }).catch(() => startAnim(pno, []))
+          }).catch(() => startAnim(pno))
         } else {
-          startAnim(pno, [])
+          startAnim(pno)
         }
       } else {
         setLocationData(product?.aisle ? { aisle: product.aisle } : null)
@@ -475,9 +504,33 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
       }
     })
 
-    const poll = () => getEspStatus().then(({ data }) => { 
-      if (data?.position) setEspPos(data.position) 
-      if (data?.partition) stateRef.current.currentPartition = data.partition 
+    const poll = () => getEspStatus().then(({ data }) => {
+      if (data?.position) setEspPos(data.position)
+      if (data?.partition) {
+        stateRef.current.currentPartition = data.partition
+        // If no animation is running (no product searched yet), redraw the idle map with updated position
+        if (!animRef.current) {
+          const s = stateRef.current
+          // Compute new target
+          const canvas = canvasRef.current
+          if (canvas) {
+            const lay = buildLayout(canvas.width, canvas.height)
+            const pn = parseInt(data.partition.replace('P', ''))
+            const si = getPartitionInfo(pn)
+            let targetUX = lay.enterX, targetUY = lay.enterY
+            if (si) {
+              const sc = getAccessCorridor(pn)
+              targetUX = lay.corrCx[sc]
+              targetUY = lay.TOP + si.indexInSide * lay.cellH + lay.cellH / 2
+            }
+            if (s.userX === undefined) { s.userX = targetUX; s.userY = targetUY }
+            s.userX += (targetUX - s.userX) * 0.5
+            s.userY += (targetUY - s.userY) * 0.5
+            const userPos = { x: s.userX, y: s.userY }
+            drawMap(canvas, null, 0, s.pulseT || 0, s.suggs, s.currentPartition, userPos, s.ads)
+          }
+        }
+      }
     })
     poll()
     pollRef.current = setInterval(poll, 1500)
@@ -507,7 +560,7 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 24 }}
             transition={{ type: 'spring', damping: 22, stiffness: 280 }}
-            className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden"
+            className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
@@ -551,9 +604,11 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
               </div>
             </div>
 
-            {/* Canvas — always mounted */}
-            <div className="p-5">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200">
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto overflow-x-hidden p-5">
+              
+              {/* Canvas — always mounted */}
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
                 <canvas ref={canvasRef} width={600} height={350} className="w-full block" />
                 
                 {/* Suggestions Overlay */}
@@ -602,7 +657,73 @@ export default function LiveNavigationModal({ open, onOpenChange, productName })
                   </div>
                 )}
               </div>
-            </div>
+
+              {/* Targeted MBA Ads */}
+            <AnimatePresence>
+              {targetedAds.length > 0 && !loading && (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="px-5 pb-5"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-1.5 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg">
+                      <TrendingUp size={13} className="text-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-extrabold text-slate-800">Smart Suggestions</p>
+                      <p className="text-[10px] text-slate-400">Based on Market Basket Analysis</p>
+                    </div>
+                    <div className="ml-auto px-2 py-0.5 bg-amber-50 border border-amber-200 rounded-full">
+                      <p className="text-[9px] font-bold text-amber-700">MBA Engine</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-2">
+                    {targetedAds.map((ad, idx) => (
+                      <motion.div
+                        key={ad.barcode}
+                        initial={{ opacity: 0, x: -12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 + idx * 0.15 }}
+                        className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/70 rounded-xl p-3 flex items-center gap-3 group hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/10 transition-all"
+                      >
+                        <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white shadow-md shadow-amber-500/30">
+                          <Tag size={18} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-extrabold text-slate-800 truncate">{ad.name}</p>
+                          <p className="text-[10px] text-amber-700 font-semibold mt-0.5">{ad.tagline}</p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[10px] font-bold text-slate-500">₹{ad.price}</span>
+                            <span className="text-slate-300">•</span>
+                            <span className="text-[10px] text-slate-400">A{ad.aisle} · {ad.position_tag}</span>
+                            <span className="text-slate-300">•</span>
+                            <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                              {Math.round(ad.confidence * 100)}% match
+                            </span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => addToCart?.({ barcode: ad.barcode, name: ad.name, price: ad.price, quantity: 1 })}
+                          className="shrink-0 p-2 rounded-xl bg-white border border-amber-200 text-amber-600 hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all shadow-sm"
+                          title="Add to cart"
+                        >
+                          <ShoppingCart size={14} />
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <p className="text-[9px] text-slate-400 text-center mt-2 italic">
+                    Powered by association rule mining · {targetedAds.length} complementary products found
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            </div> {/* End Scrollable Body */}
           </motion.div>
         </motion.div>
       )}

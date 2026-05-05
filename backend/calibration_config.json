@@ -1,84 +1,84 @@
 {
-    "calibrated_at": "2026-04-14T06:30:00.000000Z",
+    "calibrated_at": "2026-05-05T13:20:12.423081Z",
     "corridors": {
-        "L": {
-            "start": {
-                "ESP32_AISLE_1": -30,
-                "ESP32_AISLE_2": -62,
-                "ESP32_AISLE_3": -74,
-                "ESP32_AISLE_4": -82
-            },
-            "middle": {
-                "ESP32_AISLE_1": -42,
-                "ESP32_AISLE_2": -58,
-                "ESP32_AISLE_3": -70,
-                "ESP32_AISLE_4": -78
-            },
-            "end": {
-                "ESP32_AISLE_1": -54,
-                "ESP32_AISLE_2": -56,
-                "ESP32_AISLE_3": -68,
-                "ESP32_AISLE_4": -76
-            }
-        },
         "12": {
             "start": {
-                "ESP32_AISLE_1": -56,
-                "ESP32_AISLE_2": -30,
-                "ESP32_AISLE_3": -62,
+                "ESP32_AISLE_1": -60,
+                "ESP32_AISLE_2": -62,
+                "ESP32_AISLE_3": -72,
                 "ESP32_AISLE_4": -74
             },
             "middle": {
-                "ESP32_AISLE_1": -52,
-                "ESP32_AISLE_2": -42,
-                "ESP32_AISLE_3": -58,
-                "ESP32_AISLE_4": -70
+                "ESP32_AISLE_1": -79,
+                "ESP32_AISLE_2": -67,
+                "ESP32_AISLE_3": -79,
+                "ESP32_AISLE_4": -72
             },
             "end": {
-                "ESP32_AISLE_1": -50,
-                "ESP32_AISLE_2": -54,
-                "ESP32_AISLE_3": -56,
-                "ESP32_AISLE_4": -68
+                "ESP32_AISLE_1": -76,
+                "ESP32_AISLE_2": -79,
+                "ESP32_AISLE_3": -79,
+                "ESP32_AISLE_4": -71
             }
         },
         "23": {
             "start": {
-                "ESP32_AISLE_1": -72,
-                "ESP32_AISLE_2": -58,
-                "ESP32_AISLE_3": -30,
-                "ESP32_AISLE_4": -56
+                "ESP32_AISLE_1": -67,
+                "ESP32_AISLE_2": -64,
+                "ESP32_AISLE_3": -75,
+                "ESP32_AISLE_4": -69
             },
             "middle": {
-                "ESP32_AISLE_1": -68,
-                "ESP32_AISLE_2": -54,
-                "ESP32_AISLE_3": -42,
-                "ESP32_AISLE_4": -52
+                "ESP32_AISLE_1": -77,
+                "ESP32_AISLE_2": -75,
+                "ESP32_AISLE_3": -76,
+                "ESP32_AISLE_4": -74
             },
             "end": {
-                "ESP32_AISLE_1": -66,
-                "ESP32_AISLE_2": -52,
-                "ESP32_AISLE_3": -54,
-                "ESP32_AISLE_4": -50
+                "ESP32_AISLE_1": -80,
+                "ESP32_AISLE_2": -69,
+                "ESP32_AISLE_3": -83,
+                "ESP32_AISLE_4": -86
+            }
+        },
+        "L": {
+            "start": {
+                "ESP32_AISLE_1": -65,
+                "ESP32_AISLE_2": -70,
+                "ESP32_AISLE_3": -78,
+                "ESP32_AISLE_4": -71
+            },
+            "middle": {
+                "ESP32_AISLE_1": -74,
+                "ESP32_AISLE_2": -72,
+                "ESP32_AISLE_3": -81,
+                "ESP32_AISLE_4": -79
+            },
+            "end": {
+                "ESP32_AISLE_1": -73,
+                "ESP32_AISLE_2": -77,
+                "ESP32_AISLE_3": -80,
+                "ESP32_AISLE_4": -79
             }
         },
         "R": {
             "start": {
-                "ESP32_AISLE_1": -80,
-                "ESP32_AISLE_2": -72,
-                "ESP32_AISLE_3": -58,
-                "ESP32_AISLE_4": -30
+                "ESP32_AISLE_1": -71,
+                "ESP32_AISLE_2": -81,
+                "ESP32_AISLE_3": -80,
+                "ESP32_AISLE_4": -66
             },
             "middle": {
-                "ESP32_AISLE_1": -76,
-                "ESP32_AISLE_2": -68,
-                "ESP32_AISLE_3": -54,
-                "ESP32_AISLE_4": -42
+                "ESP32_AISLE_1": -70,
+                "ESP32_AISLE_2": -72,
+                "ESP32_AISLE_3": -76,
+                "ESP32_AISLE_4": -72
             },
             "end": {
-                "ESP32_AISLE_1": -74,
-                "ESP32_AISLE_2": -66,
-                "ESP32_AISLE_3": -52,
-                "ESP32_AISLE_4": -54
+                "ESP32_AISLE_1": -72,
+                "ESP32_AISLE_2": -81,
+                "ESP32_AISLE_3": -84,
+                "ESP32_AISLE_4": -78
             }
         }
     }
